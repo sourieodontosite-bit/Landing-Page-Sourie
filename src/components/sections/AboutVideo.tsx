@@ -58,7 +58,7 @@ export default function AboutVideo({ showAddress = false }: AboutVideoProps) {
   return (
     <section
       ref={containerRef}
-      className="relative h-screen flex flex-col p-0 md:p-3 lg:p-4 lg:pt-2 overflow-hidden"
+      className="relative h-[100dvh] md:h-screen flex flex-col p-0 md:p-3 lg:p-4 lg:pt-2 overflow-hidden"
     >
       {/* Background Card - Matching HeroSection style */}
       <div className="absolute inset-0 md:inset-3 lg:inset-4 lg:top-2 z-0 rounded-none md:rounded-[32px] lg:rounded-[40px] overflow-hidden bg-navy-dark isolation-isolate transform-gpu">

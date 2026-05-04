@@ -1,12 +1,10 @@
 import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Button from '../shared/Button';
 import { WHATSAPP_LINK } from '../../utils/constants';
 import heroImage from '../../assets/hero-image.png';
 
-gsap.registerPlugin(ScrollTrigger);
 
 export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -17,29 +15,27 @@ export default function HeroSection() {
   const buttonRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
     const mm = gsap.matchMedia();
 
-    gsap.set([badgeRef.current, titleRef.current, textRef.current, buttonRef.current], {
-      opacity: 0,
-      y: 20,
-      willChange: "opacity, transform"
-    });
-
-    tl.to(imageRef.current, { opacity: 1, scale: 1, duration: 2, ease: "power2.inOut" })
-      .to(badgeRef.current, { opacity: 1, y: 0, duration: 0.8 }, "-=1.4")
-      .to(titleRef.current, { opacity: 1, y: 0, duration: 0.8 }, "-=0.6")
-      .to(textRef.current, { opacity: 1, y: 0, duration: 0.8 }, "-=0.6")
-      .to(buttonRef.current, {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        onComplete: () => {
-          gsap.set([badgeRef.current, titleRef.current, textRef.current, buttonRef.current], { willChange: "auto" });
-        }
-      }, "-=0.6");
-
     mm.add("(min-width: 1024px)", () => {
+      // Entrance animation ONLY on Desktop for better LCP on mobile
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+      tl.from([badgeRef.current, titleRef.current, textRef.current, buttonRef.current], {
+        opacity: 0,
+        y: 20,
+        stagger: 0.15,
+        duration: 0.8,
+        delay: 0.2
+      })
+        .from(imageRef.current, {
+          opacity: 0,
+          scale: 1.05,
+          duration: 2,
+          ease: "power2.inOut"
+        }, 0);
+
+      // Parallax ONLY on desktop
       gsap.to(imageRef.current, {
         yPercent: 10,
         ease: "none",
@@ -52,6 +48,8 @@ export default function HeroSection() {
       });
     });
 
+    // Mobile: Elements are already visible via HTML/CSS (optimized for LCP)
+
     return () => mm.revert();
   }, { scope: containerRef });
 
@@ -59,7 +57,7 @@ export default function HeroSection() {
     <section
       id="hero"
       ref={containerRef}
-      className="relative h-screen h-[100dvh] flex flex-col p-0 md:p-3 lg:p-4 lg:pt-2 overflow-hidden"
+      className="relative h-[100dvh] md:h-screen flex flex-col p-0 md:p-3 lg:p-4 lg:pt-2 overflow-hidden"
     >
       {/* Top Progressive Color Overlay */}
       <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-[#081d22]/95 via-navy-dark/40 to-transparent pointer-events-none z-10 md:hidden" />
@@ -70,7 +68,7 @@ export default function HeroSection() {
           ref={imageRef}
           src={heroImage}
           alt="Paciente sorrindo na clínica odontológica Souriê"
-          className="w-full h-full object-cover object-[75%_center] md:object-center opacity-0 scale-105"
+          className="w-full h-full object-cover object-[75%_center] md:object-center scale-100"
           fetchPriority="high"
           decoding="async"
         />
@@ -84,7 +82,7 @@ export default function HeroSection() {
             {/* Badge */}
             <div
               ref={badgeRef}
-              className="inline-flex items-center gap-1.5 sm:gap-2 bg-white/15 backdrop-blur-sm border border-white/25 rounded-pill px-3 sm:px-5 py-1 sm:py-2 mb-4 sm:mb-8"
+              className="hero-mobile-anim hero-delay-1 inline-flex items-center gap-1.5 sm:gap-2 bg-white/15 backdrop-blur-sm border border-white/25 rounded-pill px-3 sm:px-5 py-1 sm:py-2 mb-4 sm:mb-8"
             >
               <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-cyan-light animate-pulse-subtle" />
               <span className="text-white text-[9px] sm:text-[11px] lg:text-xs xl:text-[11px] 2xl:text-[11px] tracking-widest font-bold uppercase">
@@ -94,7 +92,7 @@ export default function HeroSection() {
 
             <h1
               ref={titleRef}
-              className="text-4xl sm:text-5xl lg:text-6xl xl:text-6xl 2xl:text-7xl font-medium text-white leading-[1.05] mb-6 sm:mb-8"
+              className="hero-mobile-anim hero-delay-2 text-4xl sm:text-5xl lg:text-6xl xl:text-6xl 2xl:text-7xl font-medium text-white leading-[1.05] mb-6 sm:mb-8"
             >
               Seu sorriso,<br />
               nossa prioridade
@@ -102,12 +100,12 @@ export default function HeroSection() {
 
             <p
               ref={textRef}
-              className="text-white/85 text-lg xl:text-xl 2xl:text-2xl mb-8 sm:mb-12 max-w-xl mx-0 leading-relaxed font-light"
+              className="hero-mobile-anim hero-delay-3 text-white/85 text-lg xl:text-xl 2xl:text-2xl mb-8 sm:mb-12 max-w-xl mx-0 leading-relaxed font-light"
             >
               Tecnologia, atenção e qualidade para <br className="block sm:hidden" /> transformar sua autoestima e saúde.
             </p>
 
-            <div ref={buttonRef}>
+            <div ref={buttonRef} className="hero-mobile-anim hero-delay-4">
               <div className="lg:scale-[0.85] origin-left inline-block">
                 <Button
                   text="Agende sua consulta"

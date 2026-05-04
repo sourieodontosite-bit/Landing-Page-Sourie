@@ -4,7 +4,6 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Link, useLocation } from 'react-router-dom';
 
-gsap.registerPlugin(ScrollTrigger);
 import { Menu, X, ChevronDown, ArrowLeft } from 'lucide-react';
 import Button from './Button';
 import { NAV_LINKS, WHATSAPP_LINK } from '../../utils/constants';
@@ -345,19 +344,17 @@ export default function Navbar() {
 
           <Link to="/" className={`flex items-center group justify-self-start ${isProcedurePage ? 'hidden md:flex' : ''}`}>
             <div
-              className={`transition-all duration-500 ${isDarkText ? 'bg-teal-primary' : 'bg-white'}`}
+              className={`transition-all duration-500 ${isDarkText ? 'bg-teal-primary' : 'bg-white'} logo-mask`}
               style={{
                 maskImage: `url(${LogoImg})`,
                 WebkitMaskImage: `url(${LogoImg})`,
-                maskSize: '100% 100%',
-                WebkitMaskSize: '100% 100%',
+                maskSize: 'contain',
+                WebkitMaskSize: 'contain',
                 maskRepeat: 'no-repeat',
                 WebkitMaskRepeat: 'no-repeat',
                 maskPosition: 'left center',
                 WebkitMaskPosition: 'left center',
-                width: isMobile ? 100 : 130,
-                height: isMobile ? 23 : 30,
-                transform: `scale(${isScrolled ? (isMobile ? 0.83 : 0.8) : 1})`,
+                transform: `scale(${isScrolled ? 0.8 : 1})`,
                 transformOrigin: 'left center',
               }}
             />

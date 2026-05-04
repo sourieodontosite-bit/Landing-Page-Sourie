@@ -1,14 +1,12 @@
 import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SectionContainer from '../shared/SectionContainer';
 import { SERVICES } from '../../utils/constants';
 import { Stethoscope, Sparkles, Layers, Activity, Baby, ArrowUpRight } from 'lucide-react';
 import { OrthoIcon } from '../shared/Icons';
 import { Link } from 'react-router-dom';
 
-gsap.registerPlugin(ScrollTrigger);
 
 // Import Procedure Images for Hover
 import ortodontiaImg from '../../assets/Procedimentos/Ortodontia.png';
@@ -40,36 +38,31 @@ export default function ServicesSection() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    const mm = gsap.matchMedia();
+    if (!containerRef.current) return;
 
-    mm.add("(min-width: 768px)", () => {
-      if (containerRef.current) {
-        gsap.fromTo(".service-bento",
-          { opacity: 0, y: 30 },
-          {
-            opacity: 1,
-            y: 0,
-            stagger: 0.05,
-            duration: 0.4,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: containerRef.current,
-              start: "top 90%",
-              once: true,
-            },
-            onStart: () => {
-              gsap.set(".service-bento", { willChange: "opacity, transform" });
-            },
-            onComplete: () => {
-              gsap.set(".service-bento", { willChange: "auto" });
-            }
-          }
-        );
+    // Entrance animation for ALL devices
+    gsap.fromTo(".service-bento",
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1,
+        y: 0,
+        stagger: 0.1,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 85%",
+          once: true
+        },
+        onStart: () => {
+          gsap.set(".service-bento", { willChange: "opacity, transform" });
+        },
+        onComplete: () => {
+          gsap.set(".service-bento", { willChange: "auto" });
+        }
       }
-    });
-
-    return () => mm.revert();
-  }, []);
+    );
+  }, { scope: containerRef });
 
   return (
     <SectionContainer id="servicos" className="py-12 lg:py-12">

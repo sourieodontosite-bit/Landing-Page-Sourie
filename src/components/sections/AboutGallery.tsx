@@ -16,51 +16,45 @@ export default function AboutGallery({ addressOnly = false }: AboutGalleryProps)
   const containerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    if (containerRef.current) {
-      const mm = gsap.matchMedia();
+    if (!containerRef.current) return;
 
-      mm.add({
-        isDesktop: "(min-width: 1024px)",
-        isMobile: "(max-width: 1023px)"
-      }, (context) => {
-        const { isMobile } = context.conditions as { isMobile: boolean };
+    // Entrance animation for ALL devices
+    gsap.fromTo(".gallery-item",
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1,
+        y: 0,
+        stagger: 0.1,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 85%",
+          once: true
+        }
+      }
+    );
 
-        gsap.fromTo(".gallery-item",
-          { opacity: 0, scale: 0.95, y: isMobile ? 15 : 30 },
-          {
-            opacity: 1,
-            scale: 1,
-            y: 0,
-            stagger: 0.1,
-            duration: 1,
-            ease: "power3.out",
-            force3D: true,
-            scrollTrigger: {
-              trigger: containerRef.current,
-              start: isMobile ? "top 95%" : "top 80%",
-              once: true
-            }
+    const mm = gsap.matchMedia();
+
+    mm.add("(min-width: 1024px)", () => {
+      // Subtle parallax on images ONLY for desktop
+      const images = gsap.utils.toArray<HTMLElement>(".gallery-img");
+      images.forEach((img) => {
+        gsap.to(img, {
+          y: -40,
+          ease: "none",
+          scrollTrigger: {
+            trigger: img,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true
           }
-        );
-
-        // Subtle parallax on images
-        const images = gsap.utils.toArray<HTMLElement>(".gallery-img");
-        images.forEach((img) => {
-          gsap.to(img, {
-            y: isMobile ? -20 : -40,
-            ease: "none",
-            scrollTrigger: {
-              trigger: img,
-              start: "top bottom",
-              end: "bottom top",
-              scrub: true
-            }
-          });
         });
       });
+    });
 
-      return () => mm.revert();
-    }
+    return () => mm.revert();
   }, { scope: containerRef });
 
   return (

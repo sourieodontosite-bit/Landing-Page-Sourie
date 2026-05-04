@@ -1,7 +1,6 @@
 import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SectionContainer from '../shared/SectionContainer';
 import { TEAM_MEMBERS } from '../../utils/constants';
 import { ArrowUpRight } from 'lucide-react';
@@ -9,42 +8,30 @@ import { InstagramIcon } from '../shared/Icons';
 import Button from '../shared/Button';
 import { Link } from 'react-router-dom';
 
-gsap.registerPlugin(ScrollTrigger);
 
 export default function TeamSection() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    const mm = gsap.matchMedia();
+    if (!containerRef.current) return;
 
-    mm.add("(min-width: 768px)", () => {
-      if (containerRef.current) {
-        gsap.fromTo(".team-card-premium",
-          { opacity: 0, y: 30 },
-          {
-            opacity: 1,
-            y: 0,
-            stagger: 0.1,
-            duration: 0.8,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: containerRef.current,
-              start: "top 85%",
-              once: true,
-            },
-            onStart: () => {
-              gsap.set(".team-card-premium", { willChange: "opacity, transform" });
-            },
-            onComplete: () => {
-              gsap.set(".team-card-premium", { willChange: "auto" });
-            }
-          }
-        );
+    // Entrance animation for ALL devices
+    gsap.fromTo(".team-card",
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1,
+        y: 0,
+        stagger: 0.1,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 85%",
+          once: true
+        }
       }
-    });
-
-    return () => mm.revert();
-  }, []);
+    );
+  }, { scope: containerRef });
 
   return (
     <SectionContainer id="equipe" className="py-12 lg:py-16 overflow-hidden">

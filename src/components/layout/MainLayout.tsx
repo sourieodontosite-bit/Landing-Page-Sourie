@@ -10,10 +10,10 @@ export default function MainLayout() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    // Use 'safe' refresh to avoid forced synchronous layout reflow
+    // Refresh ScrollTrigger after a safe delay to ensure layout stability
     const timer = setTimeout(() => {
       ScrollTrigger.refresh(true);
-    }, 150);
+    }, 250);
     return () => clearTimeout(timer);
   }, [pathname]);
 

@@ -3,12 +3,10 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 
-// Register GSAP plugins lazily to avoid blocking initial render
-import('gsap/ScrollTrigger').then(({ ScrollTrigger }) => {
-  import('gsap').then(({ default: gsap }) => {
-    gsap.registerPlugin(ScrollTrigger);
-  });
-});
+import { initGSAP } from './utils/gsap-setup'
+
+// Initialize GSAP with performance optimizations
+initGSAP();
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

@@ -1,7 +1,6 @@
 import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Scan, Users, Smile } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { OutlineToothIcon } from "../shared/Icons";
@@ -9,7 +8,6 @@ import img1 from "../../assets/clinica-interna-1.png";
 import img2 from "../../assets/clinica-interna-2.jpg";
 import img3 from "../../assets/clinica-interna-3.png";
 
-gsap.registerPlugin(ScrollTrigger);
 
 type Card = {
   image: string;
@@ -51,36 +49,31 @@ export default function PainSolutionSection() {
   const containerRef = useRef<HTMLElement>(null);
 
   useGSAP(() => {
-    const mm = gsap.matchMedia();
+    if (!containerRef.current) return;
 
-    mm.add("(min-width: 768px)", () => {
-      if (containerRef.current) {
-        gsap.fromTo(".pain-anim",
-          { opacity: 0, y: 40 },
-          {
-            opacity: 1,
-            y: 0,
-            stagger: 0.1,
-            duration: 0.8,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: containerRef.current,
-              start: "top 85%",
-              once: true,
-            },
-            onStart: () => {
-              gsap.set(".pain-anim", { willChange: "opacity, transform" });
-            },
-            onComplete: () => {
-              gsap.set(".pain-anim", { willChange: "auto" });
-            }
-          }
-        );
+    // Entrance animation for ALL devices
+    gsap.fromTo(".pain-anim",
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        stagger: 0.1,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 85%",
+          once: true,
+        },
+        onStart: () => {
+          gsap.set(".pain-anim", { willChange: "opacity, transform" });
+        },
+        onComplete: () => {
+          gsap.set(".pain-anim", { willChange: "auto" });
+        }
       }
-    });
-
-    return () => mm.revert();
-  }, []);
+    );
+  }, { scope: containerRef });
 
   return (
     <section id="sobre" ref={containerRef} className="w-full p-2 sm:p-4 lg:p-4 mt-6 lg:mt-4">

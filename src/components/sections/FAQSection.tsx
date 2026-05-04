@@ -1,11 +1,9 @@
 import { useState, useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ChevronDown, HelpCircle } from 'lucide-react';
 import SectionContainer from '../shared/SectionContainer';
 
-gsap.registerPlugin(ScrollTrigger);
 
 const FAQS = [
   {
@@ -42,56 +40,44 @@ export default function FAQSection() {
   const accordionRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useGSAP(() => {
-    const mm = gsap.matchMedia();
+    if (!sectionRef.current) return;
 
-    mm.add({
-      isDesktop: "(min-width: 1024px)",
-      isMobile: "(max-width: 1023px)"
-    }, (context) => {
-      const { isMobile } = context.conditions as { isMobile: boolean };
-
-      // Header reveal
-      if (headerRef.current) {
-        gsap.fromTo(headerRef.current.children, 
-          { opacity: 0, y: isMobile ? 15 : 30 },
-          {
-            opacity: 1,
-            y: 0,
-            stagger: 0.1,
-            duration: 0.8,
-            ease: "power4.out",
-            force3D: true,
-            scrollTrigger: {
-              trigger: headerRef.current,
-              start: isMobile ? "top 100%" : "top 100%",
-              once: true
-            }
+    // Header reveal
+    if (headerRef.current) {
+      gsap.fromTo(headerRef.current.children, 
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          stagger: 0.1,
+          duration: 0.8,
+          ease: "power4.out",
+          force3D: true,
+          scrollTrigger: {
+            trigger: headerRef.current,
+            start: "top 100%",
+            once: true
           }
-        );
-      }
+        }
+      );
+    }
 
-      // Grid items reveal
-      if (gridRef.current) {
-        gsap.fromTo(gridRef.current.children, 
-          { opacity: 0, y: isMobile ? 20 : 30 },
-          {
-            opacity: 1,
-            y: 0,
-            stagger: 0.08,
-            duration: 0.7,
-            ease: "power3.out",
-            force3D: true,
-            scrollTrigger: {
-              trigger: gridRef.current,
-              start: isMobile ? "top 98%" : "top 95%",
-              once: true
-            }
-          }
-        );
+    // Entrance animation for FAQ items
+    gsap.fromTo(".faq-item",
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1,
+        y: 0,
+        stagger: 0.1,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 85%",
+          once: true
+        }
       }
-    });
-
-    return () => mm.revert();
+    );
   }, { scope: sectionRef });
 
   // Accordion animation logic

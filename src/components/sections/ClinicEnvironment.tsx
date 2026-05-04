@@ -1,40 +1,31 @@
 import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Sparkles, Clock } from 'lucide-react';
 import fotoClinica from '../../assets/foto-clinica.png';
 import Button from '../shared/Button';
 import { WHATSAPP_LINK } from '../../utils/constants';
 
-gsap.registerPlugin(ScrollTrigger);
 
 export default function ClinicEnvironment() {
   const heroCardRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    // Reveal mega hero card
-    if (heroCardRef.current) {
-      gsap.fromTo(heroCardRef.current, 
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: heroCardRef.current,
-            start: "top 95%",
-            once: true,
-          },
-          onStart: () => {
-            if (heroCardRef.current) heroCardRef.current.style.willChange = "opacity, transform";
-          },
-          onComplete: () => {
-            if (heroCardRef.current) heroCardRef.current.style.willChange = "auto";
-          }
+    if (!heroCardRef.current) return;
+
+    // Entrance animation for ALL devices
+    gsap.fromTo(heroCardRef.current,
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: heroCardRef.current,
+          start: "top 85%",
+          once: true
         }
-      );
     }
   }, []);
 

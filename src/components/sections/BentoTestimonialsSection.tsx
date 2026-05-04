@@ -1,13 +1,11 @@
 import { useRef, useState } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Star, Quote, ArrowRight, ChevronLeft, ChevronRight, Heart, ExternalLink } from 'lucide-react';
 import { TESTIMONIALS } from '../../utils/constants';
 import SectionContainer from '../shared/SectionContainer';
 import { OutlineToothIcon, GoogleIcon } from '../shared/Icons';
 
-gsap.registerPlugin(ScrollTrigger);
 
 export default function BentoTestimonialsSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -15,35 +13,30 @@ export default function BentoTestimonialsSection() {
   const testimonials = TESTIMONIALS.slice(0, 5);
 
   useGSAP(() => {
-    const mm = gsap.matchMedia();
+    if (!containerRef.current) return;
 
-    mm.add("(min-width: 768px)", () => {
-      if (containerRef.current) {
-        gsap.fromTo(".bento-anim",
-          { opacity: 0, y: 30 },
-          {
-            opacity: 1,
-            y: 0,
-            stagger: 0.08,
-            duration: 0.8,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: containerRef.current,
-              start: "top 85%",
-              once: true,
-            },
-            onStart: () => {
-              gsap.set(".bento-anim", { willChange: "opacity, transform" });
-            },
-            onComplete: () => {
-              gsap.set(".bento-anim", { willChange: "auto" });
-            }
-          }
-        );
+    // Entrance animation for ALL devices
+    gsap.fromTo(".bento-anim",
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        stagger: 0.1,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 85%",
+          once: true,
+        },
+        onStart: () => {
+          gsap.set(".bento-anim", { willChange: "opacity, transform" });
+        },
+        onComplete: () => {
+          gsap.set(".bento-anim", { willChange: "auto" });
+        }
       }
-    });
-
-    return () => mm.revert();
+    );
   }, { scope: containerRef });
 
   const nextTestimonial = () => {
