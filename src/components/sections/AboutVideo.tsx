@@ -4,7 +4,7 @@ import gsap from 'gsap';
 import { Home, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import AddressCard from '../shared/AddressCard';
-import heroImage from '../../assets/HistoriaHero.webp';
+const heroImage = '/HistoriaHero.webp';
 
 interface AboutVideoProps {
   showAddress?: boolean;
