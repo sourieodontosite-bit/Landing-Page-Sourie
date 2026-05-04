@@ -25,37 +25,45 @@ export default function DentistPage() {
   const pageRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    const tl = gsap.timeline({
-      defaults: { ease: "power4.out", duration: 1 }
+    const mm = gsap.matchMedia();
+
+    mm.add("(min-width: 768px)", () => {
+      const tl = gsap.timeline({
+        defaults: { ease: "power4.out", duration: 1 }
+      });
+
+      tl.fromTo(".back-button",
+        { opacity: 0, x: -20 },
+        { opacity: 1, x: 0, duration: 0.8 }
+      )
+        .fromTo(".profile-image-container",
+          { opacity: 0, scale: 0.95, filter: "blur(10px)" },
+          { opacity: 1, scale: 1, filter: "blur(0px)", duration: 1.5 },
+          "-=0.5"
+        )
+        .fromTo(".profile-content-container > *",
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, stagger: 0.12 },
+          "-=1.2"
+        );
     });
 
-    tl.fromTo(".back-button",
-      { opacity: 0, x: -20 },
-      { opacity: 1, x: 0, duration: 0.8 }
-    )
-      .fromTo(".profile-image-container",
-        { opacity: 0, scale: 0.95, filter: "blur(10px)" },
-        { opacity: 1, scale: 1, filter: "blur(0px)", duration: 1.5 },
-        "-=0.5"
-      )
-      .fromTo(".profile-content-container > *",
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, stagger: 0.12 },
-        "-=1.2"
-      )
-      .fromTo(".cta-card-container",
-        { opacity: 0, y: 40 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1.2,
-          scrollTrigger: {
-            trigger: ".cta-card-container",
-            start: "top 90%"
-          }
-        },
-        "-=0.6"
-      );
+    // Keep CTA animation but with once: true for efficiency
+    gsap.fromTo(".cta-card-container",
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.2,
+        scrollTrigger: {
+          trigger: ".cta-card-container",
+          start: "top 90%",
+          once: true
+        }
+      }
+    );
+
+    return () => mm.revert();
   }, { scope: pageRef });
 
   if (!member) {
@@ -126,6 +134,7 @@ export default function DentistPage() {
                   src={imageSrc}
                   alt={member.name}
                   className="w-full h-full object-cover grayscale-[0.1] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 ease-out"
+                  decoding="async"
                 />
                 {/* Overlay with glass effect on bottom */}
                 <div className="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-teal-dark/80 via-teal-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700">

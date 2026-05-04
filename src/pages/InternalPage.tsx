@@ -295,33 +295,37 @@ export default function InternalPage() {
   const sheetRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    if (contentRef.current) {
-      gsap.fromTo(contentRef.current.children, 
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          stagger: 0.15,
-          duration: 1,
-          ease: "power4.out",
-          delay: 0.2
-        }
-      );
-    }
+    const mm = gsap.matchMedia();
 
-    if (sidebarRef.current) {
-      gsap.fromTo(sidebarRef.current.children,
-        { opacity: 0, x: 20 },
-        {
-          opacity: 1,
-          x: 0,
-          stagger: 0.1,
-          duration: 1,
-          ease: "power4.out",
-          delay: 0.4
-        }
-      );
-    }
+    mm.add("(min-width: 768px)", () => {
+      if (contentRef.current) {
+        gsap.fromTo(contentRef.current.children, 
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            stagger: 0.15,
+            duration: 1,
+            ease: "power4.out",
+            delay: 0.2
+          }
+        );
+      }
+
+      if (sidebarRef.current) {
+        gsap.fromTo(sidebarRef.current.children,
+          { opacity: 0, x: 20 },
+          {
+            opacity: 1,
+            x: 0,
+            stagger: 0.1,
+            duration: 1,
+            ease: "power4.out",
+            delay: 0.4
+          }
+        );
+      }
+    });
 
     if (ctaRef.current) {
       gsap.fromTo(ctaRef.current,
@@ -334,10 +338,13 @@ export default function InternalPage() {
           scrollTrigger: {
             trigger: ctaRef.current,
             start: "top 90%",
+            once: true
           }
         }
       );
     }
+
+    return () => mm.revert();
   }, [slug]);
 
   if (!page) return null;
@@ -368,6 +375,7 @@ export default function InternalPage() {
                     src={page.mainImage} 
                     alt={page.title}
                     className="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-[2s] ease-out"
+                    decoding="async"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60" />
                 </div>
