@@ -302,14 +302,6 @@ export default function Navbar() {
     };
   }, { dependencies: [location.pathname] });
 
-  // Refresh ScrollTrigger after lazy sections load
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 500);
-    return () => clearTimeout(timer);
-  }, [location.pathname]);
-
   // Handle scroll gradient appearance
   useGSAP(() => {
     gsap.to(gradientRef.current, {

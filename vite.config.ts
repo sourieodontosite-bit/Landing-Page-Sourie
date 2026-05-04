@@ -8,12 +8,16 @@ export default defineConfig({
     host: true,
   },
   build: {
+    target: 'esnext',
+    sourcemap: false,
     rollupOptions: {
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
             if (id.includes('gsap')) return 'gsap';
             if (id.includes('lucide-react')) return 'icons';
+            if (id.includes('react-router')) return 'router';
+            if (id.includes('react-dom')) return 'vendor-react';
             if (id.includes('react')) return 'vendor-react';
             return 'vendor';
           }
@@ -27,7 +31,9 @@ export default defineConfig({
       compress: {
         drop_console: true,
         drop_debugger: true,
+        passes: 2,
       },
+      mangle: true,
     },
   }
 })

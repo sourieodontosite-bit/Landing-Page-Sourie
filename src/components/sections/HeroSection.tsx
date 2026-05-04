@@ -1,9 +1,12 @@
 import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Button from '../shared/Button';
 import { WHATSAPP_LINK } from '../../utils/constants';
 import heroImage from '../../assets/hero-image.png';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -69,6 +72,7 @@ export default function HeroSection() {
           alt="Paciente sorrindo na clínica odontológica Souriê"
           className="w-full h-full object-cover object-[75%_center] md:object-center opacity-0 scale-105"
           fetchPriority="high"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/90 via-navy-dark/40 to-transparent md:bg-gradient-to-r md:from-navy-dark/80 md:via-navy-dark/40 md:to-transparent pointer-events-none" />
       </div>

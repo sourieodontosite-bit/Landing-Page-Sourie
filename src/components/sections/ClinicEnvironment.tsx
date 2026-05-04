@@ -1,10 +1,13 @@
 import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Sparkles, Clock } from 'lucide-react';
 import fotoClinica from '../../assets/foto-clinica.png';
 import Button from '../shared/Button';
 import { WHATSAPP_LINK } from '../../utils/constants';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function ClinicEnvironment() {
   const heroCardRef = useRef<HTMLDivElement>(null);
@@ -22,6 +25,7 @@ export default function ClinicEnvironment() {
           scrollTrigger: {
             trigger: heroCardRef.current,
             start: "top 95%",
+            once: true,
           },
           onStart: () => {
             if (heroCardRef.current) heroCardRef.current.style.willChange = "opacity, transform";
