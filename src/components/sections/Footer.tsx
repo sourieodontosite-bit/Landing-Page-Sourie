@@ -4,7 +4,6 @@ import { InstagramIcon, FacebookIcon, WhatsAppIcon, ArrowRightIcon } from '../sh
 import FooterLogoImg from '../../assets/logo sourie (1).svg';
 import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 export default function Footer() {
   const footerRef = useRef<HTMLElement>(null);

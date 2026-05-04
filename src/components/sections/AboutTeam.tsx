@@ -7,6 +7,16 @@ import { TEAM_MEMBERS } from '../../utils/constants';
 import { ArrowUpRight } from 'lucide-react';
 import { InstagramIcon } from '../shared/Icons';
 
+import brenoImg from '../../assets/breno.webp';
+import estefaniaImg from '../../assets/estefania.webp';
+import victorImg from '../../assets/victor.webp';
+
+const memberImages: Record<string, string> = {
+  'dr-breno': brenoImg,
+  'dra-estefania': estefaniaImg,
+  'dr-victor': victorImg,
+};
+
 export default function AboutTeam() {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -70,7 +80,7 @@ export default function AboutTeam() {
             {/* Image Container with Refined Frame */}
             <div className="relative aspect-[3/4] overflow-hidden rounded-[60px] mb-8 bg-stone-100 shadow-xl group-hover:shadow-2xl transition-all duration-700">
               <img 
-                src={member.image} 
+                src={memberImages[member.slug]} 
                 alt={member.name}
                 className="w-full h-full object-cover scale-105 group-hover:scale-100 transition-all duration-1000 ease-out"
               />

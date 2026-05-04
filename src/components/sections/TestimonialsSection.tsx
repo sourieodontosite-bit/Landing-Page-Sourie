@@ -9,6 +9,12 @@ import SectionContainer from '../shared/SectionContainer';
 import { OutlineToothIcon } from '../shared/Icons';
 import Badge from '../shared/Badge';
 
+import testimonial1Img from '../../assets/testimonial-1.png';
+import testimonial2Img from '../../assets/testimonial-2.png';
+import testimonial3Img from '../../assets/testimonial-3.png';
+
+const TESTIMONIAL_IMAGES = [testimonial1Img, testimonial2Img, testimonial3Img];
+
 export default function TestimonialsSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const sliderRef = useRef<HTMLDivElement>(null);
@@ -198,6 +204,7 @@ export default function TestimonialsSection() {
                       isPlaying={playingId === idx}
                       isMuted={isMuted}
                       toggleMute={toggleMute}
+                      index={idx}
                     />
                     <div className={`absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-teal-dark/90 md:from-teal-dark/70 via-teal-dark/40 md:via-transparent to-transparent z-10 transition-opacity duration-1000 ${playingId === idx ? 'opacity-0' : 'opacity-100'}`} />
 
@@ -270,11 +277,12 @@ export default function TestimonialsSection() {
   );
 }
 
-function TestimonialMedia({ testimonial, isPlaying, isMuted, toggleMute }: {
+function TestimonialMedia({ testimonial, isPlaying, isMuted, toggleMute, index }: {
   testimonial: Testimonial,
   isPlaying: boolean,
   isMuted: boolean,
-  toggleMute: (e: React.MouseEvent) => void
+  toggleMute: (e: React.MouseEvent) => void,
+  index: number
 }) {
   return (
     <>
@@ -297,7 +305,7 @@ function TestimonialMedia({ testimonial, isPlaying, isMuted, toggleMute }: {
       ) : (
         <div className="absolute inset-0 z-0">
           <img
-            src={testimonial.thumbnail || testimonial.image}
+            src={TESTIMONIAL_IMAGES[index % TESTIMONIAL_IMAGES.length]}
             alt={testimonial.name}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[5s] ease-out"
           />
