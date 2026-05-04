@@ -1,13 +1,6 @@
 export const WHATSAPP_NUMBER = '553199614845';
 export const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}`;
 
-import brenoImg from '../assets/breno.png';
-import estefaniaImg from '../assets/estefania.png';
-import victorImg from '../assets/victor.png';
-import testimonial1Img from '../assets/testimonial-1.png';
-import testimonial2Img from '../assets/testimonial-2.png';
-import testimonial3Img from '../assets/testimonial-3.png';
-
 export const NAV_LINKS = [
   { label: 'Início', href: '/#hero' },
   { 
@@ -22,23 +15,21 @@ export const NAV_LINKS = [
       { label: 'Odontopediatria', href: '/odontopediatria' },
     ]
   },
-  { label: 'Depoimentos', href: '/#depoimentos' },
   { 
-    label: 'Quem somos', 
-    href: '/sobre',
+    label: 'Nossa Equipe', 
+    href: '/#equipe',
     subLinks: [
       { label: 'Nossa História', href: '/sobre' },
-      { label: 'Equipe', href: '/#equipe' },
       { label: 'Localização', href: '/#ambiente' },
       { label: 'Dúvidas Frequentes', href: '/#faq' },
     ]
   },
+  { label: 'Depoimentos', href: '/#depoimentos' },
 ];
 
 export interface TeamMember {
   name: string;
   role: string;
-  image: string;
   slug: string;
   crm: string;
   bio: string;
@@ -50,7 +41,6 @@ export const TEAM_MEMBERS: TeamMember[] = [
   { 
     name: 'Dr. Breno', 
     role: 'Cirurgião Dentista', 
-    image: brenoImg,
     slug: 'dr-breno',
     crm: 'CRO-MG 12345',
     bio: 'Especialista em reabilitação oral e implantes. Com extensa experiência, o Dr. Breno é apaixonado por transformar sorrisos e devolver a autoconfiança aos pacientes através de tratamentos modernos e minimamente invasivos.',
@@ -60,7 +50,6 @@ export const TEAM_MEMBERS: TeamMember[] = [
   { 
     name: 'Dra. Estefânia', 
     role: 'Cirurgiã Dentista', 
-    image: estefaniaImg,
     slug: 'dra-estefania',
     crm: 'CRO-MG 54321',
     bio: 'Dedicada à ortodontia e odontologia estética, a Dra. Estefânia utiliza as mais recentes tecnologias para criar sorrisos harmoniosos. Seu atendimento é focado no conforto, precisão e detalhismo estético.',
@@ -70,7 +59,6 @@ export const TEAM_MEMBERS: TeamMember[] = [
   { 
     name: 'Dr. Victor', 
     role: 'Cirurgião Dentista', 
-    image: victorImg,
     slug: 'dr-victor',
     crm: 'CRO-MG 98765',
     bio: 'Focado em clínica geral e endodontia, o Dr. Victor é reconhecido por seu atendimento humanizado e cuidadoso, garantindo que procedimentos complexos sejam realizados com o máximo de precisão e sem dor.',
@@ -99,38 +87,28 @@ export const SOLUTIONS: ProblemItem[] = [
 export interface Testimonial {
   quote: string;
   name: string;
-  image: string;
   videoUrl?: string;
-  thumbnail?: string;
 }
 
 export const TESTIMONIALS: Testimonial[] = [
   {
     quote: 'Atendimento excelente do início ao fim! Profissionais atenciosos e cuidadosos.',
     name: 'Júnia Pereira de Mattos',
-    image: testimonial1Img,
-    thumbnail: testimonial1Img,
     videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
   },
   {
     quote: 'Gostei da preocupação deles em querer sabe se o paciente está bem após o procedimento.',
     name: 'Erica Mariana',
-    image: testimonial2Img,
-    thumbnail: testimonial2Img,
     videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
   },
   {
     quote: 'Fui nessa clínica por indicação e agora entendo perfeitamente o motivo da recomendação! O atendimento foi impecável.',
     name: 'Wanderson Alves',
-    image: testimonial3Img,
-    thumbnail: testimonial3Img,
     videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
   },
   {
     quote: 'Equipe super preparada, ambiente acolhedor. Resolvi meu problema sem sentir dor nenhuma, recomendo demais!',
     name: 'Fernanda Costa',
-    image: testimonial1Img,
-    thumbnail: testimonial1Img,
     videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
   },
 ];

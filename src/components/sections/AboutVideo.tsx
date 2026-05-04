@@ -4,7 +4,7 @@ import gsap from 'gsap';
 import { Home, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import AddressCard from '../shared/AddressCard';
-import fotoClinica from '../../assets/foto-clinica.png';
+import heroImage from '../../assets/HistoriaHero.webp';
 
 interface AboutVideoProps {
   showAddress?: boolean;
@@ -64,7 +64,7 @@ export default function AboutVideo({ showAddress = false }: AboutVideoProps) {
       <div className="absolute inset-0 md:inset-3 lg:inset-4 lg:top-2 z-0 rounded-none md:rounded-[32px] lg:rounded-[40px] overflow-hidden bg-navy-dark isolation-isolate transform-gpu">
         <img
           ref={imageRef}
-          src={fotoClinica}
+          src={heroImage}
           alt="Clínica Souriê"
           className="w-full h-full object-cover opacity-0 scale-105"
         />

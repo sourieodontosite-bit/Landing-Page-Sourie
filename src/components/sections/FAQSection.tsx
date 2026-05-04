@@ -109,7 +109,7 @@ export default function FAQSection() {
     <SectionContainer id="faq" className="relative overflow-hidden bg-transparent">
       <div ref={sectionRef}>
 
-        <div className="max-w-3xl mx-auto relative z-10">
+        <div className="max-w-7xl mx-auto relative z-10">
           <div ref={headerRef} className="text-center mb-16 faq-header-content">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-primary/10 text-teal-primary text-sm font-bold mb-6">
               <HelpCircle size={16} />

@@ -3,7 +3,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainLayout from './components/layout/MainLayout';
 
-const Home = lazy(() => import('./pages/Home'));
+import Home from './pages/Home';
 const AboutPage = lazy(() => import('./pages/AboutPage'));
 const InternalPage = lazy(() => import('./pages/InternalPage'));
 

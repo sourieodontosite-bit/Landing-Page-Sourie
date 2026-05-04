@@ -9,9 +9,9 @@ import SEO from '../components/shared/SEO';
 import Button from '../components/shared/Button';
 import { OutlineToothIcon } from '../components/shared/Icons';
 
-import brenoImg from '../assets/breno.png';
-import estefaniaImg from '../assets/estefania.png';
-import victorImg from '../assets/victor.png';
+import brenoImg from '../assets/breno.webp';
+import estefaniaImg from '../assets/estefania.webp';
+import victorImg from '../assets/victor.webp';
 
 const teamImages: Record<string, string> = {
   'dr-breno': brenoImg,
@@ -90,7 +90,7 @@ export default function DentistPage() {
         <img
           src={imageSrc}
           alt={member.name}
-          className="w-full h-full object-cover profile-image-container"
+          className="w-full h-full object-cover scale-105 profile-image-container"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
 
@@ -133,7 +133,7 @@ export default function DentistPage() {
                 <img
                   src={imageSrc}
                   alt={member.name}
-                  className="w-full h-full object-cover grayscale-[0.1] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 ease-out"
+                  className="w-full h-full object-cover scale-105 grayscale-[0.1] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000 ease-out"
                   decoding="async"
                 />
                 {/* Overlay with glass effect on bottom */}

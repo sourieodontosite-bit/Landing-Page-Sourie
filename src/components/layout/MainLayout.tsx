@@ -22,10 +22,10 @@ export default function MainLayout() {
       <ScrollToTop />
       <div className="relative z-10">
         <Navbar />
-        <Suspense fallback={<div className="min-h-screen bg-bg-light" />}>
+        <Suspense fallback={null}>
           <Outlet />
-          <Footer />
         </Suspense>
+        <Footer />
         <WhatsAppButton />
       </div>
     </main>

@@ -198,12 +198,12 @@ export default function PainSolutionSection() {
                   src={c.image}
                   alt={c.alt}
                   loading="lazy"
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="absolute inset-0 w-full h-full object-cover scale-[1.05] transition-transform duration-700 group-hover:scale-110 will-change-transform"
                 />
 
                 {/* Progressive Glass/Color Overlay */}
                 <div
-                  className="absolute inset-0 bg-navy-dark/90 backdrop-blur-md"
+                  className="absolute inset-0 w-full h-full bg-navy-dark/90 backdrop-blur-md scale-[1.05]"
                   style={{
                     WebkitMaskImage: "linear-gradient(to top, black 0%, black 30%, transparent 100%)",
                     maskImage: "linear-gradient(to top, black 0%, black 30%, transparent 100%)",

@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import SectionContainer from '../shared/SectionContainer';
@@ -35,7 +35,14 @@ const serviceImages = [
 ];
 
 export default function ServicesSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLElement>(null);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    // Only render hover images on desktop where hover interaction exists.
+    // This prevents ~17 MB of procedure images from being downloaded on mobile.
+    setIsDesktop(window.innerWidth >= 1024);
+  }, []);
 
   useGSAP(() => {
     if (!containerRef.current) return;
@@ -51,7 +58,7 @@ export default function ServicesSection() {
         ease: "power3.out",
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 85%",
+          start: "top 90%",
           once: true
         },
         onStart: () => {
@@ -65,7 +72,7 @@ export default function ServicesSection() {
   }, { scope: containerRef });
 
   return (
-    <SectionContainer id="servicos" className="py-12 lg:py-12">
+    <SectionContainer ref={containerRef} id="servicos" className="py-12 lg:py-12">
       <div className="flex flex-col items-center text-center lg:items-start lg:text-left mb-12 space-y-6">
         <span className="text-teal-primary font-bold uppercase tracking-[0.3em] text-[10px]">Procedimentos</span>
         <h2 className="text-4xl lg:text-7xl font-medium text-teal-dark tracking-tight">
@@ -75,7 +82,6 @@ export default function ServicesSection() {
       </div>
 
       <div 
-        ref={containerRef}
         className="grid grid-cols-1 md:grid-cols-12 gap-6"
       >
         {/* Main Service - Aesthetic */}
@@ -83,12 +89,14 @@ export default function ServicesSection() {
           to={`/p/${SERVICES[1].slug}`}
           className="service-bento md:col-span-6 lg:col-span-7 bg-teal-primary rounded-[40px] p-8 md:p-10 lg:p-14 border border-white/10 hover:border-white/30 transition-all duration-500 hover:shadow-2xl hover:shadow-teal-dark/10 flex flex-col justify-between min-h-[280px] md:min-h-[400px] group relative overflow-hidden"
         >
-          {/* Hover Image */}
-          <div className="absolute inset-0 opacity-0 lg:group-hover:opacity-100 transition-all duration-700 scale-110 lg:group-hover:scale-100">
-            <img src={serviceImages[1]} alt={SERVICES[1].title} className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-black/50" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-          </div>
+          {/* Hover Image — Desktop only */}
+          {isDesktop && (
+            <div className="absolute inset-0 opacity-0 lg:group-hover:opacity-100 transition-all duration-700 scale-110 lg:group-hover:scale-100">
+              <img src={serviceImages[1]} alt={SERVICES[1].title} className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-black/50" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+            </div>
+          )}
 
           <div className="relative z-10 flex justify-between items-start">
             <div className="w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-white shadow-inner">
@@ -110,12 +118,14 @@ export default function ServicesSection() {
           to={`/p/${SERVICES[2].slug}`}
           className="service-bento md:col-span-6 lg:col-span-5 bg-teal-dark rounded-[40px] p-8 md:p-10 flex flex-col justify-between min-h-[280px] md:min-h-[400px] group relative overflow-hidden shadow-xl shadow-teal-dark/10 border border-white/10"
         >
-          {/* Hover Image */}
-          <div className="absolute inset-0 opacity-0 lg:group-hover:opacity-100 transition-all duration-700 scale-110 lg:group-hover:scale-100">
-            <img src={serviceImages[2]} alt={SERVICES[2].title} className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-black/50" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-          </div>
+          {/* Hover Image — Desktop only */}
+          {isDesktop && (
+            <div className="absolute inset-0 opacity-0 lg:group-hover:opacity-100 transition-all duration-700 scale-110 lg:group-hover:scale-100">
+              <img src={serviceImages[2]} alt={SERVICES[2].title} className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-black/50" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+            </div>
+          )}
 
           <div className="relative z-10 flex justify-between items-start">
             <div className="w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-white shadow-inner">
@@ -154,12 +164,14 @@ export default function ServicesSection() {
                 to={`/p/${service.slug}`}
                 className={`service-bento ${styles[i]} rounded-[32px] p-8 border hover:border-white/30 transition-all duration-500 hover:shadow-xl flex flex-col gap-6 group relative overflow-hidden`}
               >
-                {/* Hover Image */}
-                <div className="absolute inset-0 opacity-0 lg:group-hover:opacity-100 transition-all duration-700 scale-110 lg:group-hover:scale-100">
-                  <img src={hoverImg} alt={service.title} className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-black/50" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                </div>
+                {/* Hover Image — Desktop only */}
+                {isDesktop && (
+                  <div className="absolute inset-0 opacity-0 lg:group-hover:opacity-100 transition-all duration-700 scale-110 lg:group-hover:scale-100">
+                    <img src={hoverImg} alt={service.title} className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-black/50" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  </div>
+                )}
 
                 <div className="relative z-10 w-12 h-12 rounded-xl bg-white/10 backdrop-blur-md flex items-center justify-center text-white group-hover:bg-white/20 transition-all duration-500">
                   <Icon size={24} />

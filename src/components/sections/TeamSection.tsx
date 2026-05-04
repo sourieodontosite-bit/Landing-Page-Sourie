@@ -8,6 +8,16 @@ import { InstagramIcon } from '../shared/Icons';
 import Button from '../shared/Button';
 import { Link } from 'react-router-dom';
 
+import brenoImg from '../../assets/breno.webp';
+import estefaniaImg from '../../assets/estefania.webp';
+import victorImg from '../../assets/victor.webp';
+
+const memberImages: Record<string, string> = {
+  'dr-breno': brenoImg,
+  'dra-estefania': estefaniaImg,
+  'dr-victor': victorImg,
+};
+
 
 export default function TeamSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -61,9 +71,9 @@ export default function TeamSection() {
             {/* Image Container with Refined Frame */}
             <div className="relative aspect-[3/4] overflow-hidden rounded-[60px] mb-8 bg-stone-100 shadow-xl group-hover:shadow-2xl transition-all duration-700">
               <img 
-                src={member.image} 
+                src={memberImages[member.slug]} 
                 alt={member.name}
-                className="w-full h-full object-cover scale-105 group-hover:scale-100 transition-all duration-1000 ease-out"
+                className="w-full h-full object-cover scale-110 group-hover:scale-105 transition-all duration-1000 ease-out"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-teal-dark/40 via-transparent to-transparent opacity-30 group-hover:opacity-60 transition-opacity duration-500" />
               

@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { Sparkles, Clock } from 'lucide-react';
-import fotoClinica from '../../assets/foto-clinica.png';
+import fotoClinica from '../../assets/foto-clinica.webp';
 import Button from '../shared/Button';
 import { WHATSAPP_LINK } from '../../utils/constants';
 

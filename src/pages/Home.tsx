@@ -2,13 +2,14 @@ import { lazy, Suspense, useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import HeroSection from '../components/sections/HeroSection';
+import ServicesSection from '../components/sections/ServicesSection';
+import PainSolutionSection from '../components/sections/PainSolutionSection';
+import SectionSkeleton from '../components/shared/SectionSkeleton';
 
 import SEO from '../components/shared/SEO';
 import { LOCAL_BUSINESS_SCHEMA } from '../utils/SEOData';
 
 // Lazy load below-the-fold sections
-const PainSolutionSection = lazy(() => import('../components/sections/PainSolutionSection'));
-const ServicesSection = lazy(() => import('../components/sections/ServicesSection'));
 const TrustMarquee = lazy(() => import('../components/sections/TrustMarquee'));
 const AboutGallery = lazy(() => import('../components/sections/AboutGallery'));
 const ProceduresCTA = lazy(() => import('../components/sections/ProceduresCTA'));
@@ -43,12 +44,16 @@ export default function Home() {
         schema={LOCAL_BUSINESS_SCHEMA}
       />
       <HeroSection />
-      <Suspense fallback={<div className="h-96" />}>
-        <ServicesSection />
-        <PainSolutionSection />
-        <BentoTestimonialsSection />
-        <TrustMarquee />
+      
+      {/* Critical Content - Rendered Immediately */}
+      <ServicesSection />
+      <PainSolutionSection />
+
+      {/* Secondary Content - Loaded Progressively */}
+      <Suspense fallback={<SectionSkeleton />}>
         <TeamSection />
+        <TrustMarquee />
+        <BentoTestimonialsSection />
         <AboutGallery />
         <FAQSection />
         <ProceduresCTA />

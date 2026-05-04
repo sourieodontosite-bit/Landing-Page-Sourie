@@ -3,7 +3,7 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import Button from '../shared/Button';
 import { WHATSAPP_LINK } from '../../utils/constants';
-import heroImage from '../../assets/hero-image.png';
+import heroImage from '../../assets/hero-image.webp';
 
 
 export default function HeroSection() {

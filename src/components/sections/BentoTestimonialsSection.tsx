@@ -6,6 +6,13 @@ import { TESTIMONIALS } from '../../utils/constants';
 import SectionContainer from '../shared/SectionContainer';
 import { OutlineToothIcon, GoogleIcon } from '../shared/Icons';
 
+import testimonial1Img from '../../assets/testimonial-1.png';
+import testimonial2Img from '../../assets/testimonial-2.png';
+import testimonial3Img from '../../assets/testimonial-3.png';
+
+// Mirrors the order/repetition of the original TESTIMONIALS data
+const TESTIMONIAL_IMAGES = [testimonial1Img, testimonial2Img, testimonial3Img, testimonial1Img];
+
 
 export default function BentoTestimonialsSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -81,7 +88,7 @@ export default function BentoTestimonialsSection() {
                       className={`w-10 h-10 rounded-full border-2 border-white overflow-hidden transition-all duration-300 cursor-pointer ${activeIdx === i ? 'scale-110 z-20 ring-2 ring-teal-primary' : 'opacity-40 hover:opacity-100'}`}
                       onClick={() => setActiveIdx(i)}
                     >
-                      <img src={t.image} alt={t.name} className="w-full h-full object-cover" />
+                      <img src={TESTIMONIAL_IMAGES[i]} alt={t.name} className="w-full h-full object-cover" />
                     </div>
                   ))}
                 </div>
@@ -112,24 +119,24 @@ export default function BentoTestimonialsSection() {
           </div>
 
           {/* Card 2: Google Business (1/3 Width) */}
-          <div className="bento-anim bg-white rounded-[50px] p-10 flex flex-col justify-between shadow-xl border border-slate-100 relative overflow-hidden group min-h-[450px]">
+          <div className="bento-anim bg-white rounded-[40px] md:rounded-[50px] p-8 md:p-10 flex flex-col justify-between shadow-xl border border-slate-100 relative overflow-hidden group min-h-[220px] md:min-h-[450px]">
             <div className="flex items-center justify-between relative z-10">
-              <div className="w-12 h-12 rounded-xl bg-slate-50 flex items-center justify-center group-hover:bg-white transition-colors">
-                <GoogleIcon size={24} />
+              <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-slate-50 flex items-center justify-center group-hover:bg-white transition-colors">
+                <GoogleIcon size={22} />
               </div>
               <div className="flex items-center gap-1 text-teal-primary text-[10px] font-black uppercase">
                 Google Reviews <ExternalLink size={10} />
               </div>
             </div>
             
-            <div className="relative z-10 space-y-4">
-              <div className="flex items-baseline gap-2">
-                <p className="text-7xl font-black text-teal-dark tracking-tighter leading-none">5.0</p>
-                <div className="flex gap-0.5 text-amber-400 mb-2">
-                  {[...Array(5)].map((_, i) => <Star key={i} size={14} fill="currentColor" />)}
+            <div className="relative z-10 flex flex-row md:flex-col items-center md:items-start justify-between md:justify-start gap-4 md:gap-0 md:space-y-4">
+              <div className="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-2">
+                <p className="text-5xl md:text-7xl font-black text-teal-dark tracking-tighter leading-none">5.0</p>
+                <div className="flex gap-0.5 text-amber-400 mb-1 md:mb-2">
+                  {[...Array(5)].map((_, i) => <Star key={i} size={12} fill="currentColor" />)}
                 </div>
               </div>
-              <p className="text-teal-dark/60 font-light text-base leading-relaxed">
+              <p className="text-teal-dark/60 font-light text-[13px] md:text-base leading-snug md:leading-relaxed max-w-[160px] md:max-w-none text-right md:text-left">
                 Nota máxima baseada na experiência real dos nossos pacientes.
               </p>
             </div>
@@ -168,15 +175,27 @@ export default function BentoTestimonialsSection() {
           </div>
 
           {/* Card 4: CTA (2/3 Width on LG, Full Width on MD) */}
-          <div className="bento-anim md:col-span-2 lg:col-span-2 group relative overflow-hidden bg-teal-primary rounded-[50px] flex flex-col items-center justify-center text-center p-12 lg:p-16 shadow-2xl border border-white/10 min-h-[400px]">
+          <div className="bento-anim md:col-span-2 lg:col-span-2 group relative overflow-hidden bg-teal-primary rounded-[40px] md:rounded-[50px] flex flex-col items-center justify-center text-center p-12 lg:p-16 shadow-2xl border border-white/10 min-h-[400px]">
             <div className="absolute inset-0 opacity-10 pointer-events-none">
               <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent scale-150" />
             </div>
-            <div className="absolute -left-32 -top-32 pointer-events-none opacity-[0.05] rotate-[10deg]">
-              <OutlineToothIcon size={500} className="text-white" />
+            
+            {/* Background decorative icons adjusted for mobile */}
+            <div className="absolute -left-20 -top-20 md:-left-32 md:-top-32 pointer-events-none opacity-[0.05] rotate-[10deg]">
+              <div className="md:hidden">
+                <OutlineToothIcon size={300} className="text-white" />
+              </div>
+              <div className="hidden md:block">
+                <OutlineToothIcon size={500} className="text-white" />
+              </div>
             </div>
-            <div className="absolute -right-24 -bottom-32 pointer-events-none opacity-[0.05] rotate-[140deg]">
-              <OutlineToothIcon size={450} className="text-white" />
+            <div className="absolute -right-16 -bottom-20 md:-right-24 md:-bottom-32 pointer-events-none opacity-[0.05] rotate-[140deg]">
+              <div className="md:hidden">
+                <OutlineToothIcon size={250} className="text-white" />
+              </div>
+              <div className="hidden md:block">
+                <OutlineToothIcon size={450} className="text-white" />
+              </div>
             </div>
 
             <div className="space-y-10 relative z-10 max-w-2xl">
