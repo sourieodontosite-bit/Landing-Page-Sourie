@@ -4,9 +4,9 @@ import gsap from 'gsap';
 import { Scan, Users, Smile } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { OutlineToothIcon } from "../shared/Icons";
-import img1 from "../../assets/clinica-interna-1.png";
-import img2 from "../../assets/clinica-interna-2.jpg";
-import img3 from "../../assets/clinica-interna-3.png";
+import img1 from "../../assets/Tecnologia.webp";
+import img2 from "../../assets/clinica-interna-2.webp";
+import img3 from "../../assets/clinica-interna-3.webp";
 
 
 type Card = {

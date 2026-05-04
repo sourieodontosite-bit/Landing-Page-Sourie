@@ -20,11 +20,11 @@ export const NAV_LINKS = [
     href: '/#equipe',
     subLinks: [
       { label: 'Nossa História', href: '/sobre' },
-      { label: 'Localização', href: '/#ambiente' },
       { label: 'Dúvidas Frequentes', href: '/#faq' },
     ]
   },
   { label: 'Depoimentos', href: '/#depoimentos' },
+  { label: 'Localização', href: '/#ambiente' },
 ];
 
 export interface TeamMember {

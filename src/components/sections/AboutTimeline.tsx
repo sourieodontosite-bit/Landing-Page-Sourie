@@ -2,9 +2,9 @@ import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import SectionContainer from '../shared/SectionContainer';
-import clinica1 from '../../assets/clinica-interna-1.png';
-import clinica2 from '../../assets/clinica-interna-2.jpg';
-import clinica3 from '../../assets/clinica-interna-3.png';
+import clinica1 from '../../assets/clinica-interna-1.webp';
+import clinica2 from '../../assets/Tecnologia.webp';
+import clinica3 from '../../assets/clinica-interna-3.webp';
 
 const MILESTONES = [
   {

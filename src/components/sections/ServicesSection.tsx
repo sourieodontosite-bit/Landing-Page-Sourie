@@ -9,12 +9,12 @@ import { Link } from 'react-router-dom';
 
 
 // Import Procedure Images for Hover
-import ortodontiaImg from '../../assets/Procedimentos/Ortodontia.png';
-import clinicaGeralImg from '../../assets/Procedimentos/Clinica-geral.jpg';
-import esteticaImg from '../../assets/Procedimentos/Estetica.png';
-import canalImg from '../../assets/Procedimentos/Canal.png';
-import proteseImg from '../../assets/Procedimentos/Protese.png';
-import odontopediatriaImg from '../../assets/Procedimentos/Odontopediatria.png';
+import ortodontiaImg from '../../assets/Procedimentos/Ortodontia.webp';
+import clinicaGeralImg from '../../assets/Procedimentos/Clinica-geral.webp';
+import esteticaImg from '../../assets/Procedimentos/Estetica.webp';
+import canalImg from '../../assets/Procedimentos/Canal.webp';
+import proteseImg from '../../assets/Procedimentos/Protese.webp';
+import odontopediatriaImg from '../../assets/Procedimentos/Odontopediatria.webp';
 
 const serviceIcons = [
   Stethoscope,
@@ -47,15 +47,20 @@ export default function ServicesSection() {
   useGSAP(() => {
     if (!containerRef.current) return;
 
-    // Entrance animation for ALL devices
+    // Entrance animation - Recreated to be punchier and more synchronized
     gsap.fromTo(".service-bento",
-      { opacity: 0, y: 20 },
+      { 
+        opacity: 0, 
+        y: 40,
+        scale: 0.95
+      },
       {
         opacity: 1,
         y: 0,
-        stagger: 0.1,
-        duration: 0.8,
-        ease: "power3.out",
+        scale: 1,
+        stagger: 0.05,
+        duration: 1.2,
+        ease: "expo.out",
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top 90%",
@@ -72,8 +77,9 @@ export default function ServicesSection() {
   }, { scope: containerRef });
 
   return (
-    <SectionContainer ref={containerRef} id="servicos" className="py-12 lg:py-12">
-      <div className="flex flex-col items-center text-center lg:items-start lg:text-left mb-12 space-y-6">
+    <SectionContainer id="servicos" className="py-12 lg:py-12">
+      <div ref={containerRef as any}>
+        <div className="service-bento flex flex-col items-center text-center lg:items-start lg:text-left mb-12 space-y-6">
         <span className="text-teal-primary font-bold uppercase tracking-[0.3em] text-[10px]">Procedimentos</span>
         <h2 className="text-4xl lg:text-7xl font-medium text-teal-dark tracking-tight">
           Cuidado completo <br />
@@ -187,6 +193,7 @@ export default function ServicesSection() {
           })}
         </div>
       </div>
+    </div>
     </SectionContainer>
   );
 }
