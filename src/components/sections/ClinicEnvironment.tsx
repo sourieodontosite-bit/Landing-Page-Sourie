@@ -13,7 +13,6 @@ export default function ClinicEnvironment() {
   useGSAP(() => {
     if (!heroCardRef.current) return;
 
-    // Entrance animation for ALL devices
     gsap.fromTo(heroCardRef.current,
       { opacity: 0, y: 30 },
       {
@@ -26,8 +25,9 @@ export default function ClinicEnvironment() {
           start: "top 85%",
           once: true
         }
-    }
-  }, []);
+      }
+    );
+  }, { scope: heroCardRef });
 
   return (
     <section id="ambiente" className="relative overflow-hidden pt-12 pb-6 px-4 sm:px-6 lg:px-8">
