@@ -4,6 +4,9 @@ export const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}`;
 import brenoImg from '../assets/breno.png';
 import estefaniaImg from '../assets/estefania.png';
 import victorImg from '../assets/victor.png';
+import testimonial1Img from '../assets/testimonial-1.png';
+import testimonial2Img from '../assets/testimonial-2.png';
+import testimonial3Img from '../assets/testimonial-3.png';
 
 export const NAV_LINKS = [
   { label: 'Início', href: '/#hero' },
@@ -105,29 +108,29 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     quote: 'Atendimento excelente do início ao fim! Profissionais atenciosos e cuidadosos.',
     name: 'Júnia Pereira de Mattos',
-    image: '/src/assets/testimonial-1.png',
-    thumbnail: '/src/assets/testimonial-1.png',
+    image: testimonial1Img,
+    thumbnail: testimonial1Img,
     videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
   },
   {
     quote: 'Gostei da preocupação deles em querer sabe se o paciente está bem após o procedimento.',
     name: 'Erica Mariana',
-    image: '/src/assets/testimonial-2.png',
-    thumbnail: '/src/assets/testimonial-2.png',
+    image: testimonial2Img,
+    thumbnail: testimonial2Img,
     videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
   },
   {
     quote: 'Fui nessa clínica por indicação e agora entendo perfeitamente o motivo da recomendação! O atendimento foi impecável.',
     name: 'Wanderson Alves',
-    image: '/src/assets/testimonial-3.png',
-    thumbnail: '/src/assets/testimonial-3.png',
+    image: testimonial3Img,
+    thumbnail: testimonial3Img,
     videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
   },
   {
     quote: 'Equipe super preparada, ambiente acolhedor. Resolvi meu problema sem sentir dor nenhuma, recomendo demais!',
     name: 'Fernanda Costa',
-    image: '/src/assets/testimonial-1.png',
-    thumbnail: '/src/assets/testimonial-1.png',
+    image: testimonial1Img,
+    thumbnail: testimonial1Img,
     videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
   },
 ];
