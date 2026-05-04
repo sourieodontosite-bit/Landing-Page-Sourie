@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import { Flower2, ArrowUp, Scan, Users, Smile } from "lucide-react";
+import { Scan, Users, Smile } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { OutlineToothIcon } from "../shared/Icons";
 import img1 from "../../assets/clinica-interna-1.png";

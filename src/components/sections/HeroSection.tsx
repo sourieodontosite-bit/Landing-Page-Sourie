@@ -56,22 +56,25 @@ export default function HeroSection() {
     <section
       id="hero"
       ref={containerRef}
-      className="relative h-screen flex flex-col p-0 md:p-3 lg:p-4 lg:pt-2 overflow-hidden"
+      className="relative h-screen h-[100dvh] flex flex-col p-0 md:p-3 lg:p-4 lg:pt-2 overflow-hidden"
     >
+      {/* Top Progressive Color Overlay */}
+      <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-[#081d22]/95 via-navy-dark/40 to-transparent pointer-events-none z-10 md:hidden" />
+
       {/* Background Card */}
       <div className="absolute inset-0 md:inset-3 lg:inset-4 lg:top-2 z-0 rounded-none md:rounded-[32px] lg:rounded-[40px] overflow-hidden bg-navy-dark isolation-isolate transform-gpu">
         <img
           ref={imageRef}
           src={heroImage}
           alt="Paciente sorrindo na clínica odontológica Souriê"
-          className="w-full h-full object-cover opacity-0 scale-105"
+          className="w-full h-full object-cover object-[75%_center] md:object-center opacity-0 scale-105"
           fetchPriority="high"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-navy-dark/80 via-navy-dark/40 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/90 via-navy-dark/40 to-transparent md:bg-gradient-to-r md:from-navy-dark/80 md:via-navy-dark/40 md:to-transparent pointer-events-none" />
       </div>
 
       {/* Hero Content */}
-      <div className="relative z-10 flex-1 flex items-center pt-24 lg:pt-32">
+      <div className="relative z-10 flex-1 flex items-end md:items-center pb-12 sm:pb-16 md:pb-0 pt-24 lg:pt-32">
         <div className="max-w-page mx-auto px-4 sm:px-6 lg:px-[63px] w-full">
           <div className="max-w-2xl flex flex-col items-start text-left">
             {/* Badge */}

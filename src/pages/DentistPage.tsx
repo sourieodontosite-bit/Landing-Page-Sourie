@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { TEAM_MEMBERS, WHATSAPP_LINK } from '../utils/constants';
-import { MessageCircle, ArrowLeft } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import SectionContainer from '../components/shared/SectionContainer';
 import SEO from '../components/shared/SEO';
 import Button from '../components/shared/Button';

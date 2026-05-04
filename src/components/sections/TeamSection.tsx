@@ -1,7 +1,6 @@
 import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import { useNavigate } from 'react-router-dom';
 import SectionContainer from '../shared/SectionContainer';
 import { TEAM_MEMBERS } from '../../utils/constants';
 import { ArrowUpRight } from 'lucide-react';

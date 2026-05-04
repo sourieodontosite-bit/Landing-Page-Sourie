@@ -209,7 +209,6 @@ export default function Navbar() {
   const isDentistPage = location.pathname.startsWith('/equipe/');
   const isAboutPage = location.pathname === '/sobre';
   const isLightBg = location.pathname !== '/' && !isAboutPage;
-  const isInternalPage = location.pathname !== '/';
   const isProcedurePage = location.pathname.startsWith('/p/');
 
   useEffect(() => {

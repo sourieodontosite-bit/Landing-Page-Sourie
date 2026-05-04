@@ -1,7 +1,6 @@
 import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import { MapPin } from 'lucide-react';
 import SectionContainer from '../shared/SectionContainer';
 import img1 from '../../assets/clinica-interna-1.png';
 import img2 from '../../assets/clinica-interna-2.jpg';
