@@ -13,7 +13,7 @@ interface NavLinkProps {
   link: {
     label: string;
     href: string;
-    subLinks?: { label: string; href: string }[];
+    subLinks?: { label: string; href: string; icon?: React.ElementType }[];
   };
   isDarkText: boolean;
   activeDropdown: string | null;
@@ -65,17 +65,22 @@ const NavLink = React.memo(({ link, isDarkText, activeDropdown, setActiveDropdow
       {link.subLinks && activeDropdown === link.label && (
         <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-64 z-50">
           <div className="bg-white rounded-3xl shadow-xl border border-stone-100 p-3 overflow-hidden flex flex-col gap-1">
-            {link.subLinks.map((sub) => (
+            {link.subLinks.map((sub) => {
+              const Icon = sub.icon;
+              return (
               <Link
                 key={sub.href}
                 to={sub.href}
                 onClick={(e) => handleAnchorClick(e, sub.href)}
                 className="px-4 py-3 rounded-2xl text-[14px] font-medium text-text-primary hover:text-teal-primary hover:bg-teal-primary/5 transition-all duration-300 flex items-center justify-between group/item hover:pl-5"
               >
-                {sub.label}
+                <div className="flex items-center gap-3">
+                  {Icon && <Icon size={16} className="text-teal-primary/60 group-hover/item:text-teal-primary transition-colors" />}
+                  {sub.label}
+                </div>
                 <div className="w-1.5 h-1.5 rounded-full bg-teal-primary scale-0 group-hover/item:scale-100 transition-transform duration-300" />
               </Link>
-            ))}
+            )})}
           </div>
         </div>
       )}
@@ -149,16 +154,19 @@ const MobileMenuOverlay = React.memo(({ mobileMenuOpen, mobileMenuRef, expandedM
                 </div>
                 {expandedMobile === link.label && (
                   <div className="overflow-hidden pl-4">
-                    {link.subLinks.map((sub) => (
+                    {link.subLinks.map((sub) => {
+                      const Icon = sub.icon;
+                      return (
                       <Link
                         key={sub.href}
                         to={sub.href}
                         onClick={(e) => handleLinkClick(e, sub.href)}
-                        className="block py-2.5 px-3 text-[16px] text-text-primary hover:text-teal-primary transition-colors border-l border-stone-100 ml-2"
+                        className="flex items-center gap-3 py-2.5 px-3 text-[16px] text-text-primary hover:text-teal-primary transition-colors border-l border-stone-100 ml-2"
                       >
+                        {Icon && <Icon size={16} className="text-teal-primary/60" />}
                         {sub.label}
                       </Link>
-                    ))}
+                    )})}
                   </div>
                 )}
               </div>

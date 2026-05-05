@@ -6,6 +6,10 @@ export default defineConfig({
   plugins: [react()],
   server: {
     host: true,
+    watch: {
+      // Reprocess PostCSS/Tailwind when config changes
+      include: ['tailwind.config.js', 'postcss.config.js'],
+    },
   },
   build: {
     target: 'esnext',

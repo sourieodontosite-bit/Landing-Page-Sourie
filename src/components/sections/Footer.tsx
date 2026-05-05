@@ -44,7 +44,8 @@ export default function Footer() {
     <footer ref={footerRef} className="w-full pt-20 sm:pt-32">
       <div 
         ref={containerRef}
-        className="bg-gradient-to-br from-navy-dark via-teal-primary to-navy-dark px-8 sm:px-12 lg:px-20 pt-24 lg:pt-36 pb-12 relative overflow-hidden flex flex-col items-center shadow-2xl"
+        className="px-8 sm:px-12 lg:px-20 pt-24 lg:pt-36 pb-12 relative overflow-hidden flex flex-col items-center shadow-2xl"
+        style={{ background: 'linear-gradient(to bottom, #436F79 0%, #184E5B 50%, #25616F 100%)' }}
       >
         {/* Subtle Decorative Glows */}
         <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-teal-medium/10 blur-[120px] rounded-full -translate-y-1/2 pointer-events-none" />

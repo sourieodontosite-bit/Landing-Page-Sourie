@@ -62,11 +62,11 @@ export default function BackgroundWaves() {
       >
         <defs>
           <linearGradient id="lineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#25616f" stopOpacity="0" />
-            <stop offset="2%" stopColor="#25616f" stopOpacity="0.06" />
+            <stop offset="0%" stopColor="#578998" stopOpacity="0" />
+            <stop offset="2%" stopColor="#578998" stopOpacity="0.06" />
             <stop offset="50%" stopColor="#3d7683" stopOpacity="0.1" />
-            <stop offset="98%" stopColor="#25616f" stopOpacity="0.06" />
-            <stop offset="100%" stopColor="#25616f" stopOpacity="0" />
+            <stop offset="98%" stopColor="#578998" stopOpacity="0.06" />
+            <stop offset="100%" stopColor="#578998" stopOpacity="0" />
           </linearGradient>
         </defs>
 

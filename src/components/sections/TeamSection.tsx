@@ -44,8 +44,8 @@ export default function TeamSection() {
   }, { scope: containerRef });
 
   return (
-    <SectionContainer id="equipe" className="py-12 lg:py-16 overflow-hidden">
-      <div className="flex flex-col lg:flex-row justify-between items-center lg:items-end mb-20 gap-8">
+    <SectionContainer id="equipe" className="overflow-hidden">
+      <div className="flex flex-col lg:flex-row justify-between items-center lg:items-end mb-16 md:mb-20 gap-8">
         <div className="max-w-2xl space-y-6 flex flex-col items-center text-center lg:items-start lg:text-left">
           <span className="text-teal-primary font-bold uppercase tracking-[0.3em] text-[10px]">Corpo Clínico</span>
           <h2 className="text-4xl lg:text-7xl font-medium text-teal-dark tracking-tight leading-[0.9]">
@@ -60,16 +60,16 @@ export default function TeamSection() {
 
       <div 
         ref={containerRef}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-16"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 lg:gap-16"
       >
         {TEAM_MEMBERS.map((member) => (
           <Link 
             key={member.slug}
             to={`/equipe/${member.slug}`}
-            className="team-card-premium group relative block"
+            className="team-card group relative flex flex-row md:flex-col items-center md:items-start gap-4 md:gap-0 bg-white md:bg-transparent p-3 md:p-0 rounded-[32px] md:rounded-none border border-black/5 md:border-transparent shadow-sm md:shadow-none"
           >
             {/* Image Container with Refined Frame */}
-            <div className="relative aspect-[3/4] overflow-hidden rounded-[60px] mb-8 bg-stone-100 shadow-xl group-hover:shadow-2xl transition-all duration-700">
+            <div className="relative shrink-0 w-[110px] h-[140px] sm:w-[140px] sm:h-[180px] md:w-full md:h-auto md:aspect-[3/4] overflow-hidden rounded-[24px] md:rounded-[60px] md:mb-8 bg-stone-100 shadow-md md:shadow-xl group-hover:shadow-2xl transition-all duration-700">
               <img 
                 src={memberImages[member.slug]} 
                 alt={member.name}
@@ -78,34 +78,35 @@ export default function TeamSection() {
               <div className="absolute inset-0 bg-gradient-to-t from-teal-dark/40 via-transparent to-transparent opacity-30 group-hover:opacity-60 transition-opacity duration-500" />
               
               {/* Floating Action Button */}
-              <div className="absolute top-8 right-8 w-14 h-14 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white scale-0 group-hover:scale-100 transition-transform duration-500">
-                <ArrowUpRight size={24} />
+              <div className="absolute top-3 right-3 md:top-8 md:right-8 w-8 h-8 md:w-14 md:h-14 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white scale-0 group-hover:scale-100 transition-transform duration-500">
+                <ArrowUpRight className="w-4 h-4 md:w-6 md:h-6" />
               </div>
             </div>
 
             {/* Info with Refined Hierarchy */}
-            <div className="space-y-4 px-4">
-              <div className="flex items-center gap-4">
-                <div className="w-10 h-px bg-teal-primary/30 group-hover:w-16 transition-all duration-500" />
-                <span className="text-teal-primary font-bold uppercase tracking-widest text-[11px]">
+            <div className="space-y-1.5 md:space-y-4 px-1 md:px-4 flex-1">
+              <div className="flex items-center gap-2 md:gap-4">
+                <div className="w-4 md:w-10 h-px bg-teal-primary/30 group-hover:w-8 md:group-hover:w-16 transition-all duration-500" />
+                <span className="text-teal-primary font-bold uppercase tracking-widest text-[9px] md:text-[11px]">
                   {member.role}
                 </span>
               </div>
-              <div className="flex items-center justify-between gap-4">
-                <h3 className="text-3xl lg:text-4xl font-medium text-teal-dark group-hover:text-teal-primary transition-colors duration-500">
+              <div className="flex items-start md:items-center justify-between gap-2">
+                <h3 className="text-lg sm:text-xl md:text-3xl lg:text-4xl font-medium text-teal-dark group-hover:text-teal-primary transition-colors duration-500 leading-tight">
                   {member.name}
                 </h3>
                 <a 
                   href={member.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-teal-primary/10 flex items-center justify-center text-teal-primary hover:bg-teal-primary hover:text-white transition-all duration-300"
+                  className="relative shrink-0 w-10 h-10 md:w-11 md:h-11 rounded-full bg-teal-primary/10 flex items-center justify-center text-teal-primary hover:bg-teal-primary hover:text-white transition-all duration-300 active:scale-90 before:content-[''] before:absolute before:-inset-2 md:before:inset-0"
                   onClick={(e) => e.stopPropagation()}
+                  aria-label={`Acessar Instagram de ${member.name}`}
                 >
-                  <InstagramIcon size={20} />
+                  <InstagramIcon size={18} className="md:w-[22px] md:h-[22px]" />
                 </a>
               </div>
-              <p className="text-text-primary font-light opacity-80 line-clamp-2 leading-relaxed">
+              <p className="text-text-primary text-[13px] md:text-base font-light opacity-80 line-clamp-3 md:line-clamp-2 leading-relaxed">
                 {member.bio}
               </p>
             </div>

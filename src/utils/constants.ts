@@ -1,26 +1,28 @@
+import { Stethoscope, Sparkles, Smile, Layers, Syringe, Baby, Users, HelpCircle } from 'lucide-react';
+
 export const WHATSAPP_NUMBER = '553199614845';
 export const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}`;
 
 export const NAV_LINKS = [
   { label: 'Início', href: '/#hero' },
-  { 
-    label: 'Procedimentos', 
+  {
+    label: 'Procedimentos',
     href: '/#servicos',
     subLinks: [
-      { label: 'Clínica Geral', href: '/clinica-geral' },
-      { label: 'Estética Dental', href: '/odontologia-estetica' },
-      { label: 'Ortodontia', href: '/ortodontia' },
-      { label: 'Próteses e Implantes', href: '/proteses-e-implantes' },
-      { label: 'Cirurgias e Canal', href: '/cirurgias-e-canal' },
-      { label: 'Odontopediatria', href: '/odontopediatria' },
+      { label: 'Clínica Geral', href: '/clinica-geral', icon: Stethoscope },
+      { label: 'Estética Dental', href: '/odontologia-estetica', icon: Sparkles },
+      { label: 'Ortodontia', href: '/ortodontia', icon: Smile },
+      { label: 'Próteses e Implantes', href: '/proteses-e-implantes', icon: Layers },
+      { label: 'Cirurgias e Canal', href: '/cirurgias-e-canal', icon: Syringe },
+      { label: 'Odontopediatria', href: '/odontopediatria', icon: Baby },
     ]
   },
-  { 
-    label: 'Nossa Equipe', 
+  {
+    label: 'Quem somos',
     href: '/#equipe',
     subLinks: [
-      { label: 'Nossa História', href: '/sobre' },
-      { label: 'Dúvidas Frequentes', href: '/#faq' },
+      { label: 'Sobre nós', href: '/sobre', icon: Users },
+      { label: 'Dúvidas Frequentes', href: '/#faq', icon: HelpCircle },
     ]
   },
   { label: 'Depoimentos', href: '/#depoimentos' },
@@ -38,27 +40,27 @@ export interface TeamMember {
 }
 
 export const TEAM_MEMBERS: TeamMember[] = [
-  { 
-    name: 'Dr. Breno', 
-    role: 'Cirurgião Dentista', 
+  {
+    name: 'Dr. Breno',
+    role: 'Cirurgião Dentista',
     slug: 'dr-breno',
     crm: 'CRO-MG 12345',
     bio: 'Especialista em reabilitação oral e implantes. Com extensa experiência, o Dr. Breno é apaixonado por transformar sorrisos e devolver a autoconfiança aos pacientes através de tratamentos modernos e minimamente invasivos.',
     specialties: ['Implantes Dentários', 'Próteses', 'Cirurgia Oral'],
     instagram: 'https://www.instagram.com/sourie.odontologia'
   },
-  { 
-    name: 'Dra. Estefânia', 
-    role: 'Cirurgiã Dentista', 
+  {
+    name: 'Dra. Estefânia',
+    role: 'Cirurgiã Dentista',
     slug: 'dra-estefania',
     crm: 'CRO-MG 54321',
     bio: 'Dedicada à ortodontia e odontologia estética, a Dra. Estefânia utiliza as mais recentes tecnologias para criar sorrisos harmoniosos. Seu atendimento é focado no conforto, precisão e detalhismo estético.',
     specialties: ['Ortodontia', 'Odontologia Estética', 'Lentes de Contato'],
     instagram: 'https://www.instagram.com/sourie.odontologia'
   },
-  { 
-    name: 'Dr. Victor', 
-    role: 'Cirurgião Dentista', 
+  {
+    name: 'Dr. Victor',
+    role: 'Cirurgião Dentista',
     slug: 'dr-victor',
     crm: 'CRO-MG 98765',
     bio: 'Focado em clínica geral e endodontia, o Dr. Victor é reconhecido por seu atendimento humanizado e cuidadoso, garantindo que procedimentos complexos sejam realizados com o máximo de precisão e sem dor.',
@@ -120,32 +122,32 @@ export interface Service {
 
 export const SERVICES: Service[] = [
   {
-    title: 'Clínica geral', 
+    title: 'Clínica geral',
     description: 'Limpezas preventivas, restaurações e cuidados de rotina.',
     slug: 'clinica-geral'
   },
-  { 
-    title: 'Odontologia Estética', 
+  {
+    title: 'Odontologia Estética',
     description: 'Transformação do sorriso com clareamento, lentes de contato e mais.',
     slug: 'odontologia-estetica'
   },
-  { 
-    title: 'Ortodontia', 
+  {
+    title: 'Ortodontia',
     description: 'Aparelhos e Invisalign para um alinhamento perfeito.',
     slug: 'ortodontia'
   },
-  { 
-    title: 'Próteses e Implantes', 
+  {
+    title: 'Próteses e Implantes',
     description: 'Soluções sob medida para reabilitação e reposição de dentes.',
     slug: 'proteses-e-implantes'
   },
-  { 
-    title: 'Cirurgias e Canal', 
+  {
+    title: 'Cirurgias e Canal',
     description: 'Extrações, endodontia e tratamentos mais complexos com total segurança.',
     slug: 'cirurgias-e-canal'
   },
-  { 
-    title: 'Odontopediatria', 
+  {
+    title: 'Odontopediatria',
     description: 'Cuidado gentil e acolhedor para crianças.',
     slug: 'odontopediatria'
   },

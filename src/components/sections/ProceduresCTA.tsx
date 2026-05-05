@@ -32,7 +32,8 @@ export default function ProceduresCTA() {
     <SectionContainer className="relative z-10" innerClassName="!pt-0 lg:!pt-0">
       <div 
         ref={cardRef}
-        className="relative overflow-hidden rounded-[3rem] bg-gradient-to-br from-teal-dark via-[#0d343a] to-navy-dark px-8 py-16 lg:py-20 lg:px-20"
+        className="relative overflow-hidden rounded-[3rem] px-8 py-16 lg:py-20 lg:px-20"
+        style={{ background: 'linear-gradient(to bottom, #436F79 0%, #184E5B 50%, #25616F 100%)' }}
       >
         {/* Background decorative elements */}
         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-teal-primary/10 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/4" />

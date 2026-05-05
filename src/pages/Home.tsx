@@ -5,12 +5,12 @@ import HeroSection from '../components/sections/HeroSection';
 import ServicesSection from '../components/sections/ServicesSection';
 import PainSolutionSection from '../components/sections/PainSolutionSection';
 import SectionSkeleton from '../components/shared/SectionSkeleton';
+import SectionDivider from '../components/shared/SectionDivider';
 
 import SEO from '../components/shared/SEO';
 import { LOCAL_BUSINESS_SCHEMA } from '../utils/SEOData';
 
 // Lazy load below-the-fold sections
-const TrustMarquee = lazy(() => import('../components/sections/TrustMarquee'));
 const AboutGallery = lazy(() => import('../components/sections/AboutGallery'));
 const ProceduresCTA = lazy(() => import('../components/sections/ProceduresCTA'));
 const TeamSection = lazy(() => import('../components/sections/TeamSection'));
@@ -46,14 +46,15 @@ export default function Home() {
       <HeroSection />
       
       {/* Critical Content - Rendered Immediately */}
+      <SectionDivider />
       <ServicesSection />
       <PainSolutionSection />
 
       {/* Secondary Content - Loaded Progressively */}
       <Suspense fallback={<SectionSkeleton />}>
         <TeamSection />
-        <TrustMarquee />
         <BentoTestimonialsSection />
+        <SectionDivider />
         <AboutGallery />
         <FAQSection />
         <ProceduresCTA />

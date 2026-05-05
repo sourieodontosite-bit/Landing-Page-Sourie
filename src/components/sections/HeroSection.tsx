@@ -3,6 +3,7 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import Button from '../shared/Button';
 import { WHATSAPP_LINK } from '../../utils/constants';
+import TrustMarquee from './TrustMarquee';
 const heroImage = '/hero-image.webp';
 
 
@@ -73,19 +74,24 @@ export default function HeroSection() {
           decoding="async"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/90 via-navy-dark/40 to-transparent md:bg-gradient-to-r md:from-navy-dark/80 md:via-navy-dark/40 md:to-transparent pointer-events-none" />
+        
+        {/* Trust Marquee overlaid at the bottom */}
+        <div className="absolute bottom-0 inset-x-0 z-20">
+          <TrustMarquee />
+        </div>
       </div>
 
       {/* Hero Content */}
-      <div className="relative z-10 flex-1 flex items-end md:items-center pb-12 sm:pb-16 md:pb-0 pt-24 lg:pt-32">
+      <div className="relative z-10 flex-1 flex items-end md:items-center pb-24 sm:pb-28 md:pb-10 pt-24">
         <div className="max-w-page mx-auto px-4 sm:px-6 lg:px-[63px] w-full">
           <div className="max-w-2xl flex flex-col items-start text-left">
             {/* Badge */}
             <div
               ref={badgeRef}
-              className="hero-mobile-anim hero-delay-1 inline-flex items-center gap-1.5 sm:gap-2 bg-white/15 backdrop-blur-sm border border-white/25 rounded-pill px-3 sm:px-5 py-1 sm:py-2 mb-4 sm:mb-8"
+              className="hero-mobile-anim hero-delay-1 inline-flex items-center gap-1.5 sm:gap-2 bg-white/15 backdrop-blur-sm border border-white/25 rounded-pill px-3 sm:px-5 py-1 sm:py-2 [@media(min-width:1024px)_and_(max-height:800px)]:px-4 [@media(min-width:1024px)_and_(max-height:800px)]:py-1.5 mb-4 sm:mb-8 [@media(min-width:1024px)_and_(max-height:800px)]:mb-5"
             >
-              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-cyan-light animate-pulse-subtle" />
-              <span className="text-white text-[9px] sm:text-[11px] lg:text-xs xl:text-[11px] 2xl:text-[11px] tracking-widest font-bold uppercase">
+              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 [@media(min-width:1024px)_and_(max-height:800px)]:w-1.5 [@media(min-width:1024px)_and_(max-height:800px)]:h-1.5 rounded-full bg-cyan-light animate-pulse-subtle" />
+              <span className="text-white text-[9px] sm:text-[11px] lg:text-xs xl:text-[11px] 2xl:text-[11px] [@media(min-width:1024px)_and_(max-height:800px)]:text-[9px] tracking-widest font-bold uppercase">
                 Atendimento especializado em Nova Era
               </span>
             </div>
@@ -100,7 +106,7 @@ export default function HeroSection() {
 
             <p
               ref={textRef}
-              className="hero-mobile-anim hero-delay-3 text-white/85 text-lg xl:text-xl 2xl:text-2xl mb-8 sm:mb-12 max-w-xl mx-0 leading-relaxed font-light"
+              className="hero-mobile-anim hero-delay-3 text-white/85 text-lg xl:text-xl 2xl:text-2xl mb-5 sm:mb-6 max-w-xl mx-0 leading-relaxed font-light"
             >
               Tecnologia, atenção e qualidade para <br className="block sm:hidden" /> transformar sua autoestima e saúde.
             </p>
@@ -113,6 +119,7 @@ export default function HeroSection() {
                   variant="cta"
                   size="lg"
                   href={WHATSAPP_LINK}
+                  className="!bg-[rgb(206,235,255)] hover:!bg-teal-primary"
                 />
               </div>
             </div>

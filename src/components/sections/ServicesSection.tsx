@@ -1,6 +1,4 @@
 import { useRef, useState, useEffect } from 'react';
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
 import SectionContainer from '../shared/SectionContainer';
 import { SERVICES } from '../../utils/constants';
 import { Stethoscope, Sparkles, Layers, Activity, Baby, ArrowUpRight } from 'lucide-react';
@@ -35,51 +33,37 @@ const serviceImages = [
 ];
 
 export default function ServicesSection() {
-  const containerRef = useRef<HTMLElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [isDesktop, setIsDesktop] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     // Only render hover images on desktop where hover interaction exists.
-    // This prevents ~17 MB of procedure images from being downloaded on mobile.
     setIsDesktop(window.innerWidth >= 1024);
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1, rootMargin: '50px' }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
   }, []);
 
-  useGSAP(() => {
-    if (!containerRef.current) return;
-
-    // Entrance animation - Recreated to be punchier and more synchronized
-    gsap.fromTo(".service-bento",
-      { 
-        opacity: 0, 
-        y: 40,
-        scale: 0.95
-      },
-      {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        stagger: 0.05,
-        duration: 1.2,
-        ease: "expo.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 90%",
-          once: true
-        },
-        onStart: () => {
-          gsap.set(".service-bento", { willChange: "opacity, transform" });
-        },
-        onComplete: () => {
-          gsap.set(".service-bento", { willChange: "auto" });
-        }
-      }
-    );
-  }, { scope: containerRef });
-
   return (
-    <SectionContainer id="servicos" className="py-12 lg:py-12">
-      <div ref={containerRef as any}>
-        <div className="service-bento flex flex-col items-center text-center lg:items-start lg:text-left mb-12 space-y-6">
+    <SectionContainer id="servicos">
+      <div ref={containerRef}>
+        <div 
+          className={`flex flex-col items-center text-center lg:items-start lg:text-left mb-16 md:mb-20 space-y-6 transition-all duration-700 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+          style={{ transitionDelay: '0ms' }}
+        >
         <span className="text-teal-primary font-bold uppercase tracking-[0.3em] text-[10px]">Procedimentos</span>
         <h2 className="text-4xl lg:text-7xl font-medium text-teal-dark tracking-tight">
           Cuidado completo <br />
@@ -88,12 +72,13 @@ export default function ServicesSection() {
       </div>
 
       <div 
-        className="grid grid-cols-1 md:grid-cols-12 gap-6"
+        className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10"
       >
         {/* Main Service - Aesthetic */}
         <Link 
           to={`/p/${SERVICES[1].slug}`}
-          className="service-bento md:col-span-6 lg:col-span-7 bg-teal-primary rounded-[40px] p-8 md:p-10 lg:p-14 border border-white/10 hover:border-white/30 transition-all duration-500 hover:shadow-2xl hover:shadow-teal-dark/10 flex flex-col justify-between min-h-[280px] md:min-h-[400px] group relative overflow-hidden"
+          className={`md:col-span-6 lg:col-span-7 bg-teal-primary rounded-[40px] p-8 md:p-10 lg:p-14 border border-white/10 hover:border-white/30 transition-all duration-700 ease-out hover:shadow-2xl hover:shadow-teal-dark/10 flex flex-col justify-between min-h-[280px] md:min-h-[400px] group relative overflow-hidden transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+          style={{ transitionDelay: '100ms' }}
         >
           {/* Hover Image — Desktop only */}
           {isDesktop && (
@@ -122,7 +107,8 @@ export default function ServicesSection() {
         {/* Orthodontia */}
         <Link 
           to={`/p/${SERVICES[2].slug}`}
-          className="service-bento md:col-span-6 lg:col-span-5 bg-teal-dark rounded-[40px] p-8 md:p-10 flex flex-col justify-between min-h-[280px] md:min-h-[400px] group relative overflow-hidden shadow-xl shadow-teal-dark/10 border border-white/10"
+          className={`md:col-span-6 lg:col-span-5 bg-teal-dark rounded-[40px] p-8 md:p-10 flex flex-col justify-between min-h-[280px] md:min-h-[400px] group relative overflow-hidden shadow-xl shadow-teal-dark/10 border border-white/10 transition-all duration-700 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+          style={{ transitionDelay: '200ms' }}
         >
           {/* Hover Image — Desktop only */}
           {isDesktop && (
@@ -168,7 +154,8 @@ export default function ServicesSection() {
               <Link 
                 key={service.slug}
                 to={`/p/${service.slug}`}
-                className={`service-bento ${styles[i]} rounded-[32px] p-8 border hover:border-white/30 transition-all duration-500 hover:shadow-xl flex flex-col gap-6 group relative overflow-hidden`}
+                className={`${styles[i]} rounded-[32px] p-8 border hover:border-white/30 transition-all duration-700 ease-out hover:shadow-xl flex flex-col gap-6 group relative overflow-hidden transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+                style={{ transitionDelay: `${300 + (i * 100)}ms` }}
               >
                 {/* Hover Image — Desktop only */}
                 {isDesktop && (

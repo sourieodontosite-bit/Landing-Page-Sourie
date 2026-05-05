@@ -29,7 +29,7 @@ const SectionContainer = forwardRef<HTMLElement, SectionContainerProps>(({
       <div
         className={`mx-auto ${
           fullWidth ? 'w-full' : 'max-w-page'
-        } px-6 sm:px-10 lg:px-container-x py-8 lg:py-28 ${innerClassName}`}
+        } px-6 md:px-10 lg:px-container-x py-16 md:py-20 lg:py-24 ${innerClassName}`}
       >
         {children}
       </div>

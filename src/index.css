@@ -38,4 +38,15 @@ body {
     .hero-delay-3 { animation-delay: 300ms; }
     .hero-delay-4 { animation-delay: 400ms; }
   }
+
+  @keyframes dividerFadeIn {
+    0% { opacity: 0; transform: scaleX(0.8); }
+    100% { opacity: 1; transform: scaleX(1); }
+  }
+
+  .section-divider-anim {
+    animation: dividerFadeIn 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    animation-timeline: view();
+    animation-range: entry 10% cover 30%;
+  }
 }
