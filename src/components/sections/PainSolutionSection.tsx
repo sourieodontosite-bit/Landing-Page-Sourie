@@ -199,10 +199,10 @@ export default function PainSolutionSection() {
 
                   {/* Progressive Glass/Color Overlay */}
                   <div
-                    className="absolute inset-[-10px] bg-navy-dark/90 backdrop-blur-md"
+                    className="absolute inset-[-10px] bg-[#122a30]/90 backdrop-blur-sm"
                     style={{
-                      WebkitMaskImage: "linear-gradient(to top, black 0%, black 30%, transparent 100%)",
-                      maskImage: "linear-gradient(to top, black 0%, black 30%, transparent 100%)",
+                      WebkitMaskImage: "linear-gradient(to top, black 0%, black 20%, transparent 80%)",
+                      maskImage: "linear-gradient(to top, black 0%, black 20%, transparent 80%)",
                     }}
                   />
                 </div>
