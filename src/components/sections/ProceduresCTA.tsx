@@ -29,10 +29,13 @@ export default function ProceduresCTA() {
   }, []);
 
   return (
-    <SectionContainer className="relative z-10" innerClassName="!pt-0 lg:!pt-0">
+    <SectionContainer 
+      className="relative z-10" 
+      innerClassName="px-4 sm:px-6 lg:!px-6 xl:!px-0 !pt-0 lg:!pt-0"
+    >
       <div 
         ref={cardRef}
-        className="relative overflow-hidden rounded-[3rem] px-8 py-16 lg:py-20 lg:px-20"
+        className="relative overflow-hidden rounded-[40px] md:rounded-[48px] lg:rounded-[80px] px-6 py-12 sm:p-12 lg:p-16 xl:p-20"
         style={{ background: 'linear-gradient(to bottom, #436F79 0%, #184E5B 50%, #25616F 100%)' }}
       >
         {/* Background decorative elements */}

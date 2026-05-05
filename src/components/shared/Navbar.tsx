@@ -215,8 +215,12 @@ export default function Navbar() {
 
   const isDentistPage = location.pathname.startsWith('/equipe/');
   const isAboutPage = location.pathname === '/sobre';
-  const isLightBg = location.pathname !== '/' && !isAboutPage;
   const isProcedurePage = location.pathname.startsWith('/p/');
+  const isInternalPage = isProcedurePage || (location.pathname !== '/' && !isAboutPage && !isDentistPage);
+  
+  // These pages now have dark Hero backgrounds at the top
+  const hasDarkHero = location.pathname === '/' || isInternalPage || (isDentistPage && isMobile);
+  const isLightBg = !hasDarkHero && !isAboutPage;
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 1024);

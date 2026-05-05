@@ -8,8 +8,10 @@ export const initGSAP = () => {
 
   // Global ScrollTrigger configuration to minimize reflows
   ScrollTrigger.config({
-    autoRefreshEvents: "visibilitychange,DOMContentLoaded,load", // Reduced from default (which includes resize)
-    limitCallbacks: true
+    autoRefreshEvents: "visibilitychange,DOMContentLoaded,load", 
+    limitCallbacks: true,
+    ignoreMobileResize: true, // Prevents expensive reflows on mobile when UI bars toggle
+    // normalizeScroll: true // CAUTION: Test on iOS Safari before enabling
   });
 
   // Performance settings

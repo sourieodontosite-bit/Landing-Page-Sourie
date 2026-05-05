@@ -14,12 +14,12 @@ export default defineConfig({
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
-            if (id.includes('gsap')) return 'gsap';
-            if (id.includes('lucide-react')) return 'icons';
-            if (id.includes('react-router')) return 'router';
-            if (id.includes('react-dom')) return 'vendor-react';
-            if (id.includes('react')) return 'vendor-react';
-            return 'vendor';
+            if (id.includes('gsap')) return 'vendor-gsap';
+            if (id.includes('lucide-react')) return 'vendor-icons';
+            if (id.includes('react-router')) return 'vendor-router';
+            if (id.includes('react-helmet-async')) return 'vendor-helmet';
+            if (id.includes('react') || id.includes('react-dom')) return 'vendor-react-core';
+            return 'vendor-others';
           }
         }
       }
