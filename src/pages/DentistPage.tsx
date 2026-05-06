@@ -166,7 +166,9 @@ export default function DentistPage() {
                 <img
                   src={imageSrc}
                   alt={member.name}
-                  className="w-full h-full object-cover scale-105 grayscale-[0.1] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000 ease-out"
+                  className={`w-full h-full object-cover grayscale-[0.1] group-hover:grayscale-0 transition-all duration-1000 ease-out ${
+                    member.slug === 'dr-breno' ? 'scale-105 group-hover:scale-110' : 'scale-115 group-hover:scale-120'
+                  }`}
                   decoding="async"
                 />
               </div>

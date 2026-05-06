@@ -321,6 +321,13 @@ export default function Navbar() {
     });
   }, { dependencies: [isScrolled] });
 
+  const handleLogoClick = (e: React.MouseEvent) => {
+    if (location.pathname === '/') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
     <nav ref={navContainerRef} className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 pointer-events-none ${isScrolled ? 'py-4 lg:py-3' : 'py-6 lg:py-8'} translate-y-0`}>
       <div
@@ -353,7 +360,11 @@ export default function Navbar() {
             </Link>
           ) : null}
 
-          <Link to="/" className={`flex items-center group justify-self-start ${(isProcedurePage || (isDentistPage && isMobile)) ? 'hidden md:flex' : ''}`}>
+          <Link 
+            to="/" 
+            onClick={handleLogoClick}
+            className={`flex items-center group justify-self-start ${(isProcedurePage || (isDentistPage && isMobile)) ? 'hidden md:flex' : ''}`}
+          >
             <div
               className={`transition-all duration-500 ${isDarkText ? 'bg-teal-primary' : 'bg-white'} logo-mask`}
               style={{

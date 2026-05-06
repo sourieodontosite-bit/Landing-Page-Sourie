@@ -188,14 +188,7 @@ export default function PainSolutionSection() {
                     className="absolute inset-0 w-full h-full object-cover scale-[1.05] transition-transform duration-700 group-hover:scale-110 will-change-transform"
                   />
 
-                  {/* Progressive Glass/Color Overlay */}
-                  <div
-                    className="absolute inset-[-10px] bg-[#122a30]/90 backdrop-blur-sm"
-                    style={{
-                      WebkitMaskImage: "linear-gradient(to top, black 0%, black 20%, transparent 80%)",
-                      maskImage: "linear-gradient(to top, black 0%, black 20%, transparent 80%)",
-                    }}
-                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-teal-dark/90 via-teal-dark/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500 pointer-events-none" />
                 </div>
 
                 {/* Top badges (Glassmorphism) */}
@@ -210,14 +203,22 @@ export default function PainSolutionSection() {
                   ))}
                 </div>
 
-                {/* Bottom content (Text only, background is handled by the progressive overlay) */}
-                <div className="absolute inset-x-0 bottom-0 flex flex-col gap-3 p-6 sm:p-8">
-                  <h4 className="whitespace-pre-line text-xl font-bold leading-tight text-white sm:text-2xl">
-                    {c.title}
-                  </h4>
-                  <p className="text-[13px] leading-relaxed text-white/80">{c.description}</p>
-                  <div className="mt-2 flex items-center gap-2 border-t border-white/15 pt-3 text-[12px] font-medium tracking-wide text-white/90">
-                    {c.footer.Icon && <c.footer.Icon className="h-4 w-4" />}
+                {/* Glass Box Container */}
+                <div className="absolute bottom-4 left-4 right-4 bg-teal-dark/70 backdrop-blur-xl border border-white/10 rounded-[28px] p-5 md:p-6 flex flex-col gap-3 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500 shadow-lg">
+                  <div className="flex items-center justify-between">
+                    <h4 className="whitespace-pre-line text-white text-lg sm:text-xl font-bold leading-tight">
+                      {c.title}
+                    </h4>
+                    {c.footer.Icon && (
+                      <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white shrink-0">
+                        <c.footer.Icon size={18} />
+                      </div>
+                    )}
+                  </div>
+                  
+                  <p className="text-[13px] leading-relaxed text-white/80 font-light">{c.description}</p>
+                  
+                  <div className="mt-1 flex items-center gap-2 border-t border-white/15 pt-3 text-[10px] font-bold uppercase tracking-[0.2em] text-cyan-light">
                     <span>{c.footer.label}</span>
                   </div>
                 </div>

@@ -82,7 +82,11 @@ export default function AboutTeam() {
               <img 
                 src={memberImages[member.slug]} 
                 alt={member.name}
-                className="w-full h-full object-cover scale-105 group-hover:scale-100 transition-all duration-1000 ease-out"
+                className={`w-full h-full object-cover transition-all duration-1000 ease-out ${
+                  member.slug === 'dr-breno' 
+                    ? 'scale-105 group-hover:scale-100' 
+                    : 'scale-115 group-hover:scale-110'
+                }`}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-teal-dark/40 via-transparent to-transparent opacity-30 group-hover:opacity-60 transition-opacity duration-500" />
               

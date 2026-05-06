@@ -20,11 +20,13 @@ const TeamMemberCard = React.memo(({ member, index, isVisible }: { member: typeo
     className={`team-card group relative w-full max-w-[340px] aspect-[4/7.2] rounded-[42px] bg-white/10 backdrop-blur-[2px] p-2 overflow-hidden shadow-card hover:shadow-2xl transition-all duration-500 border border-white/20 reveal-item ${isVisible ? 'active' : ''}`}
     style={{ animationDelay: `${index * 100}ms` }}
   >
-    <Link to={`/equipe/${member.slug}`} className="block relative w-full h-full rounded-[32px] sm:rounded-[40px] overflow-hidden">
+    <div className="relative w-full h-full rounded-[32px] sm:rounded-[40px] overflow-hidden">
       <img
         src={memberImages[member.slug]}
         alt={`${member.name} - ${member.role}`}
-        className="w-full h-full object-cover object-top scale-100 group-hover:scale-105 transition-transform duration-1000 ease-out"
+        className={`w-full h-full object-cover object-top transition-transform duration-1000 ease-out ${
+          member.slug === 'dr-breno' ? 'scale-100 group-hover:scale-105' : 'scale-110 group-hover:scale-115'
+        }`}
         loading="lazy"
       />
       
@@ -63,11 +65,14 @@ const TeamMemberCard = React.memo(({ member, index, isVisible }: { member: typeo
         </div>
 
         {/* View Details Button */}
-        <div className="mt-2 w-full py-3 bg-white/10 border border-white/10 rounded-2xl text-center text-white text-[10px] font-bold uppercase tracking-[0.2em] group-hover:bg-teal-primary group-hover:border-teal-primary/50 transition-all duration-300">
+        <Link 
+          to={`/equipe/${member.slug}`}
+          className="mt-2 w-full py-3 bg-white/10 border border-white/10 rounded-2xl text-center text-white text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-teal-primary hover:border-teal-primary/50 transition-all duration-300 block"
+        >
           Ver Detalhes
-        </div>
+        </Link>
       </div>
-    </Link>
+    </div>
   </div>
 ));
 

@@ -41,12 +41,12 @@ export interface TeamMember {
 
 export const TEAM_MEMBERS: TeamMember[] = [
   {
-    name: 'Dr. Breno',
+    name: 'Dr. Victor',
     role: 'Cirurgião Dentista',
-    slug: 'dr-breno',
-    crm: 'CRO-MG 12345',
-    bio: 'Especialista em reabilitação oral e implantes. Com extensa experiência, o Dr. Breno é apaixonado por transformar sorrisos e devolver a autoconfiança aos pacientes através de tratamentos modernos e minimamente invasivos.',
-    specialties: ['Implantes Dentários', 'Próteses', 'Cirurgia Oral'],
+    slug: 'dr-victor',
+    crm: 'CRO-MG 98765',
+    bio: 'Focado em clínica geral e endodontia, o Dr. Victor é reconhecido por seu atendimento humanizado e cuidadoso, garantindo que procedimentos complexos sejam realizados com o máximo de precisão e sem dor.',
+    specialties: ['Endodontia (Canal)', 'Clínica Geral', 'Prevenção'],
     instagram: 'https://www.instagram.com/sourie.odontologia'
   },
   {
@@ -59,12 +59,12 @@ export const TEAM_MEMBERS: TeamMember[] = [
     instagram: 'https://www.instagram.com/sourie.odontologia'
   },
   {
-    name: 'Dr. Victor',
+    name: 'Dr. Breno',
     role: 'Cirurgião Dentista',
-    slug: 'dr-victor',
-    crm: 'CRO-MG 98765',
-    bio: 'Focado em clínica geral e endodontia, o Dr. Victor é reconhecido por seu atendimento humanizado e cuidadoso, garantindo que procedimentos complexos sejam realizados com o máximo de precisão e sem dor.',
-    specialties: ['Endodontia (Canal)', 'Clínica Geral', 'Prevenção'],
+    slug: 'dr-breno',
+    crm: 'CRO-MG 12345',
+    bio: 'Especialista em reabilitação oral e implantes. Com extensa experiência, o Dr. Breno é apaixonado por transformar sorrisos e devolver a autoconfiança aos pacientes através de tratamentos modernos e minimamente invasivos.',
+    specialties: ['Implantes Dentários', 'Próteses', 'Cirurgia Oral'],
     instagram: 'https://www.instagram.com/sourie.odontologia'
   },
 ];
