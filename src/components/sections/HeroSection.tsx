@@ -99,7 +99,7 @@ export default function HeroSection() {
 
             <h1
               ref={titleRef}
-              className="hero-entrance lg:opacity-100 lg:animate-none hero-delay-2 text-[42px] sm:text-6xl lg:text-7xl xl:text-7xl 2xl:text-8xl font-medium text-white leading-[1.05] mb-6 lg:mb-8"
+              className="hero-entrance lg:opacity-100 lg:animate-none hero-delay-2 text-[42px] sm:text-6xl lg:text-6xl xl:text-6xl 2xl:text-7xl font-medium text-white leading-[1.05] mb-6 lg:mb-8"
             >
               Seu sorriso,<br />
               nossa prioridade
