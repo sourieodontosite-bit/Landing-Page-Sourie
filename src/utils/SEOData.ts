@@ -64,7 +64,7 @@ export const FAQ_SCHEMA = {
       "name": "A Souriê aceita convênios?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Sim! Trabalhamos com os principais planos para facilitar seu acesso: Unimed, Amil, Bradesco, Odontoprev, Porto Seguro, SulAmérica, Interodonto e MetLife. Auxiliamos também em processos de reembolso."
+        "text": "Sim! Trabalhamos com os principais planos: Unimed, Amil, Bradesco, Odontoprev, Porto Seguro, SulAmérica, Interodonto e MetLife."
       }
     },
     {
@@ -72,7 +72,7 @@ export const FAQ_SCHEMA = {
       "name": "Quais tecnologias a clínica utiliza?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Utilizamos o Scanner iTero™ 5D (adeus moldagens!), Raio-X Digital (menor radiação), Câmeras Intraorais e Planejamento Digital do Sorriso (DSD) para resultados previsíveis."
+        "text": "Utilizamos o Scanner 3D iTero™ (adeus moldagens!) e Câmeras Intraorais de alta definição para um diagnóstico preciso e resultados previsíveis."
       }
     },
     {

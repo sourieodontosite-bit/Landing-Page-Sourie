@@ -1,9 +1,10 @@
 import { useRef, useState } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import { Star, Quote, ArrowRight, ChevronLeft, ChevronRight, Heart, ExternalLink } from 'lucide-react';
-import { TESTIMONIALS } from '../../utils/constants';
+import { Star, Quote, ChevronLeft, ChevronRight, Heart, ExternalLink } from 'lucide-react';
+import { TESTIMONIALS, WHATSAPP_LINK } from '../../utils/constants';
 import SectionContainer from '../shared/SectionContainer';
+import Button from '../shared/Button';
 import { OutlineToothIcon, GoogleIcon } from '../shared/Icons';
 
 import testimonial1Img from '../../assets/testimonial-1.png';
@@ -240,10 +241,14 @@ export default function BentoTestimonialsSection() {
                 Pronto para viver <br />
                 essa experiência?
               </h3>
-              <button className="inline-flex items-center gap-4 px-8 py-5 lg:px-12 lg:py-6 rounded-full bg-white text-teal-primary font-bold text-lg lg:text-xl hover:scale-105 transition-transform duration-500 shadow-2xl">
-                Agendar Avaliação
-                <ArrowRight size={24} />
-              </button>
+              <Button 
+                text="Agendar Avaliação" 
+                icon="arrow-circle" 
+                variant="white" 
+                size="lg"
+                href={WHATSAPP_LINK} 
+                className="shadow-2xl shadow-black/20 whitespace-nowrap"
+              />
             </div>
           </div>
 

@@ -1,6 +1,4 @@
-import { useRef } from 'react';
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
+import { useRef, useEffect, useState } from 'react';
 import { Scan, Users, Smile } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import SectionContainer from '../shared/SectionContainer';
@@ -47,33 +45,25 @@ const cards: Card[] = [
 
 export default function PainSolutionSection() {
   const containerRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
-  useGSAP(() => {
-    if (!containerRef.current) return;
-
-    // Entrance animation for ALL devices
-    gsap.fromTo(".pain-anim",
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1,
-        y: 0,
-        stagger: 0.1,
-        duration: 0.8,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 85%",
-          once: true,
-        },
-        onStart: () => {
-          gsap.set(".pain-anim", { willChange: "opacity, transform" });
-        },
-        onComplete: () => {
-          gsap.set(".pain-anim", { willChange: "auto" });
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
         }
-      }
+      },
+      { threshold: 0.1 }
     );
-  }, { scope: containerRef });
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <SectionContainer
@@ -143,7 +133,7 @@ export default function PainSolutionSection() {
 
       <div ref={containerRef as any} className="relative z-10 max-w-[1280px] mx-auto w-full">
         {/* Header text */}
-        <div className="pain-anim relative max-w-md">
+        <div className={`pain-anim relative max-w-md reveal-item ${isVisible ? 'active' : ''}`}>
           <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
             A base para um novo sorriso
           </h2>
@@ -153,7 +143,7 @@ export default function PainSolutionSection() {
         </div>
 
         {/* Team level indicator */}
-        <div className="pain-anim relative mt-12 flex flex-col items-center sm:mt-16">
+        <div className={`pain-anim relative mt-12 flex flex-col items-center sm:mt-16 reveal-item ${isVisible ? 'active' : ''}`} style={{ animationDelay: '100ms' }}>
           <span className="text-[11px] font-medium uppercase tracking-wide text-white/80">
             Índice de Satisfação
           </span>
@@ -161,7 +151,7 @@ export default function PainSolutionSection() {
         </div>
 
         {/* Giant Connection text with vertical line */}
-        <div className="pain-anim relative mt-2">
+        <div className={`pain-anim relative mt-2 reveal-item ${isVisible ? 'active' : ''}`} style={{ animationDelay: '200ms' }}>
           <div
             aria-hidden="true"
             className="absolute left-1/2 top-0 h-[55%] w-px -translate-x-1/2 bg-white/70"
@@ -183,7 +173,8 @@ export default function PainSolutionSection() {
             {cards.map((c) => (
               <article
                 key={c.title}
-                className="pain-anim group relative aspect-[3/4] rounded-[32px] bg-teal-dark shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] ring-1 ring-inset ring-white/10"
+                className={`pain-anim group relative aspect-[3/4] rounded-[32px] bg-teal-dark shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] ring-1 ring-inset ring-white/10 reveal-item ${isVisible ? 'active' : ''}`}
+                style={{ animationDelay: `${300 + cards.indexOf(c) * 100}ms` }}
               >
                 {/* Content Wrapper for perfect clipping */}
                 <div

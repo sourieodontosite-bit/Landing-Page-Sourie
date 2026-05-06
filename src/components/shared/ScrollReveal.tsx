@@ -1,6 +1,4 @@
-import { useRef } from 'react';
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
+import { useRef, useEffect, useState } from 'react';
 import { type ReactNode } from 'react';
 
 interface ScrollRevealProps {
@@ -23,33 +21,34 @@ export default function ScrollReveal({
   once = true,
 }: ScrollRevealProps) {
   const elementRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
-  useGSAP(() => {
-    if (!elementRef.current) return;
-
-    gsap.fromTo(elementRef.current, 
-      { 
-        opacity: 0, 
-        y: 20 
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.4,
-        delay,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: elementRef.current,
-          start: `top ${100 - (threshold * 50)}%`, // Trigger based on threshold
-          toggleActions: "play none none none",
-          once: once
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          if (once) observer.unobserve(entry.target);
+        } else if (!once) {
+          setIsVisible(false);
         }
-      }
+      },
+      { threshold }
     );
-  }, { scope: elementRef, dependencies: [delay, threshold, once] });
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [threshold, once]);
 
   return (
-    <div ref={elementRef} className={className} style={{ opacity: 0 }}>
+    <div 
+      ref={elementRef} 
+      className={`${className} reveal-item ${isVisible ? 'active' : ''}`}
+      style={{ animationDelay: `${delay * 1000}ms` }}
+    >
       {children}
     </div>
   );

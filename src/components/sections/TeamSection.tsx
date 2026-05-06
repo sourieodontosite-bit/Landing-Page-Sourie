@@ -1,6 +1,4 @@
-import React, { useRef } from 'react';
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
+import React, { useRef, useEffect, useState } from 'react';
 import SectionContainer from '../shared/SectionContainer';
 import { TEAM_MEMBERS } from '../../utils/constants';
 import { InstagramIcon } from '../shared/Icons';
@@ -17,8 +15,11 @@ const memberImages: Record<string, string> = {
   'dr-victor': victorImg,
 };
 
-const TeamMemberCard = React.memo(({ member }: { member: typeof TEAM_MEMBERS[0] }) => (
-  <div className="team-card group relative w-full max-w-[340px] aspect-[4/7.2] rounded-[42px] bg-white/10 backdrop-blur-[2px] p-2 overflow-hidden shadow-card hover:shadow-2xl transition-all duration-500 border border-white/20">
+const TeamMemberCard = React.memo(({ member, index, isVisible }: { member: typeof TEAM_MEMBERS[0], index: number, isVisible: boolean }) => (
+  <div 
+    className={`team-card group relative w-full max-w-[340px] aspect-[4/7.2] rounded-[42px] bg-white/10 backdrop-blur-[2px] p-2 overflow-hidden shadow-card hover:shadow-2xl transition-all duration-500 border border-white/20 reveal-item ${isVisible ? 'active' : ''}`}
+    style={{ animationDelay: `${index * 100}ms` }}
+  >
     <Link to={`/equipe/${member.slug}`} className="block relative w-full h-full rounded-[32px] sm:rounded-[40px] overflow-hidden">
       <img
         src={memberImages[member.slug]}
@@ -74,26 +75,25 @@ TeamMemberCard.displayName = 'TeamMemberCard';
 
 export default function TeamSection() {
   const containerRef = useRef<HTMLDivElement>(null);
-
-  useGSAP(() => {
-    if (!containerRef.current) return;
-
-    gsap.fromTo(".team-card",
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1,
-        y: 0,
-        stagger: 0.1,
-        duration: 0.8,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 85%",
-          once: true
+  const [isVisible, setIsVisible] = useState(false);
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
         }
-      }
+      },
+      { threshold: 0.1 }
     );
-  }, { scope: containerRef });
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <SectionContainer id="equipe" className="overflow-hidden">
@@ -115,8 +115,13 @@ export default function TeamSection() {
         ref={containerRef}
         className="flex flex-wrap items-center justify-center gap-8 lg:gap-12"
       >
-        {TEAM_MEMBERS.map((member) => (
-          <TeamMemberCard key={member.slug} member={member} />
+        {TEAM_MEMBERS.map((member, index) => (
+          <TeamMemberCard 
+            key={member.slug} 
+            member={member} 
+            index={index} 
+            isVisible={isVisible} 
+          />
         ))}
       </div>
 

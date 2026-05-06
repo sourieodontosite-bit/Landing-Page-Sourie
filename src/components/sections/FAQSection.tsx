@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ChevronDown, HelpCircle } from 'lucide-react';
@@ -12,11 +12,11 @@ const FAQS = [
   },
   {
     q: 'A Souriê aceita convênios?',
-    a: 'Sim! Trabalhamos com os principais planos para facilitar seu acesso: Unimed, Amil, Bradesco, Odontoprev, Porto Seguro, SulAmérica, Interodonto e MetLife. Auxiliamos também em processos de reembolso.'
+    a: 'Sim! Trabalhamos com os principais planos: Unimed, Amil, Bradesco, Odontoprev, Porto Seguro, SulAmérica, Interodonto e MetLife.'
   },
   {
     q: 'Quais tecnologias a clínica utiliza?',
-    a: 'Utilizamos o Scanner iTero™ 5D (adeus moldagens!), Raio-X Digital (menor radiação), Câmeras Intraorais e Planejamento Digital do Sorriso (DSD) para resultados previsíveis.'
+    a: 'Utilizamos o Scanner 3D iTero™ (adeus moldagens!) e Câmeras Intraorais de alta definição para um diagnóstico preciso e resultados previsíveis.'
   },
   {
     q: 'Quais as formas de pagamento disponíveis?',
@@ -39,46 +39,25 @@ export default function FAQSection() {
   const gridRef = useRef<HTMLDivElement>(null);
   const accordionRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  useGSAP(() => {
-    if (!sectionRef.current) return;
+  const [isVisible, setIsVisible] = useState(false);
 
-    // Header reveal
-    if (headerRef.current) {
-      gsap.fromTo(headerRef.current.children, 
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          stagger: 0.1,
-          duration: 0.8,
-          ease: "power4.out",
-          force3D: true,
-          scrollTrigger: {
-            trigger: headerRef.current,
-            start: "top 100%",
-            once: true
-          }
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
         }
-      );
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
     }
 
-    // Entrance animation for FAQ items
-    gsap.fromTo(".faq-item",
-      { opacity: 0, y: 20 },
-      {
-        opacity: 1,
-        y: 0,
-        stagger: 0.1,
-        duration: 0.8,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 85%",
-          once: true
-        }
-      }
-    );
-  }, { scope: sectionRef });
+    return () => observer.disconnect();
+  }, []);
 
   // Accordion animation logic
   useGSAP(() => {
@@ -106,8 +85,8 @@ export default function FAQSection() {
   }, { dependencies: [openIndex], scope: sectionRef });
 
   return (
-    <SectionContainer 
-      id="faq" 
+    <SectionContainer
+      id="faq"
       background="bg-gradient-to-b from-[#f1f5f6]/30 to-transparent"
       className="!py-8 md:!py-12 lg:!py-16"
       innerClassName="px-4 sm:px-6 lg:!px-6 xl:!px-0"
@@ -152,27 +131,27 @@ export default function FAQSection() {
 
         <div ref={sectionRef} className="relative z-10 mx-auto w-full max-w-[1280px]">
           <div ref={headerRef} className="text-center mb-10 md:mb-16 faq-header-content max-w-3xl mx-auto px-4 md:px-0">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-primary/10 text-teal-primary text-xs md:text-sm font-bold mb-4 md:mb-6">
+            <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-primary/10 text-teal-primary text-xs md:text-sm font-bold mb-4 md:mb-6 reveal-item ${isVisible ? 'active' : ''}`}>
               <HelpCircle size={16} className="w-4 h-4 md:w-5 md:h-5" />
               Dúvidas Comuns
             </div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium text-teal-dark mb-4 md:mb-6">
+            <h2 className={`text-3xl md:text-4xl lg:text-5xl font-medium text-teal-dark mb-4 md:mb-6 reveal-item ${isVisible ? 'active' : ''}`} style={{ animationDelay: '100ms' }}>
               Perguntas Frequentes
             </h2>
-            <p className="text-base md:text-lg text-text-primary/70">
+            <p className={`text-base md:text-lg text-text-primary/70 reveal-item ${isVisible ? 'active' : ''}`} style={{ animationDelay: '200ms' }}>
               Tudo o que você precisa saber para começar sua jornada rumo ao sorriso perfeito.
             </p>
           </div>
 
           <div ref={gridRef} className="space-y-3 md:space-y-4 max-w-4xl mx-auto px-4 md:px-0">
             {FAQS.map((faq, index) => (
-              <div 
+              <div
                 key={index}
-                className={`faq-item group border rounded-2xl md:rounded-[32px] transition-all duration-300 ${
-                  openIndex === index 
-                  ? 'bg-white border-teal-primary/20 shadow-xl shadow-teal-dark/5' 
+                className={`faq-item group border rounded-2xl md:rounded-[32px] transition-all duration-300 reveal-item ${isVisible ? 'active' : ''} ${openIndex === index
+                  ? 'bg-white border-teal-primary/20 shadow-xl shadow-teal-dark/5'
                   : 'bg-white/50 border-black/5 hover:border-teal-primary/20 hover:bg-white hover:shadow-md'
-                }`}
+                  }`}
+                style={{ animationDelay: `${300 + index * 100}ms` }}
               >
                 <button
                   id={`faq-question-${index}`}
@@ -184,9 +163,8 @@ export default function FAQSection() {
                   <span className={`text-base md:text-lg font-bold transition-colors ${openIndex === index ? 'text-teal-primary' : 'text-teal-dark group-hover:text-teal-primary/80'}`}>
                     {faq.q}
                   </span>
-                  <div className={`shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
-                    openIndex === index ? 'bg-teal-primary text-white rotate-180' : 'bg-teal-dark/5 text-teal-dark group-hover:bg-teal-primary/10 group-hover:text-teal-primary'
-                  }`}>
+                  <div className={`shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center transition-all duration-300 ${openIndex === index ? 'bg-teal-primary text-white rotate-180' : 'bg-teal-dark/5 text-teal-dark group-hover:bg-teal-primary/10 group-hover:text-teal-primary'
+                    }`}>
                     <ChevronDown size={20} className="w-4 h-4 md:w-5 md:h-5" />
                   </div>
                 </button>

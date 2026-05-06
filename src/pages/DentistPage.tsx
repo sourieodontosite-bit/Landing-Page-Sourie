@@ -1,5 +1,5 @@
 import { useParams, Navigate, Link } from 'react-router-dom';
-import { useRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { TEAM_MEMBERS, WHATSAPP_LINK } from '../utils/constants';
@@ -12,6 +12,10 @@ import { OutlineToothIcon } from '../components/shared/Icons';
 import brenoImg from '../assets/breno.webp';
 import estefaniaImg from '../assets/estefania.webp';
 import victorImg from '../assets/victor.webp';
+import techImg from '../assets/Tecnologia.webp';
+import clinic1Img from '../assets/clinica-interna-1.webp';
+import clinic2Img from '../assets/clinica-interna-2.webp';
+import treatmentImg from '../assets/Victor-tratamento.webp';
 
 const teamImages: Record<string, string> = {
   'dr-breno': brenoImg,
@@ -23,6 +27,47 @@ export default function DentistPage() {
   const { slug } = useParams<{ slug: string }>();
   const member = TEAM_MEMBERS.find((m) => m.slug === slug);
   const pageRef = useRef<HTMLDivElement>(null);
+  const bentoRef = useRef<HTMLDivElement>(null);
+  const [isBentoVisible, setIsBentoVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsBentoVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (bentoRef.current) {
+      observer.observe(bentoRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const ctaRef = useRef<HTMLDivElement>(null);
+  const [isCtaVisible, setIsCtaVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsCtaVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (ctaRef.current) {
+      observer.observe(ctaRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   useGSAP(() => {
     const mm = gsap.matchMedia();
@@ -48,20 +93,7 @@ export default function DentistPage() {
         );
     });
 
-    // Keep CTA animation but with once: true for efficiency
-    gsap.fromTo(".cta-card-container",
-      { opacity: 0, y: 40 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1.2,
-        scrollTrigger: {
-          trigger: ".cta-card-container",
-          start: "top 90%",
-          once: true
-        }
-      }
-    );
+    // Removed GSAP CTA animation in favor of pure CSS entry
 
     return () => mm.revert();
   }, { scope: pageRef });
@@ -86,29 +118,30 @@ export default function DentistPage() {
       <div className="absolute top-[20%] -left-[10%] w-[40%] h-[600px] bg-cyan-light/10 blur-[150px] rounded-full -z-10 pointer-events-none" />
 
       {/* Mobile Header (Immersive) */}
-      <div className="lg:hidden relative h-[65vh] w-full overflow-hidden">
+      <div className="lg:hidden relative h-[50dvh] w-full overflow-hidden">
         <img
           src={imageSrc}
           alt={member.name}
-          className="w-full h-full object-cover scale-105 profile-image-container"
+          className="w-full h-full object-cover profile-image-container"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+        {/* Immersive Overlays */}
+        <div className="absolute inset-0 bg-gradient-to-t from-bg-light via-transparent to-black/20" />
+      </div>
 
-        <div className="absolute bottom-6 left-4 right-4 profile-content-container">
-          <div className="bg-white/95 backdrop-blur-2xl rounded-[32px] p-6 shadow-2xl border border-white/50">
-            <Link to="/#equipe" className="inline-flex items-center gap-2 text-teal-primary hover:text-teal-dark transition-colors font-bold text-[10px] tracking-widest uppercase mb-4 bg-teal-primary/5 px-3 py-1.5 rounded-full">
-              <ArrowLeft size={14} /> Voltar para Equipe
-            </Link>
-            <div className="space-y-2">
-              <span className="block text-teal-primary font-bold text-[10px] tracking-[0.3em] uppercase opacity-80">{member.crm}</span>
-              <h1 className="text-4xl font-medium text-teal-dark leading-tight tracking-tight">{member.name}</h1>
-              <p className="text-lg text-text-primary/70 font-medium">{member.role}</p>
-            </div>
+      {/* Mobile Info Card (Overlapping) */}
+      <div className="lg:hidden relative z-10 px-6 -mt-20 profile-content-container">
+        <div className="bg-white/80 backdrop-blur-3xl rounded-[40px] p-8 shadow-[0_20px_50px_-15px_rgba(37,97,111,0.15)] border border-white/50 space-y-4">
+          <div className="space-y-1">
+            <span className="block text-teal-primary font-bold text-[10px] tracking-[0.3em] uppercase opacity-60">{member.crm}</span>
+            <h1 className="text-4xl font-medium text-teal-dark leading-tight tracking-tight">
+              {firstName} <span className="text-teal-primary italic font-serif">{lastName}</span>
+            </h1>
+            <p className="text-lg text-text-primary/70 font-medium">{member.role}</p>
           </div>
         </div>
       </div>
 
-      <SectionContainer className="pt-12 lg:pt-32 pb-20">
+      <SectionContainer className="pt-0 lg:pt-32 pb-20">
         {/* Desktop Header Navigation */}
         <div className="hidden lg:block mb-12 back-button">
           <Link to="/#equipe" className="inline-flex items-center gap-4 text-text-primary/40 hover:text-teal-primary transition-all duration-300 group">
@@ -123,26 +156,19 @@ export default function DentistPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
 
           {/* Left Column: Portrait & Stats (Desktop Only) */}
-          <div className="hidden lg:block lg:col-span-5 relative profile-image-container">
-            <div className="relative">
+          <div className="hidden lg:block lg:col-span-5 relative profile-image-container h-full">
+            <div className="relative h-full">
               {/* Solid Teal Accent Frame */}
               <div className="absolute -inset-4 bg-teal-primary rounded-[60px] -z-10 opacity-5" />
               <div className="absolute top-1/2 -right-8 w-24 h-48 bg-teal-primary rounded-full blur-[60px] opacity-20" />
 
-              <div className="relative aspect-[4/5] rounded-[50px] overflow-hidden border border-white/20 shadow-2xl shadow-teal-dark/10 group bg-bg-light">
+              <div className="relative h-full rounded-[50px] overflow-hidden border border-white/20 shadow-2xl shadow-teal-dark/10 group bg-bg-light">
                 <img
                   src={imageSrc}
                   alt={member.name}
                   className="w-full h-full object-cover scale-105 grayscale-[0.1] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000 ease-out"
                   decoding="async"
                 />
-                {/* Overlay with glass effect on bottom */}
-                <div className="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-teal-dark/80 via-teal-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                  <div className="flex items-center gap-3 text-white">
-                    <OutlineToothIcon size={32} className="opacity-50" />
-                    <span className="text-sm font-medium tracking-wide">Excelência Clínica Souriê</span>
-                  </div>
-                </div>
               </div>
 
               {/* CRM Badge - Floating */}
@@ -154,50 +180,69 @@ export default function DentistPage() {
           </div>
 
           {/* Right Column: Narrative & Specialties */}
-          <div className="lg:col-span-7 profile-content-container space-y-12">
-            {/* Desktop Name/Role */}
-            <div className="hidden lg:block space-y-4">
-              <div className="flex items-center gap-4">
-                <div className="h-px w-12 bg-teal-primary/30" />
-                <span className="text-teal-primary font-bold text-xs tracking-[0.4em] uppercase">{member.role}</span>
-              </div>
-              <h1 className="text-6xl xl:text-8xl font-medium text-teal-dark tracking-tighter leading-[0.95]">
-                {firstName} <br />
-                <span className="text-teal-primary italic font-serif ml-4">{lastName}</span>
-              </h1>
-            </div>
-
-            {/* Bio Section with better typography */}
-            <div className="relative">
-              <div className="absolute -left-8 lg:-left-12 -top-6 text-8xl text-teal-primary/5 font-serif pointer-events-none italic">“</div>
-              <p className="text-xl lg:text-2xl text-text-primary/70 leading-relaxed font-light">
-                {member.bio}
-              </p>
-              <div className="mt-8 flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-teal-primary/10 flex items-center justify-center text-teal-primary">
-                  <OutlineToothIcon size={16} />
+          <div className="lg:col-span-7 profile-content-container flex flex-col h-full lg:justify-between">
+            <div className="flex flex-col space-y-8 lg:space-y-10">
+              {/* Desktop Name/Role */}
+              <div className="hidden lg:block space-y-4">
+                <div className="flex items-center gap-4">
+                  <div className="h-px w-12 bg-teal-primary/30" />
+                  <span className="text-teal-primary font-bold text-xs tracking-[0.4em] uppercase">{member.role}</span>
                 </div>
-                <span className="text-sm font-bold text-teal-dark/40 uppercase tracking-widest">Compromisso com o seu bem-estar</span>
+                <h1 className="text-6xl xl:text-8xl font-medium text-teal-dark tracking-tighter leading-none flex flex-wrap items-baseline gap-x-4">
+                  {firstName} <span className="text-teal-primary italic font-serif">{lastName}</span>
+                </h1>
               </div>
-            </div>
 
-            {/* Specialties Bento-style */}
-            <div className="space-y-6 pt-4">
-              <h3 className="text-xs font-bold uppercase tracking-[0.3em] text-teal-dark/30">Áreas de Especialização</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {member.specialties.map((specialty, idx) => (
-                  <div key={idx} className="flex items-center gap-4 bg-white border border-teal-primary/5 p-5 rounded-[24px] shadow-sm hover:shadow-md hover:border-teal-primary/20 transition-all duration-300 group">
-                    <div className="w-10 h-10 rounded-xl bg-teal-primary/5 flex items-center justify-center text-teal-primary group-hover:bg-teal-primary group-hover:text-white transition-colors">
-                      <OutlineToothIcon size={20} />
+              {/* Specialties Section - Order 1 on Mobile */}
+              <div className="order-1 lg:order-2 space-y-6 pt-0 lg:pt-8">
+                <h3 className="text-xs font-bold uppercase tracking-[0.3em] text-teal-dark/30">Áreas de Especialização</h3>
+                <div className="flex flex-wrap gap-3">
+                  {member.specialties.map((specialty, idx) => (
+                    <div key={idx} className="flex items-center gap-3 bg-white border border-teal-primary/10 px-5 py-3 rounded-full shadow-sm hover:shadow-md hover:border-teal-primary/30 transition-all duration-300 group">
+                      <div className="w-6 h-6 rounded-full bg-teal-primary/5 flex items-center justify-center text-teal-primary group-hover:bg-teal-primary group-hover:text-white transition-colors">
+                        <OutlineToothIcon size={14} />
+                      </div>
+                      <span className="text-sm font-bold text-teal-dark">{specialty}</span>
                     </div>
-                    <span className="font-bold text-teal-dark">{specialty}</span>
-                  </div>
-                ))}
+                  ))}
+                </div>
+              </div>
+
+              {/* Bio Section - Order 2 on Mobile */}
+              <div className="order-2 lg:order-1 relative">
+                <div className="absolute -left-8 lg:-left-12 -top-6 text-8xl text-teal-primary/5 font-serif pointer-events-none italic">“</div>
+                <p className="text-xl lg:text-2xl text-text-primary/70 leading-relaxed font-light">
+                  {member.bio}
+                </p>
               </div>
             </div>
           </div>
         </div>
+
+        <div ref={bentoRef} className="mt-12 lg:mt-16">
+          <div className="grid grid-cols-2 md:grid-cols-4 md:grid-rows-2 gap-3 lg:gap-4 h-[450px] md:h-[450px]">
+            {/* Main large item */}
+            <div className={`col-span-2 md:row-span-2 group relative overflow-hidden rounded-3xl md:rounded-[32px] shadow-sm reveal-item ${isBentoVisible ? 'active' : ''}`} style={{ animationDelay: '100ms' }}>
+              <img src={clinic1Img} alt="Clínica Souriê - Ambiente Interno" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+            </div>
+
+            {/* Top wide item */}
+            <div className={`col-span-2 group relative overflow-hidden rounded-3xl md:rounded-[32px] shadow-sm reveal-item ${isBentoVisible ? 'active' : ''}`} style={{ animationDelay: '200ms' }}>
+              <img src={techImg} alt="Tecnologia iTero 3D" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+            </div>
+
+            {/* Bottom smaller items */}
+            <div className={`group relative overflow-hidden rounded-3xl md:rounded-[32px] shadow-sm reveal-item ${isBentoVisible ? 'active' : ''}`} style={{ animationDelay: '300ms' }}>
+              <img src={treatmentImg} alt="Atendimento Especializado" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+            </div>
+
+            <div className={`group relative overflow-hidden rounded-3xl md:rounded-[32px] shadow-sm reveal-item ${isBentoVisible ? 'active' : ''}`} style={{ animationDelay: '400ms' }}>
+              <img src={clinic2Img} alt="Clínica Souriê - Detalhes" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+            </div>
+          </div>
+        </div>
       </SectionContainer>
+
 
       {/* Meet Others - Horizontal Gallery */}
       <SectionContainer className="bg-bg-light/30 border-y border-teal-primary/5 py-20">
@@ -232,7 +277,10 @@ export default function DentistPage() {
 
       <SectionContainer className="pt-16 lg:pt-20 pb-16 lg:pb-24" innerClassName="!py-0">
         {/* Full Width CTA: Premium High-Conversion Design */}
-        <div className="cta-card-container">
+        <div 
+          ref={ctaRef}
+          className={`cta-card-container transition-all duration-1000 ease-out reveal-item ${isCtaVisible ? 'active' : ''}`}
+        >
           <div className="bg-navy-dark rounded-[48px] lg:rounded-[64px] p-10 lg:p-24 text-white relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-12 group">
 
             {/* Dynamic Background Effects */}
@@ -273,6 +321,7 @@ export default function DentistPage() {
           </div>
         </div>
       </SectionContainer>
+
     </div>
   );
 }

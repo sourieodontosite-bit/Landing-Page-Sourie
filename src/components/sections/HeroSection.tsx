@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import Button from '../shared/Button';
 import { WHATSAPP_LINK } from '../../utils/constants';
 import TrustMarquee from './TrustMarquee';
+import heroImageMobile from '../../assets/hero-image-mobile.webp';
 const heroImage = '/hero-image.webp';
 
 
@@ -58,23 +59,23 @@ export default function HeroSection() {
     <section
       id="hero"
       ref={containerRef}
-      className="relative h-[100dvh] md:h-screen flex flex-col p-0 md:p-3 lg:p-4 lg:pt-2 overflow-hidden"
+      className="relative h-[100svh] md:h-screen flex flex-col p-2 md:p-3 lg:p-4 lg:pt-2 overflow-hidden"
     >
-      {/* Top Progressive Color Overlay */}
-      <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-[#081d22]/95 via-navy-dark/40 to-transparent pointer-events-none z-10 md:hidden" />
-
       {/* Background Card */}
-      <div className="absolute inset-0 md:inset-3 lg:inset-4 lg:top-2 z-0 rounded-none md:rounded-[32px] lg:rounded-[40px] overflow-hidden bg-navy-dark isolation-isolate transform-gpu">
-        <img
-          ref={imageRef}
-          src={heroImage}
-          alt="Paciente sorrindo na clínica odontológica Souriê"
-          className="w-full h-full object-cover object-[75%_center] md:object-center scale-100"
-          fetchPriority="high"
-          decoding="async"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/90 via-navy-dark/40 to-transparent md:bg-gradient-to-r md:from-navy-dark/80 md:via-navy-dark/40 md:to-transparent pointer-events-none" />
-        
+      <div className="absolute inset-2 md:inset-3 lg:inset-4 lg:top-2 z-0 rounded-[24px] md:rounded-[32px] lg:rounded-[40px] overflow-hidden bg-navy-dark isolation-isolate transform-gpu">
+        <picture className="w-full h-full">
+          <source srcSet={heroImageMobile} media="(max-width: 767px)" />
+          <img
+            ref={imageRef}
+            src={heroImage}
+            alt="Paciente sorrindo na clínica odontológica Souriê"
+            className="w-full h-full object-cover object-[center_bottom] md:object-center scale-100"
+            fetchPriority="high"
+            decoding="async"
+          />
+        </picture>
+        <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/40 via-navy-dark/10 to-transparent md:bg-gradient-to-r md:from-navy-dark/80 md:via-navy-dark/40 md:to-transparent pointer-events-none" />
+
         {/* Trust Marquee overlaid at the bottom */}
         <div className="absolute bottom-0 inset-x-0 z-20">
           <TrustMarquee />
@@ -82,13 +83,13 @@ export default function HeroSection() {
       </div>
 
       {/* Hero Content */}
-      <div className="relative z-10 flex-1 flex items-end md:items-center pb-24 sm:pb-28 md:pb-10 pt-24">
+      <div className="relative z-10 flex-1 flex items-start md:items-center pb-24 sm:pb-28 md:pb-10 pt-32 sm:pt-40 md:pt-24">
         <div className="max-w-page mx-auto px-4 sm:px-6 lg:px-[63px] w-full">
-          <div className="max-w-2xl flex flex-col items-start text-left">
+          <div className="max-w-2xl flex flex-col items-center md:items-start text-center md:text-left mx-auto md:mx-0">
             {/* Badge */}
             <div
               ref={badgeRef}
-              className="hero-mobile-anim hero-delay-1 inline-flex items-center gap-1.5 sm:gap-2 bg-white/15 backdrop-blur-sm border border-white/25 rounded-pill px-3 sm:px-5 py-1 sm:py-2 [@media(min-width:1024px)_and_(max-height:800px)]:px-4 [@media(min-width:1024px)_and_(max-height:800px)]:py-1.5 mb-4 sm:mb-8 [@media(min-width:1024px)_and_(max-height:800px)]:mb-5"
+              className="hero-entrance md:opacity-100 md:animate-none hero-delay-1 inline-flex items-center gap-1.5 sm:gap-2 bg-white/15 backdrop-blur-sm border border-white/25 rounded-pill px-3 sm:px-5 py-1 sm:py-2 [@media(min-width:1024px)_and_(max-height:800px)]:px-4 [@media(min-width:1024px)_and_(max-height:800px)]:py-1.5 mb-4 sm:mb-8 [@media(min-width:1024px)_and_(max-height:800px)]:mb-5"
             >
               <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 [@media(min-width:1024px)_and_(max-height:800px)]:w-1.5 [@media(min-width:1024px)_and_(max-height:800px)]:h-1.5 rounded-full bg-cyan-light animate-pulse-subtle" />
               <span className="text-white text-[9px] sm:text-[11px] lg:text-xs xl:text-[11px] 2xl:text-[11px] [@media(min-width:1024px)_and_(max-height:800px)]:text-[9px] tracking-widest font-bold uppercase">
@@ -98,7 +99,7 @@ export default function HeroSection() {
 
             <h1
               ref={titleRef}
-              className="hero-mobile-anim hero-delay-2 text-4xl sm:text-5xl lg:text-6xl xl:text-6xl 2xl:text-7xl font-medium text-white leading-[1.05] mb-6 sm:mb-8"
+              className="hero-entrance md:opacity-100 md:animate-none hero-delay-2 text-4xl sm:text-5xl lg:text-6xl xl:text-6xl 2xl:text-7xl font-medium text-white leading-[1.05] mb-6 sm:mb-8"
             >
               Seu sorriso,<br />
               nossa prioridade
@@ -106,13 +107,13 @@ export default function HeroSection() {
 
             <p
               ref={textRef}
-              className="hero-mobile-anim hero-delay-3 text-white/85 text-lg xl:text-xl 2xl:text-2xl mb-5 sm:mb-6 max-w-xl mx-0 leading-relaxed font-light"
+              className="hero-entrance md:opacity-100 md:animate-none hero-delay-3 text-white/85 text-lg xl:text-xl 2xl:text-2xl mb-5 sm:mb-6 max-w-xl mx-0 leading-relaxed font-light"
             >
               Tecnologia, atenção e qualidade para <br className="block sm:hidden" /> transformar sua autoestima e saúde.
             </p>
 
-            <div ref={buttonRef} className="hero-mobile-anim hero-delay-4">
-              <div className="lg:scale-[0.85] origin-left inline-block">
+            <div ref={buttonRef} className="hero-entrance md:opacity-100 md:animate-none hero-delay-4">
+              <div className="lg:scale-[0.85] origin-center md:origin-left inline-block">
                 <Button
                   text="Agende sua consulta"
                   icon="arrow-circle"

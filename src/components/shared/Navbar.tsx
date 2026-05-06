@@ -100,7 +100,17 @@ interface MobileMenuOverlayProps {
 }
 
 const MobileMenuOverlay = React.memo(({ mobileMenuOpen, mobileMenuRef, expandedMobile, setExpandedMobile, setMobileMenuOpen, currentPath }: MobileMenuOverlayProps) => {
-  if (!mobileMenuOpen) return null;
+  const [shouldRender, setShouldRender] = useState(mobileMenuOpen);
+
+  useEffect(() => {
+    if (mobileMenuOpen) setShouldRender(true);
+  }, [mobileMenuOpen]);
+
+  const handleAnimationEnd = () => {
+    if (!mobileMenuOpen) setShouldRender(false);
+  };
+
+  if (!shouldRender) return null;
 
   const handleLinkClick = (e: React.MouseEvent, href: string) => {
     if (href.startsWith('/#') && currentPath === '/') {
@@ -121,11 +131,16 @@ const MobileMenuOverlay = React.memo(({ mobileMenuOpen, mobileMenuRef, expandedM
   return (
     <div
       ref={mobileMenuRef}
-      className="absolute top-full left-4 right-4 mt-3 lg:hidden z-50"
+      className={`absolute top-full left-4 right-4 mt-3 lg:hidden z-50 transition-all duration-300 ease-out transform ${mobileMenuOpen ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 -translate-y-4 scale-95 pointer-events-none'}`}
+      onTransitionEnd={handleAnimationEnd}
     >
       <div className="bg-white/80 backdrop-blur-md rounded-[32px] shadow-xl border border-white/50 p-6 flex flex-col gap-2 relative overflow-hidden max-h-[80vh] overflow-y-auto">
-        {NAV_LINKS.map((link) => (
-          <div key={link.label} className="mobile-nav-item">
+        {NAV_LINKS.map((link, idx) => (
+            <div 
+              key={link.label} 
+              className={`mobile-nav-item transition-all duration-500 ${mobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+              style={{ transitionDelay: `${idx * 50}ms` }}
+            >
             {link.subLinks ? (
               <div className="space-y-1">
                 <div
@@ -181,7 +196,10 @@ const MobileMenuOverlay = React.memo(({ mobileMenuOpen, mobileMenuRef, expandedM
             )}
           </div>
         ))}
-        <div className="my-2 border-t border-stone-100 pt-4 mobile-nav-item">
+        <div 
+          className={`my-2 border-t border-stone-100 pt-4 mobile-nav-item transition-all duration-500 ${mobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+          style={{ transitionDelay: `${NAV_LINKS.length * 50}ms` }}
+        >
           <Button
             text="Agendar avaliação"
             variant="primary"
@@ -200,7 +218,6 @@ MobileMenuOverlay.displayName = 'MobileMenuOverlay';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
   const lastScrollY = useRef(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -239,12 +256,6 @@ export default function Navbar() {
           const currentScrollY = window.scrollY;
           setIsScrolled(currentScrollY > 50);
 
-          if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
-            setIsVisible(false);
-          } else {
-            setIsVisible(true);
-          }
-
           lastScrollY.current = currentScrollY;
           ticking = false;
         });
@@ -255,19 +266,7 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Handle mobile menu animation
-  useGSAP(() => {
-    if (mobileMenuOpen && mobileMenuRef.current) {
-      gsap.fromTo(mobileMenuRef.current,
-        { opacity: 0, y: -10, scale: 0.95 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.3, ease: "power2.out" }
-      );
-      gsap.fromTo(".mobile-nav-item",
-        { opacity: 0, y: 10 },
-        { opacity: 1, y: 0, stagger: 0.05, duration: 0.4, ease: "power2.out", delay: 0.1 }
-      );
-    }
-  }, { dependencies: [mobileMenuOpen] });
+  // Removed GSAP mobile menu animation in favor of pure CSS transitions
 
   // Scroll spy logic
   useGSAP(() => {
@@ -323,7 +322,7 @@ export default function Navbar() {
   }, { dependencies: [isScrolled] });
 
   return (
-    <nav ref={navContainerRef} className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 pointer-events-none ${isScrolled ? 'py-4 lg:py-3' : 'py-6 lg:py-8'} ${isVisible || mobileMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}>
+    <nav ref={navContainerRef} className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 pointer-events-none ${isScrolled ? 'py-4 lg:py-3' : 'py-6 lg:py-8'} translate-y-0`}>
       <div
         ref={gradientRef}
         className="absolute inset-x-0 top-0 h-24 lg:h-32 bg-gradient-to-b from-white/30 to-transparent pointer-events-none opacity-0"
@@ -343,18 +342,18 @@ export default function Navbar() {
             : 'bg-transparent border-transparent px-0 py-3 lg:py-2'
           }
         `}>
-          {isProcedurePage ? (
-            <Link to="/#equipe" className="flex items-center gap-2 group justify-self-start md:hidden">
+          {(isProcedurePage || (isDentistPage && isMobile)) ? (
+            <Link to={isProcedurePage ? "/#servicos" : "/#equipe"} className="flex items-center gap-2 group justify-self-start md:hidden">
               <div className={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors duration-500 ${isScrolled ? 'bg-teal-primary/10' : 'bg-white/20'}`}>
                 <ArrowLeft size={18} className={isScrolled ? 'text-teal-primary' : 'text-white'} />
               </div>
-              <span className={`font-semibold text-xl tracking-tight transition-colors duration-500 ${isScrolled ? 'text-teal-primary' : 'text-white'}`}>
+              <span className={`font-semibold text-lg tracking-tight transition-colors duration-500 ${isScrolled ? 'text-teal-primary' : 'text-white'}`}>
                 Voltar
               </span>
             </Link>
           ) : null}
 
-          <Link to="/" className={`flex items-center group justify-self-start ${isProcedurePage ? 'hidden md:flex' : ''}`}>
+          <Link to="/" className={`flex items-center group justify-self-start ${(isProcedurePage || (isDentistPage && isMobile)) ? 'hidden md:flex' : ''}`}>
             <div
               className={`transition-all duration-500 ${isDarkText ? 'bg-teal-primary' : 'bg-white'} logo-mask`}
               style={{

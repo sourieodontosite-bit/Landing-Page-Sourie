@@ -25,6 +25,7 @@ interface ServiceItem {
 interface PageContent {
   title: string;
   category: string;
+  sectionTitle: string;
   description: string;
   mainImage: string;
   services: ServiceItem[];
@@ -34,6 +35,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
   'ortodontia': {
     title: 'Ortodontia Moderna',
     category: 'Serviços',
+    sectionTitle: 'Seu sorriso alinhado, do jeito que você sempre quis',
     description: 'Alinhamento perfeito com o máximo de discrição e conforto, incluindo a tecnologia Invisalign™.',
     mainImage: ortodontiaImg,
     services: [
@@ -46,6 +48,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
   'clinica-geral': {
     title: 'Clínica Geral',
     category: 'Serviços',
+    sectionTitle: 'Saúde bucal completa, de perto e com carinho',
     description: 'A base para uma saúde bucal perfeita e prevenção de problemas futuros através de diagnósticos precisos.',
     mainImage: clinicaGeralImg,
     services: [
@@ -58,12 +61,12 @@ const PAGES_CONTENT: Record<string, PageContent> = {
   'odontologia-estetica': {
     title: 'Odontologia Estética',
     category: 'Serviços',
+    sectionTitle: 'Um sorriso que transforma o seu rosto e a sua confiança',
     description: 'Transforme a harmonia do seu rosto através de um sorriso planejado digitalmente, incluindo clareamento e lentes.',
     mainImage: esteticaImg,
     services: [
       { name: 'Lentes de Contato', desc: 'Lâminas ultrafinas de porcelana para corrigir cor e formato.' },
       { name: 'Clareamento Premium', desc: 'Dentes brancos com baixa sensibilidade e resultados duradouros.' },
-      { name: 'DSD (Digital Smile Design)', desc: 'Planejamento digital personalizado para o seu rosto.' },
       { name: 'Toxina Botulínica', desc: 'Suavização de linhas de expressão e harmonização facial.' },
       { name: 'Preenchimento Facial', desc: 'Restauração de volume e contorno com ácido hialurônico.' },
       { name: 'Facetas de Resina', desc: 'Transformação rápida e estética para o seu sorriso.' },
@@ -72,6 +75,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
   'cirurgias-e-canal': {
     title: 'Cirurgias e Canal',
     category: 'Serviços',
+    sectionTitle: 'Tratamentos precisos para resolver o que mais te preocupa',
     description: 'Tratamentos complexos realizados com precisão, tecnologia e total conforto.',
     mainImage: canalImg,
     services: [
@@ -84,6 +88,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
   'proteses-e-implantes': {
     title: 'Próteses e Implantes',
     category: 'Serviços',
+    sectionTitle: 'Recupere sua função, sua estética e o prazer de sorrir',
     description: 'Recupere a funcionalidade completa e a estética do seu sorriso com soluções de implantes e reabilitação.',
     mainImage: proteseImg,
     services: [
@@ -96,6 +101,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
   'odontopediatria': {
     title: 'Odontopediatria',
     category: 'Serviços',
+    sectionTitle: 'Cuidando do sorriso de quem você mais ama',
     description: 'Cuidado especializado e lúdico para que as crianças cresçam com sorrisos saudáveis e sem traumas.',
     mainImage: odontopediatriaImg,
     services: [
@@ -160,7 +166,7 @@ export default function InternalPage() {
       {/* Dynamic Hero Section */}
       <section 
         ref={heroContainerRef}
-        className="relative min-h-[100dvh] flex flex-col p-0 md:p-3 lg:p-4 overflow-hidden"
+        className="relative h-[50dvh] md:h-screen flex flex-col p-0 md:p-3 lg:p-4 overflow-hidden"
       >
         {/* Background Card */}
         <div className="absolute inset-0 md:inset-3 lg:inset-4 z-0 rounded-none md:rounded-[32px] lg:rounded-[40px] overflow-hidden bg-navy-dark isolation-isolate transform-gpu">
@@ -168,15 +174,18 @@ export default function InternalPage() {
             ref={heroImageRef}
             src={page.mainImage}
             alt={page.title}
-            className="w-full h-full object-cover opacity-80"
+            className="w-full h-full object-cover opacity-80 md:opacity-80"
             fetchPriority="high"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/95 via-navy-dark/40 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-b from-navy-dark/70 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/95 via-navy-dark/40 to-transparent hidden md:block" />
+          <div className="absolute inset-0 bg-gradient-to-b from-navy-dark/70 via-transparent to-transparent hidden md:block" />
+          
+          {/* Mobile Specific Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-bg-light via-transparent to-black/20 md:hidden" />
         </div>
 
-        {/* Hero Content */}
-        <div className="relative z-10 flex-1 flex items-center py-20 lg:py-32">
+        {/* Hero Content (Desktop) */}
+        <div className="relative z-10 flex-1 hidden md:flex items-center py-20 lg:py-32">
           <div className="max-w-page mx-auto w-full px-6 sm:px-10 lg:px-container-x">
             <div ref={heroContentRef} className="max-w-2xl flex flex-col items-start text-left">
               <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/25 rounded-full px-4 py-1.5 mb-6 sm:mb-8">
@@ -204,19 +213,36 @@ export default function InternalPage() {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1 animate-bounce-slow">
+        {/* Scroll Indicator (Desktop) */}
+        <div className="hidden md:flex absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex-col items-center gap-1 animate-bounce-slow">
           <ChevronDown size={24} className="text-white/40" strokeWidth={3} />
           <span className="text-white/40 text-[10px] font-bold uppercase tracking-[0.2em]">Explore</span>
         </div>
       </section>
+
+      {/* Mobile Info Card (Overlapping) */}
+      <div className="md:hidden relative z-20 px-6 -mt-20">
+        <div className="bg-white/80 backdrop-blur-3xl rounded-[40px] p-8 shadow-[0_20px_50px_-15px_rgba(37,97,111,0.15)] border border-white/50 space-y-6">
+          <div className="space-y-2">
+            <div className="inline-flex items-center gap-2 bg-teal-primary/10 rounded-full px-3 py-1">
+              <div className="w-1.5 h-1.5 rounded-full bg-teal-primary animate-pulse" />
+              <span className="text-teal-primary text-[10px] tracking-widest font-bold uppercase">
+                {page.category}
+              </span>
+            </div>
+            <h1 className="text-4xl font-medium text-teal-dark leading-tight tracking-tight">
+              {page.title}
+            </h1>
+          </div>
+        </div>
+      </div>
 
       {/* Services Grid Section */}
       <SectionContainer className="py-0" innerClassName="!pt-16 !pb-12 lg:!pt-24 lg:!pb-16">
         <div className="space-y-16 lg:space-y-24">
           <div className="max-w-3xl space-y-6">
             <h2 className="text-3xl lg:text-5xl font-medium text-teal-dark leading-tight">
-              Excelência e cuidado em cada detalhe do seu tratamento
+              {page.sectionTitle}
             </h2>
             <p className="text-xl text-text-primary/70 leading-relaxed">
               {page.description}
@@ -324,6 +350,7 @@ export default function InternalPage() {
           </div>
         </div>
       </SectionContainer>
+
     </div>
   );
 }

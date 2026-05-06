@@ -1,10 +1,8 @@
 import { useRef, useState, useEffect } from 'react';
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
 import { Play, Volume2, VolumeX, Star, Quote, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { TESTIMONIALS } from '../../utils/constants';
 import type { Testimonial } from '../../utils/constants';
-import { Easing } from '../../utils/gsapAnimations';
+
 import SectionContainer from '../shared/SectionContainer';
 import { OutlineToothIcon } from '../shared/Icons';
 import Badge from '../shared/Badge';
@@ -24,46 +22,25 @@ export default function TestimonialsSection() {
 
   const slides = TESTIMONIALS.slice(0, 3);
 
-  useGSAP(() => {
-    // Initial Reveal
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top 85%",
-      }
-    });
+  const [isVisible, setIsVisible] = useState(false);
 
-    tl.fromTo(".testimonial-header-item",
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1,
-        y: 0,
-        stagger: 0.05,
-        duration: 0.6,
-        ease: Easing.premium
-      }
-    )
-      .fromTo(".slider-container-reveal",
-        { opacity: 0, y: 40 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: Easing.premium
-        },
-        "-=0.4"
-      )
-      .fromTo(".cta-card-reveal",
-        { opacity: 0, y: 40 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: Easing.premium
-        },
-        "-=0.6"
-      );
-  }, { scope: sectionRef });
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   // Slide Change Animation
   useEffect(() => {
@@ -136,27 +113,27 @@ export default function TestimonialsSection() {
           <div className="space-y-8 max-w-3xl flex flex-col items-center lg:items-start">
             <Badge
               text="Nota máxima no Google"
-              className="testimonial-header-item !bg-teal-primary/10 !border-teal-primary/20 !text-teal-dark"
+              className={`testimonial-header-item reveal-item ${isVisible ? 'active' : ''} !bg-teal-primary/10 !border-teal-primary/20 !text-teal-dark`}
               icon={
                 <div className="flex gap-0.5 text-teal-primary">
                   {[...Array(5)].map((_, i) => <Star key={i} size={12} fill="currentColor" />)}
                 </div>
               }
             />
-            <h2 className="testimonial-header-item text-4xl lg:text-7xl font-medium text-teal-dark tracking-tight leading-none">
+            <h2 className={`testimonial-header-item reveal-item ${isVisible ? 'active' : ''} text-4xl lg:text-7xl font-medium text-teal-dark tracking-tight leading-none`} style={{ animationDelay: '100ms' }}>
               O que dizem <br />
               <span className="italic font-serif text-teal-primary">sobre nós?</span>
             </h2>
           </div>
 
-          <div className="testimonial-header-item hidden lg:block text-right">
+          <div className={`testimonial-header-item reveal-item ${isVisible ? 'active' : ''} hidden lg:block text-right`} style={{ animationDelay: '200ms' }}>
             <p className="text-teal-dark/40 text-sm font-medium uppercase tracking-widest mb-2">Google Reviews</p>
             <p className="text-7xl font-bold text-teal-dark tracking-tighter">5.0</p>
           </div>
         </div>
 
         {/* Slider System */}
-        <div className="slider-container-reveal relative group">
+        <div className={`slider-container-reveal reveal-item ${isVisible ? 'active' : ''} relative group`} style={{ animationDelay: '300ms' }}>
           {/* Navigation Buttons - Lateral */}
           <div className="absolute top-1/2 -left-4 lg:-left-12 -translate-y-1/2 z-30 hidden md:block">
             <button
@@ -250,7 +227,7 @@ export default function TestimonialsSection() {
         </div>
 
         {/* Final CTA Card - Now outside and static */}
-        <div className="cta-card-reveal group relative min-h-[350px] lg:min-h-[450px] rounded-[40px] lg:rounded-[60px] overflow-hidden bg-teal-primary flex flex-col items-center justify-center text-center p-8 lg:p-20 shadow-xl border border-white/10 transition-all duration-700">
+        <div className={`cta-card-reveal reveal-item ${isVisible ? 'active' : ''} group relative min-h-[350px] lg:min-h-[450px] rounded-[40px] lg:rounded-[60px] overflow-hidden bg-teal-primary flex flex-col items-center justify-center text-center p-8 lg:p-20 shadow-xl border border-white/10 transition-all duration-700`} style={{ animationDelay: '400ms' }}>
           <div className="absolute inset-0 opacity-10 pointer-events-none">
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent scale-150" />
           </div>
