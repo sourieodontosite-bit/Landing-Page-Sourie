@@ -1,18 +1,20 @@
 import { useRef, useState } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import { Star, Quote, ChevronLeft, ChevronRight, Heart, ExternalLink } from 'lucide-react';
+import { Star, Quote, ChevronLeft, ChevronRight, Heart, ExternalLink, User } from 'lucide-react';
 import { TESTIMONIALS, WHATSAPP_LINK } from '../../utils/constants';
 import SectionContainer from '../shared/SectionContainer';
 import Button from '../shared/Button';
 import { OutlineToothIcon, GoogleIcon } from '../shared/Icons';
 
-import testimonial1Img from '../../assets/testimonial-1.png';
-import testimonial2Img from '../../assets/testimonial-2.png';
-import testimonial3Img from '../../assets/testimonial-3.png';
-
-// Mirrors the order/repetition of the original TESTIMONIALS data
-const TESTIMONIAL_IMAGES = [testimonial1Img, testimonial2Img, testimonial3Img, testimonial1Img];
+// Avatar color palette — tonal variations aligned with the brand's teal palette
+const AVATAR_COLORS = [
+  { bg: 'bg-white/20', icon: 'text-white' },
+  { bg: 'bg-white/10', icon: 'text-white/80' },
+  { bg: 'bg-white/15', icon: 'text-white/90' },
+  { bg: 'bg-white/20', icon: 'text-white' },
+  { bg: 'bg-white/10', icon: 'text-white/70' },
+];
 
 
 export default function BentoTestimonialsSection() {
@@ -121,13 +123,14 @@ export default function BentoTestimonialsSection() {
               <div className="flex items-center gap-4">
                 <div className="flex -space-x-3">
                   {testimonials.map((t, i) => (
-                    <div 
-                      key={i} 
-                      className={`w-10 h-10 rounded-full border-2 border-teal-dark overflow-hidden transition-all duration-300 cursor-pointer ${activeIdx === i ? 'scale-110 z-20 ring-2 ring-white' : 'opacity-50 hover:opacity-100'}`}
+                    <button
+                      key={i}
+                      aria-label={`Ver depoimento de ${t.name}`}
+                      className={`w-10 h-10 rounded-full border-2 border-teal-dark flex items-center justify-center transition-all duration-300 cursor-pointer ${AVATAR_COLORS[i % AVATAR_COLORS.length].bg} ${activeIdx === i ? 'scale-110 z-20 ring-2 ring-white' : 'opacity-50 hover:opacity-100'}`}
                       onClick={() => setActiveIdx(i)}
                     >
-                      <img src={TESTIMONIAL_IMAGES[i]} alt={t.name} className="w-full h-full object-cover" />
-                    </div>
+                      <User size={18} className={AVATAR_COLORS[i % AVATAR_COLORS.length].icon} aria-hidden="true" />
+                    </button>
                   ))}
                 </div>
                 <span className="text-white/40 font-bold uppercase tracking-[0.2em] text-[10px] ml-2 hidden sm:block">Depoimentos</span>
@@ -141,15 +144,20 @@ export default function BentoTestimonialsSection() {
 
             <div className="flex-1 flex flex-col justify-center relative z-10">
               <div key={activeIdx} className="animate-in fade-in slide-in-from-bottom-4 duration-700">
-                <p className="text-2xl lg:text-4xl font-medium text-white leading-tight mb-8 tracking-tight italic">
-                  "{testimonials[activeIdx].quote}"
+                {/* Decorative opening quote */}
+                <span className="block font-serif text-white/30 text-5xl leading-none mb-2 select-none" aria-hidden="true">&ldquo;</span>
+                <p className="text-lg lg:text-2xl font-normal text-white/95 leading-relaxed mb-8 tracking-normal">
+                  {testimonials[activeIdx].quote}
                 </p>
-                <div className="space-y-1">
-                  <h4 className="font-bold text-white text-xl">{testimonials[activeIdx].name}</h4>
-                  <div className="flex gap-0.5 text-amber-400">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} size={14} fill="currentColor" />
-                    ))}
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-px bg-white/30" aria-hidden="true" />
+                  <div className="space-y-1">
+                    <h4 className="font-semibold text-white text-base leading-tight">{testimonials[activeIdx].name}</h4>
+                    <div className="flex gap-0.5 text-amber-400">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} size={12} fill="currentColor" />
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -199,8 +207,8 @@ export default function BentoTestimonialsSection() {
               <span className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">Cuidado Genuíno</span>
               <div className="flex -space-x-2">
                 {[...Array(3)].map((_, i) => (
-                  <div key={i} className="w-6 h-6 rounded-full bg-white/10 border-2 border-teal-dark flex items-center justify-center">
-                    <div className="w-1.5 h-1.5 rounded-full bg-white" />
+                  <div key={i} className={`w-6 h-6 rounded-full border-2 border-teal-dark flex items-center justify-center ${AVATAR_COLORS[i].bg}`}>
+                    <User size={12} className={AVATAR_COLORS[i].icon} aria-hidden="true" />
                   </div>
                 ))}
               </div>
