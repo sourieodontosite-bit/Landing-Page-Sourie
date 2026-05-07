@@ -12,15 +12,50 @@ import { OutlineToothIcon } from '../components/shared/Icons';
 import brenoImg from '../assets/breno.webp';
 import estefaniaImg from '../assets/estefania.webp';
 import victorImg from '../assets/victor.webp';
-import techImg from '../assets/Tecnologia.webp';
-import clinic1Img from '../assets/clinica-interna-1.webp';
-import clinic2Img from '../assets/clinica-interna-2.webp';
-import treatmentImg from '../assets/Victor-tratamento.webp';
+
+// Breno Bento Images
+import brenoBento1 from '../assets/DentistPage/Breno/bento1.webp';
+import brenoBento2 from '../assets/DentistPage/Breno/Tecnologia.webp';
+import brenoBento3 from '../assets/DentistPage/Breno/bento3.webp';
+import brenoBento4 from '../assets/DentistPage/Breno/bento4.webp';
+
+// Estefania Bento Images
+import estefaniaBento1 from '../assets/DentistPage/Estefania/bento1.webp';
+import estefaniaBento2 from '../assets/DentistPage/Estefania/bento2.webp';
+import estefaniaBento3 from '../assets/DentistPage/Estefania/bento3.webp';
+import estefaniaBento4 from '../assets/DentistPage/Estefania/bento4.webp';
+
+// Victor Bento Images
+import victorBento1 from '../assets/DentistPage/Victor/bento 1.webp';
+import victorBento2 from '../assets/DentistPage/Victor/bento 2.webp';
+import victorBento3 from '../assets/DentistPage/Victor/bento 3.webp';
+import victorBento4 from '../assets/DentistPage/Victor/bento 4.webp';
 
 const teamImages: Record<string, string> = {
   'dr-breno': brenoImg,
   'dra-estefania': estefaniaImg,
   'dr-victor': victorImg,
+};
+
+const bentoImagesMap: Record<string, { src: string; pos: string }[]> = {
+  'dr-breno': [
+    { src: brenoBento4, pos: 'object-bottom' },
+    { src: brenoBento1, pos: 'object-center' },
+    { src: brenoBento3, pos: 'object-center' },
+    { src: brenoBento2, pos: 'object-center' },
+  ],
+  'dra-estefania': [
+    { src: estefaniaBento1, pos: 'object-[center_75%]' },
+    { src: estefaniaBento4, pos: 'object-center' },
+    { src: estefaniaBento3, pos: 'object-center' },
+    { src: estefaniaBento2, pos: 'object-center' },
+  ],
+  'dr-victor': [
+    { src: victorBento4, pos: 'object-center' },
+    { src: victorBento1, pos: 'object-bottom' },
+    { src: victorBento3, pos: 'object-center' },
+    { src: victorBento2, pos: 'object-center' },
+  ],
 };
 
 export default function DentistPage() {
@@ -103,6 +138,7 @@ export default function DentistPage() {
   }
 
   const imageSrc = teamImages[member.slug];
+  const bentoData = bentoImagesMap[member.slug] || [];
   const [firstName, ...lastNameParts] = member.name.split(' ');
   const lastName = lastNameParts.join(' ');
 
@@ -222,24 +258,24 @@ export default function DentistPage() {
         </div>
 
         <div ref={bentoRef} className="mt-12 lg:mt-16">
-          <div className="grid grid-cols-2 md:grid-cols-4 md:grid-rows-2 gap-3 lg:gap-4 h-[450px] md:h-[450px]">
+          <div className="grid grid-cols-2 grid-rows-4 md:grid-cols-4 md:grid-rows-2 gap-3 lg:gap-4 h-[600px] md:h-[450px]">
             {/* Main large item */}
-            <div className={`col-span-2 md:row-span-2 group relative overflow-hidden rounded-3xl md:rounded-[32px] shadow-sm reveal-item ${isBentoVisible ? 'active' : ''}`} style={{ animationDelay: '100ms' }}>
-              <img src={clinic1Img} alt="Clínica Souriê - Ambiente Interno" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+            <div className={`col-span-2 row-span-2 group relative overflow-hidden rounded-3xl md:rounded-[32px] shadow-sm reveal-item ${isBentoVisible ? 'active' : ''}`} style={{ animationDelay: '100ms' }}>
+              <img src={bentoData[0]?.src} alt={`${member.name} - Atendimento`} className={`w-full h-full object-cover ${bentoData[0]?.pos} transition-transform duration-1000 group-hover:scale-105`} />
             </div>
 
-            {/* Top wide item */}
-            <div className={`col-span-2 group relative overflow-hidden rounded-3xl md:rounded-[32px] shadow-sm reveal-item ${isBentoVisible ? 'active' : ''}`} style={{ animationDelay: '200ms' }}>
-              <img src={techImg} alt="Tecnologia iTero 3D" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+            {/* Top wide item (Middle on mobile) */}
+            <div className={`col-span-2 row-span-1 group relative overflow-hidden rounded-3xl md:rounded-[32px] shadow-sm reveal-item ${isBentoVisible ? 'active' : ''} order-last md:order-none`} style={{ animationDelay: '200ms' }}>
+              <img src={bentoData[1]?.src} alt={`${member.name} - Tecnologia`} className={`w-full h-full object-cover ${bentoData[1]?.pos} transition-transform duration-1000 group-hover:scale-105`} />
             </div>
 
             {/* Bottom smaller items */}
-            <div className={`group relative overflow-hidden rounded-3xl md:rounded-[32px] shadow-sm reveal-item ${isBentoVisible ? 'active' : ''}`} style={{ animationDelay: '300ms' }}>
-              <img src={treatmentImg} alt="Atendimento Especializado" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+            <div className={`col-span-1 row-span-1 group relative overflow-hidden rounded-3xl md:rounded-[32px] shadow-sm reveal-item ${isBentoVisible ? 'active' : ''}`} style={{ animationDelay: '300ms' }}>
+              <img src={bentoData[2]?.src} alt={`${member.name} - Especialidade`} className={`w-full h-full object-cover ${bentoData[2]?.pos} transition-transform duration-1000 group-hover:scale-105`} />
             </div>
 
-            <div className={`group relative overflow-hidden rounded-3xl md:rounded-[32px] shadow-sm reveal-item ${isBentoVisible ? 'active' : ''}`} style={{ animationDelay: '400ms' }}>
-              <img src={clinic2Img} alt="Clínica Souriê - Detalhes" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+            <div className={`col-span-1 row-span-1 group relative overflow-hidden rounded-3xl md:rounded-[32px] shadow-sm reveal-item ${isBentoVisible ? 'active' : ''}`} style={{ animationDelay: '400ms' }}>
+              <img src={bentoData[3]?.src} alt={`${member.name} - Detalhes`} className={`w-full h-full object-cover ${bentoData[3]?.pos} transition-transform duration-1000 group-hover:scale-105`} />
             </div>
           </div>
         </div>
