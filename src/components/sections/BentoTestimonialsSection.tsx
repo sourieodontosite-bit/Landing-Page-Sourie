@@ -106,7 +106,7 @@ export default function BentoTestimonialsSection() {
           </div>
           <h2 className="text-5xl lg:text-8xl font-medium text-white tracking-tighter leading-[0.9]">
             Histórias reais, <br />
-            <span className="italic font-serif text-teal-light">sorrisos</span> únicos.
+            <span className="italic font-serif text-cyan-light">sorrisos</span> únicos.
           </h2>
         </div>
 
@@ -114,114 +114,94 @@ export default function BentoTestimonialsSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-auto">
           
           {/* Card 1: Testimonials (2/3 Width on LG, Full Width on MD) */}
-          <div className="bento-anim md:col-span-2 lg:col-span-2 bg-teal-dark rounded-[50px] p-10 lg:p-16 shadow-xl border border-white/10 flex flex-col relative overflow-hidden group min-h-[450px]">
-            <div className="absolute -left-10 -top-10 text-white/5 pointer-events-none transition-colors duration-700">
-              <Quote size={200} fill="currentColor" />
-            </div>
-
-            <div className="flex items-center justify-between mb-12 relative z-10">
-              <div className="flex items-center gap-4">
-                <div className="flex -space-x-3">
-                  {testimonials.map((t, i) => (
-                    <button
-                      key={i}
-                      aria-label={`Ver depoimento de ${t.name}`}
-                      className={`w-10 h-10 rounded-full border-2 border-teal-dark flex items-center justify-center transition-all duration-300 cursor-pointer ${AVATAR_COLORS[i % AVATAR_COLORS.length].bg} ${activeIdx === i ? 'scale-110 z-20 ring-2 ring-white' : 'opacity-50 hover:opacity-100'}`}
-                      onClick={() => setActiveIdx(i)}
-                    >
-                      <User size={18} className={AVATAR_COLORS[i % AVATAR_COLORS.length].icon} aria-hidden="true" />
-                    </button>
-                  ))}
-                </div>
-                <span className="text-white/40 font-bold uppercase tracking-[0.2em] text-[10px] ml-2 hidden sm:block">Depoimentos</span>
-              </div>
-              
-              <div className="flex gap-3">
-                <button onClick={prevTestimonial} className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-all shadow-sm"><ChevronLeft size={24} /></button>
-                <button onClick={nextTestimonial} className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-all shadow-sm"><ChevronRight size={24} /></button>
-              </div>
-            </div>
-
+          <div className="bento-anim md:col-span-2 lg:col-span-2 bg-[rgb(28,59,67)] rounded-[40px] lg:rounded-[50px] p-8 lg:p-14 shadow-2xl border border-white/5 flex flex-col relative overflow-hidden group min-h-[480px]">
+            
             <div className="flex-1 flex flex-col justify-center relative z-10">
-              <div key={activeIdx} className="animate-in fade-in slide-in-from-bottom-4 duration-700">
-                {/* Decorative opening quote */}
-                <span className="block font-serif text-white/30 text-5xl leading-none mb-2 select-none" aria-hidden="true">&ldquo;</span>
-                <p className="text-lg lg:text-2xl font-normal text-white/95 leading-relaxed mb-8 tracking-normal">
-                  {testimonials[activeIdx].quote}
+              <div key={activeIdx} className="animate-in fade-in slide-in-from-bottom-4 duration-1000">
+                <Quote className="text-cyan-light/20 mb-6" size={48} fill="currentColor" />
+                <p className="text-xl lg:text-3xl font-medium text-white leading-[1.3] tracking-tight mb-12 max-w-2xl">
+                  &ldquo;{testimonials[activeIdx].quote}&rdquo;
                 </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-px bg-white/30" aria-hidden="true" />
-                  <div className="space-y-1">
-                    <h4 className="font-semibold text-white text-base leading-tight">{testimonials[activeIdx].name}</h4>
-                    <div className="flex gap-0.5 text-amber-400">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} size={12} fill="currentColor" />
-                      ))}
-                    </div>
-                  </div>
+                
+                <div className="flex items-center justify-between mt-auto pt-8 border-t border-white/5">
+                   <div className="flex items-center gap-4">
+                     <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-cyan-light border border-white/10">
+                       <User size={24} />
+                     </div>
+                     <div className="space-y-0.5">
+                       <h4 className="font-bold text-white text-lg tracking-tight leading-none">{testimonials[activeIdx].name}</h4>
+                       <div className="flex gap-0.5 text-amber-400/90">
+                         {[...Array(5)].map((_, i) => <Star key={i} size={10} fill="currentColor" />)}
+                       </div>
+                     </div>
+                   </div>
+
+                   <div className="hidden sm:flex items-center gap-2">
+                     {testimonials.map((_, i) => (
+                       <button
+                         key={i}
+                         onClick={() => setActiveIdx(i)}
+                         className={`h-1.5 rounded-full transition-all duration-500 ${activeIdx === i ? 'w-8 bg-teal-primary' : 'w-2 bg-white/10 hover:bg-white/20'}`}
+                         aria-label={`Ir para depoimento ${i + 1}`}
+                       />
+                     ))}
+                   </div>
                 </div>
               </div>
             </div>
+
+            {/* Mobile/Desktop Arrows */}
+            <div className="absolute bottom-8 right-8 lg:bottom-14 lg:right-14 flex gap-2 z-20">
+              <button 
+                onClick={prevTestimonial} 
+                className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-teal-primary hover:border-teal-primary transition-all active:scale-95"
+                aria-label="Anterior"
+              >
+                <ChevronLeft size={20} />
+              </button>
+              <button 
+                onClick={nextTestimonial} 
+                className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-teal-primary hover:border-teal-primary transition-all active:scale-95"
+                aria-label="Próximo"
+              >
+                <ChevronRight size={20} />
+              </button>
+            </div>
           </div>
 
-          {/* Card 2: Google Business (1/3 Width) */}
-          <div className="bento-anim bg-teal-dark rounded-[40px] md:rounded-[50px] p-8 md:p-10 flex flex-col justify-between shadow-xl border border-white/10 relative overflow-hidden group min-h-[220px] md:min-h-[450px]">
-            <div className="flex items-center justify-between relative z-10">
-              <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-colors">
-                <GoogleIcon size={22} />
-              </div>
-              <div className="flex items-center gap-1 text-white/80 text-[10px] font-black uppercase">
-                Google Reviews <ExternalLink size={10} />
-              </div>
-            </div>
-            
-            <div className="relative z-10 flex flex-row md:flex-col items-center md:items-start justify-between md:justify-start gap-4 md:gap-0 md:space-y-4">
-              <div className="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-2">
-                <p className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-none">5.0</p>
-                <div className="flex gap-0.5 text-amber-400 mb-1 md:mb-2">
-                  {[...Array(5)].map((_, i) => <Star key={i} size={12} fill="currentColor" />)}
+          {/* Card 2: Google Business (Full Width on MD, 1/3 on LG) */}
+          <div className="bento-anim md:col-span-2 lg:col-span-1 bg-[rgb(28,59,67)] rounded-[40px] lg:rounded-[50px] p-8 lg:p-12 flex flex-col items-center justify-center text-center shadow-2xl border border-white/5 relative overflow-hidden group min-h-[480px]">
+             <div className="relative z-10 space-y-6">
+                <div className="w-16 h-16 rounded-2xl bg-white flex items-center justify-center shadow-xl mx-auto mb-8 transition-transform group-hover:scale-110 duration-500">
+                  <GoogleIcon size={32} />
                 </div>
-              </div>
-              <p className="text-white/60 font-light text-[13px] md:text-base leading-snug md:leading-relaxed max-w-[160px] md:max-w-none text-right md:text-left">
-                Nota máxima baseada na experiência real dos nossos pacientes.
-              </p>
-            </div>
-          </div>
-
-          {/* Card 3: Human Connection (1/3 Width) */}
-          <div className="bento-anim relative overflow-hidden bg-teal-dark rounded-[50px] p-10 flex flex-col justify-between shadow-xl border border-white/10 min-h-[400px] group hover:border-white/30 transition-colors duration-500">
-            <div className="relative z-10">
-              <div className="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-500">
-                <Heart size={32} fill="currentColor" />
-              </div>
-              <h4 className="text-white font-bold text-2xl tracking-tight leading-tight mb-4">
-                Acolhimento <br />
-                & Empatia
-              </h4>
-              <p className="text-white/60 font-light text-base leading-relaxed">
-                Mais do que tratar dentes, cuidamos de pessoas. Nossa equipe é dedicada a entender suas necessidades e medos, garantindo um atendimento humano e sem pressa.
-              </p>
-            </div>
-            
-            <div className="relative z-10 pt-6 border-t border-white/10 flex items-center justify-between">
-              <span className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">Cuidado Genuíno</span>
-              <div className="flex -space-x-2">
-                {[...Array(3)].map((_, i) => (
-                  <div key={i} className={`w-6 h-6 rounded-full border-2 border-teal-dark flex items-center justify-center ${AVATAR_COLORS[i].bg}`}>
-                    <User size={12} className={AVATAR_COLORS[i].icon} aria-hidden="true" />
+                
+                <div className="space-y-1">
+                  <p className="text-7xl lg:text-8xl font-black text-white tracking-tighter leading-none">5.0</p>
+                  <div className="flex justify-center gap-1 text-amber-400">
+                    {[...Array(5)].map((_, i) => <Star key={i} size={20} fill="currentColor" />)}
                   </div>
-                ))}
-              </div>
-            </div>
+                </div>
 
-            {/* Subtle background decoration */}
-            <div className="absolute -right-8 -bottom-8 text-white/5 rotate-12 pointer-events-none transition-colors group-hover:text-white/10">
-              <Heart size={200} fill="currentColor" />
-            </div>
+                <div className="space-y-2">
+                  <p className="text-white text-lg font-medium tracking-tight">Excelência no Google</p>
+                  <p className="text-white/50 text-sm leading-relaxed max-w-[200px] mx-auto">
+                    Baseado em centenas de avaliações reais de quem já sorriu com a gente.
+                  </p>
+                </div>
+
+                <a 
+                  href="#" 
+                  className="inline-flex items-center gap-2 text-teal-primary hover:text-cyan-light text-xs font-bold uppercase tracking-widest transition-colors pt-4 group/link"
+                >
+                  Ver todos os comentários 
+                  <ExternalLink size={12} className="group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
+                </a>
+             </div>
           </div>
 
-          {/* Card 4: CTA (2/3 Width on LG, Full Width on MD) */}
-          <div className="bento-anim md:col-span-2 lg:col-span-2 group relative overflow-hidden bg-teal-primary rounded-[40px] md:rounded-[50px] flex flex-col items-center justify-center text-center p-12 lg:p-16 shadow-2xl border border-white/10 min-h-[400px]">
+          {/* Card 3: CTA (Full Width) */}
+          <div className="bento-anim md:col-span-2 lg:col-span-3 group relative overflow-hidden bg-teal-primary rounded-[40px] md:rounded-[50px] flex flex-col items-center justify-center text-center p-12 lg:p-16 shadow-2xl border border-white/10 min-h-[400px]">
             <div className="absolute inset-0 opacity-10 pointer-events-none">
               <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent scale-150" />
             </div>

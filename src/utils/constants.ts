@@ -4,7 +4,6 @@ export const WHATSAPP_NUMBER = '553199614845';
 export const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}`;
 
 export const NAV_LINKS = [
-  { label: 'Início', href: '/#hero' },
   {
     label: 'Procedimentos',
     href: '/#servicos',
