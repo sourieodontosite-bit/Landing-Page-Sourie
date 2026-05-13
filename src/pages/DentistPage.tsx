@@ -2,8 +2,11 @@ import { useParams, Navigate, Link } from 'react-router-dom';
 import { useRef, useEffect, useState } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { TEAM_MEMBERS, WHATSAPP_LINK } from '../utils/constants';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Sparkles } from 'lucide-react';
+
+gsap.registerPlugin(ScrollTrigger);
 import SectionContainer from '../components/shared/SectionContainer';
 import SEO from '../components/shared/SEO';
 import Button from '../components/shared/Button';
@@ -126,6 +129,53 @@ export default function DentistPage() {
           { opacity: 1, y: 0, stagger: 0.12 },
           "-=1.2"
         );
+
+      if (document.querySelector('.timeline-progress')) {
+        gsap.fromTo(".timeline-progress", 
+          { scaleY: 0 },
+          {
+            scaleY: 1,
+            transformOrigin: "top",
+            ease: "none",
+            scrollTrigger: {
+              trigger: ".timeline-container",
+              start: "top 70%",
+              end: "bottom 80%",
+              scrub: 1,
+            }
+          }
+        );
+
+        gsap.utils.toArray(".timeline-item").forEach((item: any) => {
+          gsap.fromTo(item,
+            { opacity: 0, x: -20 },
+            {
+              opacity: 1,
+              x: 0,
+              duration: 0.8,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: item,
+                start: "top 85%",
+              }
+            }
+          );
+        });
+
+        gsap.fromTo(".differential-card",
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: "power4.out",
+            scrollTrigger: {
+              trigger: ".differential-card",
+              start: "top 85%",
+            }
+          }
+        );
+      }
     });
 
     // Removed GSAP CTA animation in favor of pure CSS entry
@@ -139,8 +189,9 @@ export default function DentistPage() {
 
   const imageSrc = teamImages[member.slug];
   const bentoData = bentoImagesMap[member.slug] || [];
-  const [firstName, ...lastNameParts] = member.name.split(' ');
-  const lastName = lastNameParts.join(' ');
+  const nameParts = member.name.split(' ');
+  const firstName = nameParts[0];
+  const lastName = nameParts[1];
 
   return (
     <div ref={pageRef} className="flex flex-col relative overflow-hidden">
@@ -249,13 +300,65 @@ export default function DentistPage() {
               {/* Bio Section - Order 2 on Mobile */}
               <div className="order-2 lg:order-1 relative">
                 <div className="absolute -left-8 lg:-left-12 -top-6 text-8xl text-teal-primary/5 font-serif pointer-events-none italic">“</div>
-                <p className="text-xl lg:text-2xl text-text-primary/70 leading-relaxed font-light">
-                  {member.bio}
-                </p>
+                <div className="space-y-4">
+                  {member.fullBio?.map((paragraph, idx) => (
+                    <p key={idx} className="text-xl lg:text-2xl text-text-primary/70 leading-relaxed font-light">
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
         </div>
+
+        {/* Formação e Especialização - Scroll Progress Timeline */}
+        {member.education && member.education.length > 0 && (
+          <div className="mt-16 lg:mt-24 max-w-5xl mx-auto timeline-container">
+            <div className="flex flex-col md:flex-row gap-12 md:gap-20">
+              <div className="md:w-1/3 space-y-4">
+                <h2 className="text-3xl lg:text-4xl font-medium text-teal-dark italic font-serif leading-tight">
+                  Formação e <br className="hidden md:block" /><span className="text-teal-primary">Especialização</span>
+                </h2>
+                <div className="h-px w-20 bg-teal-primary/30" />
+              </div>
+              
+              <div className="md:w-2/3 relative">
+                {/* Vertical Progress Line */}
+                <div className="absolute left-[23px] top-3 bottom-0 w-[2px] bg-teal-primary/10" />
+                <div className="absolute left-[23px] top-3 bottom-0 w-[2px] bg-teal-primary origin-top timeline-progress" />
+                
+                <div className="space-y-12 pl-12 relative z-10">
+                  {member.education.map((item, idx) => (
+                    <div key={idx} className="relative timeline-item flex flex-col">
+                      <div className="absolute -left-[31px] top-1.5 w-[14px] h-[14px] rounded-full bg-white border-2 border-teal-primary shadow-[0_0_0_4px_rgba(255,255,255,0.5)] z-10" />
+                      {item.year && <span className="text-teal-primary font-bold text-sm tracking-widest mb-1">{item.year}</span>}
+                      <h3 className="text-xl text-teal-dark font-medium leading-tight">{item.title}</h3>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            
+            {member.differential && (
+              <div className="mt-16 bg-bg-light/80 backdrop-blur-sm rounded-[40px] p-8 lg:p-12 border border-teal-primary/10 shadow-lg relative overflow-hidden differential-card">
+                <div className="absolute -right-20 -top-20 w-64 h-64 bg-teal-primary/5 rounded-full blur-[40px] pointer-events-none" />
+                <div className="relative z-10 space-y-4 max-w-3xl">
+                  <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white border border-teal-primary/10 shadow-sm">
+                    <Sparkles size={14} className="text-teal-primary" />
+                    <span className="text-teal-primary font-bold text-[10px] uppercase tracking-widest">Meu Diferencial</span>
+                  </div>
+                  <h3 className="text-2xl lg:text-3xl text-teal-dark font-medium italic font-serif leading-tight">
+                    {member.differential.title}
+                  </h3>
+                  <p className="text-lg text-text-primary/70 leading-relaxed font-light">
+                    {member.differential.description}
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
 
         <div ref={bentoRef} className="mt-12 lg:mt-16">
           <div className="grid grid-cols-2 grid-rows-4 md:grid-cols-4 md:grid-rows-2 gap-3 lg:gap-4 h-[600px] md:h-[450px]">
