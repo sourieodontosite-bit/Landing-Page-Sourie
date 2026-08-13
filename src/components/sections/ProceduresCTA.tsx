@@ -1,10 +1,9 @@
 import { useRef, useEffect, useState } from 'react';
-import { Sparkles, Clock, ArrowRight } from 'lucide-react';
+import { Sparkles, Clock } from 'lucide-react';
 import Button from '../shared/Button';
 import { OutlineToothIcon } from '../shared/Icons';
 import { WHATSAPP_LINK } from '../../utils/constants';
 import SectionContainer from '../shared/SectionContainer';
-import fotoClinica from '../../assets/clinica-externa.webp';
 
 export default function ProceduresCTA() {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -29,11 +28,11 @@ export default function ProceduresCTA() {
   }, []);
 
   return (
-    <SectionContainer 
-      className="relative z-10" 
+    <SectionContainer
+      className="relative z-10"
       innerClassName="!px-0 !pt-0 lg:!pt-0"
     >
-      <div 
+      <div
         ref={cardRef}
         className={`bg-gradient-to-br from-navy-dark via-navy-dark to-[#091E2A] rounded-[32px] md:rounded-[48px] p-8 sm:p-12 lg:p-20 text-white relative overflow-hidden group shadow-2xl transition-all duration-1000 ease-out reveal-item ${isVisible ? 'active' : ''} w-full max-w-[1200px] mx-auto`}
       >
@@ -101,7 +100,7 @@ export default function ProceduresCTA() {
                 className="w-full shadow-lg justify-between !text-sm"
               />
               <Button
-                text="Garantir minha avaliação"
+                text="Agendar avaliação"
                 icon="arrow-circle"
                 variant="white"
                 size="sm"

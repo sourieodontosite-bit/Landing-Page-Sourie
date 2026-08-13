@@ -95,7 +95,7 @@ export default function BentoTestimonialsSection() {
             </div>
           </div>
 
-          <div className="bento-anim relative flex flex-col justify-end min-h-[480px] overflow-hidden rounded-[34px] bg-[#4d8d9a] p-4 shadow-[0_24px_60px_rgba(24,66,75,0.18)] ring-1 ring-white/20 sm:p-5 sm:min-h-[520px]">
+          <div className="bento-anim relative flex flex-col justify-end min-h-[480px] overflow-hidden rounded-[34px] bg-white/10 p-4 shadow-[0_20px_50px_rgba(0,0,0,0.15)] ring-1 ring-white/15 sm:p-5 sm:min-h-[520px]">
             <div className="absolute inset-4 sm:inset-5 z-0 overflow-hidden rounded-[30px]">
               <img
                 src={current.image}

@@ -13,7 +13,7 @@ export default function CustomVideoPlayer({ src, onClose }: CustomVideoPlayerPro
   const [duration, setDuration] = useState('0:00');
   const [isMuted, setIsMuted] = useState(false);
   const [showControls, setShowControls] = useState(true);
-  const controlsTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const controlsTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const formatTime = (seconds: number) => {
     if (isNaN(seconds)) return '0:00';

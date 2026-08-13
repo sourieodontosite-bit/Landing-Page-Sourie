@@ -341,7 +341,25 @@ export default function Navbar() {
   };
 
   const handleBack = () => {
-    // If there's history, go back; otherwise fall back to home
+    if (isDentistPage) {
+      navigate('/#equipe');
+      // Give DOM time to render home page then scroll to section
+      setTimeout(() => {
+        const el = document.getElementById('equipe');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+      return;
+    }
+
+    if (isProcedurePage) {
+      navigate('/#servicos');
+      setTimeout(() => {
+        const el = document.getElementById('servicos');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+      return;
+    }
+
     if (window.history.length > 1) {
       navigate(-1);
     } else {

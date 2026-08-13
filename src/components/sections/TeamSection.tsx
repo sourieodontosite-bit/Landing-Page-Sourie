@@ -1,8 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import SectionContainer from '../shared/SectionContainer';
 import { TEAM_MEMBERS } from '../../utils/constants';
-import { InstagramIcon } from '../shared/Icons';
-import Button from '../shared/Button';
 import { Link } from 'react-router-dom';
 
 import brenoImg from '../../assets/breno.webp';
@@ -14,7 +12,6 @@ import juniaImg from '../../assets/dra.junia.webp';
 import mariaEduardaImg from '../../assets/nutri_mariana.webp';
 import fallbackImg from '../../assets/equipe-sem-fundo.webp';
 import sourieVideo from '../../assets/vídeo-sourie.mp4';
-import CustomVideoPlayer from '../shared/CustomVideoPlayer';
 
 const memberImages: Record<string, string> = {
   'dr-breno': brenoImg,
@@ -42,9 +39,9 @@ const TeamMemberCard = React.memo(({ member, index, isVisible }: { member: typeo
     className={`team-card group relative block h-full w-full reveal-item ${isVisible ? 'active' : ''}`}
     style={{ animationDelay: `${index * 100}ms` }}
   >
-    {/* ===== MOBILE LAYOUT: mesmo estilo do desktop (gradiente + texto dentro da foto) ===== */}
+    {/* ===== MOBILE LAYOUT: card proporcional, com maior legibilidade de texto ===== */}
     <div className="lg:hidden w-full">
-      <div className="relative aspect-[3/4] overflow-hidden rounded-[28px] bg-stone-100 shadow-lg group-hover:shadow-xl transition-all duration-700">
+      <div className="relative aspect-[4/5] sm:aspect-[3/4] overflow-hidden rounded-[24px] bg-stone-100 shadow-md group-hover:shadow-xl transition-all duration-700">
         <img
           src={memberImages[member.slug] || fallbackImg}
           alt={`${member.name} - ${member.role}`}
@@ -56,27 +53,27 @@ const TeamMemberCard = React.memo(({ member, index, isVisible }: { member: typeo
           loading="lazy"
         />
 
-        {/* Gradiente */}
+        {/* Gradiente um pouco mais forte na base para garantir leitura */}
         <div
-          className="absolute inset-x-0 bottom-0 h-[70%] pointer-events-none"
-          style={{ background: 'linear-gradient(180deg, rgba(23,61,69,0) 0%, rgba(18,53,59,0.2) 25%, rgba(18,53,59,0.6) 60%, rgba(18,53,59,0.88) 100%)' }}
+          className="absolute inset-x-0 bottom-0 h-[75%] pointer-events-none"
+          style={{ background: 'linear-gradient(180deg, rgba(23,61,69,0) 0%, rgba(18,53,59,0.25) 30%, rgba(18,53,59,0.75) 65%, rgba(18,53,59,0.95) 100%)' }}
           aria-hidden="true"
         />
 
-        {/* Conteúdo */}
-        <div className="absolute inset-x-2.5 bottom-2.5 z-10">
-          <div className="space-y-1.5 px-1 pb-0.5">
-            <span className="block text-white/90 font-bold uppercase tracking-[0.18em] text-[8px] leading-none">
+        {/* Conteúdo com textos maiores e espaçamento otimizado */}
+        <div className="absolute inset-x-3 bottom-3 z-10">
+          <div className="space-y-1 px-0.5 pb-0.5">
+            <span className="block text-white/90 font-bold uppercase tracking-[0.14em] text-[9.5px] sm:text-[10px] leading-none">
               {member.role}
             </span>
-            <h3 className="text-base font-medium text-white leading-tight drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)] line-clamp-1">
+            <h3 className="text-lg sm:text-xl font-semibold text-white leading-tight drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)] line-clamp-1">
               {SHORT_NAMES[member.slug] || member.name}
             </h3>
-            <div className="flex flex-wrap gap-1 pt-0.5">
+            <div className="flex flex-wrap gap-1 pt-1">
               {member.specialties.slice(0, 1).map((spec) => (
                 <span
                   key={spec}
-                  className="px-2 py-0.5 bg-white/15 backdrop-blur-sm text-white/90 rounded-full text-[9px] font-medium border border-white/15"
+                  className="px-2.5 py-0.5 bg-white/20 backdrop-blur-md text-white rounded-full text-[10px] sm:text-[11px] font-medium border border-white/20 shadow-sm"
                 >
                   {spec}
                 </span>
@@ -146,8 +143,24 @@ export default function TeamSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [videoOpen, setVideoOpen] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth >= 1024;
+    }
+    return false;
+  });
 
   const VIDEO_SRC = sourieVideo;
+
+  useEffect(() => {
+    const media = window.matchMedia('(min-width: 1024px)');
+    const updateMatch = (e: MediaQueryListEvent | MediaQueryList) => {
+      setIsDesktop(e.matches);
+    };
+    updateMatch(media);
+    media.addEventListener('change', updateMatch);
+    return () => media.removeEventListener('change', updateMatch);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -188,25 +201,25 @@ export default function TeamSection() {
           <div
             className="group relative w-full aspect-video overflow-hidden rounded-[24px] border border-[#447583]/20 bg-[#447583] shadow-xl text-left"
           >
-            {videoOpen ? (
-              <div className="relative w-full h-full min-h-[220px]">
-                <video
-                  src={VIDEO_SRC}
-                  controls
-                  autoPlay
-                  playsInline
-                  className="w-full h-full object-cover rounded-[24px]"
-                />
+            {videoOpen && !isDesktop ? (
+              <div className="relative w-full h-full bg-black">
                 <button
                   type="button"
                   onClick={() => setVideoOpen(false)}
-                  className="absolute top-3 right-3 z-20 bg-black/60 hover:bg-black/80 text-white rounded-full p-1.5 backdrop-blur-md transition-colors"
+                  className="absolute top-3 right-3 z-30 flex h-8 w-8 items-center justify-center rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors"
                   aria-label="Fechar vídeo"
                 >
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
+                  ✕
                 </button>
+                <video
+                  ref={(el) => {
+                    if (el) el.volume = 0.2;
+                  }}
+                  src={VIDEO_SRC}
+                  controls
+                  autoPlay
+                  className="w-full h-full object-contain"
+                />
               </div>
             ) : (
               <button
@@ -296,11 +309,26 @@ export default function TeamSection() {
           <div
             className="group relative flex h-full min-h-[420px] w-full overflow-hidden rounded-[32px] border border-[#447583]/20 bg-[#447583] shadow-xl transition-all duration-300 lg:col-span-2 text-left"
           >
-            {videoOpen ? (
-              <CustomVideoPlayer
-                src={VIDEO_SRC}
-                onClose={() => setVideoOpen(false)}
-              />
+            {videoOpen && isDesktop ? (
+              <div className="relative w-full h-full bg-black">
+                <button
+                  type="button"
+                  onClick={() => setVideoOpen(false)}
+                  className="absolute top-4 right-4 z-30 flex h-9 w-9 items-center justify-center rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors"
+                  aria-label="Fechar vídeo"
+                >
+                  ✕
+                </button>
+                <video
+                  ref={(el) => {
+                    if (el) el.volume = 0.2;
+                  }}
+                  src={VIDEO_SRC}
+                  controls
+                  autoPlay
+                  className="w-full h-full object-contain"
+                />
+              </div>
             ) : (
               <button
                 type="button"

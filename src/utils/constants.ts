@@ -27,7 +27,7 @@ export const WA_MESSAGES = {
   testimonials: 'Olá! Vi os depoimentos no site e fiquei interessado(a) em agendar uma avaliação na Souriê. Podem me ajudar?',
 
   /** Seção de ambiente / localização */
-  clinicEnvironment: 'Olá! Vim pelo site da Souriê e gostaria de garantir minha avaliação. Estão com horário disponível?',
+  clinicEnvironment: 'Olá! Vim pelo site da Souriê e gostaria de agendar uma avaliação. Estão com horário disponível?',
 
   /** Footer / links sociais */
   footer: 'Olá! Acessei o site da Souriê e gostaria de entrar em contato.',

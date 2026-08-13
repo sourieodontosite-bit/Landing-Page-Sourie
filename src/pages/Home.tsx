@@ -1,4 +1,5 @@
-import { lazy, Suspense } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
+import { useLocation } from 'react-router-dom';
 import HeroSection from '../components/sections/HeroSection';
 import SectionSkeleton from '../components/shared/SectionSkeleton';
 import SectionDivider from '../components/shared/SectionDivider';
@@ -18,6 +19,20 @@ const ScrollProgressBar = lazy(() => import('../components/shared/ScrollProgress
 
 
 export default function Home() {
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (hash) {
+      const sectionId = hash.replace('#', '');
+      const timer = setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 150);
+      return () => clearTimeout(timer);
+    }
+  }, [hash]);
   return (
     <>
       <Suspense fallback={null}>
