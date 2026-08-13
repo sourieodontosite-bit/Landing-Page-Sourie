@@ -1,7 +1,7 @@
 import { FOOTER_COLUMNS, CONTACT_INFO, SOCIAL_LINKS } from '../../utils/constants';
 import { Link } from 'react-router-dom';
 import { InstagramIcon, FacebookIcon, WhatsAppIcon, ArrowRightIcon } from '../shared/Icons';
-import FooterLogoImg from '../../assets/logo sourie (1).svg';
+import FooterLogoImg from '../../assets/Logo.svg';
 import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 
@@ -44,33 +44,15 @@ export default function Footer() {
     <footer ref={footerRef} className="w-full pt-20 sm:pt-32">
       <div 
         ref={containerRef}
-        className="px-8 sm:px-12 lg:px-20 pt-24 lg:pt-36 pb-12 relative overflow-hidden flex flex-col items-center shadow-2xl"
-        style={{ background: 'linear-gradient(to bottom, #436F79 0%, #184E5B 50%, #25616F 100%)' }}
+        className="px-8 sm:px-12 lg:px-20 pt-24 lg:pt-36 pb-12 relative overflow-hidden flex flex-col items-center shadow-2xl bg-gradient-to-br from-navy-dark via-navy-dark to-[#091E2A]"
       >
         {/* Subtle Decorative Glows */}
-        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-teal-medium/10 blur-[120px] rounded-full -translate-y-1/2 pointer-events-none" />
-        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-navy-dark/40 blur-[120px] rounded-full translate-y-1/2 pointer-events-none" />
+        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-teal-primary/10 blur-[120px] rounded-full -translate-y-1/2 pointer-events-none" />
+        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-cyan-light/5 blur-[120px] rounded-full translate-y-1/2 pointer-events-none" />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-16 lg:gap-16 w-full max-w-page mx-auto mb-24 relative z-10">
           {/* Brand & Social Column */}
           <div className="footer-item lg:col-span-1">
-            <Link to="/" className="inline-flex mb-8 group -my-12">
-              <div 
-                className="bg-white group-hover:bg-cyan-light transition-colors duration-500" 
-                style={{
-                  maskImage: `url('${FooterLogoImg}')`,
-                  WebkitMaskImage: `url('${FooterLogoImg}')`,
-                  maskSize: 'contain',
-                  WebkitMaskSize: 'contain',
-                  maskRepeat: 'no-repeat',
-                  WebkitMaskRepeat: 'no-repeat',
-                  maskPosition: 'left center',
-                  WebkitMaskPosition: 'left center',
-                  width: 160,
-                  height: 160,
-                }}
-              />
-            </Link>
             <p className="text-white/60 text-[15px] leading-relaxed mb-10 max-w-[260px]">
               Odontologia moderna em Nova Era, unindo tecnologia de ponta e cuidado humanizado.
             </p>
@@ -178,6 +160,45 @@ export default function Footer() {
             <ArrowRightIcon className="-rotate-90 relative z-10 group-hover:-translate-y-1 transition-transform duration-500" size={24} />
           </button>
         </div>
+
+        <div className="w-full flex justify-center mt-0 sm:mt-0 relative z-10 -mx-0 sm:-mx-0 lg:-mx-0">
+          <div className="w-full max-w-none">
+            <div
+              className="relative w-full h-[280px] sm:h-[400px] lg:h-[540px] transition-transform duration-500"
+              style={{
+                maskImage: `url('${FooterLogoImg}')`,
+                WebkitMaskImage: `url('${FooterLogoImg}')`,
+                maskSize: 'contain',
+                WebkitMaskSize: 'contain',
+                maskRepeat: 'no-repeat',
+                WebkitMaskRepeat: 'no-repeat',
+                maskPosition: 'center',
+                WebkitMaskPosition: 'center',
+                backgroundImage: 'linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.92) 45%, rgba(255,255,255,1) 100%)',
+                backgroundSize: '100% 200%',
+                backgroundPosition: '0% 100%',
+              }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-dark via-navy-dark/80 to-cyan-light/40 opacity-90" />
+              <div className="absolute inset-0 opacity-40 pointer-events-none" style={{ background: 'radial-gradient(circle at 50% 50%, rgba(221,248,255,0.3) 0%, transparent 70%)' }} />
+            </div>
+          </div>
+        </div>
+
+        <nav aria-label="Links legais" className="w-full relative z-10 mt-4">
+          <ul className="flex flex-wrap items-center justify-center gap-x-7 gap-y-2">
+            <li>
+              <Link to="/politica-de-privacidade" className="text-[13px] font-medium text-white/75 hover:text-white transition-colors underline-offset-4 hover:underline">
+                Política de Privacidade
+              </Link>
+            </li>
+            <li>
+              <Link to="/termos-de-uso" className="text-[13px] font-medium text-white/75 hover:text-white transition-colors underline-offset-4 hover:underline">
+                Termos de Uso
+              </Link>
+            </li>
+          </ul>
+        </nav>
 
         {/* Bottom Bar */}
         <div className="w-full border-t border-white/5 pt-8 mt-6 sm:mt-10 flex flex-col md:flex-row items-center justify-center gap-8 relative z-10 text-[13px] text-white/30 font-medium tracking-wide">

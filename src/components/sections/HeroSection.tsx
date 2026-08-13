@@ -3,9 +3,8 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import Button from '../shared/Button';
 import { WHATSAPP_LINK } from '../../utils/constants';
-import TrustMarquee from './TrustMarquee';
-import heroImageMobile from '../../assets/hero-image-mobile.webp';
-const heroImage = '/hero-image.webp';
+import heroImageMobile from '../../assets/hero-mobile.webp';
+import heroImage from '../../assets/hero-section.webp';
 
 
 export default function HeroSection() {
@@ -75,16 +74,13 @@ export default function HeroSection() {
           />
         </picture>
         <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/40 via-navy-dark/10 to-transparent lg:bg-gradient-to-r lg:from-navy-dark/80 lg:via-navy-dark/40 lg:to-transparent pointer-events-none" />
-
-        {/* Trust Marquee overlaid at the bottom */}
-        <div className="absolute bottom-0 inset-x-0 z-20">
-          <TrustMarquee />
-        </div>
+        {/* Camada #071E26: 15% no Mobile e 25% no Desktop */}
+        <div className="absolute inset-0 bg-[#071E26]/15 lg:bg-[#071E26]/25 pointer-events-none" />
       </div>
 
       {/* Hero Content */}
-      <div className="relative z-10 flex-1 flex items-start lg:items-center pb-24 lg:pb-10 pt-32 lg:pt-24">
-        <div className="max-w-page mx-auto px-4 lg:px-[63px] w-full">
+      <div className="relative z-10 flex-1 flex items-end lg:items-center pb-10 lg:pb-10 pt-0 lg:pt-24">
+        <div className="w-full px-4 sm:px-8 lg:px-[47px]">
           <div className="max-w-2xl flex flex-col items-center lg:items-start text-center lg:text-left mx-auto lg:mx-0">
             {/* Badge */}
             <div

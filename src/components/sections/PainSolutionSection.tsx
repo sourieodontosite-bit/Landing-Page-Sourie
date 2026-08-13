@@ -69,7 +69,7 @@ export default function PainSolutionSection() {
     <SectionContainer
       id="sobre"
       className="relative z-20 -mt-6 md:-mt-10 rounded-t-[40px] lg:rounded-t-[60px] overflow-hidden"
-      background="bg-[#4c717a]"
+      background="bg-[#e9f1f2]"
     >
       {/* Background SVG Blobs & Minimalist Curves */}
       <svg
@@ -134,20 +134,20 @@ export default function PainSolutionSection() {
       <div ref={containerRef as any} className="relative z-10 max-w-[1280px] mx-auto w-full">
         {/* Header text */}
         <div className={`pain-anim relative max-w-md reveal-item ${isVisible ? 'active' : ''}`}>
-          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+          <h2 className="text-3xl font-semibold tracking-tight text-teal-dark sm:text-4xl">
             A base para um novo sorriso
           </h2>
-          <p className="mt-3 text-sm leading-relaxed text-white/85">
+          <p className="mt-3 text-sm leading-relaxed text-teal-dark/80">
             Inicie sua jornada com nossos protocolos de atendimento mais eficientes. Aliamos tecnologia de ponta com um ambiente acolhedor para entregar resultados precisos.
           </p>
         </div>
 
         {/* Team level indicator */}
         <div className={`pain-anim relative mt-12 flex flex-col items-center sm:mt-16 reveal-item ${isVisible ? 'active' : ''}`} style={{ animationDelay: '100ms' }}>
-          <span className="text-[11px] font-medium uppercase tracking-wide text-white/80">
+          <span className="text-[11px] font-medium uppercase tracking-wide text-teal-dark/70">
             Índice de Satisfação
           </span>
-          <span className="text-base font-semibold text-white">99%</span>
+          <span className="text-base font-semibold text-teal-dark">99%</span>
         </div>
 
         {/* Giant Connection text with vertical line */}
@@ -157,7 +157,7 @@ export default function PainSolutionSection() {
             className="absolute left-1/2 top-0 h-[55%] w-px -translate-x-1/2 bg-white/70"
           />
           <h3
-            className="select-none text-center font-semibold leading-none text-white/45"
+            className="select-none text-center font-semibold leading-none text-teal-dark/25"
             style={{
               fontSize: "clamp(3.5rem, 14vw, 12rem)",
               letterSpacing: "-0.045em",
@@ -173,7 +173,7 @@ export default function PainSolutionSection() {
             {cards.map((c) => (
               <article
                 key={c.title}
-                className={`pain-anim group relative aspect-[3/4] rounded-[32px] bg-teal-dark shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] ring-1 ring-inset ring-white/10 reveal-item ${isVisible ? 'active' : ''}`}
+                className={`pain-anim group relative aspect-[3/4] rounded-[32px] bg-white/65 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.12)] ring-1 ring-teal-primary/10 reveal-item ${isVisible ? 'active' : ''}`}
                 style={{ animationDelay: `${300 + cards.indexOf(c) * 100}ms` }}
               >
                 {/* Content Wrapper for perfect clipping */}
@@ -188,7 +188,7 @@ export default function PainSolutionSection() {
                     className="absolute inset-0 w-full h-full object-cover scale-[1.05] transition-transform duration-700 group-hover:scale-110 will-change-transform"
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-teal-dark/90 via-teal-dark/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500 pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#194d59]/80 via-[#194d59]/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500 pointer-events-none" />
                 </div>
 
                 {/* Top badges (Glassmorphism) */}
@@ -196,7 +196,7 @@ export default function PainSolutionSection() {
                   {c.badges.map((b) => (
                     <span
                       key={b}
-                      className="rounded-full border border-white/20 bg-navy-dark/60 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wider text-white backdrop-blur-md"
+                      className="rounded-full border border-teal-primary/20 bg-white/70 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wider text-teal-dark backdrop-blur-md"
                     >
                       {b}
                     </span>
@@ -204,7 +204,7 @@ export default function PainSolutionSection() {
                 </div>
 
                 {/* Glass Box Container */}
-                <div className="absolute bottom-4 left-4 right-4 bg-teal-dark/70 backdrop-blur-xl border border-white/10 rounded-[28px] p-5 md:p-6 flex flex-col gap-3 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500 shadow-lg">
+                <div className="absolute bottom-4 left-4 right-4 bg-[#194d59]/80 backdrop-blur-xl border border-white/10 rounded-[28px] p-5 md:p-6 flex flex-col gap-3 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500 shadow-lg">
                   <div className="flex items-center justify-between">
                     <h4 className="whitespace-pre-line text-white text-lg sm:text-xl font-bold leading-tight">
                       {c.title}

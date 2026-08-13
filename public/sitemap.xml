@@ -1,51 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://sourieclinica.com.br/</loc>
-        <lastmod>2024-03-20</lastmod>
+        <loc>https://sourie.com.br/</loc>
+        <lastmod>2026-08-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://sourieclinica.com.br/sobre</loc>
-        <lastmod>2024-03-20</lastmod>
+        <loc>https://sourie.com.br/sobre</loc>
+        <lastmod>2026-08-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://sourieclinica.com.br/clinica-geral</loc>
-        <lastmod>2024-03-20</lastmod>
+        <loc>https://sourie.com.br/p/ortodontia</loc>
+        <lastmod>2026-08-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://sourie.com.br/p/clinica-geral</loc>
+        <lastmod>2026-08-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://sourie.com.br/p/odontologia-estetica</loc>
+        <lastmod>2026-08-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://sourie.com.br/p/cirurgias-e-canal</loc>
+        <lastmod>2026-08-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://sourie.com.br/p/proteses-e-implantes</loc>
+        <lastmod>2026-08-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://sourie.com.br/p/odontopediatria</loc>
+        <lastmod>2026-08-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://sourie.com.br/equipe/dr-victor</loc>
+        <lastmod>2026-08-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://sourieclinica.com.br/odontologia-estetica</loc>
-        <lastmod>2024-03-20</lastmod>
+        <loc>https://sourie.com.br/equipe/dra-estefania</loc>
+        <lastmod>2026-08-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://sourieclinica.com.br/ortodontia</loc>
-        <lastmod>2024-03-20</lastmod>
+        <loc>https://sourie.com.br/equipe/dr-breno</loc>
+        <lastmod>2026-08-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://sourieclinica.com.br/proteses-e-implantes</loc>
-        <lastmod>2024-03-20</lastmod>
+        <loc>https://sourie.com.br/equipe/dra-beatriz</loc>
+        <lastmod>2026-08-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://sourieclinica.com.br/cirurgias-e-canal</loc>
-        <lastmod>2024-03-20</lastmod>
+        <loc>https://sourie.com.br/equipe/dra-tayna</loc>
+        <lastmod>2026-08-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://sourieclinica.com.br/odontopediatria</loc>
-        <lastmod>2024-03-20</lastmod>
+        <loc>https://sourie.com.br/equipe/dra-junia</loc>
+        <lastmod>2026-08-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://sourie.com.br/equipe/nutri-maria-eduarda</loc>
+        <lastmod>2026-08-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://sourie.com.br/politica-de-privacidade</loc>
+        <lastmod>2026-08-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+    <url>
+        <loc>https://sourie.com.br/termos-de-uso</loc>
+        <lastmod>2026-08-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
     </url>
 </urlset>

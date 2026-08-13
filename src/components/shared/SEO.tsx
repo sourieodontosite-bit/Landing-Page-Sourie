@@ -6,6 +6,7 @@ interface SEOProps {
   canonical?: string;
   ogType?: string;
   ogImage?: string;
+  ogLocale?: string;
   schema?: object;
 }
 
@@ -15,10 +16,11 @@ export default function SEO({
   canonical,
   ogType = 'website',
   ogImage = '/og-image.png',
+  ogLocale = 'pt_BR',
   schema,
 }: SEOProps) {
   const siteName = 'Souriê Odontologia Integrada';
-  const fullTitle = title ? `${title} | ${siteName}` : siteName;
+  const fullTitle = title || siteName;
   const defaultDescription = 'Clínica odontológica moderna em Nova Era, MG. Especialistas em Invisalign, Implantes e Odontologia Estética com foco no seu conforto.';
 
   return (
@@ -30,6 +32,7 @@ export default function SEO({
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={ogType} />
+      <meta property="og:locale" content={ogLocale} />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description || defaultDescription} />
       <meta property="og:image" content={ogImage} />

@@ -42,7 +42,7 @@ export default {
         'quote': ['20px', { lineHeight: '1.5', fontWeight: '500' }],
       },
       spacing: {
-        'container-x': '79px',
+        'container-x': '56px',
         'container-y': '42px',
         '18': '4.5rem',
         '22': '5.5rem',
@@ -62,7 +62,7 @@ export default {
         'button': '2px 4px 14.8px 4px rgba(0,0,0,0.10)',
       },
       maxWidth: {
-        'page': '1280px',
+        'page': '1200px',
       },
       scale: {
         '60': '0.60',

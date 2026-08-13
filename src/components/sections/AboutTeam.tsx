@@ -10,11 +10,20 @@ import { InstagramIcon } from '../shared/Icons';
 import brenoImg from '../../assets/breno.webp';
 import estefaniaImg from '../../assets/estefania.webp';
 import victorImg from '../../assets/victor.webp';
+import beatrizImg from '../../assets/beatriz.webp';
+import taynaImg from '../../assets/tayna.webp';
+import juniaImg from '../../assets/dra.junia.webp';
+import mariaEduardaImg from '../../assets/nutri_mariana.webp';
+import fallbackImg from '../../assets/equipe-sem-fundo.webp';
 
 const memberImages: Record<string, string> = {
   'dr-breno': brenoImg,
   'dra-estefania': estefaniaImg,
   'dr-victor': victorImg,
+  'dra-beatriz': beatrizImg,
+  'dra-tayna': taynaImg,
+  'dra-junia': juniaImg,
+  'nutri-maria-eduarda': mariaEduardaImg,
 };
 
 export default function AboutTeam() {
@@ -80,7 +89,7 @@ export default function AboutTeam() {
             {/* Image Container with Refined Frame */}
             <div className="relative aspect-[3/4] overflow-hidden rounded-[60px] mb-8 bg-stone-100 shadow-xl group-hover:shadow-2xl transition-all duration-700">
               <img 
-                src={memberImages[member.slug]} 
+                src={memberImages[member.slug] || fallbackImg} 
                 alt={member.name}
                 className={`w-full h-full object-cover transition-all duration-1000 ease-out ${
                   member.slug === 'dr-breno' 

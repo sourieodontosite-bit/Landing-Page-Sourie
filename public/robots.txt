@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sourieclinica.com.br/sitemap.xml
+Sitemap: https://sourie.com.br/sitemap.xml

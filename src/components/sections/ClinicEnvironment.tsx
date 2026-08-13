@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { Sparkles, Clock } from 'lucide-react';
 import fotoClinica from '../../assets/clinica-externa.webp';
 import Button from '../shared/Button';
+import { OutlineToothIcon } from '../shared/Icons';
 import { WHATSAPP_LINK } from '../../utils/constants';
 
 
@@ -41,16 +42,23 @@ export default function ClinicEnvironment() {
           <img
             src={fotoClinica}
             alt="Fachada da clínica Souriê"
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover opacity-40"
             loading="lazy"
           />
-          
+
           {/* Overlays */}
-          <div className="absolute inset-0 bg-gradient-to-r from-navy-dark/95 via-navy-dark/60 to-navy-dark/30 lg:to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-r from-navy-dark/30 via-transparent to-transparent pointer-events-none" />
-          
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, #436F79 0%, #184E5B 50%, #25616F 100%)' }} />
+          <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-teal-primary/10 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/4" />
+          <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-cyan-light/5 blur-[100px] rounded-full translate-y-1/2 -translate-x-1/4" />
+          <div className="absolute -left-32 -top-32 pointer-events-none opacity-[0.03] hidden lg:block rotate-[10deg]">
+            <OutlineToothIcon size={550} className="text-white" />
+          </div>
+          <div className="absolute -right-24 -bottom-32 pointer-events-none opacity-[0.03] hidden lg:block rotate-[140deg]">
+            <OutlineToothIcon size={500} className="text-white" />
+          </div>
+
           <div className="relative z-10 h-full py-20 sm:py-24 lg:py-28 flex flex-col lg:flex-row justify-between items-center lg:items-center gap-12 lg:gap-20 max-w-page mx-auto w-full">
-            
+
             {/* Left Side: Text Content */}
             <div className="max-w-2xl space-y-8 flex flex-col items-center text-center lg:items-start lg:text-left">
               <div className="w-14 h-14 rounded-2xl bg-cyan-light/10 backdrop-blur-md flex items-center justify-center text-cyan-light border border-white/10">
@@ -68,7 +76,7 @@ export default function ClinicEnvironment() {
             </div>
 
             {/* Right Side: Location & Hours */}
-            <div className="w-full lg:w-auto bg-navy-dark/40 backdrop-blur-2xl rounded-[40px] p-8 sm:p-10 border border-white/10 space-y-8 shadow-2xl">
+            <div className="w-full lg:w-auto bg-white/10 backdrop-blur-2xl rounded-[40px] p-8 sm:p-10 border border-white/10 space-y-8 shadow-2xl">
               <div className="space-y-4">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-cyan-light animate-pulse shadow-[0_0_10px_rgba(221,248,255,0.8)]" />

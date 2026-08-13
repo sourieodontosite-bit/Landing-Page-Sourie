@@ -27,9 +27,8 @@ const SectionContainer = forwardRef<HTMLElement, SectionContainerProps>(({
       className={`relative ${background || ''} ${className}`}
     >
       <div
-        className={`mx-auto ${
-          fullWidth ? 'w-full' : 'max-w-page'
-        } px-6 md:px-10 lg:px-container-x py-16 md:py-20 lg:py-24 ${innerClassName}`}
+        className={`mx-auto ${fullWidth ? 'w-full' : 'max-w-page'
+          } px-5 md:px-8 lg:px-[52px] py-16 md:py-20 lg:py-24 ${innerClassName}`}
       >
         {children}
       </div>

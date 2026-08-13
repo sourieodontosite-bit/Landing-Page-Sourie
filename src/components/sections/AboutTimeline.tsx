@@ -1,136 +1,153 @@
 import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SectionContainer from '../shared/SectionContainer';
 import clinica1 from '../../assets/clinica-interna-1.webp';
 import clinica2 from '../../assets/Tecnologia.webp';
-import clinica3 from '../../assets/clinica-interna-3.webp';
+import clinica3 from '../../assets/foto-clinica.webp';
 
 const MILESTONES = [
   {
+    index: '01',
     year: 'A Origem',
     title: 'O sonho de transformar sorrisos.',
-    description: 'A Souriê nasceu em Nova Era com a missão clara de elevar o padrão da odontologia regional, unindo o que há de mais moderno no mundo à nossa paixão pelo cuidado humano.',
-    image: clinica1
+    description:
+      'A Souriê nasceu em Nova Era com a missão clara de elevar o padrão da odontologia regional, unindo o que há de mais moderno no mundo à nossa paixão pelo cuidado humano.',
+    image: clinica1,
   },
   {
+    index: '02',
     year: 'Inovação',
     title: 'Tecnologia que aproxima.',
-    description: 'Fomos pioneiros na implementação de escaneamento digital e planejamentos 3D na região, permitindo que nossos pacientes visualizem o resultado final antes mesmo de começar.',
-    image: clinica2
+    description:
+      'Fomos pioneiros na implementação de escaneamento digital e planejamentos 3D na região, permitindo que nossos pacientes visualizem o resultado final antes mesmo de começar.',
+    image: clinica2,
   },
   {
+    index: '03',
     year: 'Hoje',
     title: 'Referência em excelência.',
-    description: 'Consolidamos nossa posição como a clínica de escolha para quem busca não apenas tratamento, mas uma experiência de cuidado completa, confortável e segura.',
-    image: clinica3
-  }
+    description:
+      'Consolidamos nossa posição como a clínica de escolha para quem busca não apenas tratamento, mas uma experiência de cuidado completa, confortável e segura.',
+    image: clinica3,
+  },
 ];
 
 export default function AboutTimeline() {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    const mm = gsap.matchMedia();
+  useGSAP(
+    () => {
+      gsap.registerPlugin(ScrollTrigger);
 
-    mm.add({
-      isDesktop: "(min-width: 1024px)",
-      isMobile: "(max-width: 1023px)"
-    }, (context) => {
-      const { isMobile } = context.conditions as { isMobile: boolean };
-      const items = gsap.utils.toArray<HTMLElement>(".timeline-item");
-      
-      items.forEach((item, i) => {
-        const isEven = i % 2 === 0;
-        const content = item.querySelector(".timeline-content");
-        const image = item.querySelector(".timeline-image");
+      const cards = gsap.utils.toArray<HTMLElement>('.story-card');
 
-        // Content Animation
-        gsap.fromTo(content,
-          { 
-            opacity: 0, 
-            x: isMobile ? 0 : (isEven ? -50 : 50),
-            y: isMobile ? 20 : 0
-          },
+      cards.forEach((card) => {
+        const content = card.querySelector('.story-content');
+        const image = card.querySelector('.story-image');
+        const overline = card.querySelector('.story-overline');
+
+        gsap.fromTo(
+          overline,
+          { opacity: 0, y: 12 },
           {
             opacity: 1,
-            x: 0,
             y: 0,
-            duration: 1.2,
-            ease: "power3.out",
-            force3D: true,
+            duration: 0.6,
+            ease: 'power2.out',
             scrollTrigger: {
-              trigger: item,
-              start: isMobile ? "top 85%" : "top 70%",
-              once: true
-            }
+              trigger: card,
+              start: 'top 82%',
+              once: true,
+            },
           }
         );
 
-        // Image Animation
-        gsap.fromTo(image,
-          { 
-            opacity: 0, 
-            scale: 0.95, 
-            x: isMobile ? 0 : (isEven ? 50 : -50),
-            y: isMobile ? 30 : 0
-          },
+        gsap.fromTo(
+          content,
+          { opacity: 0, y: 24 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.85,
+            ease: 'power2.out',
+            delay: 0.1,
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 82%',
+              once: true,
+            },
+          }
+        );
+
+        gsap.fromTo(
+          image,
+          { opacity: 0, scale: 0.97, x: 20 },
           {
             opacity: 1,
             scale: 1,
             x: 0,
-            y: 0,
-            duration: 1.5,
-            ease: "power2.out",
-            force3D: true,
+            duration: 1.0,
+            ease: 'power2.out',
             scrollTrigger: {
-              trigger: item,
-              start: isMobile ? "top 80%" : "top 70%",
-              once: true
-            }
+              trigger: card,
+              start: 'top 80%',
+              once: true,
+            },
           }
         );
       });
-    });
-
-    return () => mm.revert();
-  }, { scope: containerRef });
+    },
+    { scope: containerRef }
+  );
 
   return (
-    <SectionContainer id="historia" className="py-12 lg:py-12 overflow-hidden">
-      <div ref={containerRef} className="space-y-24 lg:space-y-32">
-        {MILESTONES.map((item, index) => (
-          <div 
-            key={index}
-            className={`timeline-item grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-32 items-center ${
-              index % 2 !== 0 ? 'lg:flex-row-reverse' : ''
-            }`}
+    <SectionContainer id="historia" className="py-16 lg:py-24 overflow-hidden">
+      <div ref={containerRef} className="space-y-6 lg:space-y-8">
+        {MILESTONES.map((item) => (
+          <article
+            key={item.index}
+            className="story-card group relative w-full rounded-card bg-white border border-black/[0.05] shadow-[0_1px_2px_rgba(0,0,0,0.04),0_4px_16px_rgba(0,0,0,0.05)] overflow-hidden transition-shadow duration-300 hover:shadow-[0_4px_8px_rgba(0,0,0,0.05),0_12px_32px_rgba(0,0,0,0.08)] h-[360px] lg:h-[420px]"
           >
-            <div className={`timeline-content flex flex-col items-center text-center lg:items-start lg:text-left space-y-8 ${index % 2 !== 0 ? 'lg:order-2' : 'lg:order-1'}`}>
-              <div className="inline-block text-teal-primary font-serif italic text-3xl lg:text-4xl">
-                {item.year}
-              </div>
-              <h3 className="text-4xl lg:text-6xl font-medium text-teal-dark leading-tight">
-                {item.title}
-              </h3>
-              <p className="text-xl text-text-primary/70 font-light leading-relaxed max-w-lg mx-auto lg:mx-0">
-                {item.description}
-              </p>
-            </div>
+            {/* Inner grid: text left, image right */}
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_420px] xl:grid-cols-[1fr_500px] h-full">
 
-            <div className={`timeline-image relative ${index % 2 !== 0 ? 'lg:order-1' : 'lg:order-2'}`}>
-              <div className="aspect-[16/10] lg:aspect-square rounded-[60px] overflow-hidden shadow-2xl shadow-teal-dark/10">
-                <img 
-                  src={item.image} 
+              {/* Text side */}
+              <div className="story-content flex flex-col justify-center gap-5 lg:gap-6 px-8 py-10 lg:px-14 lg:py-14">
+                {/* Overline */}
+                <div className="story-overline flex items-center gap-3">
+                  <span className="text-[11px] font-semibold tracking-[0.08em] uppercase text-teal-primary/60">
+                    {item.index}
+                  </span>
+                  <span className="h-px w-6 bg-teal-primary/30" />
+                  <span className="font-serif italic text-teal-primary text-base lg:text-lg">
+                    {item.year}
+                  </span>
+                </div>
+
+                {/* Heading */}
+                <h3 className="text-2xl lg:text-4xl xl:text-[2.6rem] font-medium text-teal-dark leading-[1.2] tracking-[-0.01em] max-w-[520px]">
+                  {item.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-text-primary/65 text-body-sm lg:text-body leading-relaxed max-w-[480px]">
+                  {item.description}
+                </p>
+              </div>
+
+              {/* Image side — always right */}
+              <div className="story-image relative w-full overflow-hidden">
+                <img
+                  src={item.image}
                   alt={item.title}
-                  className="w-full h-full object-cover scale-110 hover:scale-100 transition-transform duration-1000"
                   loading="lazy"
+                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                 />
               </div>
-              {/* Decorative Floating Element */}
-              <div className={`absolute -bottom-10 ${index % 2 === 0 ? '-right-10' : '-left-10'} w-40 h-40 bg-white rounded-full blur-[80px] opacity-60`} />
             </div>
-          </div>
+          </article>
         ))}
       </div>
     </SectionContainer>

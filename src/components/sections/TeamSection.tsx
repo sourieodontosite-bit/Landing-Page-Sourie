@@ -8,72 +8,136 @@ import { Link } from 'react-router-dom';
 import brenoImg from '../../assets/breno.webp';
 import estefaniaImg from '../../assets/estefania.webp';
 import victorImg from '../../assets/victor.webp';
+import beatrizImg from '../../assets/beatriz.webp';
+import taynaImg from '../../assets/tayna.webp';
+import juniaImg from '../../assets/dra.junia.webp';
+import mariaEduardaImg from '../../assets/nutri_mariana.webp';
+import fallbackImg from '../../assets/equipe-sem-fundo.webp';
+import sourieVideo from '../../assets/vídeo-sourie.mp4';
+import CustomVideoPlayer from '../shared/CustomVideoPlayer';
 
 const memberImages: Record<string, string> = {
   'dr-breno': brenoImg,
   'dra-estefania': estefaniaImg,
   'dr-victor': victorImg,
+  'dra-beatriz': beatrizImg,
+  'dra-tayna': taynaImg,
+  'dra-junia': juniaImg,
+  'nutri-maria-eduarda': mariaEduardaImg,
+};
+
+const SHORT_NAMES: Record<string, string> = {
+  'dr-victor': 'Dr. Victor Melo',
+  'dr-breno': 'Dr. Breno Lage',
+  'dra-estefania': 'Dra. Estefânia Alves',
+  'dra-beatriz': 'Beatriz Guimarães',
+  'dra-tayna': 'Tayná Delfim',
+  'dra-junia': 'Dra. Junia Martins',
+  'nutri-maria-eduarda': 'Maria Eduarda Lage',
 };
 
 const TeamMemberCard = React.memo(({ member, index, isVisible }: { member: typeof TEAM_MEMBERS[0], index: number, isVisible: boolean }) => (
-  <div 
-    className={`team-card group relative w-full max-w-[340px] aspect-[4/7.2] rounded-[42px] bg-white/10 backdrop-blur-[2px] p-2 overflow-hidden shadow-card hover:shadow-2xl transition-all duration-500 border border-white/20 reveal-item ${isVisible ? 'active' : ''}`}
+  <Link
+    to={`/equipe/${member.slug}`}
+    className={`team-card group relative block h-full w-full reveal-item ${isVisible ? 'active' : ''}`}
     style={{ animationDelay: `${index * 100}ms` }}
   >
-    <div className="relative w-full h-full rounded-[32px] sm:rounded-[40px] overflow-hidden">
-      <img
-        src={memberImages[member.slug]}
-        alt={`${member.name} - ${member.role}`}
-        className={`w-full h-full object-cover object-top transition-transform duration-1000 ease-out ${
-          member.slug === 'dr-breno' ? 'scale-100 group-hover:scale-105' : 'scale-110 group-hover:scale-115'
-        }`}
-        loading="lazy"
-      />
-      
-      {/* Overlay Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-t from-teal-dark/90 via-teal-dark/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500 pointer-events-none" />
+    {/* ===== MOBILE LAYOUT: mesmo estilo do desktop (gradiente + texto dentro da foto) ===== */}
+    <div className="lg:hidden w-full">
+      <div className="relative aspect-[3/4] overflow-hidden rounded-[28px] bg-stone-100 shadow-lg group-hover:shadow-xl transition-all duration-700">
+        <img
+          src={memberImages[member.slug] || fallbackImg}
+          alt={`${member.name} - ${member.role}`}
+          className={`w-full h-full object-cover transition-all duration-1000 ease-out ${
+            member.slug === 'dr-breno'
+              ? 'scale-105 group-hover:scale-100'
+              : 'scale-110 group-hover:scale-105'
+          }`}
+          loading="lazy"
+        />
 
-      {/* Glass Box Container */}
-      <div className="absolute bottom-4 left-4 right-4 bg-teal-dark/70 backdrop-blur-xl border border-white/10 rounded-[28px] p-5 md:p-6 flex flex-col gap-3 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500 shadow-lg">
-        <div className="flex items-center justify-between">
-          <div className="space-y-0.5">
-            <h3 className="text-white text-lg sm:text-xl font-bold leading-tight">{member.name}</h3>
-            <p className="text-cyan-light text-[10px] font-bold uppercase tracking-[0.2em]">{member.role}</p>
-          </div>
-          <a 
-            href={member.instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white hover:bg-teal-primary hover:scale-110 transition-all duration-300"
-            onClick={(e) => e.stopPropagation()}
-            aria-label={`Acessar Instagram de ${member.name}`}
-          >
-            <InstagramIcon size={18} />
-          </a>
-        </div>
+        {/* Gradiente */}
+        <div
+          className="absolute inset-x-0 bottom-0 h-[70%] pointer-events-none"
+          style={{ background: 'linear-gradient(180deg, rgba(23,61,69,0) 0%, rgba(18,53,59,0.2) 25%, rgba(18,53,59,0.6) 60%, rgba(18,53,59,0.88) 100%)' }}
+          aria-hidden="true"
+        />
 
-        {/* Specialties Tags */}
-        <div className="flex flex-wrap gap-1.5 pt-2 border-t border-white/10 min-h-[82px] items-start content-start">
-          {member.specialties.map((spec) => (
-            <span 
-              key={spec}
-              className="flex-grow px-2.5 py-1 bg-white/10 text-white/90 rounded-full text-[11px] font-medium tracking-wide border border-white/5 text-center leading-tight"
-            >
-              {spec}
+        {/* Conteúdo */}
+        <div className="absolute inset-x-2.5 bottom-2.5 z-10">
+          <div className="space-y-1.5 px-1 pb-0.5">
+            <span className="block text-white/90 font-bold uppercase tracking-[0.18em] text-[8px] leading-none">
+              {member.role}
             </span>
-          ))}
+            <h3 className="text-base font-medium text-white leading-tight drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)] line-clamp-1">
+              {SHORT_NAMES[member.slug] || member.name}
+            </h3>
+            <div className="flex flex-wrap gap-1 pt-0.5">
+              {member.specialties.slice(0, 1).map((spec) => (
+                <span
+                  key={spec}
+                  className="px-2 py-0.5 bg-white/15 backdrop-blur-sm text-white/90 rounded-full text-[9px] font-medium border border-white/15"
+                >
+                  {spec}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
-
-        {/* View Details Button */}
-        <Link 
-          to={`/equipe/${member.slug}`}
-          className="mt-2 w-full py-3 bg-white/10 border border-white/10 rounded-2xl text-center text-white text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-teal-primary hover:border-teal-primary/50 transition-all duration-300 block"
-        >
-          Ver Detalhes
-        </Link>
       </div>
     </div>
-  </div>
+
+    {/* ===== DESKTOP LAYOUT: card com conteúdo DENTRO - UI minimalista moderna ===== */}
+    <div className="hidden lg:block w-full">
+      <div className="relative aspect-[3/4] overflow-hidden rounded-[32px] bg-stone-100 shadow-xl group-hover:shadow-2xl transition-all duration-700">
+        <img
+          src={memberImages[member.slug] || fallbackImg}
+          alt={`${member.name} - ${member.role}`}
+          className={`w-full h-full object-cover transition-all duration-1000 ease-out ${
+            member.slug === 'dr-breno'
+              ? 'scale-105 group-hover:scale-100'
+              : 'scale-115 group-hover:scale-110'
+          }`}
+          loading="lazy"
+        />
+
+        {/* Gradiente um pouco mais alto e denso (70% do card) */}
+        <div
+          className="absolute inset-x-0 bottom-0 h-[78%] pointer-events-none transition-opacity duration-700 group-hover:opacity-100 opacity-95"
+          style={{ background: 'linear-gradient(180deg, rgba(23,61,69,0) 0%, rgba(18,53,59,0.18) 25%, rgba(18,53,59,0.54) 58%, rgba(18,53,59,0.82) 100%)' }}
+          aria-hidden="true"
+        />
+
+        {/* CONTEÚDO DENTRO do card - sem container escuro, só sobreposição de gradiente */}
+        <div className="absolute inset-x-3 bottom-3 z-10">
+          <div className="space-y-2.5 px-1.5 pb-1">
+            <div className="flex items-center justify-between gap-3">
+              <span className="inline-block text-white/95 font-bold uppercase tracking-[0.2em] text-[9.5px]">
+                {member.role}
+              </span>
+            </div>
+
+            <div className="flex items-end justify-between gap-2 pt-0.5">
+              <h3 className="text-2xl font-medium text-white leading-tight line-clamp-1 drop-shadow-[0_1px_2px_rgba(0,0,0,0.25)]">
+                {SHORT_NAMES[member.slug] || member.name}
+              </h3>
+            </div>
+
+            <div className="flex flex-wrap gap-1.5 pt-0.5">
+              {member.specialties.slice(0, 2).map((spec) => (
+                <span
+                  key={spec}
+                  className="px-2.5 py-1 bg-white/15 backdrop-blur-sm text-white/95 rounded-full text-[10.5px] font-medium tracking-wide border border-white/15"
+                >
+                  {spec}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Link>
 ));
 
 TeamMemberCard.displayName = 'TeamMemberCard';
@@ -81,7 +145,10 @@ TeamMemberCard.displayName = 'TeamMemberCard';
 export default function TeamSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
-  
+  const [videoOpen, setVideoOpen] = useState(false);
+
+  const VIDEO_SRC = sourieVideo;
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -102,43 +169,198 @@ export default function TeamSection() {
 
   return (
     <SectionContainer id="equipe" className="overflow-hidden">
-      {/* Original Header */}
-      <div className="flex flex-col lg:flex-row justify-between items-center lg:items-end mb-16 md:mb-20 gap-8">
-        <div className="max-w-2xl space-y-6 flex flex-col items-center text-center lg:items-start lg:text-left">
+      <div className="mb-10 md:mb-16">
+        <div className="max-w-3xl space-y-4 text-left">
           <span className="text-teal-primary font-bold uppercase tracking-[0.3em] text-[10px]">Corpo Clínico</span>
-          <h2 className="text-4xl lg:text-7xl font-medium text-teal-dark tracking-tight leading-[0.9]">
+          <h2 className="text-3xl lg:text-7xl font-medium text-teal-dark tracking-tight leading-[0.9]">
             Excelência Clínica <br />
             <span className="italic font-serif text-teal-primary">& Especialização.</span>
           </h2>
         </div>
-        <p className="text-xl text-text-primary/70 font-light max-w-sm text-center lg:text-right leading-relaxed">
-          Nossa equipe é composta por especialistas dedicados a oferecer o mais alto padrão de cuidado odontológico.
-        </p>
       </div>
 
-      <div 
-        ref={containerRef}
-        className="flex flex-wrap items-center justify-center gap-8 lg:gap-12"
-      >
-        {TEAM_MEMBERS.map((member, index) => (
-          <TeamMemberCard 
-            key={member.slug} 
-            member={member} 
-            index={index} 
-            isVisible={isVisible} 
-          />
-        ))}
-      </div>
+      {/* Wrapper único com a ref do IntersectionObserver */}
+      <div ref={containerRef}>
+        {/* ==========================
+             MOBILE VIDEO HIGHLIGHT (Topo no Mobile)
+             ========================== */}
+        <div className="lg:hidden mb-8">
+          <div
+            className="group relative w-full aspect-video overflow-hidden rounded-[24px] border border-[#447583]/20 bg-[#447583] shadow-xl text-left"
+          >
+            {videoOpen ? (
+              <div className="relative w-full h-full min-h-[220px]">
+                <video
+                  src={VIDEO_SRC}
+                  controls
+                  autoPlay
+                  playsInline
+                  className="w-full h-full object-cover rounded-[24px]"
+                />
+                <button
+                  type="button"
+                  onClick={() => setVideoOpen(false)}
+                  className="absolute top-3 right-3 z-20 bg-black/60 hover:bg-black/80 text-white rounded-full p-1.5 backdrop-blur-md transition-colors"
+                  aria-label="Fechar vídeo"
+                >
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+            ) : (
+              <button
+                type="button"
+                onClick={() => setVideoOpen(true)}
+                className="relative flex h-full w-full flex-col justify-between p-5 hover:brightness-105 transition-all text-left cursor-pointer"
+              >
+                <div className="absolute inset-0 opacity-70" style={{ background: 'radial-gradient(circle at top right, rgba(255,255,255,0.18), transparent 42%)' }} />
+                <div className="pointer-events-none absolute -right-16 top-[65%] z-0 -translate-y-1/2 overflow-hidden text-white/10">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="1em"
+                    height="1em"
+                    viewBox="0 0 24 24"
+                    className="h-[16rem] w-[16rem]"
+                    aria-hidden="true"
+                  >
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <path
+                      fill="currentColor"
+                      d="M5.706 5.89C6.429 5.022 7.507 4.5 9 4.5c.907 0 1.749.267 2.454.727a4.5 4.5 0 0 1 1.74 2.137a1 1 0 1 0 1.862-.728a6.5 6.5 0 0 0-1.224-1.983q.56-.151 1.168-.153c1.493 0 2.57.522 3.294 1.39c.744.893 1.206 2.264 1.206 4.11c0 2.903-.486 5.385-1.23 7.102c-.785 1.812-1.667 2.398-2.27 2.398c-.15 0-.275-.035-.461-.358c-.226-.392-.385-.96-.592-1.72c-.174-.639-.39-1.433-.752-2.062C13.787 14.652 13.1 14 12 14s-1.787.652-2.195 1.36c-.362.63-.578 1.423-.752 2.062c-.207.76-.366 1.328-.592 1.72c-.186.323-.311.358-.461.358c-.603 0-1.485-.586-2.27-2.398c-.744-1.717-1.23-4.2-1.23-7.102c0-1.846.462-3.217 1.206-4.11M12 3.232A6.5 6.5 0 0 0 9 2.5c-2.007 0-3.68.728-4.83 2.11C3.037 5.967 2.5 7.846 2.5 10c0 3.097.514 5.865 1.395 7.898C4.735 19.836 6.103 21.5 8 21.5c1.1 0 1.787-.652 2.195-1.36c.374-.65.593-1.477.77-2.127c.198-.726.354-1.274.574-1.655c.186-.323.311-.358.461-.358s.275.035.461.358c.22.381.376.93.574 1.655c.177.65.396 1.476.77 2.127c.408.708 1.095 1.36 2.195 1.36c1.897 0 3.265-1.664 4.105-3.602c.88-2.033 1.395-4.8 1.395-7.898c0-2.154-.538-4.033-1.67-5.39C18.68 3.228 17.008 2.5 15 2.5c-1.08 0-2.102.264-3 .732"
+                    />
+                  </svg>
+                </div>
+                
+                <div className="relative z-10 flex h-full w-full flex-col justify-between text-left">
+                  <div className="w-full space-y-1">
+                    <span className="block text-[9px] font-bold uppercase tracking-[0.28em] text-white/80">
+                      Vídeo Institucional
+                    </span>
+                    <h3 className="text-lg font-medium text-white leading-tight">
+                      Conheça a Souriê
+                    </h3>
+                  </div>
 
-      {/* Original Footer Button */}
-      <div className="mt-16 flex justify-center w-full">
-        <Button 
-          text="Conheça nossa clínica e história" 
-          href="/sobre" 
-          variant="primary" 
-          size="lg" 
-          icon="arrow-circle" 
-        />
+                  <div className="flex items-center gap-3">
+                    <div className="relative flex-shrink-0">
+                      <span className="absolute inset-0 rounded-full bg-white/30 animate-ping" style={{ animationDuration: '2s' }} />
+                      <div className="relative flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md">
+                        <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4 translate-x-0.5" aria-hidden="true">
+                          <path d="M6 4l14 8-14 8V4z" fill="#0a4f5e" />
+                        </svg>
+                      </div>
+                    </div>
+                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/90">
+                      Assistir vídeo
+                    </span>
+                  </div>
+                </div>
+              </button>
+            )}
+          </div>
+        </div>
+
+        {/* ==========================
+             MOBILE + TABLET GRID
+             1 col / 2 cols (tradicional)
+             ========================== */}
+        <div className="lg:hidden grid grid-cols-2 gap-3 sm:gap-4">
+          {TEAM_MEMBERS.map((member, index) => (
+            <TeamMemberCard
+              key={member.slug}
+              member={member}
+              index={index}
+              isVisible={isVisible}
+            />
+          ))}
+        </div>
+
+        {/* ==========================
+             DESKTOP GRID - 4 cols × 2 rows
+             Layout referência "Our Team"
+             [1,1] Card texto "Nossa Equipe" | [1,2] Victor   | [1,3] Estefânia | [1,4] Breno
+             [2,1] Beatriz                 | [2,2] Tayná    | [2,3] Junia     | [2,4] Maria Eduarda (Join the Team)
+             ========================== */}
+        <div className="hidden lg:grid lg:grid-cols-3 gap-6 xl:gap-8">
+          {TEAM_MEMBERS.map((member, index) => (
+            <TeamMemberCard
+              key={member.slug}
+              member={member}
+              index={index}
+              isVisible={isVisible}
+            />
+          ))}
+
+          {/* CTA card — vídeo embutido */}
+          <div
+            className="group relative flex h-full min-h-[420px] w-full overflow-hidden rounded-[32px] border border-[#447583]/20 bg-[#447583] shadow-xl transition-all duration-300 lg:col-span-2 text-left"
+          >
+            {videoOpen ? (
+              <CustomVideoPlayer
+                src={VIDEO_SRC}
+                onClose={() => setVideoOpen(false)}
+              />
+            ) : (
+              <button
+                type="button"
+                onClick={() => setVideoOpen(true)}
+                className="relative flex h-full w-full flex-col justify-between p-6 hover:brightness-105 transition-all text-left cursor-pointer"
+              >
+                <div className="absolute inset-0 opacity-70" style={{ background: 'radial-gradient(circle at top right, rgba(255,255,255,0.18), transparent 42%)' }} />
+                <div className="pointer-events-none absolute -right-24 top-[72%] z-0 -translate-y-1/2 overflow-hidden text-white/10">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="1em"
+                    height="1em"
+                    viewBox="0 0 24 24"
+                    className="h-[20rem] w-[20rem] sm:h-[22rem] sm:w-[22rem] xl:h-[29rem] xl:w-[29rem]"
+                    aria-hidden="true"
+                  >
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <path
+                      fill="currentColor"
+                      d="M5.706 5.89C6.429 5.022 7.507 4.5 9 4.5c.907 0 1.749.267 2.454.727a4.5 4.5 0 0 1 1.74 2.137a1 1 0 1 0 1.862-.728a6.5 6.5 0 0 0-1.224-1.983q.56-.151 1.168-.153c1.493 0 2.57.522 3.294 1.39c.744.893 1.206 2.264 1.206 4.11c0 2.903-.486 5.385-1.23 7.102c-.785 1.812-1.667 2.398-2.27 2.398c-.15 0-.275-.035-.461-.358c-.226-.392-.385-.96-.592-1.72c-.174-.639-.39-1.433-.752-2.062C13.787 14.652 13.1 14 12 14s-1.787.652-2.195 1.36c-.362.63-.578 1.423-.752 2.062c-.207.76-.366 1.328-.592 1.72c-.186.323-.311.358-.461.358c-.603 0-1.485-.586-2.27-2.398c-.744-1.717-1.23-4.2-1.23-7.102c0-1.846.462-3.217 1.206-4.11M12 3.232A6.5 6.5 0 0 0 9 2.5c-2.007 0-3.68.728-4.83 2.11C3.037 5.967 2.5 7.846 2.5 10c0 3.097.514 5.865 1.395 7.898C4.735 19.836 6.103 21.5 8 21.5c1.1 0 1.787-.652 2.195-1.36c.374-.65.593-1.477.77-2.127c.198-.726.354-1.274.574-1.655c.186-.323.311-.358.461-.358s.275.035.461.358c.22.381.376.93.574 1.655c.177.65.396 1.476.77 2.127c.408.708 1.095 1.36 2.195 1.36c1.897 0 3.265-1.664 4.105-3.602c.88-2.033 1.395-4.8 1.395-7.898c0-2.154-.538-4.033-1.67-5.39C18.68 3.228 17.008 2.5 15 2.5c-1.08 0-2.102.264-3 .732"
+                    />
+                  </svg>
+                </div>
+
+                <div className="relative z-10 flex h-full w-full flex-col justify-between text-left">
+                  <div className="w-full space-y-4">
+                    <span className="block text-[10px] font-bold uppercase tracking-[0.28em] text-white/80">
+                      Souriê
+                    </span>
+                    <h3 className="max-w-[12ch] text-[2.2rem] leading-[0.95] text-white font-medium tracking-[-0.02em] xl:text-[2.6rem] xl:tracking-[-0.03em]">
+                      Saúde e atenção de alta qualidade.
+                    </h3>
+                  </div>
+
+                  <div className="w-full space-y-5">
+                    <p className="max-w-[26ch] text-sm leading-relaxed text-white/80 xl:text-[0.95rem]">
+                      Conheça a clínica, a abordagem e o ambiente que cuidam de cada detalhe da sua experiência.
+                    </p>
+
+                    {/* Play button */}
+                    <div className="flex items-center gap-4">
+                      <div className="relative flex-shrink-0">
+                        {/* Pulsing ring */}
+                        <span className="absolute inset-0 rounded-full bg-white/30 animate-ping" style={{ animationDuration: '2s' }} />
+                        <div className="relative flex h-14 w-14 items-center justify-center rounded-full bg-white shadow-lg group-hover:scale-110 transition-transform duration-300">
+                          <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5 translate-x-0.5" aria-hidden="true">
+                            <path d="M6 4l14 8-14 8V4z" fill="#0a4f5e" />
+                          </svg>
+                        </div>
+                      </div>
+                      <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-white/90">
+                        Assistir vídeo
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </button>
+            )}
+          </div>
+        </div>
       </div>
     </SectionContainer>
   );
