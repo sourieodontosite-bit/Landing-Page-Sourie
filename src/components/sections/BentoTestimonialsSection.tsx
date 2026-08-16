@@ -135,7 +135,7 @@ export default function BentoTestimonialsSection() {
             <div className="absolute inset-4 sm:inset-5 z-0 overflow-hidden rounded-[30px]">
               {testimonials.map((testimonial, idx) => (
                 <div
-                  key={testimonial.id ?? idx}
+                  key={idx}
                   className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${
                     activeIdx === idx ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
                   }`}
