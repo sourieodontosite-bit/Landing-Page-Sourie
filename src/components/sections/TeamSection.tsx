@@ -33,15 +33,14 @@ const SHORT_NAMES: Record<string, string> = {
   'nutri-maria-eduarda': 'Maria Eduarda Lage',
 };
 
-const TeamMemberCard = React.memo(({ member, index, isVisible }: { member: typeof TEAM_MEMBERS[0], index: number, isVisible: boolean }) => (
+const TeamMemberCard = React.memo(({ member }: { member: typeof TEAM_MEMBERS[0] }) => (
   <Link
     to={`/equipe/${member.slug}`}
-    className={`team-card group relative block h-full w-full reveal-item ${isVisible ? 'active' : ''}`}
-    style={{ animationDelay: `${index * 100}ms` }}
+    className="team-card group relative block h-full w-full outline-none focus:outline-none border-0"
   >
-    {/* ===== MOBILE LAYOUT: card proporcional, com maior legibilidade de texto ===== */}
+    {/* ===== MOBILE LAYOUT: card em tamanho normal, 1 por linha com design refinado ===== */}
     <div className="lg:hidden w-full">
-      <div className="relative aspect-[4/5] sm:aspect-[3/4] overflow-hidden rounded-[24px] bg-stone-100 shadow-md group-hover:shadow-xl transition-all duration-700">
+      <div className="relative aspect-[4/5] sm:aspect-[3/4] overflow-hidden rounded-[28px] sm:rounded-[32px] bg-teal-dark shadow-xl border-0 border-none outline-none group-active:scale-[0.99] transition-all duration-300">
         <img
           src={memberImages[member.slug] || fallbackImg}
           alt={`${member.name} - ${member.role}`}
@@ -53,27 +52,46 @@ const TeamMemberCard = React.memo(({ member, index, isVisible }: { member: typeo
           loading="lazy"
         />
 
-        {/* Gradiente um pouco mais forte na base para garantir leitura */}
+        {/* Gradiente refinado na base para garantir legibilidade perfeita */}
         <div
           className="absolute inset-x-0 bottom-0 h-[75%] pointer-events-none"
-          style={{ background: 'linear-gradient(180deg, rgba(23,61,69,0) 0%, rgba(18,53,59,0.25) 30%, rgba(18,53,59,0.75) 65%, rgba(18,53,59,0.95) 100%)' }}
+          style={{ background: 'linear-gradient(180deg, rgba(18,53,59,0) 0%, rgba(18,53,59,0.2) 25%, rgba(18,53,59,0.75) 60%, rgba(18,53,59,0.96) 100%)' }}
           aria-hidden="true"
         />
 
-        {/* Conteúdo com textos maiores e espaçamento otimizado */}
-        <div className="absolute inset-x-3 bottom-3 z-10">
-          <div className="space-y-1 px-0.5 pb-0.5">
-            <span className="block text-white/90 font-bold uppercase tracking-[0.14em] text-[9.5px] sm:text-[10px] leading-none">
+        {/* Conteúdo com tipografia generosa e elegante */}
+        <div className="absolute inset-x-5 bottom-5 z-10">
+          <div className="space-y-2">
+            <span className="inline-block text-white/90 font-bold uppercase tracking-[0.18em] text-[10.5px]">
               {member.role}
             </span>
-            <h3 className="text-lg sm:text-xl font-semibold text-white leading-tight drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)] line-clamp-1">
-              {SHORT_NAMES[member.slug] || member.name}
-            </h3>
-            <div className="flex flex-wrap gap-1 pt-1">
-              {member.specialties.slice(0, 1).map((spec) => (
+            <div className="flex items-end justify-between gap-3">
+              <h3 className="text-2xl sm:text-3xl font-medium text-white leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
+                {SHORT_NAMES[member.slug] || member.name}
+              </h3>
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/20 backdrop-blur-md border-0 text-white shadow-md group-hover:bg-white group-hover:text-teal-dark transition-colors duration-300">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <line x1="7" y1="17" x2="17" y2="7" />
+                  <polyline points="7 7 17 7 17 17" />
+                </svg>
+              </div>
+            </div>
+            <div className="flex flex-wrap gap-1.5 pt-1">
+              {member.specialties.map((spec) => (
                 <span
                   key={spec}
-                  className="px-2.5 py-0.5 bg-white/20 backdrop-blur-md text-white rounded-full text-[10px] sm:text-[11px] font-medium border border-white/20 shadow-sm"
+                  className="px-3 py-1 bg-white/20 backdrop-blur-md text-white rounded-full text-xs font-medium border-0 shadow-sm"
                 >
                   {spec}
                 </span>
@@ -141,7 +159,6 @@ TeamMemberCard.displayName = 'TeamMemberCard';
 
 export default function TeamSection() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
   const [videoOpen, setVideoOpen] = useState(false);
   const [isDesktop, setIsDesktop] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -162,26 +179,8 @@ export default function TeamSection() {
     return () => media.removeEventListener('change', updateMatch);
   }, []);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <SectionContainer id="equipe" className="overflow-hidden">
+    <SectionContainer id="equipe" className="overflow-visible">
       <div className="mb-10 md:mb-16">
         <div className="max-w-3xl space-y-4 text-left">
           <span className="text-teal-primary font-bold uppercase tracking-[0.3em] text-[10px]">Corpo Clínico</span>
@@ -275,17 +274,20 @@ export default function TeamSection() {
         </div>
 
         {/* ==========================
-             MOBILE + TABLET GRID
-             1 col / 2 cols (tradicional)
+             MOBILE STACKING CARDS (1 por linha, empilhando sobrepondo ao scroll)
              ========================== */}
-        <div className="lg:hidden grid grid-cols-2 gap-3 sm:gap-4">
+        <div className="lg:hidden relative pb-12">
           {TEAM_MEMBERS.map((member, index) => (
-            <TeamMemberCard
+            <div
               key={member.slug}
-              member={member}
-              index={index}
-              isVisible={isVisible}
-            />
+              className="sticky w-full mb-6 last:mb-0"
+              style={{
+                top: `calc(80px + ${index * 16}px)`,
+                zIndex: index + 1,
+              }}
+            >
+              <TeamMemberCard member={member} />
+            </div>
           ))}
         </div>
 
@@ -296,12 +298,10 @@ export default function TeamSection() {
              [2,1] Beatriz                 | [2,2] Tayná    | [2,3] Junia     | [2,4] Maria Eduarda (Join the Team)
              ========================== */}
         <div className="hidden lg:grid lg:grid-cols-3 gap-6 xl:gap-8">
-          {TEAM_MEMBERS.map((member, index) => (
+          {TEAM_MEMBERS.map((member) => (
             <TeamMemberCard
               key={member.slug}
               member={member}
-              index={index}
-              isVisible={isVisible}
             />
           ))}
 
