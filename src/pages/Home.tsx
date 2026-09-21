@@ -13,6 +13,7 @@ const AboutGallery = lazy(() => import('../components/sections/AboutGallery'));
 const ProceduresCTA = lazy(() => import('../components/sections/ProceduresCTA'));
 const TeamSection = lazy(() => import('../components/sections/TeamSection'));
 const BentoTestimonialsSection = lazy(() => import('../components/sections/BentoTestimonialsSection'));
+const AboutTimeline = lazy(() => import('../components/sections/AboutTimeline'));
 const MarqueeCTA = lazy(() => import('../components/sections/MarqueeCTA'));
 const FAQSection = lazy(() => import('../components/sections/FAQSection'));
 const ScrollProgressBar = lazy(() => import('../components/shared/ScrollProgressBar'));
@@ -53,6 +54,7 @@ export default function Home() {
         <ServicesSection />
         <TeamSection />
         <BentoTestimonialsSection />
+        <AboutTimeline />
         <AboutGallery />
         <MarqueeCTA />
         <FAQSection />

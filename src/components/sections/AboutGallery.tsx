@@ -81,7 +81,7 @@ export default function AboutGallery({
               <span className="text-teal-primary font-bold uppercase tracking-[0.3em] text-[10px]">
                 Infraestrutura
               </span>
-              <h2 className="text-4xl lg:text-7xl font-medium text-teal-dark tracking-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-teal-dark leading-tight tracking-tight">
                 Ambiente planejado <br />
                 <span className="italic font-serif text-teal-primary">para o seu bem-estar.</span>
               </h2>

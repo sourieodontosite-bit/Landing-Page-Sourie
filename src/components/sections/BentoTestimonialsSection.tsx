@@ -55,9 +55,9 @@ export default function BentoTestimonialsSection() {
           <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/50">
             Experiência de quem confia
           </p>
-          <h2 className="mt-6 text-4xl font-medium tracking-[-0.05em] text-white sm:text-[4rem] lg:text-[5.5rem] lg:leading-[0.9]">
+          <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-white leading-tight">
             O cuidado que
-            <span className="mt-2 block italic font-serif text-cyan-light/80">faz diferença no sorriso.</span>
+            <span className="mt-2 block italic font-serif text-cyan-light/90">faz diferença no sorriso.</span>
           </h2>
         </div>
 

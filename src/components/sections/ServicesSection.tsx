@@ -65,9 +65,9 @@ export default function ServicesSection() {
           style={{ transitionDelay: '0ms' }}
         >
         <span className="text-teal-primary font-bold uppercase tracking-[0.3em] text-[10px]">Procedimentos</span>
-        <h2 className="text-4xl lg:text-7xl font-medium text-teal-dark tracking-tight">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-teal-dark leading-tight tracking-tight">
           Cuidado completo <br />
-          <span className="italic font-serif">em um só lugar.</span>
+          <span className="italic font-serif text-teal-primary">em um só lugar.</span>
         </h2>
       </div>
 

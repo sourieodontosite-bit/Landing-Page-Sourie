@@ -2,44 +2,67 @@ import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Sparkles, ShieldCheck, Cpu, HeartHandshake } from 'lucide-react';
 import SectionContainer from '../shared/SectionContainer';
-import clinica1 from '../../assets/clinica-interna-1.webp';
-import clinica2 from '../../assets/Tecnologia.webp';
-import clinica3 from '../../assets/foto-clinica.webp';
+import queSomosImg from '../../assets/que-somos.webp';
+import tecnologiaImg from '../../assets/Tecnologia.webp';
+import clinicaImg from '../../assets/clinica-interna-1.webp';
 
-const MILESTONES = [
+const REASONS = [
   {
     index: '01',
-    year: 'A Origem',
-    title: 'O sonho de transformar sorrisos.',
+    badge: 'Corpo Clínico Integrado',
+    title: 'Equipe especializada com olhar humanizado.',
     description:
-      'A Souriê nasceu em Nova Era com a missão clara de elevar o padrão da odontologia regional, unindo o que há de mais moderno no mundo à nossa paixão pelo cuidado humano.',
-    image: clinica1,
+      'Reunimos profissionais altamente capacitados nas principais especialidades odontológicas, garantindo diagnósticos precisos e tratamentos integrados em um só lugar.',
+    image: queSomosImg,
+    icon: ShieldCheck,
   },
   {
     index: '02',
-    year: 'Inovação',
-    title: 'Tecnologia que aproxima.',
+    badge: 'Inovação & Previsibilidade',
+    title: 'Tecnologia digital e planejamento 3D.',
     description:
-      'Fomos pioneiros na implementação de escaneamento digital e planejamentos 3D na região, permitindo que nossos pacientes visualizem o resultado final antes mesmo de começar.',
-    image: clinica2,
+      'Você acompanha cada etapa e visualiza o resultado final do seu tratamento antes mesmo de iniciá-lo, sem moldagens desconfortáveis.',
+    image: tecnologiaImg,
+    icon: Cpu,
   },
   {
     index: '03',
-    year: 'Hoje',
-    title: 'Referência em excelência.',
+    badge: 'Ambiente & Experiência',
+    title: 'Ambiente pensado no seu conforto.',
     description:
-      'Consolidamos nossa posição como a clínica de escolha para quem busca não apenas tratamento, mas uma experiência de cuidado completa, confortável e segura.',
-    image: clinica3,
+      'Criamos uma atmosfera acolhedora e moderna para transformar sua experiência odontológica. Atendimento pontual, biossegurança rigorosa e cuidado completo para você e sua família.',
+    image: clinicaImg,
+    icon: HeartHandshake,
   },
 ];
 
 export default function AboutTimeline() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
       gsap.registerPlugin(ScrollTrigger);
+
+      if (headerRef.current) {
+        gsap.fromTo(
+          headerRef.current,
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: headerRef.current,
+              start: 'top 85%',
+              once: true,
+            },
+          }
+        );
+      }
 
       const cards = gsap.utils.toArray<HTMLElement>('.story-card');
 
@@ -50,15 +73,15 @@ export default function AboutTimeline() {
 
         gsap.fromTo(
           overline,
-          { opacity: 0, y: 12 },
+          { opacity: 0, y: 10 },
           {
             opacity: 1,
             y: 0,
-            duration: 0.6,
+            duration: 0.5,
             ease: 'power2.out',
             scrollTrigger: {
               trigger: card,
-              start: 'top 82%',
+              start: 'top 85%',
               once: true,
             },
           }
@@ -66,16 +89,16 @@ export default function AboutTimeline() {
 
         gsap.fromTo(
           content,
-          { opacity: 0, y: 24 },
+          { opacity: 0, y: 16 },
           {
             opacity: 1,
             y: 0,
-            duration: 0.85,
+            duration: 0.7,
             ease: 'power2.out',
-            delay: 0.1,
+            delay: 0.08,
             scrollTrigger: {
               trigger: card,
-              start: 'top 82%',
+              start: 'top 85%',
               once: true,
             },
           }
@@ -83,16 +106,15 @@ export default function AboutTimeline() {
 
         gsap.fromTo(
           image,
-          { opacity: 0, scale: 0.97, x: 20 },
+          { opacity: 0, scale: 0.98 },
           {
             opacity: 1,
             scale: 1,
-            x: 0,
-            duration: 1.0,
+            duration: 0.8,
             ease: 'power2.out',
             scrollTrigger: {
               trigger: card,
-              start: 'top 80%',
+              start: 'top 85%',
               once: true,
             },
           }
@@ -103,52 +125,72 @@ export default function AboutTimeline() {
   );
 
   return (
-    <SectionContainer id="historia" className="py-16 lg:py-24 overflow-hidden">
-      <div ref={containerRef} className="space-y-6 lg:space-y-8">
-        {MILESTONES.map((item) => (
-          <article
-            key={item.index}
-            className="story-card group relative w-full rounded-card bg-white border border-black/[0.05] shadow-[0_1px_2px_rgba(0,0,0,0.04),0_4px_16px_rgba(0,0,0,0.05)] overflow-hidden transition-shadow duration-300 hover:shadow-[0_4px_8px_rgba(0,0,0,0.05),0_12px_32px_rgba(0,0,0,0.08)] h-[360px] lg:h-[420px]"
-          >
-            {/* Inner grid: text left, image right */}
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_420px] xl:grid-cols-[1fr_500px] h-full">
+    <SectionContainer id="por-que-escolher" className="py-16 lg:py-24 overflow-visible">
+      <div ref={containerRef} className="space-y-10 lg:space-y-14">
+        {/* Section Header */}
+        <div ref={headerRef} className="text-center max-w-3xl mx-auto space-y-4 px-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-primary/10 border border-teal-primary/20 text-teal-dark text-xs font-semibold uppercase tracking-wider">
+            <Sparkles className="w-3.5 h-3.5 text-teal-primary" />
+            Por Que a Souriê
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-teal-dark leading-tight tracking-tight">
+            Por que escolher a nossa clínica para{' '}
+            <span className="font-serif italic text-teal-primary">cuidar de você?</span>
+          </h2>
+          <p className="text-text-primary/70 text-body-sm lg:text-body leading-relaxed max-w-2xl mx-auto">
+            Unimos o mais alto padrão técnico, tecnologias odontológicas de última geração e um atendimento
+            acolhedor para transformar o seu sorriso com segurança e previsibilidade.
+          </p>
+        </div>
 
-              {/* Text side */}
-              <div className="story-content flex flex-col justify-center gap-5 lg:gap-6 px-8 py-10 lg:px-14 lg:py-14">
-                {/* Overline */}
-                <div className="story-overline flex items-center gap-3">
-                  <span className="text-[11px] font-semibold tracking-[0.08em] uppercase text-teal-primary/60">
-                    {item.index}
-                  </span>
-                  <span className="h-px w-6 bg-teal-primary/30" />
-                  <span className="font-serif italic text-teal-primary text-base lg:text-lg">
-                    {item.year}
-                  </span>
+        {/* Reasons Cards */}
+        <div className="space-y-5 sm:space-y-6 lg:space-y-8">
+          {REASONS.map((item) => {
+            const Icon = item.icon;
+            return (
+              <article
+                key={item.index}
+                className="story-card group relative w-full rounded-[28px] sm:rounded-[36px] lg:rounded-[40px] bg-white border border-black/[0.07] shadow-[0_4px_20px_rgba(0,0,0,0.06),0_12px_32px_rgba(0,0,0,0.05)] overflow-hidden transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.1),0_16px_40px_rgba(0,0,0,0.08)] flex flex-col lg:grid lg:grid-cols-[1fr_360px] xl:grid-cols-[1fr_420px] lg:h-[280px] xl:h-[290px]"
+              >
+                {/* Text side */}
+                <div className="story-content flex flex-col justify-center gap-2.5 sm:gap-3.5 lg:gap-4 p-5 sm:p-7 lg:px-10 lg:py-6 bg-white">
+                  {/* Overline with Icon & Badge */}
+                  <div className="story-overline flex items-center gap-2.5">
+                    <span className="text-[10.5px] font-bold tracking-[0.08em] uppercase text-teal-primary/80 bg-teal-primary/10 px-2.5 py-0.5 rounded-full">
+                      {item.index}
+                    </span>
+                    <span className="h-px w-4 bg-teal-primary/30" />
+                    <div className="flex items-center gap-1.5 text-teal-primary font-medium text-xs sm:text-sm">
+                      <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                      <span>{item.badge}</span>
+                    </div>
+                  </div>
+
+                  {/* Heading */}
+                  <h3 className="text-lg sm:text-xl lg:text-2xl xl:text-[1.65rem] font-medium text-teal-dark leading-snug tracking-[-0.01em] max-w-[500px]">
+                    {item.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-text-primary/70 text-xs sm:text-sm lg:text-[14.5px] leading-relaxed max-w-[480px]">
+                    {item.description}
+                  </p>
                 </div>
 
-                {/* Heading */}
-                <h3 className="text-2xl lg:text-4xl xl:text-[2.6rem] font-medium text-teal-dark leading-[1.2] tracking-[-0.01em] max-w-[520px]">
-                  {item.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-text-primary/65 text-body-sm lg:text-body leading-relaxed max-w-[480px]">
-                  {item.description}
-                </p>
-              </div>
-
-              {/* Image side — always right */}
-              <div className="story-image relative w-full overflow-hidden">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                />
-              </div>
-            </div>
-          </article>
-        ))}
+                {/* Image side */}
+                <div className="story-image relative w-full h-44 sm:h-52 lg:h-full overflow-hidden bg-teal-light/20">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                </div>
+              </article>
+            );
+          })}
+        </div>
       </div>
     </SectionContainer>
   );

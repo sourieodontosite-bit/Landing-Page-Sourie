@@ -184,7 +184,7 @@ export default function TeamSection() {
       <div className="mb-10 md:mb-16">
         <div className="max-w-3xl space-y-4 text-left">
           <span className="text-teal-primary font-bold uppercase tracking-[0.3em] text-[10px]">Corpo Clínico</span>
-          <h2 className="text-3xl lg:text-7xl font-medium text-teal-dark tracking-tight leading-[0.9]">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-teal-dark leading-tight tracking-tight">
             Excelência Clínica <br />
             <span className="italic font-serif text-teal-primary">& Especialização.</span>
           </h2>

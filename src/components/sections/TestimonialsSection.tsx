@@ -120,7 +120,7 @@ export default function TestimonialsSection() {
                 </div>
               }
             />
-            <h2 className={`testimonial-header-item reveal-item ${isVisible ? 'active' : ''} text-4xl lg:text-7xl font-medium text-teal-dark tracking-tight leading-none`} style={{ animationDelay: '100ms' }}>
+            <h2 className={`testimonial-header-item reveal-item ${isVisible ? 'active' : ''} text-3xl sm:text-4xl lg:text-5xl font-medium text-teal-dark tracking-tight leading-tight`} style={{ animationDelay: '100ms' }}>
               O que dizem <br />
               <span className="italic font-serif text-teal-primary">sobre nós?</span>
             </h2>
