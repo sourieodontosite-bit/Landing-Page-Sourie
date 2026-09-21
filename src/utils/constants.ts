@@ -614,19 +614,19 @@ export interface Testimonial {
 
 export const TESTIMONIALS: Testimonial[] = [
   {
-    quote: 'Atendimento excelente do início ao fim! Profissionais atenciosos e cuidadosos.',
-    name: 'Júnia Pereira de Mattos',
+    quote: 'Além do ótimo atendimento, os profissionais são excelentes e super cuidadosos. Minha filha até pediu para voltar no outro dia!',
+    name: 'Ingrid Dantas',
   },
   {
-    quote: 'Gostei da preocupação deles em querer sabe se o paciente está bem após o procedimento.',
-    name: 'Erica Mariana',
+    quote: 'Atendimento excelente! Toda a equipe é muito atenciosa e cuidadosa, além de demonstrar muito profissionalismo. Me senti segura e bem acolhida durante todo o atendimento. Super recomendo a clínica!',
+    name: 'Fabiana Seleguini',
   },
   {
-    quote: 'Fui nessa clínica por indicação e agora entendo perfeitamente o motivo da recomendação! O atendimento foi impecável.',
-    name: 'Wanderson Alves',
+    quote: 'Tive uma experiência excelente! A equipe é extremamente atenciosa, cuidadosa, com um atendimento humanizado. Profissionais incríveis, que transmitem segurança e acolhimento em cada detalhe. Recomendo com toda certeza!',
+    name: 'Thais Roque',
   },
   {
-    quote: 'Equipe super preparada, ambiente acolhedor. Resolvi meu problema sem sentir dor nenhuma, recomendo demais!',
+    quote: 'Equipe super preparada, ambiente acolhedor. Resolvi meu problema do jeito que eu queria, sem sentir dor nenhuma, recomendo demais!',
     name: 'Jennifer Fidelis',
   },
 ];
