@@ -13,7 +13,7 @@ const FAQS = [
   },
   {
     q: 'Quais são as formas de pagamento disponíveis?',
-    a: 'Facilitamos seu investimento: parcelamento em até 6x no cartão de crédito ou condições especiais para pagamento à vista no PIX, débito ou boleto.'
+    a: 'Facilitamos seu investimento: parcelamento em até 8x no cartão ou boleto, além de condições especiais para pagamento à vista no PIX ou débito.'
   },
   {
     q: 'Como agendar uma consulta e qual o horário de funcionamento?',

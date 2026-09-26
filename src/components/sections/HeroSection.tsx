@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import Button from '../shared/Button';
-import { WHATSAPP_LINK } from '../../utils/constants';
+import { buildWhatsAppLink, WA_MESSAGES } from '../../utils/constants';
 import heroImageMobile from '../../assets/hero-mobile.webp';
 import heroImage from '../../assets/hero-section.webp';
 
@@ -111,11 +111,11 @@ export default function HeroSection() {
             <div ref={buttonRef} className="hero-entrance lg:opacity-100 lg:animate-none hero-delay-4">
               <div className="lg:scale-[0.85] origin-center lg:origin-left inline-block">
                 <Button
-                  text="Agende sua consulta"
+                  text="Agendar minha avaliação"
                   icon="arrow-circle"
                   variant="cta"
                   size="lg"
-                  href={WHATSAPP_LINK}
+                  href={buildWhatsAppLink(WA_MESSAGES.hero)}
                   className="!bg-[rgb(206,235,255)] hover:!bg-teal-primary"
                 />
               </div>

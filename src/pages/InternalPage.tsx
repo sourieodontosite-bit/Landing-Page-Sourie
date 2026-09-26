@@ -150,9 +150,9 @@ const PAGES_CONTENT: Record<string, PageContent> = {
     heroImage: ortodontiaHeaderImg,
     mainImage: ortodontiaImg,
     testimonial: {
-      name: 'Mariana Costa',
-      text: 'Eu tinha muito receio de colocar aparelho tradicional. Com os alinhadores transparentes da Souriê, alinhei meus dentes super rápido e quase ninguém percebeu!',
-      role: 'Paciente da Souriê'
+      name: 'Juscilene Martins Oliveira',
+      text: 'Ambiente acolhedor e profissionais muito preparados. O atendimento é humanizado e o cuidado não se restringe ao consultório: entram em contato para saber se estamos nos adaptando bem ao aparelho e permanecem sempre disponíveis para eventuais dúvidas. Um ambiente seguro e completo.',
+      role: 'Paciente de Ortodontia'
     },
     services: [
       {
@@ -220,8 +220,8 @@ const PAGES_CONTENT: Record<string, PageContent> = {
     heroImage: clinicaGeralHeaderImg,
     mainImage: clinicaGeralImg,
     testimonial: {
-      name: 'Carlos Alberto',
-      text: 'O atendimento é sensacional. Consegui ver na televisão do consultório uma pequena trinca antes de sentir qualquer dor. Tratamos super rápido e sem sustos!',
+      name: 'Wandersom Alves',
+      text: 'Fui à clínica por indicação e o atendimento foi impecável em todos os momentos! Explicam tudo com muita clareza e paciência nos mínimos detalhes, mostrando cada procedimento e todos os cuidados pós-atendimento. Essa transparência deixa a gente muito seguro e tranquilo. Recomendo com toda certeza!',
       role: 'Paciente da Souriê'
     },
     services: [
@@ -289,9 +289,9 @@ const PAGES_CONTENT: Record<string, PageContent> = {
     ctaText: 'Planejamento personalizado do seu novo sorriso',
     mainImage: esteticaImg,
     testimonial: {
-      name: 'Patrícia Nogueira',
-      text: 'Fiz minhas facetas com eles e o resultado me surpreendeu demais! Ficou super natural, todo mundo elogia minha fisionomia mas ninguém diz que fiz procedimento.',
-      role: 'Paciente da Souriê'
+      name: 'Jennifer Fideles',
+      text: 'Era exatamente isso que eu buscava: naturalidade! Amei o resultado final desse processo lindo, superou todas as minhas expectativas. Muito obrigada ao Dr. Victor por elevar a minha autoestima!',
+      role: 'Paciente de Estética Dental'
     },
     services: [
       {
@@ -390,9 +390,9 @@ const PAGES_CONTENT: Record<string, PageContent> = {
     ctaText: 'Atendimento rápido e totalmente sem dor',
     mainImage: canalImg,
     testimonial: {
-      name: 'Gustavo Santos',
-      text: 'Estava com uma dor horrível no siso. Fui atendido super rápido, a aplicação da anestesia foi tão suave que não senti nada durante todo o processo. Sensacional!',
-      role: 'Paciente da Souriê'
+      name: 'Carolina Castro Oliveira',
+      text: 'O Dr. Victor extraiu meu siso e foi extremamente profissional, pontual e atencioso. Me senti muito bem atendida e totalmente confiante com o cuidado e a técnica dele durante todo o procedimento. Recomendo com certeza!',
+      role: 'Paciente de Cirurgia e Siso'
     },
     services: [
       {
@@ -460,8 +460,8 @@ const PAGES_CONTENT: Record<string, PageContent> = {
     heroImage: protesesHeaderImg,
     mainImage: proteseImg,
     testimonial: {
-      name: 'Afonso Mendes',
-      text: 'Usava prótese móvel há anos e era muito desconfortável. Depois que fiz o implante com a equipe da Souriê, voltei a comer de tudo sem medo nenhum!',
+      name: 'Isadora Isabelle',
+      text: 'Equipe super atenciosa e sempre disposta a explicar cada detalhe de todos os procedimentos. Me senti totalmente segura durante o tratamento e saio muito satisfeita e feliz com a minha escolha!',
       role: 'Paciente da Souriê'
     },
     services: [
@@ -530,8 +530,8 @@ const PAGES_CONTENT: Record<string, PageContent> = {
     heroImage: odontopediatriaHeaderImg,
     mainImage: odontopediatriaImg,
     testimonial: {
-      name: 'Beatriz Lima (Mãe do Leo)',
-      text: 'Meu filho tinha muito pavor de ir ao dentista. Na Souriê, a equipe brincou tanto com ele que hoje ele pergunta quando vai ser a próxima consulta!',
+      name: 'Tayra Leidamara',
+      text: 'Foi a melhor experiência para o meu filho! Um atendimento personalizado, humano e com um carinho sem igual por parte de toda a equipe.',
       role: 'Mãe de Paciente Infantil'
     },
     services: [

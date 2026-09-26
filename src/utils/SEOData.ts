@@ -137,7 +137,7 @@ export const FAQ_SCHEMA = {
       "name": "Quais são as formas de pagamento disponíveis?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Facilitamos seu investimento: parcelamento em até 6x no cartão de crédito ou condições especiais para pagamento à vista no PIX, débito ou boleto."
+        "text": "Facilitamos seu investimento: parcelamento em até 8x no cartão ou boleto, além de condições especiais para pagamento à vista no PIX ou débito."
       }
     },
     {

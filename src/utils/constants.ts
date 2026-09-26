@@ -12,7 +12,7 @@ export function buildWhatsAppLink(message: string): string {
 /** Mensagens contextuais por seção da landing page */
 export const WA_MESSAGES = {
   /** Hero principal — primeiro contato genérico */
-  hero: 'Olá! Gostaria de agendar uma consulta na Souriê Odontologia. Podem me ajudar?',
+  hero: 'Olá! Gostaria de agendar minha avaliação na Souriê Odontologia. Podem me ajudar?',
 
   /** Navbar — botão flutuante (genérico) */
   navbar: 'Olá, vi o site da Souriê e gostaria de agendar uma avaliação. Podem me atender?',
