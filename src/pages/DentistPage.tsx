@@ -9,6 +9,7 @@ import { ArrowLeft, Sparkles, Award, ArrowRight } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 import SEO from '../components/shared/SEO';
+import { buildDentistSchema } from '../utils/SEOData';
 
 import Button from '../components/shared/Button';
 import { OutlineToothIcon, InstagramIcon, WhatsAppIcon, ArrowRightIcon } from '../components/shared/Icons';
@@ -526,6 +527,8 @@ export default function DentistPage() {
       <SEO
         title={dentistSeo.title}
         description={dentistSeo.description}
+        canonical={`https://sourie.com.br/equipe/${member.slug}`}
+        schema={buildDentistSchema(member, imageSrc)}
       />
 
       {/* Decorative Background Element — single subtle blob */}
@@ -659,9 +662,9 @@ export default function DentistPage() {
                   <div style={isThemed ? { backgroundColor: theme.blobDeep, opacity: 0.3 } : undefined} className={desktopRoleSepClass} />
                   <span className={desktopRoleClass}>{member.role}</span>
                 </div>
-                <h1 className={desktopNameHClass}>
+                <div aria-hidden="true" className={desktopNameHClass}>
                   {firstName} <span className={accentSpanClass}>{lastName}</span>
-                </h1>
+                </div>
                 <p style={isThemed ? { color: theme.blobDeep, opacity: 0.85 } : undefined} className={desktopSubClass}>{ext.subtitle}</p>
               </div>
 

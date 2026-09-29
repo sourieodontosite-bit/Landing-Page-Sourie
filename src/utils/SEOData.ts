@@ -1,13 +1,20 @@
-import { CONTACT_INFO } from './constants';
+import { CONTACT_INFO, LEGAL_INFO, GOOGLE_MAPS_LINK } from './constants';
 
 export const LOCAL_BUSINESS_SCHEMA = {
   "@context": "https://schema.org",
   "@type": "Dentist",
-  "name": "Souriê Odontologia Integrada",
-  "image": "https://sourie.com.br/logo.png",
-  "@id": "https://sourie.com.br",
+  "@id": "https://sourie.com.br/#organization",
+  "name": LEGAL_INFO.tradeName,
+  "legalName": LEGAL_INFO.corporateName,
+  "taxID": LEGAL_INFO.cnpj,
+  "image": "https://sourie.com.br/hero-image.webp",
+  "logo": "https://sourie.com.br/favicon.svg",
   "url": "https://sourie.com.br",
   "telephone": CONTACT_INFO.phones[0],
+  "email": CONTACT_INFO.email,
+  "priceRange": "$$",
+  "hasMap": GOOGLE_MAPS_LINK,
+  "foundingDate": LEGAL_INFO.foundationDate,
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Av. Dr José Moreira, 414",
@@ -21,6 +28,66 @@ export const LOCAL_BUSINESS_SCHEMA = {
     "latitude": -19.754,
     "longitude": -42.946
   },
+  "areaServed": [
+    { "@type": "City", "name": "Nova Era", "containedInPlace": { "@type": "State", "name": "Minas Gerais" } },
+    { "@type": "City", "name": "Bela Vista de Minas" },
+    { "@type": "City", "name": "São Domingos do Prata" },
+    { "@type": "City", "name": "Rio Piracicaba" },
+    { "@type": "City", "name": "João Monlevade" }
+  ],
+  "medicalSpecialty": [
+    "Dentistry",
+    "Orthodontics",
+    "PediatricDentistry",
+    "Periodontics",
+    "Prosthodontics",
+    "Endodontics",
+    "OralSurgery"
+  ],
+  "employee": [
+    {
+      "@type": "Person",
+      "name": "Dr. Breno Martins da Costa Lage",
+      "jobTitle": "Cirurgião Dentista e Responsável Técnico (RT)",
+      "identifier": "CRO-MG 65391"
+    },
+    {
+      "@type": "Person",
+      "name": "Dr. Victor Melo Borges",
+      "jobTitle": "Cirurgião Dentista",
+      "identifier": "CRO-MG 50734"
+    },
+    {
+      "@type": "Person",
+      "name": "Dra. Estefânia Alves Martins",
+      "jobTitle": "Cirurgiã Dentista Especialista em Ortodontia",
+      "identifier": "CRO-MG 48255"
+    },
+    {
+      "@type": "Person",
+      "name": "Beatriz Bittencourt Guimarães",
+      "jobTitle": "Cirurgiã Dentista Especialista em Próteses",
+      "identifier": "CRO-MG 70129"
+    },
+    {
+      "@type": "Person",
+      "name": "Tayná Delfim",
+      "jobTitle": "Odontopediatra",
+      "identifier": "CRO-MG 62200"
+    },
+    {
+      "@type": "Person",
+      "name": "Junia Martins",
+      "jobTitle": "Biomédica Esteta",
+      "identifier": "CRBM-MG 17867"
+    },
+    {
+      "@type": "Person",
+      "name": "Maria Eduarda Lage",
+      "jobTitle": "Nutricionista Clínica e Estética",
+      "identifier": "CRN-9 37433"
+    }
+  ],
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5.0",
@@ -115,7 +182,8 @@ export const LOCAL_BUSINESS_SCHEMA = {
     }
   ],
   "sameAs": [
-    "https://www.instagram.com/sourie.odonto/"
+    "https://www.instagram.com/sourie.odonto/",
+    GOOGLE_MAPS_LINK
   ]
 };
 
@@ -124,6 +192,22 @@ export const FAQ_SCHEMA = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Onde fica a clínica Souriê e quais cidades da região são atendidas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Estamos localizados na Av. Dr. José Moreira, 414, Bairro Castelo, em Nova Era - MG. Atendemos com facilidade e estrutura completa pacientes de Nova Era e de municípios da região, como Bela Vista de Minas, São Domingos do Prata, Rio Piracicaba e João Monlevade."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O que é Odontologia Integrada e quais especialidades a Souriê reúne?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Odontologia Integrada significa reunir em um único lugar especialistas de todas as áreas essenciais: Ortodontia (Invisalign), Próteses e Implantes, Endodontia (Canal), Cirurgias e Sisos, Odontopediatria, Odontologia Estética, Harmonização Facial e Nutrição. O paciente realiza todo o seu diagnóstico e tratamento com uma equipe multidisciplinar sem precisar se deslocar entre consultórios."
+      }
+    },
     {
       "@type": "Question",
       "name": "Quanto tempo dura o tratamento e quais tecnologias são utilizadas?",
@@ -137,7 +221,7 @@ export const FAQ_SCHEMA = {
       "name": "Quais são as formas de pagamento disponíveis?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Facilitamos seu investimento: parcelamento em até 8x no cartão ou boleto, além de condições especiais para pagamento à vista no PIX ou débito."
+        "text": "Facilitamos seu investimento: parcelamento em até 12x no cartão ou boleto, além de condições especiais para pagamento à vista no PIX ou débito."
       }
     },
     {
@@ -145,7 +229,7 @@ export const FAQ_SCHEMA = {
       "name": "Como agendar uma consulta e qual o horário de funcionamento?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "O agendamento é rápido via WhatsApp ou pelo telefone (31) 3961-4845. Segunda a Sexta-feira: 08:00 às 11:00 e 13:00 às 18:00. Sábado: 08:00 às 12:00."
+        "text": "O agendamento é rápido via WhatsApp ou pelo telefone (31) 3961-4845. Segunda a Sexta-feira: 08:00 às 11:00 e 13:00 às 18:00 (intervalo de almoço das 11h às 13h). Sábado: 08:00 às 12:00."
       }
     },
     {
@@ -158,3 +242,79 @@ export const FAQ_SCHEMA = {
     }
   ]
 };
+
+/** Schema em Grafo para a Página Inicial */
+export const HOME_GRAPH_SCHEMA = {
+  "@context": "https://schema.org",
+  "@graph": [
+    LOCAL_BUSINESS_SCHEMA,
+    FAQ_SCHEMA
+  ]
+};
+
+/** Gerador de Schema para páginas de procedimentos médicos/odontológicos */
+export function buildProcedureSchema(name: string, description: string, url: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "MedicalProcedure",
+    "name": name,
+    "description": description,
+    "url": url,
+    "procedureType": "NonSurgicalProcedure",
+    "provider": {
+      "@type": "Dentist",
+      "name": LEGAL_INFO.tradeName,
+      "legalName": LEGAL_INFO.corporateName,
+      "telephone": CONTACT_INFO.phones[0],
+      "url": "https://sourie.com.br",
+      "hasMap": GOOGLE_MAPS_LINK,
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Av. Dr José Moreira, 414",
+        "addressLocality": "Nova Era",
+        "addressRegion": "MG",
+        "postalCode": "35940-000",
+        "addressCountry": "BR"
+      }
+    }
+  };
+}
+
+/** Gerador de Schema para páginas de dentistas e profissionais da saúde */
+export function buildDentistSchema(member: {
+  name: string;
+  role: string;
+  crm: string;
+  bio: string;
+  slug: string;
+  specialties: string[];
+}, imageSrc?: string) {
+  const isDentist = member.role.toLowerCase().includes('dentista') || member.role.toLowerCase().includes('odontopediatra');
+  
+  return {
+    "@context": "https://schema.org",
+    "@type": isDentist ? "Dentist" : "Person",
+    "name": member.name,
+    "jobTitle": member.role,
+    "description": member.bio,
+    "identifier": member.crm,
+    "url": `https://sourie.com.br/equipe/${member.slug}`,
+    ...(imageSrc ? { "image": `https://sourie.com.br${imageSrc}` } : {}),
+    "telephone": CONTACT_INFO.phones[0],
+    "worksFor": {
+      "@type": "Dentist",
+      "name": LEGAL_INFO.tradeName,
+      "legalName": LEGAL_INFO.corporateName,
+      "url": "https://sourie.com.br",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Av. Dr José Moreira, 414",
+        "addressLocality": "Nova Era",
+        "addressRegion": "MG",
+        "postalCode": "35940-000",
+        "addressCountry": "BR"
+      }
+    },
+    "knowsAbout": member.specialties
+  };
+}

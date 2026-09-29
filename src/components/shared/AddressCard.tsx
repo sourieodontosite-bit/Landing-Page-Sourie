@@ -38,17 +38,17 @@ export default function AddressCard({ className = '', isFullWidth = false }: Add
           <div className="flex flex-wrap items-center gap-x-8 gap-y-2 text-[13px]">
             <div className="flex items-center gap-3">
               <span className="text-white/40 uppercase tracking-tighter text-[9px] font-bold">Seg—Sex</span>
-              <span className="font-bold text-cyan-light">08:00 — 18:00</span>
+              <span className="font-bold text-cyan-light text-xs sm:text-[13px]">08:00–11:00 • 13:00–18:00</span>
             </div>
             <div className="flex items-center gap-3">
               <span className="text-white/40 uppercase tracking-tighter text-[9px] font-bold">Sáb</span>
-              <span className="font-bold text-cyan-light">08:00 — 12:00</span>
+              <span className="font-bold text-cyan-light">08:00–12:00</span>
             </div>
           </div>
 
           {/* Button CTA */}
           <a
-            href="https://www.google.com/maps/search/?api=1&query=Av.+Dr+José+Moreira%2C+414%2C+Bairro+Castelo%2C+Nova+Era+-+MG"
+            href="https://maps.app.goo.gl/z5tUATq1ZL7tfem79"
             target="_blank"
             rel="noopener noreferrer"
             className={`group/btn flex items-center justify-between ${isFullWidth ? 'py-2 pl-6 pr-2 lg:ml-4' : 'py-2.5 pl-6 pr-2'} rounded-full bg-white text-navy-dark font-bold text-xs uppercase tracking-wider hover:bg-cyan-light transition-all duration-300 shadow-md ${isFullWidth ? 'w-full sm:w-auto min-w-[180px]' : 'w-full'}`}

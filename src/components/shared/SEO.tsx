@@ -7,7 +7,7 @@ interface SEOProps {
   ogType?: string;
   ogImage?: string;
   ogLocale?: string;
-  schema?: object;
+  schema?: object | object[];
 }
 
 export default function SEO({
@@ -21,7 +21,7 @@ export default function SEO({
 }: SEOProps) {
   const siteName = 'Souriê Odontologia Integrada';
   const fullTitle = title || siteName;
-  const defaultDescription = 'Clínica odontológica moderna em Nova Era, MG. Especialistas em Invisalign, Implantes e Odontologia Estética com foco no seu conforto.';
+  const defaultDescription = 'Clínica odontológica moderna em Nova Era, MG. Especialistas em Invisalign, Implantes, Próteses e Odontologia Estética com tecnologia e conforto.';
 
   return (
     <Helmet>
@@ -37,6 +37,7 @@ export default function SEO({
       <meta property="og:description" content={description || defaultDescription} />
       <meta property="og:image" content={ogImage} />
       <meta property="og:site_name" content={siteName} />
+      {canonical && <meta property="og:url" content={canonical} />}
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />

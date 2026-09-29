@@ -456,7 +456,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Dr. Victor Melo Borges',
     role: 'Cirurgião Dentista',
     slug: 'dr-victor',
-    crm: 'CRO-MG 98765',
+    crm: 'CRO-MG 50734',
     bio: 'Focado em clínica geral e endodontia, o Dr. Victor é reconhecido por seu atendimento humanizado e cuidadoso, garantindo que procedimentos complexos sejam realizados com o máximo de precisão e sem dor.',
     fullBio: [
       'Nascido em Paracatu-MG, sempre sonhei em contribuir para a saúde e bem-estar das pessoas através da odontologia. Minha trajetória é marcada por dedicação, aprendizado contínuo e um compromisso inabalável com a excelência clínica.',
@@ -476,15 +476,15 @@ export const TEAM_MEMBERS: TeamMember[] = [
   },
   {
     name: 'Dr. Breno Martins da Costa Lage',
-    role: 'Cirurgião Dentista',
+    role: 'Cirurgião Dentista (RT)',
     slug: 'dr-breno',
-    crm: 'CRO-MG 12345',
-    bio: 'Especialista em reabilitação oral e implantes. Com extensa experiência, o Dr. Breno é apaixonado por transformar sorrisos e devolver a autoconfiança aos pacientes através de tratamentos modernos e minimamente invasivos.',
+    crm: 'CRO-MG 65391',
+    bio: 'Responsável Técnico da Souriê Odontologia Integrada. Especialista em reabilitação oral e implantes. Com extensa experiência, o Dr. Breno é apaixonado por transformar sorrisos e devolver a autoconfiança aos pacientes através de tratamentos modernos e minimamente invasivos.',
     fullBio: [
-      'Sou Breno Martins da Costa Lage, nasci em Nova Era, Minas Gerais, e me formei em Odontologia pela Faculdade Anhanguera de Ipatinga em 2022.',
+      'Sou Breno Martins da Costa Lage, cirurgião-dentista e Responsável Técnico da Souriê Odontologia Integrada. Nasci em Nova Era, Minas Gerais, e me formei em Odontologia pela Faculdade Anhanguera de Ipatinga em 2022.',
       'Tenho pós-graduação em Endodontia e capacitação em Odontologia Estética. Trabalho nas áreas de Endodontia, Prótese e Clínica Geral, sempre buscando aliar funcionalidade e estética nos tratamentos.',
       'Na Endodontia, faço tratamentos de canal, ajudando a tratar infecções e lesões no interior do dente, aliviando dores e preservando os dentes naturais sempre que possível. Já na área de Prótese, minha atuação é focada em reabilitar sorrisos, confeccionando próteses fixas ou removíveis e coroas, devolvendo aos pacientes a capacidade mastigatória, a saúde bucal e a confiança no sorriso.',
-      'Aqui na Souriê,  é muito mais que um sonho; é uma oportunidade de oferecer serviços de excelência e um atendimento diferenciado para nossos pacientes.'
+      'Aqui na Souriê, é muito mais que um sonho; é uma oportunidade de oferecer serviços de excelência e um atendimento diferenciado para nossos pacientes.'
     ],
     education: [
       { year: '2022', title: 'Graduação em Odontologia pela Faculdade Anhanguera' },
@@ -497,7 +497,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Dra. Estefânia Alves Martins',
     role: 'Cirurgiã Dentista',
     slug: 'dra-estefania',
-    crm: 'CRO-MG 54321',
+    crm: 'CRO-MG 48255',
     bio: 'Dedicada à ortodontia e odontologia estética, a Dra. Estefânia utiliza as mais recentes tecnologias para criar sorrisos harmoniosos. Seu atendimento é focado no conforto, precisão e detalhismo estético.',
     fullBio: [
       'Sou Estefânia Alves Martins, nascida em Nova Era, casada, cirurgiã-dentista formada pela Faculdade Newton em 2016, especialista em Ortodontia e Ortopedia Funcional dos Maxilares pelo CETRO-BH.',
@@ -515,7 +515,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Beatriz Bittencourt Guimarães',
     role: 'Cirurgiã Dentista',
     slug: 'dra-beatriz',
-    crm: 'CRO-MG',
+    crm: 'CRO-MG 70129',
     bio: 'Especialista em próteses dentárias, Beatriz dedica-se à arte de devolver função e estética aos sorrisos, com precisão e atenção aos mínimos detalhes em cada caso.',
     fullBio: [
       'Beatriz Bittencourt Guimarães é a profissional responsável pelo setor de próteses dentárias da Souriê Odontologia. Sua trajetória é marcada por dedicação e busca incessante pela excelência na reabilitação oral.',
@@ -534,7 +534,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Tayná Delfim',
     role: 'Odontopediatra',
     slug: 'dra-tayna',
-    crm: 'CRO-MG',
+    crm: 'CRO-MG 62200',
     bio: 'Dedicada ao cuidado odontológico infantil, a Dra. Tayná transforma a primeira consulta em uma experiência lúdica e acolhedora, plantando a semente da saúde bucal desde os primeiros anos de vida.',
     fullBio: [
       'A Dra. Tayná Delfim é nossa odontopediatra especializada, com um olhar especial para o atendimento de bebês, crianças e adolescentes. Seu trabalho vai muito além do tratamento: ela cria vínculos afetivos e transforma a ida ao dentista em um momento divertido.',
@@ -553,7 +553,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Junia Martins',
     role: 'Biomédica Esteta',
     slug: 'dra-junia',
-    crm: 'CRBM-MG',
+    crm: 'CRBM-MG 17867',
     bio: 'Especialista em biomedicina estética, a Dra. Junia harmoniza saúde e beleza através de tratamentos minimamente invasivos, sempre valorizando a naturalidade e a autoestima de cada paciente.',
     fullBio: [
       'A Dra. Junia Martins é nossa biomédica esteta, responsável pelos tratamentos de harmonização orofacial e estética facial da Souriê. Sua abordagem une rigor científico à sensibilidade artística.',
@@ -572,7 +572,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Maria Eduarda Lage',
     role: 'Nutricionista',
     slug: 'nutri-maria-eduarda',
-    crm: 'CRN9 37433',
+    crm: 'CRN-9 37433',
     bio: 'Nutricionista especializada em nutrição clínica e estética, Maria Eduarda integra saúde bucal e nutricional, mostrando como a alimentação é pilar fundamental para sorrisos e corpo saudáveis.',
     fullBio: [
       'Maria Eduarda Lage é a nutricionista da equipe Souriê, trazendo uma visão integrada entre alimentação, saúde bucal e bem-estar geral. Sua atuação complementa os tratamentos odontológicos e estéticos da clínica.',
@@ -729,3 +729,20 @@ export const SOCIAL_LINKS = [
   { platform: 'WhatsApp', href: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Olá! Acessei o site da Souriê e gostaria de entrar em contato.')}` },
   { platform: 'Instagram', href: 'https://www.instagram.com/sourie.odonto/' },
 ];
+
+export const GOOGLE_MAPS_LINK = 'https://maps.app.goo.gl/z5tUATq1ZL7tfem79';
+
+export const LEGAL_INFO = {
+  tradeName: 'Souriê Odontologia Integrada',
+  corporateName: 'BORGES LAGE & MARTINS LTDA - ME',
+  cnpj: '55.856.669/0001-71',
+  technicalDirector: 'Dr. Breno Martins da Costa Lage',
+  technicalDirectorCro: 'CRO-MG 65391',
+  foundationDate: '2024-07-09',
+  address: 'Av. Dr José Moreira, 414 / Bairro Castelo / Nova Era - MG',
+  postalCode: '35940-000',
+  city: 'Nova Era',
+  state: 'MG',
+  mapsUrl: GOOGLE_MAPS_LINK,
+};
+

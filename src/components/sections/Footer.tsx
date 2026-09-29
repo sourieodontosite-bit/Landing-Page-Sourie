@@ -1,4 +1,4 @@
-import { FOOTER_COLUMNS, CONTACT_INFO, SOCIAL_LINKS } from '../../utils/constants';
+import { FOOTER_COLUMNS, CONTACT_INFO, SOCIAL_LINKS, GOOGLE_MAPS_LINK, LEGAL_INFO } from '../../utils/constants';
 import { Link } from 'react-router-dom';
 import { InstagramIcon, FacebookIcon, WhatsAppIcon, ArrowRightIcon } from '../shared/Icons';
 import FooterLogoImg from '../../assets/Logo.svg';
@@ -115,7 +115,7 @@ export default function Footer() {
               <li className="flex flex-col gap-2">
                 <span className="text-[11px] text-white/30 uppercase font-black tracking-[0.25em]">Onde Estamos</span>
                 <a 
-                  href="https://maps.google.com" 
+                  href={GOOGLE_MAPS_LINK} 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-[15px] text-white/70 hover:text-white transition-colors leading-relaxed"
@@ -201,9 +201,12 @@ export default function Footer() {
         </nav>
 
         {/* Bottom Bar */}
-        <div className="w-full border-t border-white/5 pt-8 mt-6 sm:mt-10 flex flex-col md:flex-row items-center justify-center gap-8 relative z-10 text-[13px] text-white/30 font-medium tracking-wide">
-          <p className="text-center">
-            © {new Date().getFullYear()} Souriê Odontologia Integrada. Todos os direitos reservados.
+        <div className="w-full border-t border-white/5 pt-8 mt-6 sm:mt-10 flex flex-col items-center justify-center gap-2 relative z-10 text-[12px] sm:text-[13px] text-white/40 font-medium tracking-wide text-center">
+          <p>
+            © {new Date().getFullYear()} {LEGAL_INFO.tradeName}. Todos os direitos reservados.
+          </p>
+          <p className="text-[11px] text-white/30">
+            {LEGAL_INFO.corporateName} • CNPJ: {LEGAL_INFO.cnpj} • Resp. Técnico: {LEGAL_INFO.technicalDirector} ({LEGAL_INFO.technicalDirectorCro})
           </p>
         </div>
       </div>

@@ -5,7 +5,7 @@ import SectionSkeleton from '../components/shared/SectionSkeleton';
 import SectionDivider from '../components/shared/SectionDivider';
 
 import SEO from '../components/shared/SEO';
-import { LOCAL_BUSINESS_SCHEMA } from '../utils/SEOData';
+import { HOME_GRAPH_SCHEMA } from '../utils/SEOData';
 
 // Lazy load GSAP-heavy sections
 const ServicesSection = lazy(() => import('../components/sections/ServicesSection'));
@@ -43,7 +43,8 @@ export default function Home() {
       <SEO
         title="Souriê Odontologia | Invisalign e Implantes em Nova Era MG"
         description="Clínica odontológica em Nova Era, MG. Especialistas em Invisalign, implantes, estética e odontopediatria com tecnologia e atendimento humanizado. Agende sua consulta!"
-        schema={LOCAL_BUSINESS_SCHEMA}
+        canonical="https://sourie.com.br/"
+        schema={HOME_GRAPH_SCHEMA}
       />
       <HeroSection />
 

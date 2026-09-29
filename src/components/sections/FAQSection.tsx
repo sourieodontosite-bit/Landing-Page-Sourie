@@ -8,12 +8,20 @@ import { BUSINESS_HOURS } from '../../utils/constants';
 
 const FAQS = [
   {
+    q: 'Onde fica a clínica Souriê e quais cidades da região são atendidas?',
+    a: 'Estamos localizados na Av. Dr. José Moreira, 414, Bairro Castelo, em Nova Era - MG. Atendemos com facilidade e estrutura completa pacientes de Nova Era e de municípios da região, como Bela Vista de Minas, São Domingos do Prata, Rio Piracicaba e João Monlevade.'
+  },
+  {
+    q: 'O que é Odontologia Integrada e quais especialidades a Souriê reúne?',
+    a: 'Odontologia Integrada significa reunir em um único lugar especialistas de todas as áreas essenciais: Ortodontia (Invisalign), Próteses e Implantes, Endodontia (Canal), Cirurgias e Sisos, Odontopediatria, Odontologia Estética, Harmonização Facial e Nutrição. O paciente realiza todo o seu diagnóstico e tratamento com uma equipe multidisciplinar sem precisar se deslocar entre consultórios.'
+  },
+  {
     q: 'Quanto tempo dura o tratamento e quais tecnologias são utilizadas?',
     a: 'O tempo é personalizado para cada paciente. Na avaliação inicial com nosso Scanner 3D iTero™, apresentamos com precisão todas as etapas, resultados esperados e a duração estimada.'
   },
   {
     q: 'Quais são as formas de pagamento disponíveis?',
-    a: 'Facilitamos seu investimento: parcelamento em até 8x no cartão ou boleto, além de condições especiais para pagamento à vista no PIX ou débito.'
+    a: 'Facilitamos seu investimento: parcelamento em até 12x no cartão ou boleto, além de condições especiais para pagamento à vista no PIX ou débito.'
   },
   {
     q: 'Como agendar uma consulta e qual o horário de funcionamento?',

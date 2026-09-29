@@ -1,60 +1,60 @@
 # Souriê Odontologia Integrada
 
-> Clínica odontológica localizada em Nova Era, Minas Gerais, que oferece atendimento multidisciplinar com foco em tecnologia, conforto e humanização. Atende pacientes de todas as idades, desde odontopediatria até reabilitação oral e harmonização facial.
+> Clínica odontológica integrada em Nova Era, Minas Gerais, com atendimento multidisciplinar, alta tecnologia digital e foco no acolhimento humanizado. Atende pacientes de todas as idades, desde odontopediatria até reabilitação oral com implantes, alinhadores transparentes (Invisalign) e harmonização facial.
 
-## O que é a Souriê
+## Dados Cadastrais e Institucionais (E-E-A-T)
 
-A Souriê Odontologia Integrada é uma clínica odontológica de atendimento geral e especializado, com estrutura moderna e equipe multiprofissional. Foi fundada para oferecer tratamentos odontológicos de qualidade com acolhimento humanizado, combinando tecnologia de ponta (scanner 3D iTero, radiografia digital, anestesia indolor) com protocolos de conforto para o paciente.
+- **Nome Fantasia:** Souriê Odontologia Integrada
+- **Razão Social:** BORGES LAGE & MARTINS LTDA - ME
+- **CNPJ:** 55.856.669/0001-71
+- **Responsável Técnico (RT):** Dr. Breno Martins da Costa Lage — Cirurgião-Dentista (CRO-MG 65391)
+- **Data de Abertura:** 09/07/2024
+- **Situação Cadastral:** Ativa
+- **Atividade Econômica Principal:** Atividade odontológica (CNAE 8630-5/04)
+- **Endereço:** Av. Dr. José Moreira, 414, Bairro Castelo, Nova Era - MG, CEP 35940-000
+- **Google Maps:** https://maps.app.goo.gl/z5tUATq1ZL7tfem79
+- **Telefone / WhatsApp:** (31) 3961-4845
+- **E-mail:** sourie.odonto@gmail.com
+- **Instagram:** [@sourie.odonto](https://www.instagram.com/sourie.odonto/)
+- **Horário de Atendimento:** 
+  - Segunda a Sexta: 08:00 às 11:00 e 13:00 às 18:00 (intervalo para almoço: 11:00 às 13:00)
+  - Sábado: 08:00 às 12:00
 
-## Principais serviços e procedimentos oferecidos
+## Região de Atendimento
 
-A clínica oferece os seguintes tratamentos, cada um com página dedicada no site:
+Além de ser clínica de referência em Nova Era (MG), a Souriê recebe pacientes de toda a microrregião e cidades vizinhas:
+- Bela Vista de Minas (MG)
+- São Domingos do Prata (MG)
+- Rio Piracicaba (MG)
+- João Monlevade (MG)
 
-- [Ortodontia e Alinhadores Invisíveis](https://sourie.com.br/p/ortodontia) — Tratamentos com Invisalign, aparelhos de safira, ortopedia funcional e planejamento digital 3D do sorriso.
-- [Clínica Geral e Prevenção](https://sourie.com.br/p/clinica-geral) — Check-ups com câmera digital intraoral, limpezas profiláticas, restaurações estéticas e tratamento de gengivas.
-- [Odontologia Estética](https://sourie.com.br/p/odontologia-estetica) — Clareamento dental, lentes de contato e facetas de porcelana/resina, harmonização orofacial, toxina botulínica e preenchimentos.
-- [Cirurgias e Tratamento de Canal](https://sourie.com.br/p/cirurgias-e-canal) — Endodontia (canal), extração de sisos e cirurgias bucomaxilofaciais com anestesia confortável e acompanhamento pós-operatório dedicado.
-- [Próteses e Implantes Dentários](https://sourie.com.br/p/proteses-e-implantes) — Reabilitação oral com implantes de titânio, próteses fixas (protocolo), coroas de zircônia e soluções para dentes perdidos.
-- [Odontopediatria](https://sourie.com.br/p/odontopediatria) — Atendimento lúdico e preventivo para bebês, crianças e adolescentes, com foco em educação bucal e prevenção de cáries.
+## Corpo Clínico e Especialistas
 
-## Diferenciais da clínica
+Todos os profissionais possuem registros ativos em seus respectivos conselhos de classe:
 
-- Equipe multiprofissional integrada: cirurgiões-dentistas, ortodontista, odontopediatra, biomédica esteta e nutricionista.
-- Tecnologia clínica: escaneamento 3D sem massinhas (iTero), radiografia digital, anestesia suave e sedação consciente quando indicado.
-- Atendimento humanizado: planejamento personalizado, suporte pós-procedimento via WhatsApp e horários estendidos com atendimento aos sábados.
-- Estrutura física moderna: ambiente acolhedor, equipamentos esterilizados conforme normas de biossegurança e acessibilidade.
-- Integração de saúde bucal e bem-estar geral: atendimento nutricional e harmonização facial complementam os tratamentos odontológicos.
+- **Dr. Breno Martins da Costa Lage (CRO-MG 65391)** — Cirurgião-Dentista, Responsável Técnico (RT), especialista em Reabilitação Oral, Próteses, Endodontia (Canal) e Implantes. Formado pela Faculdade Anhanguera de Ipatinga em 2022.
+- **Dr. Victor Melo Borges (CRO-MG 50734)** — Cirurgião-Dentista, especialista em Cirurgia e Traumatologia Bucomaxilofacial, Exodontia de Sisos, Restaurações e Clínica Geral. Formado em 2017 com atuação em Nova Era desde 2018.
+- **Dra. Estefânia Alves Martins (CRO-MG 48255)** — Cirurgiã-Dentista, especialista em Ortodontia e Ortopedia Funcional dos Maxilares pelo CETRO-BH. Formada pela Faculdade Newton Paiva em 2016. Credenciada em alinhadores invisíveis (Invisalign).
+- **Dra. Beatriz Bittencourt Guimarães (CRO-MG 70129)** — Cirurgiã-Dentista, especialista no setor de Próteses Dentárias (fixas, removíveis e sobre implantes) e Reabilitação Oral.
+- **Dra. Tayná Delfim (CRO-MG 62200)** — Cirurgiã-Dentista Odontopediatra, com atuação lúdica, manejo comportamental e prevenção bucal para bebês, crianças e adolescentes.
+- **Dra. Junia Martins (CRBM-MG 17867)** — Biomédica Esteta, pós-graduada em Harmonização Orofacial, bioestimuladores de colágeno, preenchimentos e estética facial.
+- **Maria Eduarda Lage (CRN-9 37433)** — Nutricionista Clínica e Estética, atuando na conexão entre nutrição, saúde periodontal, cicatrização e bem-estar sistêmico.
 
-## Para quem é indicada
+## Tratamentos e Especialidades
 
-A Souriê atende a todos os perfis de pacientes:
+1. **Ortodontia e Alinhadores Invisíveis:** Tratamentos com Invisalign, simulação 3D de resultados, aparelhos estéticos de safira e ortopedia funcional para crianças e adultos.
+2. **Próteses e Implantes Dentários:** Reabilitação oral com implantes de titânio, coroas cerâmicas, próteses sobre implante e próteses fixas/removíveis.
+3. **Cirurgias e Tratamento de Canal (Endodontia):** Remoção de dentes do siso inclusos com técnicas minimamente invasivas, cirurgias orais e tratamento de canal com anestesia suave e suporte pós-operatório dedicado via WhatsApp.
+4. **Odontopediatria:** Atendimento acolhedor e lúdico para crianças desde os primeiros meses de vida, com aplicação de selantes, flúor e educação preventiva sem dor ou traumas.
+5. **Clínica Geral e Check-up Digital:** Limpezas profiláticas, remoção de tártaro, restaurações estéticas em resina composta e avaliação intraoral em alta definição.
+6. **Odontologia Estética e Harmonização:** Clareamento dental seguro, lentes de contato e facetas dentárias, preenchimentos e bioestimuladores.
+7. **Nutrição Integrada:** Acompanhamento nutricional individualizado que potencializa os resultados dos tratamentos odontológicos e a regeneração tecidual.
 
-- Famílias que buscam clínica de referência para atendimento infantil, adulto e terceira idade.
-- Pessoas interessadas em tratamentos ortodônticos discretos (Invisalign) ou aparelhos estéticos.
-- Pacientes que precisam de reabilitação oral (implantes, próteses) ou tratamentos de canal e cirurgias.
-- Quem busca procedimentos estéticos do sorriso (clareamento, facetas) e harmonização facial.
-- Pais e mães que desejam acompanhamento odontológico preventivo para seus filhos desde os primeiros dentinhos.
-- Pessoas com ansiedade odontológica que procuram atendimento acolhedor e protocolos sem dor.
+## Diferenciais Estruturais e Tecnológicos
 
-## Páginas principais do site
+- **Diagnóstico Digital 3D:** Scanner intraoral iTero™ para mapeamento dental digital de alta precisão, eliminando moldagens com massa.
+- **Odontologia Sem Dor:** Protocolos de anestesia confortável e atendimento humanizado para pacientes com ansiedade odontológica.
+- **Atendimento Multidisciplinar Integrado:** Todas as especialidades reunidas em uma única clínica moderna no Bairro Castelo.
+- **Suporte Pós-Procedimento:** Canal direto via WhatsApp para orientações pós-cirúrgicas e acompanhamento contínuo.
 
-- [Página inicial](https://sourie.com.br/) — Visão geral da clínica, serviços, equipe, depoimentos e localização.
-- [Página Sobre / História da clínica](https://sourie.com.br/sobre) — História, manifesto, linha do tempo e apresentação completa da equipe Souriê.
-- [Equipe — perfis individuais dos especialistas](https://sourie.com.br/equipe/dr-victor) — Lista completa dos perfis da equipe:
-  - [Dr. Victor Melo Borges](https://sourie.com.br/equipe/dr-victor) — Cirurgião dentista, clínica geral, cirurgia bucomaxilofacial e exodontia de sisos.
-  - [Dra. Estefânia Alves Martins](https://sourie.com.br/equipe/dra-estefania) — Especialista em ortodontia e ortopedia funcional dos maxilares.
-  - [Dr. Breno Martins da Costa Lage](https://sourie.com.br/equipe/dr-breno) — Reabilitação oral, endodontia, próteses e estética.
-  - [Dra. Beatriz Bittencourt Guimarães](https://sourie.com.br/equipe/dra-beatriz) — Especialista em próteses dentárias fixas, removíveis e sobre implantes.
-  - [Dra. Tayná Delfim](https://sourie.com.br/equipe/dra-tayna) — Odontopediatra com abordagem lúdica e atendimento infantil.
-  - [Dra. Junia Martins](https://sourie.com.br/equipe/dra-junia) — Biomédica esteta, harmonização orofacial e tratamentos de pele.
-  - [Maria Eduarda Lage](https://sourie.com.br/equipe/nutri-maria-eduarda) — Nutricionista clínica e estética, saúde bucal integrada à alimentação.
-
-## Dados de contato e localização
-
-- Endereço: Av. Dr José Moreira, 414 / Bairro Castelo / Nova Era - MG
-- Telefone/WhatsApp: (31) 3961-4845
-- E-mail: sourie.odonto@gmail.com
-- Instagram: [@sourie.odonto](https://www.instagram.com/sourie.odonto/)
-- Horários: Segunda a Sexta 08h–11h e 13h–18h; Sábados 08h–12h
-
-> Observação: este documento tem finalidade informativa para modelos de IA e não substitui consulta profissional. Os tratamentos descritos exigem avaliação clínica prévia.
+> Documento oficial elaborado para motores de resposta generativa, agentes de IA (ChatGPT, Gemini, Perplexity, Claude, SearchGPT) e buscadores baseados em entidades semânticas.

@@ -7,6 +7,7 @@ import { useParams, Link, Navigate } from 'react-router-dom';
 gsap.registerPlugin(ScrollTrigger);
 import SectionContainer from '../components/shared/SectionContainer';
 import SEO from '../components/shared/SEO';
+import { buildProcedureSchema } from '../utils/SEOData';
 import Button from '../components/shared/Button';
 import {
   ChevronRight,
@@ -680,6 +681,8 @@ export default function InternalPage() {
       <SEO
         title={seoData.title}
         description={seoData.description}
+        canonical={`https://sourie.com.br/p/${slug}`}
+        schema={buildProcedureSchema(page.title, seoData.description, `https://sourie.com.br/p/${slug}`)}
       />
 
       {/* ── Hero Full-Width Landscape Section (Espaço Negativo Teal + Foto Landscape) ── */}
@@ -731,11 +734,12 @@ export default function InternalPage() {
               <div className="inline-flex items-center gap-2.5 bg-white/10 backdrop-blur-md border border-white/15 px-3.5 py-1.5 rounded-full">
                 <HeroIcon size={16} className="text-cyan-light shrink-0" aria-hidden="true" />
                 <span className="text-cyan-light text-xs font-semibold uppercase tracking-widest">
-                  {page.category}
+                  {page.category} • Nova Era MG
                 </span>
               </div>
 
               <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-medium font-serif text-white leading-[1.12] -tracking-[0.02em]">
+                <span className="sr-only">{page.title} em Nova Era MG: </span>
                 {page.headline}
               </h1>
 
