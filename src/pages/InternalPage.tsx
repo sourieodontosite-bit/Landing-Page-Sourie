@@ -211,7 +211,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
       'Quem deseja manter o hálito sempre fresco e os dentes fortalecidos'
     ],
     threeSteps: [
-      { number: '01', title: 'Exame com Câmera HD', desc: 'Filmamos cada dente em alta definição para identificar detalhes na TV.' },
+      { number: '01', title: 'Exame com Scanner 3D', desc: 'Filmamos cada dente em alta definição para identificar detalhes na TV.' },
       { number: '02', title: 'Limpeza Suave', desc: 'Removemos manchas e tártaro de forma delicada sem agredir o esmalte.' },
       { number: '03', title: 'Proteção Preventiva', desc: 'Fortalecemos os dentes e orientamos os cuidados ideais no seu dia a dia.' }
     ],
@@ -227,7 +227,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
     },
     services: [
       {
-        name: 'Check-up com Câmera HD',
+        name: 'Check-up com Scanner 3D',
         desc: 'Filmagem interna em alta definição para acompanhar a saúde dos dentes.',
         benefit: 'Detecta pequenos problemas no início, evitando tratamentos caros.',
         icon: ScanLine,
@@ -1007,14 +1007,11 @@ export default function InternalPage() {
                         {/* Ambient card background glow */}
                         <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-teal-primary/20 blur-2xl pointer-events-none group-hover:bg-cyan-light/30 transition-colors duration-500" />
 
-                        {/* Top: Icon Badge & Tag */}
-                        <div className="relative z-10 flex items-center justify-between">
+                        {/* Top: Icon only */}
+                        <div className="relative z-10">
                           <div className="w-8 h-8 rounded-full bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center text-cyan-light shadow-sm shrink-0">
                             <Icon size={15} strokeWidth={1.5} />
                           </div>
-                          <span className="text-[9px] font-bold uppercase tracking-wider text-white/70 bg-white/10 px-2.5 py-1 rounded-full border border-white/10">
-                            {service.tag}
-                          </span>
                         </div>
 
                         {/* Center Cartoon SVG Illustration */}
@@ -1022,8 +1019,11 @@ export default function InternalPage() {
                           <SpecialtyIllustration name={service.name} size={110} />
                         </div>
 
-                        {/* Bottom: Title */}
-                        <div className="relative z-10 space-y-1 text-left">
+                        {/* Bottom: Tag + Title */}
+                        <div className="relative z-10 space-y-2 text-left">
+                          <span className="inline-block text-[9px] font-bold uppercase tracking-wide text-cyan-light bg-white/15 px-2.5 py-1 rounded-full border border-cyan-light/30 backdrop-blur-sm leading-tight">
+                            {service.tag}
+                          </span>
                           <h4 className="text-sm sm:text-base font-semibold text-white font-sans leading-snug group-hover:text-cyan-light transition-colors duration-200">
                             {service.name}
                           </h4>
