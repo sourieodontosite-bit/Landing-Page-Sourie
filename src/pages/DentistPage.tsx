@@ -188,7 +188,7 @@ const DENTIST_EXTENSIONS: Record<string, DentistDesignExtensions> = {
     ctaSub: 'Desenhe o alinhamento ideal para o seu sorriso com quem é referência em estética e acolhimento.'
   },
   'dr-breno': {
-    subtitle: 'Reabilitação Oral Estética & Implantes',
+    subtitle: 'Tratamento de Canal & Próteses',
     philosophy: 'Reabilitar a saúde oral de alguém é devolver a liberdade de se expressar plenamente. A odontologia de alta performance alia precisão microscópica à sensibilidade humana para reconectar a pessoa com a sua melhor versão.',
     instagramHandle: '@dr.brenolage',
     highlightStat: { value: 'Alta Performance', label: 'Em Reabilitação Oral' },
