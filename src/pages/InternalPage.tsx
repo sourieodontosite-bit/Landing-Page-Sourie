@@ -119,6 +119,7 @@ interface PageContent {
   ctaText: string;
   heroImage?: string;
   heroImagePosition?: string;
+  heroDesktopShiftClass?: string;
   heroOverlayOpacity?: number;
   heroOverlayIntensity?: number;
   heroOverlayColor?: string;
@@ -291,6 +292,8 @@ const PAGES_CONTENT: Record<string, PageContent> = {
     responsibility: 'Nosso objetivo é proporcionar um sorriso bonito, iluminado e extremamente natural.',
     heroCta: 'Transformar Meu Sorriso',
     ctaText: 'Planejamento personalizado do seu novo sorriso',
+    heroDesktopShiftClass: 'lg:translate-x-[22%]',
+    heroImagePosition: 'center center',
     mainImage: esteticaImg,
     testimonial: {
       name: 'Jennifer Fideles',
@@ -892,13 +895,15 @@ export default function InternalPage() {
       >
         {/* 1. Full-Width Landscape Background Image */}
         <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
-          <img
-            ref={heroImageRef}
-            src={page.heroImage || page.mainImage}
-            alt={page.title}
-            className="w-full h-full object-cover transition-transform duration-1000 scale-105"
-            style={{ objectPosition: page.heroImagePosition || 'center center' }}
-          />
+          <div className={`w-full h-full transition-transform duration-700 ease-out ${page.heroDesktopShiftClass || ''}`}>
+            <img
+              ref={heroImageRef}
+              src={page.heroImage || page.mainImage}
+              alt={page.title}
+              className="w-full h-full object-cover transition-transform duration-1000 scale-105"
+              style={{ objectPosition: page.heroImagePosition || 'center center' }}
+            />
+          </div>
 
           {/* Global Brand Tint Overlay across entire photo */}
           <div
