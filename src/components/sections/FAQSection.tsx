@@ -9,7 +9,7 @@ import { BUSINESS_HOURS } from '../../utils/constants';
 const FAQS = [
   {
     q: 'Onde fica a clínica Souriê e quais cidades da região são atendidas?',
-    a: 'Estamos localizados na Av. Dr. José Moreira, 414, Bairro Castelo, em Nova Era - MG, em um espaço moderno e totalmente acessível. Atendemos com facilidade e estrutura completa pacientes de Nova Era e de municípios da região, como Bela Vista de Minas, São Domingos do Prata, Rio Piracicaba e João Monlevade.'
+    a: 'Nossa clínica fica em Nova Era - MG (Av. Dr. José Moreira, 414, Bairro Castelo). Recebemos frequentemente pacientes de cidades vizinhas que vêm até aqui se consultar, como Bela Vista de Minas, São Domingos do Prata, Rio Piracicaba e João Monlevade.'
   },
   {
     q: 'A clínica possui estrutura acessível?',

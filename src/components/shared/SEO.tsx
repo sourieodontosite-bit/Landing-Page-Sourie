@@ -15,13 +15,20 @@ export default function SEO({
   description,
   canonical,
   ogType = 'website',
-  ogImage = '/og-image.png',
+  ogImage = '/og-image.webp',
   ogLocale = 'pt_BR',
   schema,
 }: SEOProps) {
   const siteName = 'Souriê Odontologia Integrada';
   const fullTitle = title || siteName;
   const defaultDescription = 'Clínica odontológica moderna e acessível em Nova Era, MG. Especialistas em Invisalign, Implantes, Próteses e Odontologia Estética com tecnologia e conforto.';
+
+  // Format absolute image URL for external social platforms / link preview scrapers
+  const baseDomain = 'https://sourie.com.br';
+  const absoluteOgImage = ogImage.startsWith('http')
+    ? ogImage
+    : `${baseDomain}${ogImage.startsWith('/') ? ogImage : `/${ogImage}`}`;
+  const imageType = absoluteOgImage.endsWith('.png') ? 'image/png' : 'image/webp';
 
   return (
     <Helmet>
@@ -30,20 +37,26 @@ export default function SEO({
       <meta name="description" content={description || defaultDescription} />
       {canonical && <link rel="canonical" href={canonical} />}
 
-      {/* Open Graph / Facebook */}
+      {/* Open Graph / Facebook / WhatsApp */}
       <meta property="og:type" content={ogType} />
       <meta property="og:locale" content={ogLocale} />
+      <meta property="og:site_name" content={siteName} />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description || defaultDescription} />
-      <meta property="og:image" content={ogImage} />
-      <meta property="og:site_name" content={siteName} />
+      <meta property="og:image" content={absoluteOgImage} />
+      <meta property="og:image:secure_url" content={absoluteOgImage} />
+      <meta property="og:image:type" content={imageType} />
+      <meta property="og:image:width" content="850" />
+      <meta property="og:image:height" content="448" />
+      <meta property="og:image:alt" content={siteName} />
       {canonical && <meta property="og:url" content={canonical} />}
 
-      {/* Twitter */}
+      {/* Twitter / X */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description || defaultDescription} />
-      <meta name="twitter:image" content={ogImage} />
+      <meta name="twitter:image" content={absoluteOgImage} />
+      <meta name="twitter:image:alt" content={siteName} />
 
       {/* JSON-LD Structured Data */}
       {schema && (

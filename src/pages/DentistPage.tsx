@@ -18,10 +18,10 @@ import brenoImg from '../assets/breno.webp';
 import estefaniaImg from '../assets/estefania.webp';
 import victorImg from '../assets/victor.webp';
 import beatrizImg from '../assets/beatriz.webp';
-import beatrizBento1 from '../assets/beatriz1.webp';
 import beatrizBento2 from '../assets/beatriz2.webp';
 import beatrizBento3 from '../assets/beatriz3.webp';
 import coroasAntesDepoisBeatriz from '../assets/Coroas-antes-e-depois_Beatriz.webp';
+import coroaBeatrizImg from '../assets/coroa.webp';
 import taynaFotoImg from '../assets/taynafoto.webp';
 import taynaImg from '../assets/tayna.webp';
 import escovasKidImg from '../assets/escovas-de-dente-kid.webp';
@@ -46,7 +46,7 @@ import brenoBento3 from '../assets/DentistPage/Breno/bento3.webp';
 import brenoBento4 from '../assets/DentistPage/Breno/bento4.webp';
 
 // Estefania Bento Images
-import estefaniaBento2 from '../assets/DentistPage/Estefania/bento2.webp';
+import estefaniaBento1 from '../assets/DentistPage/Estefania/bento1-estefania.webp';
 import invisalignEstefaniaImg from '../assets/invisalign-img.webp';
 import aparelhoFixoEstefaniaImg from '../assets/Close-up de dentes com aparelho ortodôntico.webp';
 import aparelhoOrtopedicoEstefaniaImg from '../assets/aparelho-ortopedico-Estefania.webp';
@@ -75,10 +75,10 @@ const bentoImagesMap: Record<string, { src: string; pos: string }[]> = {
     { src: brenoBento2, pos: 'object-center' },
   ],
   'dra-estefania': [
+    { src: estefaniaBento1, pos: 'object-center' },
     { src: invisalignEstefaniaImg, pos: 'object-center' },
     { src: aparelhoFixoEstefaniaImg, pos: 'object-center' },
     { src: aparelhoOrtopedicoEstefaniaImg, pos: 'object-center' },
-    { src: estefaniaBento2, pos: 'object-center' },
   ],
   'dr-victor': [
     { src: victorBento4, pos: 'object-center' },
@@ -90,7 +90,7 @@ const bentoImagesMap: Record<string, { src: string; pos: string }[]> = {
     { src: beatrizBento2, pos: 'object-[center_25%]' },
     { src: beatrizBento3, pos: 'object-[center_20%]' },
     { src: coroasAntesDepoisBeatriz, pos: 'object-center' },
-    { src: beatrizBento1, pos: 'object-[center_18%]' },
+    { src: coroaBeatrizImg, pos: 'object-center' },
   ],
   'dra-tayna': [
     { src: taynaImg, pos: 'object-[center_20%]' },
@@ -181,10 +181,10 @@ const DENTIST_EXTENSIONS: Record<string, DentistDesignExtensions> = {
     instagramHandle: '@estefaniaalvesm',
     highlightStat: { value: 'Desde 2017', label: 'Devolvendo sorrisos' },
     bentoItems: [
+      { category: 'Atendimento Familiar', title: 'Espaço acolhedor desenhado para o bem-estar e saúde de todas as idades' },
       { category: 'Alinhadores Invisíveis', title: 'Tecnologia ortodôntica invisível para alinhar seu sorriso com discrição' },
       { category: 'Ortodontia Fixa', title: 'Tratamentos corretivos precisos e planejados digitalmente' },
-      { category: 'Sorrisos Juvenis', title: 'Ortopedia preventiva para garantir o desenvolvimento saudável' },
-      { category: 'Atendimento Familiar', title: 'Espaço acolhedor desenhado para o bem-estar de todas as idades' }
+      { category: 'Sorrisos Juvenis', title: 'Ortopedia preventiva para garantir o desenvolvimento saudável' }
     ],
     ctaHeadline: 'Inicie seu tratamento ortodôntico com a Dra. Estefânia',
     ctaSub: 'Desenhe o alinhamento ideal para o seu sorriso com quem é referência em estética e acolhimento.'
@@ -212,7 +212,7 @@ const DENTIST_EXTENSIONS: Record<string, DentistDesignExtensions> = {
       { category: 'Reabilitação e Estética', title: 'Cuidado dedicado para devolver função e harmonia ao sorriso' },
       { category: 'Facetas e Restaurações', title: 'Restaurações estéticas e facetas em resina com acabamento natural' },
       { category: 'Próteses Fixas e Coroas', title: 'Coroas e próteses fixas com estética natural e alta durabilidade' },
-      { category: 'Atendimento Clínico', title: 'Excelência técnica e atenção aos detalhes em cada etapa' }
+      { category: 'Coroa Protética', title: 'Adaptação milimétrica, resistência e fidelidade estética ao dente natural' }
     ],
     ctaHeadline: 'Recupere seu sorriso com a Dra. Beatriz',
     ctaSub: 'Devolva função e estética ao seu sorriso com próteses fixas e restaurações estéticas.'
@@ -394,7 +394,7 @@ export default function DentistPage() {
           }
         );
 
-        gsap.utils.toArray(".timeline-item").forEach((item: any) => {
+        gsap.utils.toArray<HTMLElement>(".timeline-item").forEach((item) => {
           gsap.fromTo(item,
             { opacity: 0, x: -20 },
             {

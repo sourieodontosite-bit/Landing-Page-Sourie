@@ -712,6 +712,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
     heroCta: 'Agendar Consulta Infantil',
     ctaText: 'Atendimento infantil leve e divertido',
     heroImage: odontopediatriaHeaderImg,
+    heroImagePosition: 'right center',
     mainImage: odontopediatriaImg,
     testimonial: {
       name: 'Tayra Leidamara',

@@ -40,12 +40,12 @@ const serviceImages = [
 
 export default function ServicesSection() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isDesktop, setIsDesktop] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(() => typeof window !== 'undefined' ? window.innerWidth >= 1024 : false);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Only render hover images on desktop where hover interaction exists.
-    setIsDesktop(window.innerWidth >= 1024);
+    const handleResize = () => setIsDesktop(window.innerWidth >= 1024);
+    window.addEventListener('resize', handleResize);
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -60,7 +60,10 @@ export default function ServicesSection() {
       observer.observe(containerRef.current);
     }
 
-    return () => observer.disconnect();
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      observer.disconnect();
+    };
   }, []);
 
   return (

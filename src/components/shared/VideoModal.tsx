@@ -1,4 +1,4 @@
-﻿import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 interface VideoModalProps {
@@ -16,15 +16,21 @@ export default function VideoModal({ src, isOpen, onClose, title = 'Video' }: Vi
 
   useEffect(() => {
     if (isOpen) {
-      setMounted(true);
-      requestAnimationFrame(() =>
-        requestAnimationFrame(() => setVisible(true))
-      );
+      const raf = requestAnimationFrame(() => {
+        setMounted(true);
+        requestAnimationFrame(() => setVisible(true));
+      });
+      return () => cancelAnimationFrame(raf);
     } else {
-      setVisible(false);
-      setFrameKey(k => k + 1);
+      const raf = requestAnimationFrame(() => {
+        setVisible(false);
+        setFrameKey(k => k + 1);
+      });
       const t = setTimeout(() => setMounted(false), 450);
-      return () => clearTimeout(t);
+      return () => {
+        cancelAnimationFrame(raf);
+        clearTimeout(t);
+      };
     }
   }, [isOpen]);
 

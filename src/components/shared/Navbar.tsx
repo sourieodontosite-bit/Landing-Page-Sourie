@@ -71,7 +71,10 @@ function MobileMenuPortal({ open, onClose, currentPath, isScrolled }: MobileMenu
   const [visible, setVisible] = useState(open);
 
   useEffect(() => {
-    if (open) setVisible(true);
+    if (open) {
+      const raf = requestAnimationFrame(() => setVisible(true));
+      return () => cancelAnimationFrame(raf);
+    }
   }, [open]);
 
   // Lock body scroll when open
@@ -256,7 +259,8 @@ export default function Navbar() {
 
   // Close mobile menu on route change
   useEffect(() => {
-    setMobileMenuOpen(false);
+    const raf = requestAnimationFrame(() => setMobileMenuOpen(false));
+    return () => cancelAnimationFrame(raf);
   }, [location.pathname]);
 
   const isDarkText = isScrolled || isLightBg;

@@ -44,7 +44,7 @@ const cards: Card[] = [
 ];
 
 export default function PainSolutionSection() {
-  const containerRef = useRef<HTMLElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -131,7 +131,7 @@ export default function PainSolutionSection() {
         </g>
       </svg>
 
-      <div ref={containerRef as any} className="relative z-10 max-w-[1280px] mx-auto w-full">
+      <div ref={containerRef} className="relative z-10 max-w-[1280px] mx-auto w-full">
         {/* Header text */}
         <div className={`pain-anim relative max-w-md reveal-item ${isVisible ? 'active' : ''}`}>
           <h2 className="text-3xl font-semibold tracking-tight text-teal-dark sm:text-4xl">
