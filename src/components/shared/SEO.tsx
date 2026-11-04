@@ -21,7 +21,7 @@ export default function SEO({
 }: SEOProps) {
   const siteName = 'Souriê Odontologia Integrada';
   const fullTitle = title || siteName;
-  const defaultDescription = 'Clínica odontológica moderna em Nova Era, MG. Especialistas em Invisalign, Implantes, Próteses e Odontologia Estética com tecnologia e conforto.';
+  const defaultDescription = 'Clínica odontológica moderna e acessível em Nova Era, MG. Especialistas em Invisalign, Implantes, Próteses e Odontologia Estética com tecnologia e conforto.';
 
   return (
     <Helmet>

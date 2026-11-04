@@ -7,7 +7,7 @@ import brenoImg from '../../assets/breno.webp';
 import estefaniaImg from '../../assets/estefania.webp';
 import victorImg from '../../assets/victor.webp';
 import beatrizImg from '../../assets/beatriz.webp';
-import taynaImg from '../../assets/tayna.webp';
+import taynaImg from '../../assets/taynafoto.webp';
 import juniaImg from '../../assets/dra.junia.webp';
 import mariaEduardaImg from '../../assets/nutri_mariana.webp';
 import fallbackImg from '../../assets/equipe-sem-fundo.webp';
@@ -24,12 +24,12 @@ const memberImages: Record<string, string> = {
 };
 
 const SHORT_NAMES: Record<string, string> = {
-  'dr-victor': 'Dr. Victor Melo',
+  'dr-victor': 'Dr. Victor Borges',
   'dr-breno': 'Dr. Breno Lage',
   'dra-estefania': 'Dra. Estefânia Alves',
   'dra-beatriz': 'Beatriz Guimarães',
   'dra-tayna': 'Tayná Delfim',
-  'dra-junia': 'Dra. Junia Martins',
+  'dra-junia': 'Dra. Júnia Martins',
   'nutri-maria-eduarda': 'Maria Eduarda Lage',
 };
 
@@ -44,11 +44,7 @@ const TeamMemberCard = React.memo(({ member }: { member: typeof TEAM_MEMBERS[0] 
         <img
           src={memberImages[member.slug] || fallbackImg}
           alt={`${member.name} - ${member.role}`}
-          className={`w-full h-full object-cover transition-all duration-1000 ease-out ${
-            member.slug === 'dr-breno'
-              ? 'scale-105 group-hover:scale-100'
-              : 'scale-110 group-hover:scale-105'
-          }`}
+          className="w-full h-full object-cover transition-all duration-1000 ease-out scale-110 group-hover:scale-105"
           loading="lazy"
         />
 
@@ -108,11 +104,7 @@ const TeamMemberCard = React.memo(({ member }: { member: typeof TEAM_MEMBERS[0] 
         <img
           src={memberImages[member.slug] || fallbackImg}
           alt={`${member.name} - ${member.role}`}
-          className={`w-full h-full object-cover transition-all duration-1000 ease-out ${
-            member.slug === 'dr-breno'
-              ? 'scale-105 group-hover:scale-100'
-              : 'scale-115 group-hover:scale-110'
-          }`}
+          className="w-full h-full object-cover transition-all duration-1000 ease-out scale-115 group-hover:scale-110"
           loading="lazy"
         />
 

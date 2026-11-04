@@ -21,8 +21,10 @@ import beatrizImg from '../assets/beatriz.webp';
 import beatrizBento1 from '../assets/beatriz1.webp';
 import beatrizBento2 from '../assets/beatriz2.webp';
 import beatrizBento3 from '../assets/beatriz3.webp';
+import coroasAntesDepoisBeatriz from '../assets/Coroas-antes-e-depois_Beatriz.webp';
+import taynaFotoImg from '../assets/taynafoto.webp';
 import taynaImg from '../assets/tayna.webp';
-import taynaAtendimento from '../assets/tayna-atendimento.webp';
+import escovasKidImg from '../assets/escovas-de-dente-kid.webp';
 import odontopediatriaImg from '../assets/odontopediatria.webp';
 import juniaImg from '../assets/dra.junia.webp';
 import resultadosBigodeChines from '../assets/resultados-bigode-chines.webp';
@@ -44,10 +46,10 @@ import brenoBento3 from '../assets/DentistPage/Breno/bento3.webp';
 import brenoBento4 from '../assets/DentistPage/Breno/bento4.webp';
 
 // Estefania Bento Images
-import estefaniaBento1 from '../assets/DentistPage/Estefania/bento1.webp';
 import estefaniaBento2 from '../assets/DentistPage/Estefania/bento2.webp';
-import estefaniaBento3 from '../assets/DentistPage/Estefania/bento3.webp';
-import estefaniaBento4 from '../assets/DentistPage/Estefania/bento4.webp';
+import invisalignEstefaniaImg from '../assets/invisalign-img.webp';
+import aparelhoFixoEstefaniaImg from '../assets/Close-up de dentes com aparelho ortodôntico.webp';
+import aparelhoOrtopedicoEstefaniaImg from '../assets/aparelho-ortopedico-Estefania.webp';
 
 // Victor Bento Images
 import victorBento1 from '../assets/DentistPage/Victor/bento 1.webp';
@@ -60,7 +62,7 @@ const teamImages: Record<string, string> = {
   'dra-estefania': estefaniaImg,
   'dr-victor': victorImg,
   'dra-beatriz': beatrizImg,
-  'dra-tayna': taynaImg,
+  'dra-tayna': taynaFotoImg,
   'dra-junia': juniaImg,
   'nutri-maria-eduarda': mariaEduardaImg,
 };
@@ -73,9 +75,9 @@ const bentoImagesMap: Record<string, { src: string; pos: string }[]> = {
     { src: brenoBento2, pos: 'object-center' },
   ],
   'dra-estefania': [
-    { src: estefaniaBento1, pos: 'object-[center_75%]' },
-    { src: estefaniaBento4, pos: 'object-center' },
-    { src: estefaniaBento3, pos: 'object-center' },
+    { src: invisalignEstefaniaImg, pos: 'object-center' },
+    { src: aparelhoFixoEstefaniaImg, pos: 'object-center' },
+    { src: aparelhoOrtopedicoEstefaniaImg, pos: 'object-center' },
     { src: estefaniaBento2, pos: 'object-center' },
   ],
   'dr-victor': [
@@ -87,12 +89,12 @@ const bentoImagesMap: Record<string, { src: string; pos: string }[]> = {
   'dra-beatriz': [
     { src: beatrizBento2, pos: 'object-[center_25%]' },
     { src: beatrizBento3, pos: 'object-[center_20%]' },
+    { src: coroasAntesDepoisBeatriz, pos: 'object-center' },
     { src: beatrizBento1, pos: 'object-[center_18%]' },
-    { src: beatrizImg, pos: 'object-top' },
   ],
   'dra-tayna': [
     { src: taynaImg, pos: 'object-[center_20%]' },
-    { src: taynaAtendimento, pos: 'object-[center_30%]' },
+    { src: escovasKidImg, pos: 'object-center' },
     { src: odontopediatriaImg, pos: 'object-center' },
     { src: clinicaInterna, pos: 'object-center' },
   ],
@@ -160,14 +162,14 @@ interface DentistDesignExtensions {
 
 const DENTIST_EXTENSIONS: Record<string, DentistDesignExtensions> = {
   'dr-victor': {
-    subtitle: 'Cirurgia Bucomaxilofacial & Restaurações Avançadas',
-    philosophy: 'Um atendimento odontológico de excelência transcende a técnica. Trata-se de acolher a individualidade de cada paciente, convertendo procedimentos complexos em caminhos seguros, previsíveis e inteiramente livres de dor.',
-    instagramHandle: '@dr.victormelo',
+    subtitle: 'Cirurgia Bucal & Odontologia Estética',
+    philosophy: 'Atuação pautada pela experiência, precisão técnica e cuidado individualizado. Com ampla experiência em extrações dentárias, especialmente de dentes sisos, restaurações estéticas em resina e odontologia clínica geral, meu compromisso é oferecer tratamentos seguros, resultados de qualidade e um atendimento acolhedor em cada etapa.',
+    instagramHandle: '@victormelob',
     highlightStat: { value: 'Desde 2018', label: 'Dedicação clínica' },
     bentoItems: [
-      { category: 'Sisos e Cirurgias', title: 'Remoção de terceiros molares com técnica minimamente invasiva' },
-      { category: 'Procedimentos sem Dor', title: 'Protocolos de anestesia avançada e sedação consciente' },
-      { category: 'Restaurações Estéticas', title: 'Reconstruções que imitam perfeitamente o esmalte natural' },
+      { category: 'Sisos e Cirurgias', title: 'Remoção de terceiros molares com precisão técnica e cuidado' },
+      { category: 'Atendimento Humanizado', title: 'Procedimentos planejados com cuidado, segurança e conforto' },
+      { category: 'Restaurações Estéticas', title: 'Reconstruções em resina que imitam o esmalte natural' },
       { category: 'Ambiente Clínico', title: 'Consultório preparado com biossegurança rígida e conforto' }
     ],
     ctaHeadline: 'Agende sua avaliação cirúrgica ou clínica com o Dr. Victor',
@@ -176,44 +178,44 @@ const DENTIST_EXTENSIONS: Record<string, DentistDesignExtensions> = {
   'dra-estefania': {
     subtitle: 'Especialista em Ortodontia & Ortopedia Facial',
     philosophy: 'O sorriso perfeito é a união indivisível entre a harmonia estética e a saúde funcional. Cada tratamento ortodôntico que planejo é uma assinatura única, desenhada para elevar a autoconfiança de toda a família.',
-    instagramHandle: '@dra.estefaniaalves',
+    instagramHandle: '@estefaniaalvesm',
     highlightStat: { value: 'Desde 2017', label: 'Devolvendo sorrisos' },
     bentoItems: [
+      { category: 'Alinhadores Invisíveis', title: 'Tecnologia ortodôntica invisível para alinhar seu sorriso com discrição' },
+      { category: 'Ortodontia Fixa', title: 'Tratamentos corretivos precisos e planejados digitalmente' },
       { category: 'Sorrisos Juvenis', title: 'Ortopedia preventiva para garantir o desenvolvimento saudável' },
-      { category: 'Alinhadores Invisíveis', title: 'Tecnologia ortodôntica invisível para adultos exigentes' },
-      { category: 'Ortodontia Avançada', title: 'Tratamentos corretivos precisos e planejados digitalmente' },
       { category: 'Atendimento Familiar', title: 'Espaço acolhedor desenhado para o bem-estar de todas as idades' }
     ],
     ctaHeadline: 'Inicie seu tratamento ortodôntico com a Dra. Estefânia',
     ctaSub: 'Desenhe o alinhamento ideal para o seu sorriso com quem é referência em estética e acolhimento.'
   },
   'dr-breno': {
-    subtitle: 'Tratamento de Canal & Próteses',
-    philosophy: 'Reabilitar a saúde oral de alguém é devolver a liberdade de se expressar plenamente. A odontologia de alta performance alia precisão microscópica à sensibilidade humana para reconectar a pessoa com a sua melhor versão.',
-    instagramHandle: '@dr.brenolage',
+    subtitle: 'Tratamento de Canal & Próteses Removíveis',
+    philosophy: 'Reabilitar a saúde oral de alguém é devolver a liberdade de se expressar plenamente. A odontologia de alta performance alia alta tecnologia à sensibilidade humana para reconectar a pessoa com a sua melhor versão.',
+    instagramHandle: '@breno.lage',
     highlightStat: { value: 'Alta Performance', label: 'Em Reabilitação Oral' },
     bentoItems: [
-      { category: 'Próteses e Facetas', title: 'Coroas e lentes de alta resistência e naturalidade' },
-      { category: 'Tratamentos de Canal', title: 'Endodontia de alta precisão com máxima previsibilidade' },
-      { category: 'Implantes e Estética', title: 'Devolução integral da capacidade mastigatória e autoestima' },
+      { category: 'Próteses Removíveis', title: 'Reabilitação oral com conforto, função mastigatória e naturalidade' },
+      { category: 'Tratamentos de Canal', title: 'Endodontia com alta tecnologia e máxima previsibilidade' },
+      { category: 'Reabilitação Oral', title: 'Devolução integral da capacidade mastigatória e autoestima' },
       { category: 'Consultório Souriê', title: 'Tecnologia clínica de ponta integrada ao seu bem-estar diário' }
     ],
-    ctaHeadline: 'Agende sua reabilitação ou estética com o Dr. Breno',
+    ctaHeadline: 'Agende sua reabilitação ou avaliação com o Dr. Breno',
     ctaSub: 'Recupere a total segurança ao mastigar e a alegria de sorrir sem nenhuma restrição.'
   },
   'dra-beatriz': {
-    subtitle: 'Especialista em Próteses Dentárias',
+    subtitle: 'Próteses Fixas & Odontologia Estética',
     philosophy: 'Cada prótese é uma oportunidade de devolver não apenas a função mastigatória, mas a alegria de sorrir com confiança. Minha dedicação está em cada detalhe, para que o resultado seja tão único quanto o paciente.',
     instagramHandle: '@beatrizbiitt',
-    highlightStat: { value: 'Arte e Precisão', label: 'Em Próteses Dentárias' },
+    highlightStat: { value: 'Arte e Precisão', label: 'Em Próteses e Estética' },
     bentoItems: [
-      { category: 'Próteses Fixas', title: 'Coroas e pontes com estética natural e alta durabilidade' },
-      { category: 'Próteses Removíveis', title: 'Soluções confortáveis e adaptadas ao seu dia a dia' },
-      { category: 'Prótese sobre Implantes', title: 'Reabilitação segura com suporte de implantes integrados' },
-      { category: 'Laboratório Parceiro', title: 'Controle de qualidade em cada etapa da confecção' }
+      { category: 'Reabilitação e Estética', title: 'Cuidado dedicado para devolver função e harmonia ao sorriso' },
+      { category: 'Facetas e Restaurações', title: 'Restaurações estéticas e facetas em resina com acabamento natural' },
+      { category: 'Próteses Fixas e Coroas', title: 'Coroas e próteses fixas com estética natural e alta durabilidade' },
+      { category: 'Atendimento Clínico', title: 'Excelência técnica e atenção aos detalhes em cada etapa' }
     ],
     ctaHeadline: 'Recupere seu sorriso com a Dra. Beatriz',
-    ctaSub: 'Devolva função e estética ao seu sorriso com próteses personalizadas e de alta excelência.'
+    ctaSub: 'Devolva função e estética ao seu sorriso com próteses fixas e restaurações estéticas.'
   },
   'dra-tayna': {
     subtitle: 'Odontopediatria & Atendimento Infantil',
@@ -223,7 +225,7 @@ const DENTIST_EXTENSIONS: Record<string, DentistDesignExtensions> = {
     bentoItems: [
       { category: 'Bebês e Crianças', title: 'Acompanhamento desde o nascimento do primeiro dente' },
       { category: 'Prevenção Infantil', title: 'Hábitos de higiene ensinados de forma divertida e educativa' },
-      { category: 'Manejo Comportamental', title: 'Técnicas de sedação consciente e abordagem acolhedora' },
+      { category: 'Manejo Comportamental', title: 'Abordagem lúdica, gentil e acolhedora em cada consulta' },
       { category: 'Ambiente Acolhedor', title: 'Espaço pensado para fazer a criança se sentir em casa' }
     ],
     ctaHeadline: 'Agende a primeira consulta odontológica do seu filho(a)',
@@ -238,9 +240,9 @@ const DENTIST_EXTENSIONS: Record<string, DentistDesignExtensions> = {
       { category: 'Toxina Botulínica', title: 'Procedimento injetável usado para suavizar rugas e linhas de expressão.' },
       { category: 'Preenchimento Facial', title: 'Técnica que utiliza substâncias, como o ácido hialurônico, para restaurar volume e contorno ao rosto.' },
       { category: 'Tratamentos de Pele', title: 'O tratamento de pele inclui limpeza de pele, peelings químicos e microagulhamento para rejuvenescimento e tratamento de manchas.' },
-      { category: 'Tratamentos Corporais e Vasculares', title: 'Serviços como secagem de microvasos e procedimentos lipoenzimáticos para gordura localizada.' }
+      { category: 'Preenchimento Estratégico', title: 'Pontos estratégicos de preenchimento com ácido hialurônico.' }
     ],
-    ctaHeadline: 'Realce sua beleza natural com a Dra. Junia',
+    ctaHeadline: 'Realce sua beleza natural com a Dra. Júnia',
     ctaSub: 'Procedimentos estéticos seguros e personalizados para devolver sua autoestima e confiança.'
   },
   'nutri-maria-eduarda': {
@@ -251,7 +253,7 @@ const DENTIST_EXTENSIONS: Record<string, DentistDesignExtensions> = {
     bentoItems: [
       { category: 'Nutrição Clínica', title: 'Planejamento alimentar personalizado às suas necessidades' },
       { category: 'Nutrição Estética', title: 'Alimentação que favorece pele, cabelos e corpo saudáveis' },
-      { category: 'Saúde Bucal Integrada', title: 'Sinergia entre nutrição e a saúde dos dentes e gengivas' },
+      { category: 'Saúde e Bem-Estar', title: 'Alimentação equilibrada como aliada da sua saúde e qualidade de vida' },
       { category: 'Reeducação Alimentar', title: 'Hábitos construídos com leveza e prazer em se alimentar' }
     ],
     ctaHeadline: 'Transforme sua saúde pela alimentação com Maria Eduarda',
@@ -435,7 +437,7 @@ export default function DentistPage() {
   const bentoData = bentoImagesMap[member.slug] || [];
   const nameParts = member.name.split(' ');
   const firstName = nameParts[0]; // e.g. "Dr." / "Dra."
-  const lastName = nameParts[1];  // e.g. "Victor" / "Estefânia" / "Breno"
+  const lastName = member.slug === 'dr-victor' ? 'Victor Borges' : nameParts[1];  // e.g. "Victor Borges" / "Estefânia" / "Breno"
   const theme: MemberTheme = { ...DEFAULT_THEME, ...(MEMBER_THEMES[member.slug] || {}) };
   const isThemed = !!MEMBER_THEMES[member.slug];
 
@@ -488,32 +490,32 @@ export default function DentistPage() {
 
   const DENTIST_SEO_DATA: Record<string, { title: string; description: string }> = {
     'dr-victor': {
-      title: 'Dr. Victor Melo | Cirurgia e Sisos na Souriê Nova Era',
-      description: 'Dr. Victor é cirurgião dentista especializado em sisos, restaurações e clínica geral. Atendimento humanizado, sem dor e tecnologia de ponta na Souriê Odontologia Nova Era.'
+      title: 'Dr. Victor Borges | Cirurgia e Sisos na Souriê Nova Era',
+      description: 'Dr. Victor Borges atua com precisão técnica em extrações dentárias, sisos, restaurações estéticas em resina e clínica geral na Souriê Odontologia Nova Era.'
     },
     'dra-estefania': {
       title: 'Dra. Estefânia | Ortodontia e Invisalign na Souriê',
-      description: 'Dra. Estefânia é especialista em ortodontia e Invisalign. Tratamentos personalizados para crianças, adolescentes e adultos com discrição e conforto na Souriê Odontologia.'
+      description: 'Dra. Estefânia é especialista em ortodontia, Invisalign, ortodontia infantil e fixa na Souriê Odontologia Nova Era.'
     },
     'dr-breno': {
-      title: 'Dr. Breno | Próteses, Canal e Estética em Nova Era',
-      description: 'Dr. Breno é especialista em reabilitação oral, endodontia e estética. Implantes, coroas e tratamentos de canal com excelência na Souriê Odontologia Nova Era.'
+      title: 'Dr. Breno | Endodontia e Prótese Removível em Nova Era',
+      description: 'Dr. Breno tem especialização em Endodontia e atua em tratamentos de canal, prótese removível e clínica geral na Souriê Odontologia Nova Era.'
     },
     'dra-beatriz': {
-      title: 'Dra. Beatriz | Próteses Dentárias na Souriê Nova Era',
-      description: 'Beatriz é especialista em próteses fixas, removíveis e sobre implantes. Devolve função e estética ao seu sorriso com precisão e detalhismo na Souriê Odontologia.'
+      title: 'Dra. Beatriz | Próteses Fixas e Estética na Souriê Nova Era',
+      description: 'Beatriz atua em próteses fixas, restaurações estéticas, facetas em resina e clínica geral na Souriê Odontologia Nova Era.'
     },
     'dra-tayna': {
       title: 'Dra. Tayná | Odontopediatria na Souriê Nova Era MG',
-      description: 'Dra. Tayná é odontopediatra com abordagem lúdica e acolhedora. Atendimento para bebês, crianças e adolescentes sem traumas na Souriê Odontologia Nova Era.'
+      description: 'Dra. Tayná é odontopediatra com abordagem lúdica e acolhedora para cuidado com bebê, crianças e adolescentes na Souriê Odontologia Nova Era.'
     },
     'dra-junia': {
-      title: 'Dra. Junia | Harmonização Facial na Souriê Nova Era',
-      description: 'Dra. Junia é biomédica esteta especialista em harmonização orofacial. Preenchimentos, toxina botulínica e tratamentos de pele com resultados naturais na Souriê.'
+      title: 'Dra. Júnia | Harmonização Facial na Souriê Nova Era',
+      description: 'Dra. Júnia é biomédica esteta especialista em harmonização orofacial. Preenchimento com ácido hialurônico, toxina botulínica e tratamentos de pele na Souriê.'
     },
     'nutri-maria-eduarda': {
       title: 'Maria Eduarda | Nutrição Clínica e Estética Souriê',
-      description: 'Nutricionista Maria Eduarda integra saúde bucal e alimentação. Reeducação alimentar sem restrições, nutrição clínica e estética na Souriê Odontologia Nova Era.'
+      description: 'Nutricionista Maria Eduarda atua em reeducação alimentar sem restrições, nutrição clínica e estética na Souriê Odontologia Nova Era.'
     }
   };
 
@@ -628,8 +630,7 @@ export default function DentistPage() {
                 <img
                   src={imageSrc}
                   alt={`Retrato de estúdio do ${member.name}`}
-                  className={`w-full h-full object-cover grayscale-[0.05] group-hover:grayscale-0 transition-[transform,filter] duration-700 ease-out ${member.slug === 'dr-breno' ? 'scale-[1.02] group-hover:scale-[1.04]' : 'scale-[1.03] group-hover:scale-[1.05]'
-                    }`}
+                  className="w-full h-full object-cover grayscale-[0.05] group-hover:grayscale-0 transition-[transform,filter] duration-700 ease-out scale-[1.03] group-hover:scale-[1.05]"
                   decoding="async"
                 />
               </div>

@@ -29,10 +29,10 @@ const REASONS = [
   },
   {
     index: '03',
-    badge: 'Ambiente & Experiência',
-    title: 'Ambiente pensado no seu conforto.',
+    badge: 'Ambiente & Acessibilidade',
+    title: 'Ambiente acessível e pensado no seu conforto.',
     description:
-      'Criamos uma atmosfera acolhedora e moderna para transformar sua experiência odontológica. Atendimento pontual, biossegurança rigorosa e cuidado completo para você e sua família.',
+      'Criamos uma infraestrutura acolhedora, moderna e totalmente acessível para transformar sua experiência odontológica. Atendimento pontual, biossegurança rigorosa e cuidado completo para você e sua família.',
     image: clinicaImg,
     icon: HeartHandshake,
   },

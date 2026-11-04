@@ -46,8 +46,10 @@ const PROCEDURE_ICONS: Record<string, React.ElementType> = {
   'ortodontia': Smile,
   'clinica-geral': Stethoscope,
   'odontologia-estetica': Sparkles,
-  'cirurgias-e-canal': Syringe,
-  'proteses-e-implantes': Layers,
+  'tratamento-de-canal': Activity,
+  'cirurgias': Scissors,
+  'proteses': Layers,
+  'implantes': Bone,
   'odontopediatria': Baby,
 };
 
@@ -56,6 +58,7 @@ import ortodontiaImg from '../assets/Procedimentos/Ortodontia.webp';
 import clinicaGeralImg from '../assets/Procedimentos/Clinica-geral.webp';
 import esteticaImg from '../assets/Procedimentos/Estetica.webp';
 import canalImg from '../assets/Procedimentos/Canal.webp';
+import cirurgiasImg from '../assets/Procedimentos/Cirurgias.webp';
 import proteseImg from '../assets/Procedimentos/Protese.webp';
 import odontopediatriaImg from '../assets/Procedimentos/Odontopediatria.webp';
 import tecnologiaImg from '../assets/Tecnologia.webp';
@@ -273,7 +276,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
     description: 'Transforme a cor, o formato e o alinhamento dos seus dentes de forma harmônica e natural.',
     headline: 'Volte a sorrir com total orgulho e confiança',
     subheadline: 'Recupere a vontade de tirar fotos e conversar bem de perto',
-    bodyText: 'Criamos um projeto personalizado para o seu sorriso respeitando o formato do seu rosto e a sua personalidade. Seja com clareamentos eficientes ou facetas de resina, você conquista dentes mais brancos, bem alinhados e com um acabamento suave e natural.',
+    bodyText: 'Criamos um projeto personalizado para o seu sorriso respeitando o formato do seu rosto e a sua personalidade. Seja com clareamentos eficientes ou lentes e facetas em resina, você conquista dentes mais brancos, bem alinhados e com um acabamento suave e natural.',
     whyDoIt: 'Recupere a vontade de sorrir nas fotos e em conversas de perto com dentes brancos, bem formatados e perfeitamente naturais.',
     targetAudience: [
       'Pessoas incomodadas com dentes amarelados, manchados ou desgastados',
@@ -282,8 +285,8 @@ const PAGES_CONTENT: Record<string, PageContent> = {
     ],
     threeSteps: [
       { number: '01', title: 'Projeto Facial 3D', desc: 'Desenhamos a proporção ideal do novo sorriso em sintonia com o seu rosto.' },
-      { number: '02', title: 'Definição de Tom', desc: 'Escolhemos a cor exata e o material de alta tecnologia para máxima naturalidade.' },
-      { number: '03', title: 'Aplicação Precisa', desc: 'Realizamos o clareamento ou facetas com acabamento impecável e sem dor.' }
+      { number: '02', title: 'Definição de Tom', desc: 'Escolhemos a cor exata e a resina de alta tecnologia para máxima naturalidade.' },
+      { number: '03', title: 'Aplicação Precisa', desc: 'Realizamos o clareamento ou facetas em resina com acabamento impecável.' }
     ],
     responsibility: 'Nosso objetivo é proporcionar um sorriso bonito, iluminado e extremamente natural.',
     heroCta: 'Transformar Meu Sorriso',
@@ -296,11 +299,11 @@ const PAGES_CONTENT: Record<string, PageContent> = {
     },
     services: [
       {
-        name: 'Lentes e Facetas de Porcelana',
-        desc: 'Capas ultra finas aplicadas para corrigir manchas, formatos e espaços.',
-        benefit: 'Resistentes a manchas e com brilho e cor permanentes.',
+        name: 'Lentes e Facetas (Resina)',
+        desc: 'Modelagem estética em resina de alta performance para corrigir manchas, formatos e espaços.',
+        benefit: 'Transformação harmônica, natural e com excelente acabamento estético.',
         icon: Gem,
-        tag: 'Resultado Premium',
+        tag: 'Estética em Resina',
         image: esteticaImg
       },
       {
@@ -318,14 +321,6 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         icon: Sparkle,
         tag: 'Harmonia Facial',
         image: victorTratamentoImg
-      },
-      {
-        name: 'Facetas de Resina Direct',
-        desc: 'Modelagem direta nos dentes para corrigir formato e cor em poucas horas.',
-        benefit: 'Transformação rápida, acessível e com excelente resultado visual.',
-        icon: Layers,
-        tag: 'Rápido e Prático',
-        image: fotoClinicaImg
       },
       {
         name: 'Toxina Botulínica',
@@ -352,44 +347,138 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         image: clinicaInterna3Img
       },
       {
-        name: 'Tratamentos Corporais e Vasculares',
-        desc: 'Serviços como secagem de microvasos e procedimentos lipoenzimáticos para gordura localizada.',
-        benefit: 'Combina tratamentos estéticos para melhorar a aparência da pele e do corpo.',
+        name: 'Preenchimento Estratégico',
+        desc: 'Pontos estratégicos de preenchimento com ácido hialurônico.',
+        benefit: 'Realça traços naturais e devolve harmonia ao rosto.',
         icon: Activity,
-        tag: 'Corpo e Vasos',
+        tag: 'Harmonia Facial',
         image: fotoClinicaImg
       }
     ],
     methodology: [
       { step: '01', title: 'Conversa e Desejo', desc: 'Entendemos exatamente o que você gostaria de mudar no seu sorriso.', icon: Smile, color: 'bg-teal-primary' },
       { step: '02', title: 'Projeto do Sorriso', desc: 'Desenhamos as proporções ideais para combinar com o seu rosto.', icon: Sparkles, color: 'bg-teal-medium' },
-      { step: '03', title: 'Aplicação Suave', desc: 'Realizamos o clareamento ou a colocação das facetas sem dor.', icon: Zap, color: 'bg-teal-dark' },
+      { step: '03', title: 'Aplicação em Resina', desc: 'Realizamos o clareamento ou a escultura das facetas em resina com precisão.', icon: Zap, color: 'bg-teal-dark' },
       { step: '04', title: 'Novo Sorriso', desc: 'Você sai do consultório pronto para sorrir livremente para o mundo.', icon: CheckCircle2, color: 'bg-navy-dark' }
     ]
   },
-  'cirurgias-e-canal': {
-    title: 'Tratamento de Canal & Sisos',
-    category: 'Tratamentos Sem Dor',
-    sectionTitle: 'Alívio imediato e procedimentos tranquilos com anestesia indolor',
-    description: 'Tratamentos rápidos e sem sofrimento para eliminar a dor de dente e resolver extrações com segurança.',
-    headline: 'Elimine a dor de dente com total tranquilidade',
-    subheadline: 'Atendimento rápido e humanizado para você voltar a ter paz',
-    bodyText: 'Sabemos que dor de dente é um pesadelo. Por isso, utilizamos técnicas modernas de anestesia delicada e equipamentos de alta precisão que tornam o tratamento de canal e a remoção de siso extremamente ágeis e indolores. Cuidamos de você com todo o carinho e paciência que você merece.',
-    whyDoIt: 'Elimine a dor de dente com urgência e viva uma experiência de tratamento tranquila, rápida e com anestesia suave.',
+  'tratamento-de-canal': {
+    title: 'Tratamento Endodôntico (Canal)',
+    category: 'Endodontia',
+    sectionTitle: 'Tratamento de canal para manter seu dente',
+    description: 'Ajuda a tratar infecções e lesões no interior do dente, aliviando dores e preservando os dentes naturais sempre que possível.',
+    headline: 'Tratamento de canal para manter seu dente',
+    subheadline: 'Ajuda a tratar infecções e lesões no interior do dente, aliviando dores e preservando os dentes naturais',
+    bodyText: 'Na Endodontia, realizamos tratamentos de canal ajudando a tratar infecções e lesões no interior do dente, aliviando dores e preservando os dentes naturais sempre que possível.',
+    whyDoIt: 'Tratar infecções e lesões no interior do dente, aliviando dores e preservando os dentes naturais sempre que possível.',
     targetAudience: [
-      'Pessoas com dores intensas, pontadas ou sensibilidade extrema no dente',
-      'Quem precisa remover o siso de forma ágil, prevenindo inchaço e complicações',
-      'Pacientes com medo de cirurgias que procuram um atendimento acolhedor'
+      'Pessoas com infecções e lesões no interior do dente',
+      'Pacientes com dores intensas ou sensibilidade no dente que precisam preservar o dente natural',
+      'Quem precisa de retratamento em dentes que já passaram por tratamento de canal'
     ],
     threeSteps: [
-      { number: '01', title: 'Diagnóstico Imediato', desc: 'Identificamos a causa exata da dor com exames radiográficos digitais.' },
-      { number: '02', title: 'Anestesia Indolor', desc: 'Aplicação suave e gradual para você não sentir o desconforto da agulha.' },
-      { number: '03', title: 'Alívio & Cura', desc: 'Executamos a limpeza do canal ou extração de forma rápida e precisa.' }
+      {
+        number: '01',
+        title: 'Planejamento e diagnóstico',
+        desc: 'Avaliamos a estrutura do dente por meio de exames clínicos e radiográficos para identificar a necessidade do tratamento e definir a melhor abordagem.'
+      },
+      {
+        number: '02',
+        title: 'Tratamento de canal',
+        desc: 'Removemos o tecido pulpar comprometido, realizamos a limpeza, desinfecção e modelagem dos canais radiculares.'
+      },
+      {
+        number: '03',
+        title: 'Restauração do dente',
+        desc: 'Após o tratamento, realizamos a reconstrução da estrutura dentária, devolvendo ao dente sua função e resistência, preservando-o na arcada.'
+      }
     ],
     responsibility: 'Oferecemos suporte e acompanhamento pós-procedimento para garantir sua recuperação sem preocupações.',
-    heroCta: 'Aliviar Minha Dor Agora',
-    ctaText: 'Atendimento rápido e totalmente sem dor',
+    heroCta: 'Agendar Avaliação',
+    ctaText: 'Preservação dos dentes naturais e alívio da dor',
     mainImage: canalImg,
+    testimonial: {
+      name: 'Wandersom Alves',
+      text: 'Fui à clínica por indicação e o atendimento foi impecável em todos os momentos! Explicam tudo com muita clareza e paciência nos mínimos detalhes, mostrando cada procedimento e todos os cuidados pós-atendimento. Essa transparência deixa a gente muito seguro e tranquilo. Recomendo com toda certeza!',
+      role: 'Paciente da Souriê'
+    },
+    services: [
+      {
+        name: 'Tratamento de Canal para Manter seu Dente',
+        desc: 'Ajuda a tratar infecções e lesões no interior do dente, preservando os dentes naturais.',
+        benefit: 'Alivia dores e preserva o seu dente natural na arcada.',
+        icon: Activity,
+        tag: 'Preservação Dental',
+        image: canalImg
+      },
+      {
+        name: 'Retratamento',
+        desc: 'Intervenção em canais já tratados para limpeza e desinfecção dos canais radiculares.',
+        benefit: 'Auxilia na manutenção e preservação do dente na arcada.',
+        icon: ShieldCheck,
+        tag: 'Endodontia',
+        image: equipeTecnologiaImg
+      },
+      {
+        name: 'Planejamento e Diagnóstico',
+        desc: 'Avaliação da estrutura do dente por meio de exames clínicos e radiográficos.',
+        benefit: 'Identifica a necessidade do tratamento e define a melhor abordagem.',
+        icon: ScanLine,
+        tag: 'Diagnóstico',
+        image: tecnologiaImg
+      },
+      {
+        name: 'Restauração do Dente',
+        desc: 'Reconstrução da estrutura dentária após o tratamento de canal.',
+        benefit: 'Devolve ao dente sua função e resistência, preservando-o na arcada.',
+        icon: Layers,
+        tag: 'Reconstrução',
+        image: clinicaInterna1Img
+      }
+    ],
+    methodology: [
+      { step: '01', title: 'Planejamento e diagnóstico', desc: 'Avaliamos a estrutura do dente por meio de exames clínicos e radiográficos.', icon: ScanLine, color: 'bg-teal-primary' },
+      { step: '02', title: 'Tratamento de canal', desc: 'Removemos o tecido pulpar comprometido e realizamos a limpeza e modelagem dos canais.', icon: Activity, color: 'bg-teal-medium' },
+      { step: '03', title: 'Restauração do dente', desc: 'Realizamos a reconstrução da estrutura dentária, preservando-o na arcada.', icon: ShieldCheck, color: 'bg-teal-dark' },
+      { step: '04', title: 'Pós-atendimento', desc: 'Acompanhamos sua evolução pelo WhatsApp sempre que precisar.', icon: Clock, color: 'bg-navy-dark' }
+    ]
+  },
+  'cirurgias': {
+    title: 'Cirurgias',
+    category: 'Cirurgias & Sisos',
+    sectionTitle: 'Precisão técnica e atendimento humanizado para uma remoção de siso mais tranquila',
+    description: 'Remoção de sisos e cirurgias orais planejadas com exames detalhados, segurança e acompanhamento pós-operatório.',
+    headline: 'Remoção de siso mais tranquila e segura',
+    subheadline: 'Precisão técnica e atendimento humanizado para o seu conforto',
+    bodyText: 'Realizamos exodontia de sisos (terceiros molares) e cirurgias orais com precisão técnica e atendimento humanizado para uma remoção de siso mais tranquila, acompanhando você com suporte direto no pós-procedimento.',
+    whyDoIt: 'Precisão técnica e atendimento humanizado para uma remoção de siso mais tranquila, prevenindo inchaço e complicações.',
+    targetAudience: [
+      'Quem precisa remover o siso de forma segura, prevenindo inchaço e complicações',
+      'Pessoas com dores ou desconforto causados pelo nascimento dos sisos',
+      'Pacientes com medo de cirurgias que procuram um atendimento acolhedor e humanizado'
+    ],
+    threeSteps: [
+      {
+        number: '01',
+        title: 'Avaliação e planejamento',
+        desc: 'Extração planejada com exames detalhados para avaliar a posição do siso com máxima precisão.'
+      },
+      {
+        number: '02',
+        title: 'Remoção de siso segura',
+        desc: 'Realizamos o procedimento com precisão técnica e atendimento humanizado para uma remoção de siso mais tranquila.'
+      },
+      {
+        number: '03',
+        title: 'Suporte pós-procedimento',
+        desc: 'Você conta com acompanhamento direto via WhatsApp para orientações pós-operatórias sempre que precisar.'
+      }
+    ],
+    responsibility: 'Oferecemos suporte e acompanhamento pós-procedimento para garantir sua recuperação sem preocupações.',
+    heroCta: 'Agendar Avaliação',
+    ctaText: 'Precisão técnica e atendimento humanizado em cirurgias de siso',
+    heroImage: cirurgiasImg,
+    mainImage: cirurgiasImg,
     testimonial: {
       name: 'Carolina Castro Oliveira',
       text: 'O Dr. Victor extraiu meu siso e foi extremamente profissional, pontual e atencioso. Me senti muito bem atendida e totalmente confiante com o cuidado e a técnica dele durante todo o procedimento. Recomendo com certeza!',
@@ -397,19 +486,19 @@ const PAGES_CONTENT: Record<string, PageContent> = {
     },
     services: [
       {
-        name: 'Tratamento de Canal Rápido',
-        desc: 'Tecnologia que limpa a infecção de forma automatizada e em poucas sessões.',
-        benefit: 'Acaba com a dor de dente imediatamente e salva o seu dente original.',
-        icon: Activity,
-        tag: 'Alívio Rápido',
-        image: canalImg
+        name: 'Exodontia de Sisos',
+        desc: 'Precisão técnica e atendimento humanizado para uma remoção de siso mais tranquila.',
+        benefit: 'Remoção de terceiros molares com técnica cuidadosa e segura.',
+        icon: Scissors,
+        tag: 'Sisos',
+        image: cirurgiasImg
       },
       {
         name: 'Retirada de Siso Segura',
         desc: 'Extração planejada com exames digitais detalhados para máxima precisão.',
-        benefit: 'Procedimento ágil, com menor inchaço e recuperação tranquila.',
-        icon: Scissors,
-        tag: 'Procedimento Suave',
+        benefit: 'Procedimento seguro, com menor inchaço e recuperação tranquila.',
+        icon: ShieldCheck,
+        tag: 'Planejamento',
         image: clinicaExternaImg
       },
       {
@@ -421,29 +510,111 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         image: clinicaInterna1Img
       },
       {
-        name: 'Anestesia Indolor & Suave',
-        desc: 'Aplicação delicada e progressiva do anestésico para zero desconforto.',
-        benefit: 'Procedimento confortável do início ao fim, perfeito para quem tem receio.',
-        icon: Syringe,
-        tag: 'Sem Constrangimento',
+        name: 'Suporte Pós-Procedimento',
+        desc: 'Acompanhamento direto via WhatsApp para orientações pós-operatórias.',
+        benefit: 'Suporte prioritário para uma recuperação tranquila e acompanhada.',
+        icon: Clock,
+        tag: 'Pós-Operatório',
         image: equipeTecnologiaImg
       }
     ],
     methodology: [
-      { step: '01', title: 'Exame Detalhado', desc: 'Identificamos a origem exata da dor com exames rápidos.', icon: ScanLine, color: 'bg-teal-primary' },
-      { step: '02', title: 'Anestesia Suave', desc: 'Usamos anestesia confortável sem a sensação dolorosa da agulha.', icon: Syringe, color: 'bg-teal-medium' },
-      { step: '03', title: 'Alívio da Dor', desc: 'Tratamos o dente ou fazemos a extração de forma delicada e rápida.', icon: Activity, color: 'bg-teal-dark' },
+      { step: '01', title: 'Exame Detalhado', desc: 'Planejamos a remoção do siso com avaliação clínica e exames de imagem.', icon: ScanLine, color: 'bg-teal-primary' },
+      { step: '02', title: 'Procedimento Seguro', desc: 'Realizamos a extração com precisão técnica e cuidado humanizado.', icon: Scissors, color: 'bg-teal-medium' },
+      { step: '03', title: 'Orientações de Cuidado', desc: 'Explicamos todos os cuidados necessários para uma boa recuperação.', icon: ShieldCheck, color: 'bg-teal-dark' },
       { step: '04', title: 'Pós-atendimento', desc: 'Acompanhamos sua evolução pelo WhatsApp até você estar 100%.', icon: Clock, color: 'bg-navy-dark' }
     ]
   },
-  'proteses-e-implantes': {
-    title: 'Implantes & Próteses',
-    category: 'Sorriso Novo & Fixo',
+  'proteses': {
+    title: 'Próteses Removíveis e Fixas',
+    category: 'Reabilitação Oral',
+    sectionTitle: 'Devolvendo função mastigatória e harmonia estética ao seu sorriso',
+    description: 'Confecção de próteses fixas, removíveis, sobre implantes e coroas para reabilitar sorrisos com conforto e naturalidade.',
+    headline: 'Recupere a capacidade mastigatória e a confiança no sorriso',
+    subheadline: 'Próteses fixas, removíveis e sobre implantes com precisão e atenção aos mínimos detalhes',
+    bodyText: 'Nossa atuação na área de Prótese é focada em reabilitar sorrisos, confeccionando próteses fixas ou removíveis, próteses sobre implantes e coroas, devolvendo aos pacientes a capacidade mastigatória, a saúde bucal e a confiança no sorriso.',
+    whyDoIt: 'Devolver a capacidade mastigatória, a saúde bucal, a harmonia estética e a confiança no sorriso.',
+    targetAudience: [
+      'Pessoas que perderam dentes e desejam reabilitar a capacidade mastigatória e o sorriso',
+      'Pacientes que precisam de próteses fixas, próteses removíveis ou coroas',
+      'Quem busca prótese sobre implantes com harmonia estética e conforto'
+    ],
+    threeSteps: [
+      {
+        number: '01',
+        title: 'Avaliação e planejamento',
+        desc: 'Avaliamos a estrutura bucal para indicar a solução ideal entre prótese fixa, removível ou sobre implantes.'
+      },
+      {
+        number: '02',
+        title: 'Confecção com precisão',
+        desc: 'Trabalhamos com atenção aos mínimos detalhes para garantir funcionalidade mastigatória e harmonia estética.'
+      },
+      {
+        number: '03',
+        title: 'Adaptação e conforto',
+        desc: 'Realizamos a instalação e o acompanhamento dedicado para garantir seu conforto e satisfação.'
+      }
+    ],
+    responsibility: 'Garantimos materiais de altíssima qualidade e acompanhamento dedicado para o seu conforto diário.',
+    heroCta: 'Recuperar Meu Sorriso',
+    ctaText: 'Próteses fixas e removíveis com função e estética para o seu sorriso',
+    heroImage: proteseImg,
+    mainImage: proteseImg,
+    testimonial: {
+      name: 'Isadora Isabelle',
+      text: 'Equipe super atenciosa e sempre disposta a explicar cada detalhe de todos os procedimentos. Me senti totalmente segura durante o tratamento e saio muito satisfeita e feliz com a minha escolha!',
+      role: 'Paciente da Souriê'
+    },
+    services: [
+      {
+        name: 'Próteses Fixas',
+        desc: 'Coroas e pontes com estética natural e alta durabilidade.',
+        benefit: 'Devolve a capacidade mastigatória e a harmonia estética do sorriso.',
+        icon: Layers,
+        tag: 'Prótese Fixa',
+        image: proteseImg
+      },
+      {
+        name: 'Próteses Removíveis',
+        desc: 'Soluções confortáveis e adaptadas ao seu dia a dia.',
+        benefit: 'Reabilitação funcional planejada com conforto e atenção aos detalhes.',
+        icon: Smile,
+        tag: 'Prótese Removível',
+        image: victorTratamentoImg
+      },
+      {
+        name: 'Prótese sobre Implantes',
+        desc: 'Reabilitação segura com suporte de implantes integrados.',
+        benefit: 'Firmeza e estabilidade para mastigar e sorrir com confiança.',
+        icon: Shield,
+        tag: 'Sobre Implantes',
+        image: tecnologiaImg
+      },
+      {
+        name: 'Coroas de Zircônia',
+        desc: 'Dentes estéticos resistentes e sem marcas escuras na linha da gengiva.',
+        benefit: 'Aparência natural e resistente ao tempo.',
+        icon: Gem,
+        tag: 'Resistente e Bonito',
+        image: fotoClinicaImg
+      }
+    ],
+    methodology: [
+      { step: '01', title: 'Avaliação Clínica', desc: 'Analisamos as necessidades funcionais e estéticas do seu sorriso.', icon: ScanLine, color: 'bg-teal-primary' },
+      { step: '02', title: 'Planejamento da Prótese', desc: 'Definimos a prótese fixa, removível ou coroa ideal para o seu caso.', icon: Layers, color: 'bg-teal-medium' },
+      { step: '03', title: 'Provas e Ajustes', desc: 'Cuidamos de cada detalhe para garantir encaixe, conforto e estética.', icon: Shield, color: 'bg-teal-dark' },
+      { step: '04', title: 'Sorriso Reabilitado', desc: 'Devolvemos sua capacidade mastigatória e a confiança ao sorrir.', icon: CheckCircle2, color: 'bg-navy-dark' }
+    ]
+  },
+  'implantes': {
+    title: 'Implantes',
+    category: 'Implantes Dentários',
     sectionTitle: 'Recupere a segurança para mastigar e sorrir sem medo',
-    description: 'Substitua dentes perdidos por implantes firmes e próteses fixas com aparência e conforto idênticos aos dentes naturais.',
+    description: 'Substitua dentes perdidos por implantes firmes com aparência e conforto idênticos aos dentes naturais.',
     headline: 'Volte a comer tudo o que gosta e sorria sem preocupação',
-    subheadline: 'Diga adeus às dentaduras soltas e à insegurança na hora de falar',
-    bodyText: 'Perder um dente afeta a mastigação e a autoconfiança. Com nossos implantes de última geração e próteses fixas, você recupera dentes firmes e fixos que não saem do lugar, permitindo que você coma de tudo e sorria com tranquilidade.',
+    subheadline: 'Substitua dentes perdidos por implantes seguros que devolvem a firmeza na mastigação',
+    bodyText: 'Perder um dente afeta a mastigação e a autoconfiança. Com nossos implantes dentários, substituímos a raiz do dente perdido com firmeza, permitindo que você recupere a segurança de mastigar e sorrir com tranquilidade.',
     whyDoIt: 'Volte a mastigar tudo o que gosta e conquiste a segurança de dentes firmes e fixos como os originais.',
     targetAudience: [
       'Pessoas que perderam dentes e desejam recuperar o sorriso e a mastigação',
@@ -451,15 +622,27 @@ const PAGES_CONTENT: Record<string, PageContent> = {
       'Quem busca restabelecer a estética e a saúde óssea da boca com durabilidade'
     ],
     threeSteps: [
-      { number: '01', title: 'Planejamento 3D', desc: 'Analisamos a estrutura óssea para o posicionamento milimétrico do pino.' },
-      { number: '02', title: 'Instalação do Pino', desc: 'Colocação rápida do implante de titânio sob anestesia local confortável.' },
-      { number: '03', title: 'Fixação do Dente', desc: 'Encaixamos a coroa idêntica ao dente natural para você comer livremente.' }
+      {
+        number: '01',
+        title: 'Planejamento 3D',
+        desc: 'Analisamos a estrutura óssea e as condições da região por meio de exames e planejamento digital, definindo a posição ideal para o implante dentário.'
+      },
+      {
+        number: '02',
+        title: 'Instalação do implante',
+        desc: 'Realizamos a instalação do implante de titânio no osso, sob anestesia local, com planejamento e precisão para proporcionar segurança e conforto durante o procedimento.'
+      },
+      {
+        number: '03',
+        title: 'Reabilitação com a prótese',
+        desc: 'Após o período de integração do implante ao osso, instalamos a coroa protética, devolvendo a estética, a função mastigatória e a naturalidade do sorriso.'
+      }
     ],
     responsibility: 'Garantimos materiais de altíssima qualidade e acompanhamento dedicado para o seu conforto diário.',
     heroCta: 'Recuperar Meu Sorriso',
-    ctaText: 'Reabilitação total com dentes fixos e seguros',
+    ctaText: 'Reabilitação com implantes firmes e seguros',
     heroImage: protesesHeaderImg,
-    mainImage: proteseImg,
+    mainImage: protesesHeaderImg,
     testimonial: {
       name: 'Isadora Isabelle',
       text: 'Equipe super atenciosa e sempre disposta a explicar cada detalhe de todos os procedimentos. Me senti totalmente segura durante o tratamento e saio muito satisfeita e feliz com a minha escolha!',
@@ -483,27 +666,27 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         image: victorTratamentoImg
       },
       {
-        name: 'Coroas de Zircônia',
-        desc: 'Dentes estéticos resistentes e sem marcas escuras na linha da gengiva.',
-        benefit: 'Aparência linda, natural e extremamente resistente ao tempo.',
+        name: 'Coroas sobre Implantes',
+        desc: 'Coroas estéticas e resistentes instaladas sobre os implantes dentários.',
+        benefit: 'Aparência natural e devolução integral da mastigação.',
         icon: Gem,
-        tag: 'Resistente e Bonito',
+        tag: 'Resistente e Natural',
         image: tecnologiaImg
       },
       {
-        name: 'Dentes no Mesmo Dia',
-        desc: 'Instalação de dentes provisórios fixos logo após o implante em casos aptos.',
-        benefit: 'Você entra no consultório e já sai com o sorriso preenchido.',
-        icon: Zap,
-        tag: 'Agilidade',
+        name: 'Planejamento 3D de Implantes',
+        desc: 'Análise detalhada da estrutura óssea para o posicionamento preciso do implante.',
+        benefit: 'Previsibilidade e segurança em todas as etapas da reabilitação.',
+        icon: ScanLine,
+        tag: 'Planejamento',
         image: fotoClinicaImg
       }
     ],
     methodology: [
-      { step: '01', title: 'Avaliação dos Dentes', desc: 'Analisamos a estrutura da boca com exames de imagem simples.', icon: Bone, color: 'bg-teal-primary' },
-      { step: '02', title: 'Instalação Suave', desc: 'Colocamos o implante com anestesia confortável e sem correria.', icon: Shield, color: 'bg-teal-medium' },
-      { step: '03', title: 'Proteção Provisória', desc: 'Você nunca fica sem dentes durante a fase de cicatrização.', icon: Layers, color: 'bg-teal-dark' },
-      { step: '04', title: 'Sorriso Fixo Pronto', desc: 'Instalamos seu dente final para você voltar a comer com alegria.', icon: CheckCircle2, color: 'bg-navy-dark' }
+      { step: '01', title: 'Planejamento 3D', desc: 'Analisamos a estrutura óssea e as condições da região por meio de exames e planejamento digital.', icon: Bone, color: 'bg-teal-primary' },
+      { step: '02', title: 'Instalação do implante', desc: 'Realizamos a instalação do implante de titânio no osso com planejamento e precisão.', icon: Shield, color: 'bg-teal-medium' },
+      { step: '03', title: 'Reabilitação com a prótese', desc: 'Após a integração do implante ao osso, instalamos a coroa protética.', icon: Layers, color: 'bg-teal-dark' },
+      { step: '04', title: 'Pós-atendimento', desc: 'Acompanhamos sua evolução para devolver estética, função mastigatória e naturalidade.', icon: CheckCircle2, color: 'bg-navy-dark' }
     ]
   },
   'odontopediatria': {
@@ -581,13 +764,6 @@ const PAGES_CONTENT: Record<string, PageContent> = {
 export default function InternalPage() {
   const { slug } = useParams<{ slug: string }>();
 
-  if (!slug || !PAGES_CONTENT[slug]) {
-    return <Navigate to="/" replace />;
-  }
-
-  const page = PAGES_CONTENT[slug];
-  const HeroIcon = PROCEDURE_ICONS[slug] || Sparkles;
-
   const heroContainerRef = useRef<HTMLDivElement>(null);
   const heroImageRef = useRef<HTMLImageElement>(null);
   const heroContentRef = useRef<HTMLDivElement>(null);
@@ -595,6 +771,7 @@ export default function InternalPage() {
   const progressLineRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
+    if (!slug || !PAGES_CONTENT[slug]) return;
     const mm = gsap.matchMedia();
 
     // Mobile scroll progress line animation
@@ -644,6 +821,20 @@ export default function InternalPage() {
     return () => mm.revert();
   }, { scope: heroContainerRef, dependencies: [slug] });
 
+  if (slug === 'cirurgias-e-canal') {
+    return <Navigate to="/p/tratamento-de-canal" replace />;
+  }
+  if (slug === 'proteses-e-implantes') {
+    return <Navigate to="/p/implantes" replace />;
+  }
+
+  if (!slug || !PAGES_CONTENT[slug]) {
+    return <Navigate to="/" replace />;
+  }
+
+  const page = PAGES_CONTENT[slug];
+  const HeroIcon = PROCEDURE_ICONS[slug] || Sparkles;
+
   const PROCEDURE_SEO_DATA: Record<string, { title: string; description: string }> = {
     'ortodontia': {
       title: 'Souriê | Ortodontia e Invisalign em Nova Era MG',
@@ -654,16 +845,24 @@ export default function InternalPage() {
       description: 'Check-up preventivo, limpezas e restaurações estéticas na Souriê. Câmera digital intraoral para diagnóstico preciso. Preserve sua saúde bucal sem surpresas.'
     },
     'odontologia-estetica': {
-      title: 'Souriê | Estética Dental e Harmonização Facial',
-      description: 'Clareamento, facetas e harmonização orofacial na Souriê Odontologia. Transforme seu sorriso com naturalidade e tecnologia. Projeto personalizado para seu rosto.'
+      title: 'Souriê | Estética Dental e Facetas em Resina',
+      description: 'Clareamento, lentes e facetas em resina e harmonização orofacial na Souriê Odontologia. Transforme seu sorriso com naturalidade e tecnologia.'
     },
-    'cirurgias-e-canal': {
-      title: 'Souriê | Tratamento de Canal e Cirurgias em Nova Era',
-      description: 'Tratamento de canal, extração de sisos e cirurgias sem dor na Souriê. Anestesia suave, diagnóstico digital e suporte pós-procedimento via WhatsApp.'
+    'tratamento-de-canal': {
+      title: 'Souriê | Tratamento Endodôntico (Canal) em Nova Era',
+      description: 'Tratamento e retratamento de canal na Souriê Odontologia para tratar infecções, aliviar dores e preservar seu dente natural na arcada.'
     },
-    'proteses-e-implantes': {
-      title: 'Souriê | Implantes e Próteses Dentárias em Nova Era',
-      description: 'Implantes de titânio, próteses fixas e coroas de zircônia na Souriê. Recupere a mastigação e a autoconfiança com reabilitação oral segura e duradoura.'
+    'cirurgias': {
+      title: 'Souriê | Cirurgias e Remoção de Sisos em Nova Era MG',
+      description: 'Exodontia de sisos e cirurgias orais com precisão técnica, planejamento detalhado e atendimento humanizado na Souriê Odontologia.'
+    },
+    'proteses': {
+      title: 'Souriê | Próteses Removíveis e Fixas em Nova Era MG',
+      description: 'Próteses fixas, removíveis, sobre implantes e coroas na Souriê Odontologia. Recupere a capacidade mastigatória e a harmonia estética do seu sorriso.'
+    },
+    'implantes': {
+      title: 'Souriê | Implantes Dentários em Nova Era MG',
+      description: 'Implantes de titânio e prótese protocolo na Souriê Odontologia. Recupere a firmeza na mastigação e a autoconfiança ao sorrir.'
     },
     'odontopediatria': {
       title: 'Souriê | Odontopediatria para Crianças em Nova Era MG',
@@ -817,7 +1016,7 @@ export default function InternalPage() {
                   Transparência e Agilidade
                 </span>
                 <h3 className="text-2xl sm:text-3xl font-medium text-teal-dark font-sans">
-                  Como funciona em 3 passos
+                  Como funciona em 3 etapas
                 </h3>
               </div>
               <p className="text-xs text-text-primary/60 max-w-xs">

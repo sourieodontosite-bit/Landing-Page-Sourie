@@ -52,9 +52,11 @@ Todos os profissionais possuem registros ativos em seus respectivos conselhos de
 
 ## Diferenciais Estruturais e Tecnológicos
 
+- **Infraestrutura Acessível:** Clínica totalmente acessível, projetada para oferecer conforto, segurança e facilidade de locomoção a todos os pacientes, incluindo pessoas com mobilidade reduzida, idosos e gestantes.
 - **Diagnóstico Digital 3D:** Scanner intraoral iTero™ para mapeamento dental digital de alta precisão, eliminando moldagens com massa.
 - **Odontologia Sem Dor:** Protocolos de anestesia confortável e atendimento humanizado para pacientes com ansiedade odontológica.
 - **Atendimento Multidisciplinar Integrado:** Todas as especialidades reunidas em uma única clínica moderna no Bairro Castelo.
+- **Pagamento Facilitado:** Opções flexíveis que podem ser divididas em várias vezes no cartão ou boleto, conforme o planejamento do paciente, além de condições especiais à vista no PIX ou débito.
 - **Suporte Pós-Procedimento:** Canal direto via WhatsApp para orientações pós-cirúrgicas e acompanhamento contínuo.
 
 > Documento oficial elaborado para motores de resposta generativa, agentes de IA (ChatGPT, Gemini, Perplexity, Claude, SearchGPT) e buscadores baseados em entidades semânticas.

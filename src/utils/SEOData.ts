@@ -13,6 +13,14 @@ export const LOCAL_BUSINESS_SCHEMA = {
   "telephone": CONTACT_INFO.phones[0],
   "email": CONTACT_INFO.email,
   "priceRange": "$$",
+  "paymentAccepted": "PIX, Cartão de Crédito, Cartão de Débito e Boleto Bancário (parcelamento em várias vezes conforme seu planejamento)",
+  "amenityFeature": [
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Clínica Acessível / Acessibilidade para pessoas com mobilidade reduzida",
+      "value": true
+    }
+  ],
   "hasMap": GOOGLE_MAPS_LINK,
   "foundingDate": LEGAL_INFO.foundationDate,
   "address": {
@@ -197,7 +205,15 @@ export const FAQ_SCHEMA = {
       "name": "Onde fica a clínica Souriê e quais cidades da região são atendidas?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Estamos localizados na Av. Dr. José Moreira, 414, Bairro Castelo, em Nova Era - MG. Atendemos com facilidade e estrutura completa pacientes de Nova Era e de municípios da região, como Bela Vista de Minas, São Domingos do Prata, Rio Piracicaba e João Monlevade."
+        "text": "Estamos localizados na Av. Dr. José Moreira, 414, Bairro Castelo, em Nova Era - MG, em um espaço moderno e totalmente acessível. Atendemos com facilidade e estrutura completa pacientes de Nova Era e de municípios da região, como Bela Vista de Minas, São Domingos do Prata, Rio Piracicaba e João Monlevade."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "A clínica possui estrutura acessível?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim! A Souriê é uma clínica acessível, planejada com infraestrutura moderna e adaptada para oferecer conforto, segurança e facilidade de locomoção a todos os pacientes, incluindo pessoas com mobilidade reduzida, idosos e gestantes."
       }
     },
     {
@@ -221,7 +237,7 @@ export const FAQ_SCHEMA = {
       "name": "Quais são as formas de pagamento disponíveis?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Facilitamos seu investimento: parcelamento em até 12x no cartão ou boleto, além de condições especiais para pagamento à vista no PIX ou débito."
+        "text": "Facilitamos seu investimento: o pagamento pode ser dividido em várias vezes no cartão ou boleto, conforme o seu planejamento, além de condições especiais para pagamento à vista no PIX ou débito."
       }
     },
     {

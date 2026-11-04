@@ -11,7 +11,7 @@ export default function AboutPage() {
     <>
       <SEO 
         title="Souriê Odontologia | Sobre Nossa Equipe e História"
-        description="Conheça a história, missão e a equipe multiprofissional da Souriê Odontologia em Nova Era. Tecnologia, conforto e atendimento humanizado para o seu sorriso."
+        description="Conheça a história, missão e a equipe multiprofissional da Souriê Odontologia em Nova Era. Clínica acessível com tecnologia, conforto e atendimento humanizado para o seu sorriso."
         canonical="https://sourie.com.br/sobre"
       />
       

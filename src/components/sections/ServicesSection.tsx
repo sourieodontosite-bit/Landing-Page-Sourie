@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 import SectionContainer from '../shared/SectionContainer';
 import { SERVICES } from '../../utils/constants';
-import { Stethoscope, Sparkles, Layers, Activity, Baby, ArrowUpRight } from 'lucide-react';
+import { Stethoscope, Sparkles, Layers, Bone, Activity, Scissors, Baby, ArrowUpRight } from 'lucide-react';
 import { OrthoIcon } from '../shared/Icons';
 import { Link } from 'react-router-dom';
 
@@ -12,15 +12,19 @@ import clinicaGeralImg from '../../assets/Procedimentos/Clinica-geral.webp';
 import esteticaImg from '../../assets/Procedimentos/Estetica.webp';
 import canalImg from '../../assets/Procedimentos/Canal.webp';
 import proteseImg from '../../assets/Procedimentos/Protese.webp';
+import implantesImg from '../../assets/proteses.webp';
+import cirurgiasImg from '../../assets/Procedimentos/Cirurgias.webp';
 import odontopediatriaImg from '../../assets/Procedimentos/Odontopediatria.webp';
 
 const serviceIcons = [
-  Stethoscope,
-  Sparkles,
-  OrthoIcon,
-  Layers,
-  Activity,
-  Baby
+  Stethoscope, // Clínica geral
+  Sparkles,    // Odontologia Estética
+  OrthoIcon,   // Ortodontia
+  Layers,      // Próteses Removíveis e Fixas
+  Bone,        // Implantes
+  Activity,    // Tratamento Endodôntico (Canal)
+  Scissors,    // Cirurgias
+  Baby         // Odontopediatria
 ];
 
 const serviceImages = [
@@ -28,7 +32,9 @@ const serviceImages = [
   esteticaImg,
   ortodontiaImg,
   proteseImg,
+  implantesImg,
   canalImg,
+  cirurgiasImg,
   odontopediatriaImg
 ];
 
@@ -99,7 +105,7 @@ export default function ServicesSection() {
           <div className="relative z-10 space-y-2 md:space-y-4">
             <h3 className="text-xl md:text-3xl font-bold text-white">{SERVICES[1].title}</h3>
             <p className="text-sm md:text-xl text-white/80 font-light leading-relaxed max-w-md">
-              Transformação completa da estética do seu sorriso com as técnicas mais modernas de clareamento e lentes.
+              Transformação completa da estética do seu sorriso com as técnicas mais modernas de clareamento e lentes e facetas em resina.
             </p>
           </div>
         </Link>
@@ -134,20 +140,22 @@ export default function ServicesSection() {
           </div>
         </Link>
 
-        {/* Grid for other services */}
-        <div className="md:col-span-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-2">
+        {/* Grid for other 6 services */}
+        <div className="md:col-span-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-2">
           {SERVICES.map((service, i) => {
             if (i === 1 || i === 2) return null;
-            const Icon = serviceIcons[i];
-            const hoverImg = serviceImages[i];
+            const Icon = serviceIcons[i] || Stethoscope;
+            const hoverImg = serviceImages[i] || clinicaGeralImg;
             
             const styles = [
-              "bg-teal-medium border-white/10 hover:shadow-teal-medium/20", // Clínica Geral
-              "", // Skipped
-              "", // Skipped
-              "bg-teal-dark border-white/10 hover:shadow-teal-dark/20",   // Próteses
-              "bg-navy-dark border-white/10 hover:shadow-navy-dark/20",  // Cirurgias
-              "bg-teal-primary border-white/10 hover:shadow-teal-primary/20" // Odontopediatria
+              "bg-teal-medium border-white/10 hover:shadow-teal-medium/20",  // Clínica Geral
+              "", // Skipped (Estética)
+              "", // Skipped (Ortodontia)
+              "bg-teal-dark border-white/10 hover:shadow-teal-dark/20",      // Próteses Removíveis e Fixas
+              "bg-navy-dark border-white/10 hover:shadow-navy-dark/20",      // Implantes
+              "bg-teal-primary border-white/10 hover:shadow-teal-primary/20",// Tratamento Endodôntico (Canal)
+              "bg-teal-dark border-white/10 hover:shadow-teal-dark/20",      // Cirurgias
+              "bg-teal-medium border-white/10 hover:shadow-teal-medium/20"   // Odontopediatria
             ];
 
             return (
@@ -155,7 +163,7 @@ export default function ServicesSection() {
                 key={service.slug}
                 to={`/p/${service.slug}`}
                 className={`${styles[i]} rounded-[32px] p-8 border hover:border-white/30 transition-all duration-700 ease-out hover:shadow-xl flex flex-col gap-6 group relative overflow-hidden transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
-                style={{ transitionDelay: `${300 + (i * 100)}ms` }}
+                style={{ transitionDelay: `${300 + (i * 80)}ms` }}
               >
                 {/* Hover Image — Desktop only */}
                 {isDesktop && (

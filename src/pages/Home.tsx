@@ -42,7 +42,7 @@ export default function Home() {
 
       <SEO
         title="Souriê Odontologia | Invisalign e Implantes em Nova Era MG"
-        description="Clínica odontológica em Nova Era, MG. Especialistas em Invisalign, implantes, estética e odontopediatria com tecnologia e atendimento humanizado. Agende sua consulta!"
+        description="Clínica odontológica acessível em Nova Era, MG. Especialistas em Invisalign, implantes, estética e odontopediatria com tecnologia e parcelamento conforme seu planejamento."
         canonical="https://sourie.com.br/"
         schema={HOME_GRAPH_SCHEMA}
       />

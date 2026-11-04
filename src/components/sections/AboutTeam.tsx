@@ -11,7 +11,7 @@ import brenoImg from '../../assets/breno.webp';
 import estefaniaImg from '../../assets/estefania.webp';
 import victorImg from '../../assets/victor.webp';
 import beatrizImg from '../../assets/beatriz.webp';
-import taynaImg from '../../assets/tayna.webp';
+import taynaImg from '../../assets/taynafoto.webp';
 import juniaImg from '../../assets/dra.junia.webp';
 import mariaEduardaImg from '../../assets/nutri_mariana.webp';
 import fallbackImg from '../../assets/equipe-sem-fundo.webp';
@@ -91,11 +91,7 @@ export default function AboutTeam() {
               <img 
                 src={memberImages[member.slug] || fallbackImg} 
                 alt={member.name}
-                className={`w-full h-full object-cover transition-all duration-1000 ease-out ${
-                  member.slug === 'dr-breno' 
-                    ? 'scale-105 group-hover:scale-100' 
-                    : 'scale-115 group-hover:scale-110'
-                }`}
+                className="w-full h-full object-cover transition-all duration-1000 ease-out scale-115 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-teal-dark/40 via-transparent to-transparent opacity-30 group-hover:opacity-60 transition-opacity duration-500" />
               

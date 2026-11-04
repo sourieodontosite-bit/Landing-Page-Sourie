@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { Accessibility } from "lucide-react";
 import SectionContainer from "../shared/SectionContainer";
 import img1 from "../../assets/equipe-tecnologia.webp";
 import img2 from "../../assets/Victor-tratamento.webp";
@@ -77,14 +78,24 @@ export default function AboutGallery({
 
         <div className="relative z-10 w-full py-6">
           {!addressOnly && (
-            <div className="flex flex-col items-center text-center lg:items-start lg:text-left mb-16 md:mb-20 space-y-6">
-              <span className="text-teal-primary font-bold uppercase tracking-[0.3em] text-[10px]">
-                Infraestrutura
-              </span>
+            <div className="flex flex-col items-center text-center lg:items-start lg:text-left mb-14 md:mb-18 space-y-5">
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3">
+                <span className="text-teal-primary font-bold uppercase tracking-[0.3em] text-[10px]">
+                  Infraestrutura
+                </span>
+                <span className="h-1 w-1 rounded-full bg-teal-primary/40" aria-hidden="true" />
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-primary/10 border border-teal-primary/20 text-teal-dark text-[11px] font-semibold">
+                  <Accessibility size={14} className="text-teal-primary shrink-0" aria-hidden="true" />
+                  <span>Clínica Acessível</span>
+                </span>
+              </div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-teal-dark leading-tight tracking-tight">
                 Ambiente planejado <br />
                 <span className="italic font-serif text-teal-primary">para o seu bem-estar.</span>
               </h2>
+              <p className="text-teal-dark/75 text-sm sm:text-base lg:text-lg leading-relaxed max-w-2xl">
+                Nossa clínica é acessível e conta com uma estrutura moderna, acolhedora e segura, projetada para oferecer conforto, facilidade de acesso e autonomia para todos os pacientes.
+              </p>
             </div>
           )}
 

@@ -58,8 +58,32 @@ export const WA_PROCEDURE_MESSAGES: Record<string, {
     serviceCard: 'Olá! Vi os tratamentos estéticos no site da Souriê e quero solicitar uma avaliação do meu sorriso.',
     finalCta: 'Olá! Quero transformar meu sorriso com estética dental na Souriê. Podem agendar minha consulta?',
   },
+  'tratamento-de-canal': {
+    hero: 'Olá! Tenho interesse em Tratamento Endodôntico (Canal) na Souriê. Podem me ajudar a agendar uma avaliação?',
+    commitment: 'Olá! Quero falar com um especialista sobre Tratamento de Canal na Souriê.',
+    serviceCard: 'Olá! Vi as informações sobre Tratamento e Retratamento de Canal no site da Souriê e preciso de uma avaliação.',
+    finalCta: 'Olá! Preciso agendar atendimento para tratamento de canal na Souriê. Estão disponíveis?',
+  },
+  cirurgias: {
+    hero: 'Olá! Preciso de uma avaliação para Cirurgia / Extração de Siso na Souriê. Há disponibilidade?',
+    commitment: 'Olá! Quero falar com um especialista sobre Cirurgia e Remoção de Siso na Souriê. Podem me ajudar?',
+    serviceCard: 'Olá! Vi os serviços de Cirurgia e Siso no site da Souriê e gostaria de agendar uma avaliação.',
+    finalCta: 'Olá! Preciso agendar uma avaliação para extração de siso na Souriê. Estão disponíveis?',
+  },
+  proteses: {
+    hero: 'Olá! Tenho interesse em Próteses Removíveis e Fixas na Souriê. Podem me informar sobre o tratamento e agendar uma avaliação?',
+    commitment: 'Olá! Quero conversar com um especialista sobre Próteses Dentárias na Souriê.',
+    serviceCard: 'Olá! Vi os serviços de Próteses Fixas e Removíveis no site e quero solicitar uma avaliação.',
+    finalCta: 'Olá! Quero recuperar meu sorriso com Próteses Dentárias na Souriê. Podem agendar minha consulta?',
+  },
+  implantes: {
+    hero: 'Olá! Tenho interesse em Implantes Dentários na Souriê. Podem me informar sobre o tratamento e agendar uma avaliação?',
+    commitment: 'Olá! Quero conversar com um especialista sobre reabilitação oral com Implantes na Souriê.',
+    serviceCard: 'Olá! Vi os serviços de Implantes no site e quero solicitar uma avaliação.',
+    finalCta: 'Olá! Quero recuperar meu sorriso com Implantes na Souriê. Podem agendar minha consulta?',
+  },
   'cirurgias-e-canal': {
-    hero: 'Olá! Preciso de atendimento urgente — tenho interesse em Cirurgia/Tratamento de Canal na Souriê. Há disponibilidade?',
+    hero: 'Olá! Preciso de atendimento — tenho interesse em Cirurgia/Tratamento de Canal na Souriê. Há disponibilidade?',
     commitment: 'Olá! Quero falar com um especialista sobre Cirurgias e Canal na Souriê. Podem me ajudar?',
     serviceCard: 'Olá! Vi os serviços de Cirurgia e Canal no site da Souriê e preciso de uma avaliação.',
     finalCta: 'Olá! Preciso agendar atendimento para tratamento de canal ou extração de siso na Souriê. Estão disponíveis?',
@@ -100,9 +124,9 @@ export const WA_DENTIST_MESSAGES: Record<string, {
     finalCta: 'Olá! Quero agendar uma avaliação de reabilitação oral com o Dr. Breno na Souriê. Estão disponíveis?',
   },
   'dra-junia': {
-    hero: 'Olá! Gostaria de agendar uma consulta com a Dra. Junia na Souriê.',
-    differential: 'Olá! Vi o perfil da Dra. Junia e quero saber mais sobre harmonização facial na Souriê. Podem me ajudar?',
-    finalCta: 'Olá! Quero agendar uma avaliação de biomedicina estética com a Dra. Junia na Souriê. Estão disponíveis?',
+    hero: 'Olá! Gostaria de agendar uma consulta com a Dra. Júnia na Souriê.',
+    differential: 'Olá! Vi o perfil da Dra. Júnia e quero saber mais sobre harmonização facial na Souriê. Podem me ajudar?',
+    finalCta: 'Olá! Quero agendar uma avaliação de biomedicina estética com a Dra. Júnia na Souriê. Estão disponíveis?',
   },
   'dra-tayna': {
     hero: 'Olá! Gostaria de agendar uma consulta com a Dra. Tayná na Souriê.',
@@ -453,25 +477,25 @@ export const MEMBER_THEMES: Record<string, MemberTheme> = {
 
 export const TEAM_MEMBERS: TeamMember[] = [
   {
-    name: 'Dr. Victor Melo Borges',
+    name: 'Dr. Victor Borges',
     role: 'Cirurgião Dentista',
     slug: 'dr-victor',
     crm: 'CRO-MG 50734',
-    bio: 'Focado em clínica geral e endodontia, o Dr. Victor é reconhecido por seu atendimento humanizado e cuidadoso, garantindo que procedimentos complexos sejam realizados com o máximo de precisão e sem dor.',
+    bio: 'Atuação pautada pela experiência, precisão técnica e cuidado individualizado em extrações dentárias, especialmente de dentes sisos, restaurações estéticas em resina e odontologia clínica geral.',
     fullBio: [
       'Nascido em Paracatu-MG, sempre sonhei em contribuir para a saúde e bem-estar das pessoas através da odontologia. Minha trajetória é marcada por dedicação, aprendizado contínuo e um compromisso inabalável com a excelência clínica.',
       'Desde 2018, encontrei em Nova Era-MG não apenas meu lar, mas também o lugar onde desenvolvo minha missão profissional. Casado, compartilho minha vida com uma parceira que me inspira e apoia em todos os momentos, equilibrando vida pessoal e dedicação profissional.'
     ],
     education: [
       { year: '2017', title: 'Graduação em Odontologia' },
-      { year: '2018', title: 'Pós-Graduação em Cirurgia e Traumatologia Bucomaxilofacial' },
-      { year: '2024', title: 'Especialista em Restaurações' }
+      { year: '2018', title: 'Aperfeiçoamento em Cirurgia Bucal' },
+      { year: '2024', title: 'Especialista em Restaurações Estéticas' }
     ],
     differential: {
       title: 'Exodontia de Sisos 🦷',
       description: 'Precisão técnica e atendimento humanizado para uma remoção de siso mais tranquila.'
     },
-    specialties: ['Cirurgia Bucomaxilofacial', 'Restaurações', 'Exodontia de Sisos'],
+    specialties: ['Restaurações Estéticas', 'Exodontia de Sisos'],
     instagram: 'https://www.instagram.com/victormelob/'
   },
   {
@@ -479,18 +503,18 @@ export const TEAM_MEMBERS: TeamMember[] = [
     role: 'Cirurgião Dentista (RT)',
     slug: 'dr-breno',
     crm: 'CRO-MG 65391',
-    bio: 'Responsável Técnico da Souriê Odontologia Integrada. Especialista em reabilitação oral e implantes. Com extensa experiência, o Dr. Breno é apaixonado por transformar sorrisos e devolver a autoconfiança aos pacientes através de tratamentos modernos e minimamente invasivos.',
+    bio: 'Responsável Técnico da Souriê Odontologia Integrada. Com especialização em Endodontia, atua em tratamentos de canal, prótese removível e clínica geral com alta tecnologia e cuidado humanizado.',
     fullBio: [
       'Sou Breno Martins da Costa Lage, cirurgião-dentista e Responsável Técnico da Souriê Odontologia Integrada. Nasci em Nova Era, Minas Gerais, e me formei em Odontologia pela Faculdade Anhanguera de Ipatinga em 2022.',
-      'Tenho pós-graduação em Endodontia e capacitação em Odontologia Estética. Trabalho nas áreas de Endodontia, Prótese e Clínica Geral, sempre buscando aliar funcionalidade e estética nos tratamentos.',
-      'Na Endodontia, faço tratamentos de canal, ajudando a tratar infecções e lesões no interior do dente, aliviando dores e preservando os dentes naturais sempre que possível. Já na área de Prótese, minha atuação é focada em reabilitar sorrisos, confeccionando próteses fixas ou removíveis e coroas, devolvendo aos pacientes a capacidade mastigatória, a saúde bucal e a confiança no sorriso.',
+      'Tenho especialização em Endodontia. Trabalho nas áreas de Endodontia, Prótese e Clínica Geral, sempre buscando aliar funcionalidade e estética nos tratamentos.',
+      'Na Endodontia, faço tratamentos de canal, ajudando a tratar infecções e lesões no interior do dente, aliviando dores e preservando os dentes naturais sempre que possível. Já na área de Prótese, minha atuação é focada em reabilitar sorrisos, confeccionando próteses removíveis, devolvendo aos pacientes a capacidade mastigatória, a saúde bucal e a confiança no sorriso.',
       'Aqui na Souriê, é muito mais que um sonho; é uma oportunidade de oferecer serviços de excelência e um atendimento diferenciado para nossos pacientes.'
     ],
     education: [
       { year: '2022', title: 'Graduação em Odontologia pela Faculdade Anhanguera' },
-      { year: '', title: 'Pós-graduação em Endodontia e capacitação em Odontologia Estética' }
+      { year: '', title: 'Especialização em Endodontia' }
     ],
-    specialties: ['Endodontia', 'Odontologia Estética', 'Prótese', 'Clínica Geral'],
+    specialties: ['Endodontia', 'Prótese Removível', 'Clínica Geral'],
     instagram: 'https://www.instagram.com/breno.lage/'
   },
   {
@@ -498,7 +522,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     role: 'Cirurgiã Dentista',
     slug: 'dra-estefania',
     crm: 'CRO-MG 48255',
-    bio: 'Dedicada à ortodontia e odontologia estética, a Dra. Estefânia utiliza as mais recentes tecnologias para criar sorrisos harmoniosos. Seu atendimento é focado no conforto, precisão e detalhismo estético.',
+    bio: 'Dedicada à ortodontia e ortopedia funcional dos maxilares, a Dra. Estefânia utiliza as mais recentes tecnologias para criar sorrisos harmoniosos com conforto e precisão.',
     fullBio: [
       'Sou Estefânia Alves Martins, nascida em Nova Era, casada, cirurgiã-dentista formada pela Faculdade Newton em 2016, especialista em Ortodontia e Ortopedia Funcional dos Maxilares pelo CETRO-BH.',
       'Meu trabalho é dedicado a todas as idades: cuido de sorrisos de crianças e adolescentes com aparelhos ortopédicos, corrigindo alinhamentos e garantindo um desenvolvimento harmonioso. Para os adultos, desenvolvo tratamentos personalizados que devolvem a confiança através de um sorriso perfeito. 💫',
@@ -508,7 +532,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
       { year: '2016', title: 'Graduação em Odontologia pela Faculdade Newton' },
       { year: '', title: 'Especialista em Ortodontia e Ortopedia Funcional dos Maxilares pelo CETRO-BH' }
     ],
-    specialties: ['Ortodontia', 'Ortopedia Funcional dos Maxilares'],
+    specialties: ['Ortodontia', 'Ortopedia Funcional dos Maxilares', 'Invisalign', 'Ortodontia Infantil', 'Ortodontia Fixa'],
     instagram: 'https://www.instagram.com/estefaniaalvesm/'
   },
   {
@@ -516,18 +540,17 @@ export const TEAM_MEMBERS: TeamMember[] = [
     role: 'Cirurgiã Dentista',
     slug: 'dra-beatriz',
     crm: 'CRO-MG 70129',
-    bio: 'Especialista em próteses dentárias, Beatriz dedica-se à arte de devolver função e estética aos sorrisos, com precisão e atenção aos mínimos detalhes em cada caso.',
+    bio: 'Dedicada às próteses fixas, restaurações estéticas, facetas em resina e clínica geral, Beatriz devolve função e estética aos sorrisos com precisão e atenção aos mínimos detalhes.',
     fullBio: [
       'Beatriz Bittencourt Guimarães é a profissional responsável pelo setor de próteses dentárias da Souriê Odontologia. Sua trajetória é marcada por dedicação e busca incessante pela excelência na reabilitação oral.',
-      'Com olhar clínico apurado e habilidade técnica refinada, ela trabalha em estreita colaboração com os dentistas para garantir que cada prótese — seja fixa, removível ou sobre implantes — ofereça não apenas funcionalidade mastigatória, mas também harmonia estética perfeita ao sorriso do paciente.',
-      'Sua paixão pelo ofício transforma cada caso em uma verdadeira obra de arte, sempre priorizando o conforto e a satisfação de quem confia em seu trabalho.'
+      'Com olhar clínico apurado e habilidade técnica refinada, ela trabalha em estreita colaboração com os dentistas para garantir que cada prótese ofereça não apenas funcionalidade mastigatória, mas também harmonia estética perfeita ao sorriso do paciente.',
+      'Sua paixão pelo trabalho transforma cada caso em uma verdadeira obra de arte, sempre priorizando o conforto e a satisfação de quem confia em seu trabalho.'
     ],
     education: [
       { year: '', title: 'Formação em Próteses Dentárias' },
-      { year: '', title: 'Capacitação em Prótese sobre Implantes' },
       { year: '', title: 'Atualizações em Odontologia Estética e Reabilitação Oral' }
     ],
-    specialties: ['Prótese Fixas', 'Prótese Removíveis', 'Prótese sobre Implantes'],
+    specialties: ['Próteses Fixas', 'Restaurações Estéticas', 'Facetas em Resina', 'Clínica Geral'],
     instagram: 'https://www.instagram.com/beatrizbiitt/'
   },
   {
@@ -544,19 +567,19 @@ export const TEAM_MEMBERS: TeamMember[] = [
     education: [
       { year: '', title: 'Graduação em Odontologia' },
       { year: '', title: 'Especialização em Odontopediatria' },
-      { year: '', title: 'Formação em Sedação Consciente e Manejo Comportamental Infantil' }
+      { year: '', title: 'Formação em Manejo Comportamental Infantil' }
     ],
-    specialties: ['Odontopediatria', 'Cuidado com Crianças', 'Prevenção Bucal'],
+    specialties: ['Odontopediatria', 'Cuidado com Bebê', 'Cuidado com Crianças', 'Prevenção Bucal'],
     instagram: 'https://www.instagram.com/dra.taynadelfim/'
   },
   {
-    name: 'Junia Martins',
+    name: 'Júnia Martins',
     role: 'Biomédica Esteta',
     slug: 'dra-junia',
     crm: 'CRBM-MG 17867',
-    bio: 'Especialista em biomedicina estética, a Dra. Junia harmoniza saúde e beleza através de tratamentos minimamente invasivos, sempre valorizando a naturalidade e a autoestima de cada paciente.',
+    bio: 'Especialista em biomedicina estética, a Dra. Júnia harmoniza saúde e beleza através de tratamentos minimamente invasivos, sempre valorizando a naturalidade e a autoestima de cada paciente.',
     fullBio: [
-      'A Dra. Junia Martins é nossa biomédica esteta, responsável pelos tratamentos de harmonização orofacial e estética facial da Souriê. Sua abordagem une rigor científico à sensibilidade artística.',
+      'A Dra. Júnia Martins é nossa biomédica esteta, responsável pelos tratamentos de harmonização orofacial e estética facial da Souriê. Sua abordagem une rigor científico à sensibilidade artística.',
       'Com foco em resultados naturais e seguros, ela realiza procedimentos como preenchimentos, bioestimuladores de colágeno, skinbooster e outros tratamentos que realçam a beleza única de cada paciente, sempre respeitando seus traços e individualidade.',
       'Para ela, a estética não é sobre transformação, e sim sobre realçar o que há de mais bonito em cada um, devolvendo autoestima e confiança através de cuidados personalizados.'
     ],
@@ -565,7 +588,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
       { year: '', title: 'Pós-Graduação em Biomedicina Estética' },
       { year: '', title: 'Especialização em Harmonização Orofacial' }
     ],
-    specialties: ['Harmonização Facial', 'Tratamentos de Pele', 'Tratamentos Corporais e Vasculares'],
+    specialties: ['Harmonização Facial', 'Tratamentos de Pele', 'Preenchimento Facial'],
     instagram: 'https://www.instagram.com/dra.juniamartins/'
   },
   {
@@ -576,7 +599,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     bio: 'Nutricionista especializada em nutrição clínica e estética, Maria Eduarda integra saúde bucal e nutricional, mostrando como a alimentação é pilar fundamental para sorrisos e corpo saudáveis.',
     fullBio: [
       'Maria Eduarda Lage é a nutricionista da equipe Souriê, trazendo uma visão integrada entre alimentação, saúde bucal e bem-estar geral. Sua atuação complementa os tratamentos odontológicos e estéticos da clínica.',
-      'Ela acredita que uma nutrição equilibrada é a base para tudo: desde dentes e gengivas saudáveis até pele, cabelos e corpo em harmonia. Seu método é personalizado, sem dietas restritivas, focando em construir hábitos alimentares que o paciente consegue manter para a vida toda.',
+      'Acreditamos que uma nutrição equilibrada é a base para tudo: desde dentes e gengivas saudáveis até pele, cabelos e corpo em harmonia. Seu método é personalizado, sem dietas restritivas, focando em construir hábitos alimentares que o paciente consegue manter para a vida toda.',
       'Seu objetivo é ajudar cada paciente a descobrir o prazer de se alimentar bem, colhendo benefícios que vão muito além da estética — mais energia, imunidade fortalecida e saúde em primeiro lugar.'
     ],
     education: [
@@ -644,7 +667,7 @@ export const SERVICES: Service[] = [
   },
   {
     title: 'Odontologia Estética',
-    description: 'Transformação do sorriso com clareamento, lentes de contato e mais.',
+    description: 'Transformação do sorriso com clareamento, lentes e facetas em resina.',
     slug: 'odontologia-estetica'
   },
   {
@@ -653,14 +676,24 @@ export const SERVICES: Service[] = [
     slug: 'ortodontia'
   },
   {
-    title: 'Próteses e Implantes',
-    description: 'Soluções sob medida para reabilitação e reposição de dentes.',
-    slug: 'proteses-e-implantes'
+    title: 'Próteses Removíveis e Fixas',
+    description: 'Próteses fixas, removíveis e coroas para devolver a mastigação e a estética do sorriso.',
+    slug: 'proteses'
   },
   {
-    title: 'Cirurgias e Canal',
-    description: 'Extrações, endodontia e tratamentos mais complexos com total segurança.',
-    slug: 'cirurgias-e-canal'
+    title: 'Implantes',
+    description: 'Substituição de dentes perdidos por implantes firmes e seguros.',
+    slug: 'implantes'
+  },
+  {
+    title: 'Tratamento Endodôntico (Canal)',
+    description: 'Tratamento e retratamento de canal para tratar infecções e preservar seu dente natural.',
+    slug: 'tratamento-de-canal'
+  },
+  {
+    title: 'Cirurgias',
+    description: 'Remoção de sisos e cirurgias orais com precisão técnica e cuidado humanizado.',
+    slug: 'cirurgias'
   },
   {
     title: 'Odontopediatria',
@@ -691,8 +724,10 @@ export const FOOTER_COLUMNS: FooterColumn[] = [
       { label: 'Clínica Geral', href: '/p/clinica-geral' },
       { label: 'Estética Dental', href: '/p/odontologia-estetica' },
       { label: 'Ortodontia', href: '/p/ortodontia' },
-      { label: 'Próteses e Implantes', href: '/p/proteses-e-implantes' },
-      { label: 'Cirurgias e Canal', href: '/p/cirurgias-e-canal' },
+      { label: 'Próteses Removíveis e Fixas', href: '/p/proteses' },
+      { label: 'Implantes', href: '/p/implantes' },
+      { label: 'Tratamento de Canal', href: '/p/tratamento-de-canal' },
+      { label: 'Cirurgias e Sisos', href: '/p/cirurgias' },
       { label: 'Odontopediatria', href: '/p/odontopediatria' },
     ],
   },

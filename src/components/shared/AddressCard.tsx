@@ -1,4 +1,4 @@
-import { MapPin } from 'lucide-react';
+import { MapPin, Accessibility } from 'lucide-react';
 
 interface AddressCardProps {
   className?: string;
@@ -12,9 +12,13 @@ export default function AddressCard({ className = '', isFullWidth = false }: Add
 
         {/* Left Side: Label + Address */}
         <div className="flex flex-col space-y-3">
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <div className="w-2 h-2 rounded-full bg-cyan-light animate-pulse shadow-[0_0_10px_rgba(221,248,255,0.8)]" />
             <span className="text-cyan-light font-bold uppercase tracking-widest text-[10px] opacity-80 shrink-0">Onde estamos</span>
+            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white/10 border border-white/15 text-cyan-light text-[10px] font-medium">
+              <Accessibility size={11} className="shrink-0" aria-hidden="true" />
+              <span>Clínica acessível</span>
+            </span>
           </div>
           
           <div className="flex items-start gap-3">

@@ -7,7 +7,9 @@ import {
   Stethoscope, 
   Sparkles, 
   Layers, 
+  Bone,
   Activity, 
+  Scissors,
   Baby, 
   ArrowUpRight 
 } from 'lucide-react';
@@ -19,7 +21,9 @@ const serviceIcons = [
   Sparkles,
   OrthoIcon,
   Layers,
+  Bone,
   Activity,
+  Scissors,
   Baby
 ];
 
@@ -87,7 +91,7 @@ export default function AboutServices() {
           <div className="relative z-10 space-y-2 md:space-y-4">
             <h3 className="text-xl md:text-3xl font-bold text-white">{SERVICES[1].title}</h3>
             <p className="text-sm md:text-xl text-white/80 font-light leading-relaxed max-w-md">
-              Transformação completa da estética do seu sorriso com as técnicas mais modernas de clareamento e lentes.
+              Transformação completa da estética do seu sorriso com as técnicas mais modernas de clareamento e lentes e facetas em resina.
             </p>
           </div>
           <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-white/5 rounded-full blur-3xl" />
@@ -115,19 +119,21 @@ export default function AboutServices() {
         </Link>
 
         {/* Grid for other services with varying teal tones */}
-        <div className="md:col-span-12 grid grid-cols-1 md:grid-cols-4 gap-6 mt-2">
+        <div className="md:col-span-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-2">
           {SERVICES.map((service, i) => {
             if (i === 1 || i === 2) return null;
-            const Icon = serviceIcons[i];
+            const Icon = serviceIcons[i] || Stethoscope;
             
             // Dynamic styles based on index for solid teal variation
             const styles = [
-              "bg-teal-medium border-white/10 hover:shadow-teal-medium/20", // Clínica Geral
+              "bg-teal-medium border-white/10 hover:shadow-teal-medium/20",  // Clínica Geral
               "", // Skipped
               "", // Skipped
-              "bg-teal-dark border-white/10 hover:shadow-teal-dark/20",   // Próteses
-              "bg-navy-dark border-white/10 hover:shadow-navy-dark/20",  // Cirurgias
-              "bg-teal-primary border-white/10 hover:shadow-teal-primary/20" // Odontopediatria
+              "bg-teal-dark border-white/10 hover:shadow-teal-dark/20",      // Próteses Removíveis e Fixas
+              "bg-navy-dark border-white/10 hover:shadow-navy-dark/20",      // Implantes
+              "bg-teal-primary border-white/10 hover:shadow-teal-primary/20",// Tratamento Endodôntico (Canal)
+              "bg-teal-dark border-white/10 hover:shadow-teal-dark/20",      // Cirurgias
+              "bg-teal-medium border-white/10 hover:shadow-teal-medium/20"   // Odontopediatria
             ];
 
             return (

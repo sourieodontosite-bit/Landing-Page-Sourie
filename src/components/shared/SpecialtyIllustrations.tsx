@@ -790,23 +790,25 @@ export default function SpecialtyIllustration({ name, size = 120, className = ''
   if (norm.includes('aparelho infantil')) return <AparelhoInfantilIllustration size={size} className={className} />;
   if (norm.includes('safira')) return <SafiraIllustration size={size} className={className} />;
 
-  if (norm.includes('check-up') || norm.includes('câmera')) return <CheckupIllustration size={size} className={className} />;
+  if (norm.includes('check-up') || norm.includes('câmera') || norm.includes('diagnóstico') || norm.includes('planejamento')) return <CheckupIllustration size={size} className={className} />;
   if (norm.includes('limpeza profunda') || norm.includes('delicada')) return <LimpezaIllustration size={size} className={className} />;
+  if (norm.includes('lentes') || norm.includes('facetas')) return <FacetasIllustration size={size} className={className} />;
   if (norm.includes('restauração') || norm.includes('resina')) return <RestauracaoIllustration size={size} className={className} />;
   if (norm.includes('gengiva') || norm.includes('gengivas')) return <GengivaIllustration size={size} className={className} />;
 
-  if (norm.includes('lentes') || norm.includes('facetas de porcelana')) return <FacetasIllustration size={size} className={className} />;
   if (norm.includes('clareamento')) return <ClareamentoIllustration size={size} className={className} />;
   if (norm.includes('harmonização')) return <HarmonizacaoIllustration size={size} className={className} />;
   if (norm.includes('direct') || norm.includes('resina direct')) return <ResinaDirectIllustration size={size} className={className} />;
 
+  if (norm.includes('retratamento')) return <ResinaDirectIllustration size={size} className={className} />;
   if (norm.includes('canal')) return <CanalIllustration size={size} className={className} />;
-  if (norm.includes('siso')) return <SisoIllustration size={size} className={className} />;
+  if (norm.includes('siso') || norm.includes('exodontia')) return <SisoIllustration size={size} className={className} />;
 
+  if (norm.includes('prótese sobre implantes') || norm.includes('protocolo') || norm.includes('próteses fixas') || norm.includes('fixos')) return <DentesFixosIllustration size={size} className={className} />;
+  if (norm.includes('próteses removíveis')) return <FacetasIllustration size={size} className={className} />;
+  if (norm.includes('coroas') || norm.includes('zircônia')) return <ZirconiaIllustration size={size} className={className} />;
   if (norm.includes('implantes') || norm.includes('implante')) return <ImplantesIllustration size={size} className={className} />;
-  if (norm.includes('protocolo') || norm.includes('fixos')) return <DentesFixosIllustration size={size} className={className} />;
-  if (norm.includes('zircônia')) return <ZirconiaIllustration size={size} className={className} />;
-  if (norm.includes('mesmo dia')) return <MesmoDiaIllustration size={size} className={className} />;
+  if (norm.includes('mesmo dia') || norm.includes('suporte')) return <MesmoDiaIllustration size={size} className={className} />;
 
   if (norm.includes('lúdica') || norm.includes('consulta lúdica')) return <LudicaIllustration size={size} className={className} />;
   if (norm.includes('selantes') || norm.includes('cáries')) return <SelantesIllustration size={size} className={className} />;
