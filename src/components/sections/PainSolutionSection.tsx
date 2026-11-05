@@ -2,9 +2,9 @@ import { useRef, useEffect, useState } from 'react';
 import { Scan, Users, Smile } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import SectionContainer from '../shared/SectionContainer';
-import img1 from "../../assets/Tecnologia.webp";
-import img2 from "../../assets/clinica-interna-2.webp";
-import img3 from "../../assets/clinica-interna-3.webp";
+import img1 from "../../assets/images/clinica/scanner-3d-tecnologia.webp";
+import img2 from "../../assets/images/clinica/consultorio-atendimento.webp";
+import img3 from "../../assets/images/clinica/equipamentos-clinica.webp";
 
 
 type Card = {

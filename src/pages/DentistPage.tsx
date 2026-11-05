@@ -14,48 +14,48 @@ import { buildDentistSchema } from '../utils/SEOData';
 import Button from '../components/shared/Button';
 import { OutlineToothIcon, InstagramIcon, WhatsAppIcon, ArrowRightIcon } from '../components/shared/Icons';
 
-import brenoImg from '../assets/breno.webp';
-import estefaniaImg from '../assets/estefania.webp';
-import victorImg from '../assets/victor.webp';
-import beatrizImg from '../assets/beatriz.webp';
-import beatrizBento2 from '../assets/beatriz2.webp';
-import beatrizBento3 from '../assets/beatriz3.webp';
-import coroasAntesDepoisBeatriz from '../assets/Coroas-antes-e-depois_Beatriz.webp';
-import coroaBeatrizImg from '../assets/coroa.webp';
-import taynaFotoImg from '../assets/taynafoto.webp';
-import taynaImg from '../assets/tayna.webp';
-import escovasKidImg from '../assets/escovas-de-dente-kid.webp';
-import odontopediatriaImg from '../assets/odontopediatria.webp';
-import juniaImg from '../assets/dra.junia.webp';
-import resultadosBigodeChines from '../assets/resultados-bigode-chines.webp';
-import juniaAtendendo from '../assets/junia-atendendo.webp';
-import resultadoMandibula from '../assets/resultado-mandibula.webp';
-import mariaEduardaImg from '../assets/nutri_mariana.webp';
-import nutriMariana2 from '../assets/nutrimariana2.webp';
-import nutriMariana3 from '../assets/nutrimariana3.webp';
-import nutriMariana4 from '../assets/nutrimariana4.webp';
-import alimentosImg from '../assets/alimentos.webp';
+import brenoImg from '../assets/images/equipe/dr-breno.webp';
+import estefaniaImg from '../assets/images/equipe/dra-estefania.webp';
+import victorImg from '../assets/images/equipe/dr-victor.webp';
+import beatrizImg from '../assets/images/equipe/dra-beatriz.webp';
+import beatrizBento2 from '../assets/images/dentistas/beatriz/bento-2.webp';
+import beatrizBento3 from '../assets/images/dentistas/beatriz/bento-3.webp';
+import coroasAntesDepoisBeatriz from '../assets/images/dentistas/beatriz/caso-coroas-antes-depois.webp';
+import coroaBeatrizImg from '../assets/images/dentistas/beatriz/caso-coroa.webp';
+import taynaFotoImg from '../assets/images/equipe/dra-tayna.webp';
+import taynaImg from '../assets/images/dentistas/tayna/bento-atendimento.webp';
+import escovasKidImg from '../assets/images/dentistas/tayna/caso-escovas-kids.webp';
+import odontopediatriaImg from '../assets/images/dentistas/tayna/caso-odontopediatria.webp';
+import juniaImg from '../assets/images/equipe/dra-junia.webp';
+import resultadosBigodeChines from '../assets/images/dentistas/junia/caso-bigode-chines.webp';
+import juniaAtendendo from '../assets/images/dentistas/junia/bento-atendimento.webp';
+import resultadoMandibula from '../assets/images/dentistas/junia/caso-mandibula.webp';
+import mariaEduardaImg from '../assets/images/equipe/dra-maria-eduarda.webp';
+import nutriMariana2 from '../assets/images/dentistas/maria-eduarda/bento-consulta-2.webp';
+import nutriMariana3 from '../assets/images/dentistas/maria-eduarda/bento-consulta-3.webp';
+import nutriMariana4 from '../assets/images/dentistas/maria-eduarda/bento-consulta-4.webp';
+import alimentosImg from '../assets/images/dentistas/maria-eduarda/planejamento-alimentar.webp';
 
 // Imagem genérica de clínica para bento fallback
-import clinicaInterna from '../assets/clinica-interna-1.webp';
+import clinicaInterna from '../assets/images/clinica/consultorio-principal.webp';
 
 // Breno Bento Images
-import brenoBento1 from '../assets/DentistPage/Breno/bento1.webp';
-import brenoBento2 from '../assets/DentistPage/Breno/Tecnologia.webp';
-import brenoBento3 from '../assets/DentistPage/Breno/bento3.webp';
-import brenoBento4 from '../assets/DentistPage/Breno/bento4.webp';
+import brenoBento1 from '../assets/images/dentistas/breno/bento-1.webp';
+import brenoBento2 from '../assets/images/dentistas/breno/bento-tecnologia.webp';
+import brenoBento3 from '../assets/images/dentistas/breno/bento-3.webp';
+import brenoBento4 from '../assets/images/dentistas/breno/bento-4.webp';
 
 // Estefania Bento Images
-import estefaniaBento1 from '../assets/DentistPage/Estefania/bento1-estefania.webp';
-import invisalignEstefaniaImg from '../assets/invisalign-img.webp';
-import aparelhoFixoEstefaniaImg from '../assets/Close-up de dentes com aparelho ortodôntico.webp';
-import aparelhoOrtopedicoEstefaniaImg from '../assets/aparelho-ortopedico-Estefania.webp';
+import estefaniaBento1 from '../assets/images/dentistas/estefania/bento-1.webp';
+import invisalignEstefaniaImg from '../assets/images/dentistas/estefania/caso-invisalign.webp';
+import aparelhoFixoEstefaniaImg from '../assets/images/dentistas/estefania/caso-aparelho-fixo.webp';
+import aparelhoOrtopedicoEstefaniaImg from '../assets/images/dentistas/estefania/caso-aparelho-ortopedico.webp';
 
 // Victor Bento Images
-import victorBento1 from '../assets/DentistPage/Victor/bento 1.webp';
-import victorBento3 from '../assets/DentistPage/Victor/bento 3.webp';
-import victorBento4 from '../assets/DentistPage/Victor/bento 4.webp';
-import victorResultado from '../assets/DentistPage/Victor/resultado.webp';
+import victorBento1 from '../assets/images/dentistas/victor/bento-1.webp';
+import victorBento3 from '../assets/images/dentistas/victor/bento-3.webp';
+import victorBento4 from '../assets/images/dentistas/victor/bento-4.webp';
+import victorResultado from '../assets/images/dentistas/victor/caso-resultado.webp';
 
 const teamImages: Record<string, string> = {
   'dr-breno': brenoImg,

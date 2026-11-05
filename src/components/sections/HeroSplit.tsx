@@ -1,5 +1,5 @@
 import { ArrowUpRight, Star } from "lucide-react";
-import heroImg from "../../assets/HistoriaHero.webp";
+import heroImg from "../../assets/images/clinica/banner-historia.webp";
 import { WHATSAPP_LINK } from "../../utils/constants";
 
 const brands = ["Invisalign", "Straumann", "3Shape", "Colgate", "Nobel Biocare"];

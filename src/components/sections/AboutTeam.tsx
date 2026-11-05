@@ -7,14 +7,14 @@ import { TEAM_MEMBERS } from '../../utils/constants';
 import { ArrowUpRight } from 'lucide-react';
 import { InstagramIcon } from '../shared/Icons';
 
-import brenoImg from '../../assets/breno.webp';
-import estefaniaImg from '../../assets/estefania.webp';
-import victorImg from '../../assets/victor.webp';
-import beatrizImg from '../../assets/beatriz.webp';
-import taynaImg from '../../assets/taynafoto.webp';
-import juniaImg from '../../assets/dra.junia.webp';
-import mariaEduardaImg from '../../assets/nutri_mariana.webp';
-import fallbackImg from '../../assets/equipe-sem-fundo.webp';
+import brenoImg from '../../assets/images/equipe/dr-breno.webp';
+import estefaniaImg from '../../assets/images/equipe/dra-estefania.webp';
+import victorImg from '../../assets/images/equipe/dr-victor.webp';
+import beatrizImg from '../../assets/images/equipe/dra-beatriz.webp';
+import taynaImg from '../../assets/images/equipe/dra-tayna.webp';
+import juniaImg from '../../assets/images/equipe/dra-junia.webp';
+import mariaEduardaImg from '../../assets/images/equipe/dra-maria-eduarda.webp';
+import fallbackImg from '../../assets/images/equipe/equipe-completa.webp';
 
 const memberImages: Record<string, string> = {
   'dr-breno': brenoImg,

@@ -1,7 +1,7 @@
 import { FOOTER_COLUMNS, CONTACT_INFO, SOCIAL_LINKS, GOOGLE_MAPS_LINK, LEGAL_INFO } from '../../utils/constants';
 import { Link } from 'react-router-dom';
 import { InstagramIcon, FacebookIcon, WhatsAppIcon, ArrowRightIcon } from '../shared/Icons';
-import FooterLogoImg from '../../assets/Logo.svg';
+import FooterLogoImg from '../../assets/images/logo/logo-sourie.svg';
 import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 

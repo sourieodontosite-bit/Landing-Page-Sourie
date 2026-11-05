@@ -3,9 +3,9 @@ import { Star, Quote } from 'lucide-react';
 import { GoogleWatermarkIcon } from '../shared/Icons';
 import { TESTIMONIALS } from '../../utils/constants';
 import SectionContainer from '../shared/SectionContainer';
-import testimonialIngrid from '../../assets/Ingrid.webp';
-import testimonialFabiana from '../../assets/fabiana.webp';
-import testimonialJennifer from '../../assets/Jennifer.webp';
+import testimonialIngrid from '../../assets/images/depoimentos/paciente-ingrid.webp';
+import testimonialFabiana from '../../assets/images/depoimentos/paciente-fabiana.webp';
+import testimonialJennifer from '../../assets/images/depoimentos/paciente-jennifer.webp';
 
 const TESTIMONIAL_AVATARS = [
   testimonialIngrid,

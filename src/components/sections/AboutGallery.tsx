@@ -3,10 +3,10 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { Accessibility } from "lucide-react";
 import SectionContainer from "../shared/SectionContainer";
-import img1 from "../../assets/equipe-tecnologia.webp";
-import img2 from "../../assets/Victor-tratamento.webp";
-import img3 from "../../assets/clinica-internamente.webp";
-import img4 from "../../assets/clinica-externa.webp";
+import img1 from "../../assets/images/clinica/equipe-tecnologia.webp";
+import img2 from "../../assets/images/clinica/atendimento-dr-victor.webp";
+import img3 from "../../assets/images/clinica/recepcao-interna.webp";
+import img4 from "../../assets/images/clinica/fachada-clinica.webp";
 import AddressCard from "../shared/AddressCard";
 
 interface AboutGalleryProps {

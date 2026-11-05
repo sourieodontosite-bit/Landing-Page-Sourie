@@ -4,9 +4,9 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Sparkles, ShieldCheck, Cpu, HeartHandshake } from 'lucide-react';
 import SectionContainer from '../shared/SectionContainer';
-import queSomosImg from '../../assets/que-somos.webp';
-import tecnologiaImg from '../../assets/Tecnologia.webp';
-import clinicaImg from '../../assets/clinica-interna-1.webp';
+import queSomosImg from '../../assets/images/clinica/historia-fundacao.webp';
+import tecnologiaImg from '../../assets/images/clinica/scanner-3d-tecnologia.webp';
+import clinicaImg from '../../assets/images/clinica/consultorio-principal.webp';
 
 const REASONS = [
   {

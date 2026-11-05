@@ -54,25 +54,25 @@ const PROCEDURE_ICONS: Record<string, React.ElementType> = {
 };
 
 // Import Procedure Images & Local Assets
-import ortodontiaImg from '../assets/Procedimentos/Ortodontia.webp';
-import clinicaGeralImg from '../assets/Procedimentos/Clinica-geral.webp';
-import esteticaImg from '../assets/Procedimentos/Estetica.webp';
-import canalImg from '../assets/Procedimentos/Canal.webp';
-import cirurgiasImg from '../assets/Procedimentos/Cirurgias.webp';
-import proteseImg from '../assets/Procedimentos/Protese.webp';
-import odontopediatriaImg from '../assets/Procedimentos/Odontopediatria.webp';
-import tecnologiaImg from '../assets/Tecnologia.webp';
-import victorTratamentoImg from '../assets/Victor-tratamento.webp';
-import clinicaExternaImg from '../assets/clinica-externa.webp';
-import clinicaInterna1Img from '../assets/clinica-interna-1.webp';
-import clinicaInterna2Img from '../assets/clinica-interna-2.webp';
-import clinicaInterna3Img from '../assets/clinica-interna-3.webp';
-import fotoClinicaImg from '../assets/clinica-externa.webp';
-import equipeTecnologiaImg from '../assets/equipe-tecnologia.webp';
-import odontopediatriaHeaderImg from '../assets/odontopediatria-hero.webp';
-import ortodontiaHeaderImg from '../assets/mulher-sorrindo-invisalign.webp';
-import protesesHeaderImg from '../assets/proteses.webp';
-import clinicaGeralHeaderImg from '../assets/Procedimentos/Clinica-geral-landscape.webp';
+import ortodontiaImg from '../assets/images/procedimentos/ortodontia.webp';
+import clinicaGeralImg from '../assets/images/procedimentos/clinica-geral.webp';
+import esteticaImg from '../assets/images/procedimentos/estetica.webp';
+import canalImg from '../assets/images/procedimentos/canal.webp';
+import cirurgiasImg from '../assets/images/procedimentos/cirurgias.webp';
+import proteseImg from '../assets/images/procedimentos/protese.webp';
+import odontopediatriaImg from '../assets/images/procedimentos/odontopediatria.webp';
+import tecnologiaImg from '../assets/images/clinica/scanner-3d-tecnologia.webp';
+import victorTratamentoImg from '../assets/images/clinica/atendimento-dr-victor.webp';
+import clinicaExternaImg from '../assets/images/clinica/fachada-clinica.webp';
+import clinicaInterna1Img from '../assets/images/clinica/consultorio-principal.webp';
+import clinicaInterna2Img from '../assets/images/clinica/consultorio-atendimento.webp';
+import clinicaInterna3Img from '../assets/images/clinica/equipamentos-clinica.webp';
+import fotoClinicaImg from '../assets/images/clinica/fachada-clinica.webp';
+import equipeTecnologiaImg from '../assets/images/clinica/equipe-tecnologia.webp';
+import odontopediatriaHeaderImg from '../assets/images/procedimentos/hero-odontopediatria.webp';
+import ortodontiaHeaderImg from '../assets/images/procedimentos/hero-ortodontia.webp';
+import protesesHeaderImg from '../assets/images/procedimentos/proteses-implantes.webp';
+import clinicaGeralHeaderImg from '../assets/images/procedimentos/clinica-geral-landscape.webp';
 
 interface ServiceItem {
   name: string;

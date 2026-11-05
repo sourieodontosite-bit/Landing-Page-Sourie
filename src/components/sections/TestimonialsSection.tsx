@@ -7,9 +7,9 @@ import SectionContainer from '../shared/SectionContainer';
 import { OutlineToothIcon } from '../shared/Icons';
 import Badge from '../shared/Badge';
 
-import testimonial1Img from '../../assets/testimonial-1.png';
-import testimonial2Img from '../../assets/testimonial-2.png';
-import testimonial3Img from '../../assets/testimonial-3.png';
+import testimonial1Img from '../../assets/images/depoimentos/paciente-ingrid.webp';
+import testimonial2Img from '../../assets/images/depoimentos/paciente-fabiana.webp';
+import testimonial3Img from '../../assets/images/depoimentos/paciente-jennifer.webp';
 
 const TESTIMONIAL_IMAGES = [testimonial1Img, testimonial2Img, testimonial3Img];
 

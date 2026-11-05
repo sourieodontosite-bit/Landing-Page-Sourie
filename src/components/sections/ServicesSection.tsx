@@ -7,14 +7,14 @@ import { Link } from 'react-router-dom';
 
 
 // Import Procedure Images for Hover
-import ortodontiaImg from '../../assets/Procedimentos/Ortodontia.webp';
-import clinicaGeralImg from '../../assets/Procedimentos/Clinica-geral.webp';
-import esteticaImg from '../../assets/Procedimentos/Estetica.webp';
-import canalImg from '../../assets/Procedimentos/Canal.webp';
-import proteseImg from '../../assets/Procedimentos/Protese.webp';
-import implantesImg from '../../assets/proteses.webp';
-import cirurgiasImg from '../../assets/Procedimentos/Cirurgias.webp';
-import odontopediatriaImg from '../../assets/Procedimentos/Odontopediatria.webp';
+import ortodontiaImg from '../../assets/images/procedimentos/ortodontia.webp';
+import clinicaGeralImg from '../../assets/images/procedimentos/clinica-geral.webp';
+import esteticaImg from '../../assets/images/procedimentos/estetica.webp';
+import canalImg from '../../assets/images/procedimentos/canal.webp';
+import proteseImg from '../../assets/images/procedimentos/protese.webp';
+import implantesImg from '../../assets/images/procedimentos/proteses-implantes.webp';
+import cirurgiasImg from '../../assets/images/procedimentos/cirurgias.webp';
+import odontopediatriaImg from '../../assets/images/procedimentos/odontopediatria.webp';
 
 const serviceIcons = [
   Stethoscope, // Clínica geral

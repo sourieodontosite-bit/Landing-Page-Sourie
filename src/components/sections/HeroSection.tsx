@@ -3,8 +3,8 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import Button from '../shared/Button';
 import { buildWhatsAppLink, WA_MESSAGES } from '../../utils/constants';
-import heroImageMobile from '../../assets/hero-mobile.webp';
-import heroImage from '../../assets/hero-section.webp';
+import heroImageMobile from '../../assets/images/hero/hero-mobile.webp';
+import heroImage from '../../assets/images/hero/hero-desktop.webp';
 
 
 export default function HeroSection() {

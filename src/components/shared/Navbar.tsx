@@ -8,7 +8,7 @@ import { createPortal } from 'react-dom';
 import { Menu, X, ArrowLeft, Stethoscope, Users, MessageSquareQuote, MapPin, ChevronRight, Home } from 'lucide-react';
 import Button from './Button';
 import { NAV_LINKS, buildWhatsAppLink, WA_MESSAGES } from '../../utils/constants';
-import LogoImg from '../../assets/Logo.svg';
+import LogoImg from '../../assets/images/logo/logo-sourie.svg';
 
 interface NavLinkProps {
   link: {
