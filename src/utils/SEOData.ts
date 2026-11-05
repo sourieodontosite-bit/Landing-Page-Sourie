@@ -8,6 +8,8 @@ export const LOCAL_BUSINESS_SCHEMA = {
   "legalName": LEGAL_INFO.corporateName,
   "taxID": LEGAL_INFO.cnpj,
   "image": [
+    "https://sourie.com.br/og-image.png",
+    "https://sourie.com.br/og-image.jpg",
     "https://sourie.com.br/og-image.webp",
     "https://sourie.com.br/hero-image.webp"
   ],

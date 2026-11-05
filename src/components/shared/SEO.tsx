@@ -15,7 +15,7 @@ export default function SEO({
   description,
   canonical,
   ogType = 'website',
-  ogImage = '/og-image.webp',
+  ogImage = '/og-image.png',
   ogLocale = 'pt_BR',
   schema,
 }: SEOProps) {
@@ -24,11 +24,17 @@ export default function SEO({
   const defaultDescription = 'Clínica odontológica moderna e acessível em Nova Era, MG. Especialistas em Invisalign, Implantes, Próteses e Odontologia Estética com tecnologia e conforto.';
 
   // Format absolute image URL for external social platforms / link preview scrapers
-  const baseDomain = 'https://sourie.com.br';
+  const baseDomain = typeof window !== 'undefined' && window.location.origin
+    ? window.location.origin
+    : 'https://sourie.com.br';
   const absoluteOgImage = ogImage.startsWith('http')
     ? ogImage
     : `${baseDomain}${ogImage.startsWith('/') ? ogImage : `/${ogImage}`}`;
-  const imageType = absoluteOgImage.endsWith('.png') ? 'image/png' : 'image/webp';
+  const imageType = absoluteOgImage.endsWith('.jpg') || absoluteOgImage.endsWith('.jpeg')
+    ? 'image/jpeg'
+    : absoluteOgImage.endsWith('.webp')
+    ? 'image/webp'
+    : 'image/png';
 
   return (
     <Helmet>
@@ -46,10 +52,14 @@ export default function SEO({
       <meta property="og:image" content={absoluteOgImage} />
       <meta property="og:image:secure_url" content={absoluteOgImage} />
       <meta property="og:image:type" content={imageType} />
-      <meta property="og:image:width" content="850" />
-      <meta property="og:image:height" content="448" />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
       <meta property="og:image:alt" content={siteName} />
       {canonical && <meta property="og:url" content={canonical} />}
+
+      {/* WhatsApp / Generic Link Preview Fallbacks */}
+      <link rel="image_src" href={absoluteOgImage} />
+      <meta itemProp="image" content={absoluteOgImage} />
 
       {/* Twitter / X */}
       <meta name="twitter:card" content="summary_large_image" />

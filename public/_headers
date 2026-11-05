@@ -1,0 +1,20 @@
+# Headers para compatibilidade universal de compartilhamento (WhatsApp, Facebook, Twitter, LinkedIn, Telegram)
+/og-image.png
+  Content-Type: image/png
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+/og-image.jpg
+  Content-Type: image/jpeg
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+/og-image.webp
+  Content-Type: image/webp
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+/favicon.svg
+  Content-Type: image/svg+xml
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=604800
