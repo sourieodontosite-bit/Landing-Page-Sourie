@@ -37,7 +37,7 @@ import {
   Star
 } from 'lucide-react';
 import { buildWhatsAppLink, WA_PROCEDURE_MESSAGES } from '../utils/constants';
-import { OutlineToothIcon } from '../components/shared/Icons';
+import { OutlineToothIcon, GoogleIcon, GoogleWatermarkIcon } from '../components/shared/Icons';
 import ScrollReveal from '../components/shared/ScrollReveal';
 import SpecialtyIllustration from '../components/shared/SpecialtyIllustrations';
 
@@ -74,7 +74,24 @@ import ortodontiaHeaderImg from '../assets/images/procedimentos/hero-ortodontia.
 import protesesHeaderImg from '../assets/images/procedimentos/proteses-implantes.webp';
 import clinicaGeralHeaderImg from '../assets/images/procedimentos/clinica-geral-landscape.webp';
 
-interface ServiceItem {
+// Real Clinical Cases & Specialist Procedure Photos
+import invisalignEstefaniaImg from '../assets/images/dentistas/estefania/caso-invisalign.webp';
+import aparelhoOrtopedicoEstefaniaImg from '../assets/images/dentistas/estefania/caso-aparelho-ortopedico.webp';
+import victorResultado from '../assets/images/dentistas/victor/caso-resultado.webp';
+import coroasAntesDepoisBeatriz from '../assets/images/dentistas/beatriz/caso-coroas-antes-depois.webp';
+import coroaBeatrizImg from '../assets/images/dentistas/beatriz/caso-coroa.webp';
+import resultadosBigodeChines from '../assets/images/dentistas/junia/caso-bigode-chines.webp';
+import casoRestauracaoVictor from '../assets/images/dentistas/victor/caso-restauracao-antes-depois.webp';
+import taynaImg from '../assets/images/dentistas/tayna/bento-atendimento.webp';
+import escovasKidImg from '../assets/images/dentistas/tayna/caso-escovas-kids.webp';
+import brenoAtendimentoEndoImg from '../assets/images/dentistas/breno/atendimento-dr-breno.webp';
+import raioXEndodontiaImg from '../assets/images/dentistas/breno/caso-raio-x-endodontia.webp';
+import casoProteseRemovivelBreno from '../assets/images/dentistas/breno/caso-protese-removivel-antes-depois.webp';
+
+// Verified Patient Testimonial Avatar
+import testimonialJennifer from '../assets/images/depoimentos/paciente-jennifer.webp';
+
+export interface ServiceItem {
   name: string;
   desc: string;
   benefit: string;
@@ -83,13 +100,24 @@ interface ServiceItem {
   image: string;
 }
 
-interface Testimonial {
+export interface ClinicalCase {
+  title: string;
+  subtitle: string;
+  description: string;
+  image: string;
+  tag: string;
+  highlight?: string;
+  imageClassName?: string;
+}
+
+export interface Testimonial {
   name: string;
   text: string;
   role: string;
+  avatar?: string;
 }
 
-interface MethodologyStep {
+export interface MethodologyStep {
   step: string;
   title: string;
   desc: string;
@@ -97,13 +125,13 @@ interface MethodologyStep {
   color: string;
 }
 
-interface StepItem {
+export interface StepItem {
   number: string;
   title: string;
   desc: string;
 }
 
-interface PageContent {
+export interface PageContent {
   title: string;
   category: string;
   sectionTitle: string;
@@ -124,6 +152,7 @@ interface PageContent {
   heroOverlayIntensity?: number;
   heroOverlayColor?: string;
   mainImage: string;
+  clinicalCases: ClinicalCase[];
   services: ServiceItem[];
   methodology: MethodologyStep[];
   testimonial: Testimonial;
@@ -154,6 +183,29 @@ const PAGES_CONTENT: Record<string, PageContent> = {
     ctaText: 'Sorriso alinhado de forma rápida e segura',
     heroImage: ortodontiaHeaderImg,
     mainImage: ortodontiaImg,
+    clinicalCases: [
+      {
+        image: invisalignEstefaniaImg,
+        tag: 'Alinhadores',
+        title: 'Alinhamento Invisível sem Fios Metálicos',
+        subtitle: 'Estética e discrição durante todo o tratamento',
+        description: 'Alinhadores transparentes sob medida que movimentam os dentes com suavidade e previsibilidade, sem restrições alimentares e fáceis de higienizar.'
+      },
+      {
+        image: clinicaInterna3Img,
+        tag: 'Escaneamento 3D',
+        title: 'Escaneamento Intraoral Digital sem Massinha',
+        subtitle: 'Simulação 3D instantânea do seu novo sorriso',
+        description: 'Adeus às moldagens antigas desconfortáveis. O scanner 3D captura sua arcada em segundos e simula digitalmente o resultado antes de começar.'
+      },
+      {
+        image: aparelhoOrtopedicoEstefaniaImg,
+        tag: 'Ortopedia Guiada',
+        title: 'Aparelhos 100% Personalizados do Seu Jeito',
+        subtitle: 'Aparelhos guiados para jovens e adultos',
+        description: 'Totalmente personalizados para o jeito que quiser, com as cores, temas e detalhes favoritos que as crianças e jovens adoram escolher. Unem diversão e precisão ortopédica para guiar o crescimento correto dos dentes e das bases ósseas com conforto e motivação.'
+      }
+    ],
     testimonial: {
       name: 'Juscilene Martins Oliveira',
       text: 'Ambiente acolhedor e profissionais muito preparados. O atendimento é humanizado e o cuidado não se restringe ao consultório: entram em contato para saber se estamos nos adaptando bem ao aparelho e permanecem sempre disponíveis para eventuais dúvidas. Um ambiente seguro e completo.',
@@ -174,14 +226,14 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         benefit: 'Veja na tela a simulação exata de como seu sorriso vai ficar.',
         icon: ScanLine,
         tag: 'Sem Massinha',
-        image: tecnologiaImg
+        image: clinicaInterna3Img
       },
       {
         name: 'Aparelho Infantil e Guiado',
-        desc: 'Cuidados preventivos que guiam o crescimento correto dos dentes das crianças.',
-        benefit: 'Evita problemas graves de mastigação e tratamentos longos no futuro.',
+        desc: 'Aparelhos 100% personalizados com as cores e desenhos que as crianças amam escolher.',
+        benefit: 'As crianças usam com alegria e orgulho, prevenindo problemas mastigatórios no futuro.',
         icon: BrainCircuit,
-        tag: 'Para Crianças',
+        tag: 'Personalizado',
         image: clinicaInterna1Img
       },
       {
@@ -224,6 +276,29 @@ const PAGES_CONTENT: Record<string, PageContent> = {
     ctaText: 'Garanta sua saúde bucal preventiva hoje',
     heroImage: clinicaGeralHeaderImg,
     mainImage: clinicaGeralImg,
+    clinicalCases: [
+      {
+        image: tecnologiaImg,
+        tag: 'Diagnóstico Digital',
+        title: 'Check-up Digital com Scanner HD',
+        subtitle: 'Detecção de lesões invisíveis a olho nu',
+        description: 'Filmagem intraoral em alta definição na tela de TV, detectando microfraturas, desgastes e cáries iniciais antes que causem dor ou necessidade de canal.'
+      },
+      {
+        image: equipeTecnologiaImg,
+        tag: 'Prevenção',
+        title: 'Profilaxia e Limpeza Suave Ultrassônica',
+        subtitle: 'Remoção de tártaro e manchas sem agredir o esmalte',
+        description: 'Eliminação completa de placa bacteriana e manchas com jato delicado, deixando as gengivas fortes, hálito puro e dentes protegidos.'
+      },
+      {
+        image: clinicaInterna1Img,
+        tag: 'Consultório',
+        title: 'Consultório Moderno com Biossegurança Hospitalar',
+        subtitle: 'Infraestrutura acolhedora para atendimento sem dor',
+        description: 'Ambiente planejado com climatização suave, cadeira ergonômica e atendimento individualizado para que sua rotina de cuidados seja relaxante e ágil.'
+      }
+    ],
     testimonial: {
       name: 'Wandersom Alves',
       text: 'Fui à clínica por indicação e o atendimento foi impecável em todos os momentos! Explicam tudo com muita clareza e paciência nos mínimos detalhes, mostrando cada procedimento e todos os cuidados pós-atendimento. Essa transparência deixa a gente muito seguro e tranquilo. Recomendo com toda certeza!',
@@ -295,8 +370,33 @@ const PAGES_CONTENT: Record<string, PageContent> = {
     heroDesktopShiftClass: 'lg:translate-x-[22%]',
     heroImagePosition: 'center center',
     mainImage: esteticaImg,
+    clinicalCases: [
+      {
+        image: victorResultado,
+        tag: 'Facetas em Resina',
+        title: 'Facetas e Resina Estratificada',
+        subtitle: 'Brilho, textura e formato em harmonia natural',
+        description: 'Reconstrução estética em resina de alta performance para corrigir desníveis, espaçamentos e tonalidades com acabamento suave e natural.'
+      },
+      {
+        image: resultadosBigodeChines,
+        tag: 'Harmonização Facial',
+        title: 'Suavização e Rejuvenescimento Facial',
+        subtitle: 'Equilíbrio sutil entre sorriso e linhas do rosto',
+        description: 'Aplicação estratégica de bioestimuladores e preenchedores para devolver sustentação dérmica e jovialidade sem perder a naturalidade da expressão.'
+      },
+      {
+        image: casoRestauracaoVictor,
+        tag: 'Antes & Depois',
+        title: 'Restauração Estética & Reconstrução',
+        subtitle: 'Reconstruindo os dentes com resina estética',
+        description: 'Reconstrução estética de dentes desgastados e comprometidos com resina composta de alta performance, devolvendo formato anatômico, função mastigatória e harmonia ao sorriso.',
+        imageClassName: 'object-contain p-2.5 sm:p-3'
+      }
+    ],
     testimonial: {
-      name: 'Jennifer Fideles',
+      name: 'Jennifer Fidelis',
+      avatar: testimonialJennifer,
       text: 'Era exatamente isso que eu buscava: naturalidade! Amei o resultado final desse processo lindo, superou todas as minhas expectativas. Muito obrigada ao Dr. Victor por elevar a minha autoestima!',
       role: 'Paciente de Estética Dental'
     },
@@ -400,6 +500,29 @@ const PAGES_CONTENT: Record<string, PageContent> = {
     heroCta: 'Agendar Avaliação',
     ctaText: 'Preservação dos dentes naturais e alívio da dor',
     mainImage: canalImg,
+    clinicalCases: [
+      {
+        image: tecnologiaImg,
+        tag: 'Diagnóstico',
+        title: 'Diagnóstico por Imagem e Localização dos Canais',
+        subtitle: 'Precisão anatômica milimétrica',
+        description: 'Avaliação minuciosa da anatomia interna radicular para localizar todos os canais e garantir a eliminação completa das bactérias causadoras de dor.'
+      },
+      {
+        image: brenoAtendimentoEndoImg,
+        tag: 'Cuidado Humanizado',
+        title: 'Cuidado Humanizado com o Dr. Breno',
+        subtitle: 'Atendimento acolhedor e no seu ritmo',
+        description: 'Sabemos que o canal gera receio. Por isso, cada etapa é explicada com calma e transparência, respeitando sua sensibilidade, com pausas sempre que necessário e anestesia cuidadosa para um atendimento seguro e previsível.'
+      },
+      {
+        image: raioXEndodontiaImg,
+        tag: 'Raio-X',
+        title: 'Raiz Fechada e Dente Forte de Novo',
+        subtitle: 'Dente protegido para não quebrar',
+        description: 'Depois de tratar o canal, fechamos bem a raiz por dentro e restauramos o dente para ele ficar firme. Você volta a mastigar com segurança e evita perder o seu dente.'
+      }
+    ],
     testimonial: {
       name: 'Wandersom Alves',
       text: 'Fui à clínica por indicação e o atendimento foi impecável em todos os momentos! Explicam tudo com muita clareza e paciência nos mínimos detalhes, mostrando cada procedimento e todos os cuidados pós-atendimento. Essa transparência deixa a gente muito seguro e tranquilo. Recomendo com toda certeza!',
@@ -482,6 +605,29 @@ const PAGES_CONTENT: Record<string, PageContent> = {
     ctaText: 'Precisão técnica e atendimento humanizado em cirurgias de siso',
     heroImage: cirurgiasImg,
     mainImage: cirurgiasImg,
+    clinicalCases: [
+      {
+        image: victorTratamentoImg,
+        tag: 'Cirurgia Oral',
+        title: 'Extração de Sisos com o Dr. Victor',
+        subtitle: 'Técnica cirúrgica delicada e acolhedora',
+        description: 'Remoção planejada de terceiros molares com anestesia eficiente e instrumentos específicos para evitar traumas e dores pós-operatórias.'
+      },
+      {
+        image: clinicaInterna3Img,
+        tag: 'Biossegurança',
+        title: 'Esterilização & Instrumentais Cirúrgicos',
+        subtitle: 'Ambiente estéril com padrão hospitalar',
+        description: 'Todos os materiais passam por rigoroso ciclo de esterilização e selagem térmica, eliminando qualquer risco de infecção cruzada.'
+      },
+      {
+        image: equipeTecnologiaImg,
+        tag: 'Pós-Operatório',
+        title: 'Suporte Clínico Contínuo no WhatsApp',
+        subtitle: 'Você nunca fica desassistido após o procedimento',
+        description: 'Nossa equipe orienta repouso, medicação e alimentação, monitorando a evolução da cicatrização para garantir recuperação tranquila.'
+      }
+    ],
     testimonial: {
       name: 'Carolina Castro Oliveira',
       text: 'O Dr. Victor extraiu meu siso e foi extremamente profissional, pontual e atencioso. Me senti muito bem atendida e totalmente confiante com o cuidado e a técnica dele durante todo o procedimento. Recomendo com certeza!',
@@ -564,6 +710,30 @@ const PAGES_CONTENT: Record<string, PageContent> = {
     ctaText: 'Próteses fixas e removíveis com função e estética para o seu sorriso',
     heroImage: proteseImg,
     mainImage: proteseImg,
+    clinicalCases: [
+      {
+        image: coroasAntesDepoisBeatriz,
+        tag: 'Antes & Depois',
+        title: 'Reabilitação Estética com Coroas Cerâmicas',
+        subtitle: 'Devolução de função mastigatória e sorriso harmônico',
+        description: 'Substituição de dentes desgastados por coroas protéticas em cerâmica pura com tom, brilho e anatomia que imitam a perfeição natural.'
+      },
+      {
+        image: coroaBeatrizImg,
+        tag: 'Prótese Cerâmica',
+        title: 'Coroas de Cerâmica Pura e Zircônia',
+        subtitle: 'Sem bordas escuras e com alta durabilidade',
+        description: 'Materiais biocompatíveis que preservam a gengiva rosada e saudável, sem a linha acinzentada comum das próteses antigas com metal.'
+      },
+      {
+        image: casoProteseRemovivelBreno,
+        tag: 'Antes & Depois',
+        title: 'Prótese Removível Feita para Você',
+        subtitle: 'Prótese pensada em você',
+        description: 'Feita sob medida para combinar com o formato do seu rosto, trazendo dentes bonitos e firmeza para mastigar. Conforto e naturalidade para você sorrir à vontade.',
+        imageClassName: 'object-contain'
+      }
+    ],
     testimonial: {
       name: 'Isadora Isabelle',
       text: 'Equipe super atenciosa e sempre disposta a explicar cada detalhe de todos os procedimentos. Me senti totalmente segura durante o tratamento e saio muito satisfeita e feliz com a minha escolha!',
@@ -646,6 +816,29 @@ const PAGES_CONTENT: Record<string, PageContent> = {
     ctaText: 'Reabilitação com implantes firmes e seguros',
     heroImage: protesesHeaderImg,
     mainImage: protesesHeaderImg,
+    clinicalCases: [
+      {
+        image: protesesHeaderImg,
+        tag: 'Dentes Fixos',
+        title: 'Dentes Fixos sobre Implantes',
+        subtitle: 'Segurança definitiva para mastigar sem medo',
+        description: 'Substituição de próteses móveis instáveis por coroas fixas em titânio e zircônia integradas ao osso, devolvendo força mastigatória de 100%.'
+      },
+      {
+        image: coroasAntesDepoisBeatriz,
+        tag: 'Reabilitação',
+        title: 'Harmonia Estética e Mastigatória',
+        subtitle: 'Naturalidade idêntica à dentição original',
+        description: 'Reabilitação completa onde cada coroa é desenhada para harmonizar com a linha do sorriso e devolver a segurança de sorrir em público.'
+      },
+      {
+        image: tecnologiaImg,
+        tag: 'Cirurgia Guiada',
+        title: 'Planejamento Ósseo Digital',
+        subtitle: 'Instalação milimétrica do implante',
+        description: 'Tomografia e escaneamento digital combinados para planejar a posição exata de cada implante antes da cirurgia, acelerando a cicatrização.'
+      }
+    ],
     testimonial: {
       name: 'Isadora Isabelle',
       text: 'Equipe super atenciosa e sempre disposta a explicar cada detalhe de todos os procedimentos. Me senti totalmente segura durante o tratamento e saio muito satisfeita e feliz com a minha escolha!',
@@ -717,6 +910,29 @@ const PAGES_CONTENT: Record<string, PageContent> = {
     heroImage: odontopediatriaHeaderImg,
     heroImagePosition: 'right center',
     mainImage: odontopediatriaImg,
+    clinicalCases: [
+      {
+        image: odontopediatriaImg,
+        tag: 'Odontopediatria',
+        title: 'Atendimento Sem Traumas e Sem Choro',
+        subtitle: 'Adaptação lúdica que transforma o medo em curiosidade',
+        description: 'Abordagem psicológica carinhosa onde a criança interage com os instrumentos de forma divertida, sentindo-se protegida e acolhida.'
+      },
+      {
+        image: escovasKidImg,
+        tag: 'Prevenção',
+        title: 'Educação Bucal & Proteção com Selantes',
+        subtitle: 'Barreira protetora contra cáries infantis',
+        description: 'Aplicação indolor de resina fluida nos sulcos dos molares para impedir a proliferação bacteriana, somada à escovação guiada divertida.'
+      },
+      {
+        image: taynaImg,
+        tag: 'Atendimento Lúdico',
+        title: 'Cuidado Humanizado da Dra. Tayná',
+        subtitle: 'Amor, paciência e reforço positivo',
+        description: 'Consultas no ritmo da criança com entrega de certificado de coragem, criando uma memória positiva e amizade duradoura com a saúde bucal.'
+      }
+    ],
     testimonial: {
       name: 'Tayra Leidamara',
       text: 'Foi a melhor experiência para o meu filho! Um atendimento personalizado, humano e com um carinho sem igual por parte de toda a equipe.',
@@ -1057,62 +1273,152 @@ export default function InternalPage() {
 
         </div>
       </SectionContainer>
-      {/* Structured Customer Testimonial + Nosso Compromisso Section */}
-      <SectionContainer background="bg-bg-light/40" className="border-t border-black/[0.02]" innerClassName="!py-16 md:!py-24">
-        <div className="max-w-6xl mx-auto space-y-10 md:space-y-12">
-          {/* Testimonial Card (Full-width without image requirement) */}
+      {/* 2. Section: Casos Clínicos & Evidências Reais (Fotos reais, procedimentos e tecnologia) */}
+      <SectionContainer background="bg-[#FAFAFA]" className="border-t border-black/[0.04]" innerClassName="!pt-16 lg:!pt-24 !pb-20 lg:!pb-28">
+        <div className="max-w-page mx-auto w-full space-y-12 lg:space-y-14">
           <ScrollReveal>
-            <div className="relative w-full rounded-3xl md:rounded-[36px] overflow-hidden bg-white border border-black/[0.05] p-7 sm:p-10 lg:p-12 shadow-xl shadow-teal-950/[0.03]">
-              {/* Subtle background watermark */}
-              <div className="absolute top-2 right-6 sm:right-10 text-teal-primary/10 font-serif text-8xl sm:text-9xl select-none pointer-events-none leading-none">
-                ”
+            <div className="max-w-3xl space-y-4 text-left">
+              <span className="text-teal-primary font-bold text-xs tracking-[0.25em] uppercase block">
+                Casos Clínicos & Evidências Reais
+              </span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-teal-dark font-sans leading-tight -tracking-[0.02em]">
+                Resultados reais e precisão em cada detalhe.
+              </h2>
+              <p className="text-text-primary/75 text-sm sm:text-base font-light leading-relaxed">
+                Conheça de perto casos clínicos reais, equipamentos odontológicos de alta tecnologia e o ambiente seguro onde o seu tratamento acontece na Souriê.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          {/* Grid de 3 Cards de Casos Reais */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            {page.clinicalCases?.map((item, idx) => (
+              <ScrollReveal key={idx} delay={idx * 0.1}>
+                <div className="group relative bg-white rounded-3xl overflow-hidden border border-black/[0.06] shadow-[0_1px_3px_rgba(0,0,0,0.03),0_6px_16px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.05),0_16px_32px_rgba(0,0,0,0.08)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full">
+                  {/* Photo with Single Subtle Badge */}
+                  <div className={`relative aspect-[4/3] w-full overflow-hidden ${item.imageClassName?.includes('contain') ? 'bg-stone-900' : 'bg-stone-100'}`}>
+                    {item.imageClassName?.includes('contain') && (
+                      <div
+                        className="absolute inset-0 bg-cover bg-center blur-md opacity-35 scale-110 pointer-events-none"
+                        style={{ backgroundImage: `url(${item.image})` }}
+                      />
+                    )}
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      loading="lazy"
+                      className={`relative z-10 w-full h-full ${item.imageClassName || 'object-cover'} transition-transform duration-700 ease-out group-hover:scale-[1.02]`}
+                    />
+
+                    {/* Single subtle badge without merchan */}
+                    <div className="absolute top-3.5 left-3.5 z-20 pointer-events-none">
+                      <span className="inline-flex items-center bg-black/60 backdrop-blur-md text-white text-[11px] font-medium px-3 py-1 rounded-full shadow-xs">
+                        {item.tag}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Body Content */}
+                  <div className="p-6 sm:p-7 flex flex-col flex-1 justify-between gap-4">
+                    <div className="space-y-2.5">
+                      <span className="text-[11px] font-semibold uppercase tracking-wider text-teal-primary font-sans block">
+                        {item.subtitle}
+                      </span>
+                      <h3 className="text-lg sm:text-xl font-bold text-teal-dark font-sans leading-snug group-hover:text-teal-primary transition-colors duration-200">
+                        {item.title}
+                      </h3>
+                      <p className="text-xs sm:text-[13px] text-text-primary/75 font-light leading-relaxed">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </SectionContainer>
+
+      {/* 3. Section: Depoimento de Paciente + Nosso Compromisso Souriê */}
+      <SectionContainer background="bg-bg-light/60" className="border-t border-black/[0.03]" innerClassName="!py-16 md:!py-24">
+        <div className="max-w-page mx-auto space-y-10 md:space-y-14">
+          <ScrollReveal>
+            <div className="max-w-2xl text-left space-y-2">
+              <span className="text-teal-primary font-bold text-xs tracking-[0.25em] uppercase block">
+                Experiência de quem confia
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-medium text-teal-dark font-sans leading-tight -tracking-[0.02em]">
+                O cuidado que faz diferença no seu sorriso.
+              </h2>
+            </div>
+          </ScrollReveal>
+
+          {/* Elevated Testimonial Card */}
+          <ScrollReveal>
+            <div className="relative w-full rounded-2xl md:rounded-3xl overflow-hidden bg-white border border-black/[0.06] p-7 sm:p-10 lg:p-12 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_8px_24px_rgba(0,0,0,0.04)]">
+              {/* Subtle background Google watermark in bottom right corner */}
+              <div className="absolute -bottom-6 -right-6 text-teal-primary/[0.03] select-none pointer-events-none leading-none">
+                <GoogleWatermarkIcon size={240} />
               </div>
 
               <div className="relative z-10 space-y-6 max-w-4xl">
-                {/* Header: Label + 5 Stars */}
-                <div className="flex flex-wrap items-center justify-between gap-4">
-                  <div className="inline-flex items-center gap-2 bg-teal-primary/5 border border-teal-primary/10 px-3.5 py-1.5 rounded-full">
-                    <Sparkles size={13} className="text-teal-primary" />
-                    <span className="text-teal-primary font-bold text-[10px] sm:text-xs tracking-[0.25em] uppercase">
-                      Quem já sorriu conosco
-                    </span>
-                  </div>
-
-                  {/* 5 Stars Rating */}
-                  <div className="flex items-center gap-1">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} size={15} className="text-amber-400 fill-amber-400" />
-                    ))}
-                    <span className="ml-1.5 text-xs font-bold text-teal-dark/70">5.0</span>
-                  </div>
-                </div>
-
-                {/* Quote text */}
-                <p className="text-teal-dark text-lg sm:text-2xl lg:text-[25px] leading-relaxed font-light font-serif italic">
-                  "{page.testimonial.text}"
-                </p>
-
-                {/* Author & Verified Badge */}
-                <div className="flex flex-wrap items-center justify-between gap-4 pt-5 border-t border-black/[0.05]">
-                  <div className="flex items-center gap-3.5">
-                    {/* Avatar Initials Badge */}
-                    <div className="w-11 h-11 rounded-full bg-gradient-to-br from-teal-primary to-teal-dark text-white font-bold text-sm flex items-center justify-center shadow-md shadow-teal-900/10 shrink-0">
-                      {page.testimonial.name.split(' ').map(n => n[0]).slice(0, 2).join('')}
+                {/* Top Google Lockup + Rating + Verification */}
+                <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-black/[0.05]">
+                  <div className="flex items-center gap-3">
+                    <div className="w-9 h-9 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center justify-center shadow-xs">
+                      <GoogleIcon size={18} />
                     </div>
-
                     <div>
-                      <h4 className="text-teal-dark text-sm font-bold font-sans">
-                        {page.testimonial.name}
-                      </h4>
-                      <p className="text-teal-primary/80 text-xs font-medium">
-                        {page.testimonial.role}
+                      <div className="flex items-center gap-1.5">
+                        <span className="text-xs font-bold text-slate-800">Avaliação no Google</span>
+                        <span className="text-slate-300">·</span>
+                        <div className="flex items-center gap-0.5">
+                          {[...Array(5)].map((_, i) => (
+                            <Star key={i} size={13} className="text-amber-400 fill-amber-400" />
+                          ))}
+                        </div>
+                        <span className="text-xs font-bold text-slate-900 ml-1">5,0</span>
+                      </div>
+                      <p className="text-[11px] text-slate-500 font-normal">
+                        Experiência real compartilhada por paciente da clínica
                       </p>
                     </div>
                   </div>
 
-                  <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-teal-primary bg-teal-primary/5 border border-teal-primary/10 px-3 py-1.5 rounded-full">
+                  <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-teal-primary bg-teal-primary/5 border border-teal-primary/10 px-3.5 py-1.5 rounded-full shadow-xs">
                     <CheckCircle2 size={14} className="text-teal-primary" />
                     <span>Paciente Verificado</span>
+                  </div>
+                </div>
+
+                {/* Quote text */}
+                <p className="text-teal-dark text-lg sm:text-2xl lg:text-[23px] leading-relaxed font-light font-serif italic">
+                  "{page.testimonial.text}"
+                </p>
+
+                {/* Author Block */}
+                <div className="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-black/[0.05]">
+                  <div className="flex items-center gap-4">
+                    {page.testimonial.avatar ? (
+                      <img
+                        src={page.testimonial.avatar}
+                        alt={page.testimonial.name}
+                        className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover ring-2 ring-teal-primary/20 shadow-xs shrink-0"
+                      />
+                    ) : (
+                      <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br from-teal-primary to-teal-dark text-white font-bold text-sm sm:text-base flex items-center justify-center shadow-xs shrink-0">
+                        {page.testimonial.name.split(' ').map(n => n[0]).slice(0, 2).join('')}
+                      </div>
+                    )}
+
+                    <div className="space-y-0.5">
+                      <h4 className="text-teal-dark text-base sm:text-lg font-bold font-sans">
+                        {page.testimonial.name}
+                      </h4>
+                      <p className="text-teal-primary font-medium text-xs sm:text-sm">
+                        {page.testimonial.role}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1121,20 +1427,23 @@ export default function InternalPage() {
 
           {/* Nosso Compromisso Banner Section */}
           <ScrollReveal delay={0.1}>
-            <div className="bg-gradient-to-r from-teal-dark/5 to-teal-primary/5 border border-teal-primary/10 rounded-3xl p-8 md:p-12 relative overflow-hidden group shadow-sm flex flex-col md:flex-row items-center justify-between gap-8 w-full">
+            <div className="bg-gradient-to-r from-teal-dark/[0.06] to-teal-primary/[0.06] border border-teal-primary/15 rounded-3xl p-8 md:p-12 relative overflow-hidden group shadow-sm flex flex-col md:flex-row items-center justify-between gap-8 w-full">
               <div className="absolute right-0 bottom-0 text-teal-primary/5 translate-x-6 translate-y-6 transition-transform duration-700 pointer-events-none">
                 <Award size={180} strokeWidth={1} />
               </div>
 
-              <div className="space-y-4 max-w-2xl text-center md:text-left relative z-10">
-                <div className="flex items-center justify-center md:justify-start gap-3">
+              <div className="space-y-3 max-w-2xl text-center md:text-left relative z-10">
+                <div className="flex items-center justify-center md:justify-start gap-2.5">
                   <div className="w-8 h-8 rounded-xl bg-teal-primary/10 flex items-center justify-center text-teal-medium">
                     <Award size={16} />
                   </div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-teal-dark">Nosso Compromisso Souriê</span>
+                  <span className="text-xs font-bold uppercase tracking-wider text-teal-dark">Compromisso Souriê</span>
                 </div>
-                <p className="text-lg md:text-xl font-medium text-teal-dark font-sans leading-relaxed">
+                <p className="text-base sm:text-lg md:text-xl font-medium text-teal-dark font-sans leading-relaxed">
                   "{page.responsibility}"
+                </p>
+                <p className="text-xs text-text-primary/60 font-light">
+                  Acompanhamento próximo antes, durante e após o procedimento.
                 </p>
               </div>
 
