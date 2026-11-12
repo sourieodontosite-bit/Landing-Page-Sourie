@@ -261,7 +261,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
     description: 'Evite dores e surpresas desagradáveis através de limpezas detalhadas e avaliação preventiva com câmera digital.',
     headline: 'Mantenha sua boca saudável e livre de dores',
     subheadline: 'Descubra pequenas alterações antes que se tornem problemas sérios',
-    bodyText: 'Com nosso Check-up com Câmera Digital, mostramos em uma tela HD a saúde de cada dente com aumento de imagens, descobrindo pequenas cáries ou infiltrações logo no início. Realizamos limpezas delicadas e eficientes que removem tártaro e manchas, deixando seu hálito fresco e gengivas fortes.',
+    bodyText: 'Com nosso Check-up com Scanner 3D, mapeamos a sua boca e mostramos no painel digital a saúde de cada dente com riqueza de detalhes, descobrindo pequenas alterações ou cáries logo no início. Realizamos limpezas delicadas e eficientes que removem tártaro e manchas, mantendo seu hálito fresco e dentes protegidos.',
     whyDoIt: 'Proteja seus dentes contra dores súbitas e tratamentos caros, detectando pequenas cáries e lesões logo no início.',
     targetAudience: [
       'Quem está há mais de 6 meses sem passar por uma avaliação preventiva',
@@ -269,7 +269,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
       'Quem deseja manter o hálito sempre fresco e os dentes fortalecidos'
     ],
     threeSteps: [
-      { number: '01', title: 'Exame com Scanner 3D', desc: 'Filmamos cada dente em alta definição para identificar detalhes na TV.' },
+      { number: '01', title: 'Exame com Scanner 3D', desc: 'Escaneamos sua boca em 3D e mostramos cada detalhe dos dentes no painel com precisão.' },
       { number: '02', title: 'Limpeza Suave', desc: 'Removemos manchas e tártaro de forma delicada sem agredir o esmalte.' },
       { number: '03', title: 'Proteção Preventiva', desc: 'Fortalecemos os dentes e orientamos os cuidados ideais no seu dia a dia.' }
     ],
@@ -282,23 +282,23 @@ const PAGES_CONTENT: Record<string, PageContent> = {
       {
         image: tecnologiaImg,
         tag: 'Diagnóstico Digital',
-        title: 'Check-up Digital com Scanner HD',
-        subtitle: 'Detecção de lesões invisíveis a olho nu',
-        description: 'Filmagem intraoral em alta definição na tela de TV, detectando microfraturas, desgastes e cáries iniciais antes que causem dor ou necessidade de canal.'
+        title: 'Check-up Digital com Scanner 3D',
+        subtitle: 'Detecção de alterações invisíveis a olho nu',
+        description: 'Escaneamento 3D detalhado exibido no painel da clínica, identificando desgastes, microfraturas e cáries iniciais antes que causem dor ou tratamentos complexos.'
       },
       {
         image: equipeTecnologiaImg,
         tag: 'Prevenção',
-        title: 'Profilaxia e Limpeza Suave Ultrassônica',
+        title: 'Profilaxia e Limpeza Suave',
         subtitle: 'Remoção de tártaro e manchas sem agredir o esmalte',
-        description: 'Eliminação completa de placa bacteriana e manchas com jato delicado, deixando as gengivas fortes, hálito puro e dentes protegidos.'
+        description: 'Eliminação completa de placa bacteriana e manchas com tecnologia delicada, deixando as gengivas fortalecidas, hálito puro e dentes protegidos.'
       },
       {
         image: clinicaInterna1Img,
         tag: 'Consultório',
-        title: 'Consultório Moderno com Biossegurança Hospitalar',
-        subtitle: 'Infraestrutura acolhedora para atendimento sem dor',
-        description: 'Ambiente planejado com climatização suave, cadeira ergonômica e atendimento individualizado para que sua rotina de cuidados seja relaxante e ágil.'
+        title: 'Consultório Moderno e Seguro',
+        subtitle: 'Ambiente acolhedor com rigorosa esterilização',
+        description: 'Espaço planejado com climatização agradável, cadeira ergonômica, processos rigorosos de biossegurança e atendimento humanizado para o seu conforto.'
       }
     ],
     testimonial: {
@@ -309,7 +309,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
     services: [
       {
         name: 'Check-up com Scanner 3D',
-        desc: 'Filmagem interna em alta definição para acompanhar a saúde dos dentes.',
+        desc: 'Escaneamento digital em 3D exibido no painel para acompanhar a saúde dos dentes.',
         benefit: 'Detecta pequenos problemas no início, evitando tratamentos caros.',
         icon: ScanLine,
         tag: 'Diagnóstico Fácil',
@@ -341,7 +341,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
       }
     ],
     methodology: [
-      { step: '01', title: 'Exame com Câmera', desc: 'Mostramos cada detalhe dos seus dentes na tela de TV.', icon: ScanLine, color: 'bg-teal-primary' },
+      { step: '01', title: 'Exame no Painel 3D', desc: 'Escaneamos sua boca e mostramos os detalhes com clareza no painel.', icon: ScanLine, color: 'bg-teal-primary' },
       { step: '02', title: 'Limpeza e Brilho', desc: 'Removemos sujeiras e manchas que a escova comum não tira.', icon: Sparkle, color: 'bg-teal-medium' },
       { step: '03', title: 'Pequenos Reparos', desc: 'Se houver alguma cárie inicial, cuidamos de forma rápida.', icon: HeartPulse, color: 'bg-teal-dark' },
       { step: '04', title: 'Manutenção', desc: 'Orientamos como manter seu sorriso protegido e saudável no dia a dia.', icon: ShieldCheck, color: 'bg-navy-dark' }
