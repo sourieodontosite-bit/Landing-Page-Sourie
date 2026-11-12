@@ -126,7 +126,7 @@ const DEFAULT_THEME: MemberTheme = {
   tagBorder: 'border-white/5',
   btnHover: 'hover:bg-teal-primary',
   btnHoverBorder: 'hover:border-teal-primary/50',
-  aboutSectionBg: 'bg-[#4c717a]',
+  aboutSectionBg: 'bg-[#427787]',
   aboutAccent: 'text-cyan-light',
   highlightBg: 'bg-teal-primary/10',
   highlightIcon: 'text-teal-primary',
@@ -191,7 +191,7 @@ const DENTIST_EXTENSIONS: Record<string, DentistDesignExtensions> = {
   },
   'dr-breno': {
     subtitle: 'Tratamento de Canal & Próteses Removíveis',
-    philosophy: 'Reabilitar a saúde oral de alguém é devolver a liberdade de se expressar plenamente. A odontologia de alta performance alia alta tecnologia à sensibilidade humana para reconectar a pessoa com a sua melhor versão.',
+    philosophy: 'Reabilitar a saúde oral de alguém é devolver a liberdade de se expressar plenamente. Com tecnologia e cuidado individualizado, cada tratamento busca recuperar a função, o conforto e a confiança de sorrir.',
     instagramHandle: '@breno.lage',
     highlightStat: { value: 'Alta Performance', label: 'Em Reabilitação Oral' },
     bentoItems: [
@@ -843,11 +843,11 @@ export default function DentistPage() {
           </div>
           <div className="flex flex-col md:grid md:grid-cols-4 md:grid-rows-2 gap-4 lg:gap-4 md:h-[520px]">
             {/* Main large item */}
-            <div className={`h-[340px] md:h-auto col-span-2 row-span-2 group relative overflow-hidden rounded-3xl md:rounded-[32px] shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] reveal-item ${isBentoVisible ? 'active' : ''}`} style={{ animationDelay: '100ms' }}>
+            <div className={`col-span-2 row-span-2 group relative overflow-hidden rounded-3xl md:rounded-[32px] shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] reveal-item ${isBentoVisible ? 'active' : ''}`} style={{ animationDelay: '100ms' }}>
               <img
                 src={bentoData[0]?.src}
                 alt={bentoData[0]?.alt || `${member.name} em atendimento de alta fidelidade`}
-                className={`absolute inset-0 w-full h-full object-cover ${bentoData[0]?.pos} transition-transform duration-1000 group-hover:scale-105`}
+                className={`relative w-full h-auto object-contain md:absolute md:inset-0 md:h-full md:object-cover ${bentoData[0]?.pos} transition-transform duration-1000 group-hover:scale-105`}
                 loading="lazy"
               />
               {/* Gentle overlay for base contrast */}
@@ -870,11 +870,11 @@ export default function DentistPage() {
             </div>
 
             {/* Top wide item (Middle on mobile) */}
-            <div className={`h-[260px] md:h-auto col-span-2 row-span-1 group relative overflow-hidden rounded-3xl md:rounded-[32px] shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] reveal-item ${isBentoVisible ? 'active' : ''} order-last md:order-none`} style={{ animationDelay: '200ms' }}>
+            <div className={`col-span-2 row-span-1 group relative overflow-hidden rounded-3xl md:rounded-[32px] shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] reveal-item ${isBentoVisible ? 'active' : ''} order-last md:order-none`} style={{ animationDelay: '200ms' }}>
               <img
                 src={bentoData[1]?.src}
                 alt={bentoData[1]?.alt || `${member.name} operando tecnologias de ponta`}
-                className={`absolute inset-0 w-full h-full object-cover ${bentoData[1]?.pos} transition-transform duration-1000 group-hover:scale-105`}
+                className={`relative w-full h-auto object-contain md:absolute md:inset-0 md:h-full md:object-cover ${bentoData[1]?.pos} transition-transform duration-1000 group-hover:scale-105`}
                 loading="lazy"
               />
               {/* Gentle overlay for base contrast */}
@@ -897,11 +897,11 @@ export default function DentistPage() {
             </div>
 
             {/* Bottom smaller items */}
-            <div className={`h-[260px] md:h-auto col-span-1 row-span-1 group relative overflow-hidden rounded-3xl md:rounded-[32px] shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] reveal-item ${isBentoVisible ? 'active' : ''}`} style={{ animationDelay: '300ms' }}>
+            <div className={`col-span-1 row-span-1 group relative overflow-hidden rounded-3xl md:rounded-[32px] shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] reveal-item ${isBentoVisible ? 'active' : ''}`} style={{ animationDelay: '300ms' }}>
               <img
                 src={bentoData[2]?.src}
                 alt={bentoData[2]?.alt || `${member.name} operando instrumentação com precisão`}
-                className={`absolute inset-0 w-full h-full object-cover ${bentoData[2]?.pos} transition-transform duration-1000 group-hover:scale-105`}
+                className={`relative w-full h-auto object-contain md:absolute md:inset-0 md:h-full md:object-cover ${bentoData[2]?.pos} transition-transform duration-1000 group-hover:scale-105`}
                 loading="lazy"
               />
               {/* Gentle overlay for base contrast */}
@@ -923,11 +923,11 @@ export default function DentistPage() {
               </div>
             </div>
 
-            <div className={`h-[260px] md:h-auto col-span-1 row-span-1 group relative overflow-hidden rounded-3xl md:rounded-[32px] shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] reveal-item ${isBentoVisible ? 'active' : ''}`} style={{ animationDelay: '400ms' }}>
+            <div className={`col-span-1 row-span-1 group relative overflow-hidden rounded-3xl md:rounded-[32px] shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] reveal-item ${isBentoVisible ? 'active' : ''}`} style={{ animationDelay: '400ms' }}>
               <img
                 src={bentoData[3]?.src}
                 alt={bentoData[3]?.alt || `Detalhe do consultório do especialista ${member.name}`}
-                className={`absolute inset-0 w-full h-full object-cover ${bentoData[3]?.pos} transition-transform duration-1000 group-hover:scale-105`}
+                className={`relative w-full h-auto object-contain md:absolute md:inset-0 md:h-full md:object-cover ${bentoData[3]?.pos} transition-transform duration-1000 group-hover:scale-105`}
                 loading="lazy"
               />
               {/* Gentle overlay for base contrast */}
