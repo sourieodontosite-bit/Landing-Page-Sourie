@@ -67,7 +67,7 @@ const teamImages: Record<string, string> = {
   'nutri-maria-eduarda': mariaEduardaImg,
 };
 
-const bentoImagesMap: Record<string, { src: string; pos: string }[]> = {
+const bentoImagesMap: Record<string, { src: string; pos: string; alt?: string }[]> = {
   'dr-breno': [
     { src: brenoBento4, pos: 'object-bottom' },
     { src: brenoBento1, pos: 'object-center' },
@@ -75,10 +75,10 @@ const bentoImagesMap: Record<string, { src: string; pos: string }[]> = {
     { src: brenoBento2, pos: 'object-center' },
   ],
   'dra-estefania': [
-    { src: estefaniaBento1, pos: 'object-center' },
-    { src: invisalignEstefaniaImg, pos: 'object-center' },
-    { src: aparelhoFixoEstefaniaImg, pos: 'object-center' },
-    { src: aparelhoOrtopedicoEstefaniaImg, pos: 'object-center' },
+    { src: invisalignEstefaniaImg, pos: 'object-center', alt: 'Caso clínico de alinhadores invisíveis da Dra. Estefânia' },
+    { src: aparelhoFixoEstefaniaImg, pos: 'object-center', alt: 'Caso clínico de ortodontia fixa da Dra. Estefânia' },
+    { src: estefaniaBento1, pos: 'object-center', alt: 'Dra. Estefânia, especialista em ortodontia' },
+    { src: aparelhoOrtopedicoEstefaniaImg, pos: 'object-center', alt: 'Caso de aparelho ortopédico infantil' },
   ],
   'dr-victor': [
     { src: victorBento4, pos: 'object-center' },
@@ -181,9 +181,9 @@ const DENTIST_EXTENSIONS: Record<string, DentistDesignExtensions> = {
     instagramHandle: '@estefaniaalvesm',
     highlightStat: { value: 'Desde 2017', label: 'Devolvendo sorrisos' },
     bentoItems: [
-      { category: 'Atendimento Familiar', title: 'Atenção próxima, acolhimento humanizado e dedicação ao sorriso de toda a família' },
       { category: 'Alinhadores Invisíveis', title: 'Tecnologia ortodôntica invisível para alinhar seu sorriso com discrição' },
       { category: 'Ortodontia Fixa', title: 'Tratamentos corretivos precisos e planejados digitalmente' },
+      { category: 'Atendimento Familiar', title: 'Atenção próxima, acolhimento humanizado e dedicação ao sorriso de toda a família' },
       { category: 'Sorrisos Juvenis', title: 'Ortopedia preventiva para garantir o desenvolvimento saudável' }
     ],
     ctaHeadline: 'Inicie seu tratamento ortodôntico com a Dra. Estefânia',
@@ -846,7 +846,7 @@ export default function DentistPage() {
             <div className={`h-[340px] md:h-auto col-span-2 row-span-2 group relative overflow-hidden rounded-3xl md:rounded-[32px] shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] reveal-item ${isBentoVisible ? 'active' : ''}`} style={{ animationDelay: '100ms' }}>
               <img
                 src={bentoData[0]?.src}
-                alt={`${member.name} em atendimento de alta fidelidade`}
+                alt={bentoData[0]?.alt || `${member.name} em atendimento de alta fidelidade`}
                 className={`absolute inset-0 w-full h-full object-cover ${bentoData[0]?.pos} transition-transform duration-1000 group-hover:scale-105`}
                 loading="lazy"
               />
@@ -873,7 +873,7 @@ export default function DentistPage() {
             <div className={`h-[260px] md:h-auto col-span-2 row-span-1 group relative overflow-hidden rounded-3xl md:rounded-[32px] shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] reveal-item ${isBentoVisible ? 'active' : ''} order-last md:order-none`} style={{ animationDelay: '200ms' }}>
               <img
                 src={bentoData[1]?.src}
-                alt={`${member.name} operando tecnologias de ponta`}
+                alt={bentoData[1]?.alt || `${member.name} operando tecnologias de ponta`}
                 className={`absolute inset-0 w-full h-full object-cover ${bentoData[1]?.pos} transition-transform duration-1000 group-hover:scale-105`}
                 loading="lazy"
               />
@@ -900,7 +900,7 @@ export default function DentistPage() {
             <div className={`h-[260px] md:h-auto col-span-1 row-span-1 group relative overflow-hidden rounded-3xl md:rounded-[32px] shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] reveal-item ${isBentoVisible ? 'active' : ''}`} style={{ animationDelay: '300ms' }}>
               <img
                 src={bentoData[2]?.src}
-                alt={`${member.name} operando instrumentação com precisão`}
+                alt={bentoData[2]?.alt || `${member.name} operando instrumentação com precisão`}
                 className={`absolute inset-0 w-full h-full object-cover ${bentoData[2]?.pos} transition-transform duration-1000 group-hover:scale-105`}
                 loading="lazy"
               />
@@ -926,7 +926,7 @@ export default function DentistPage() {
             <div className={`h-[260px] md:h-auto col-span-1 row-span-1 group relative overflow-hidden rounded-3xl md:rounded-[32px] shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] reveal-item ${isBentoVisible ? 'active' : ''}`} style={{ animationDelay: '400ms' }}>
               <img
                 src={bentoData[3]?.src}
-                alt={`Detalhe do consultório do especialista ${member.name}`}
+                alt={bentoData[3]?.alt || `Detalhe do consultório do especialista ${member.name}`}
                 className={`absolute inset-0 w-full h-full object-cover ${bentoData[3]?.pos} transition-transform duration-1000 group-hover:scale-105`}
                 loading="lazy"
               />

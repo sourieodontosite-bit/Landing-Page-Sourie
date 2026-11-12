@@ -204,11 +204,15 @@ export default function TeamSection() {
                 </button>
                 <video
                   ref={(el) => {
-                    if (el) el.volume = 0.2;
+                    if (el) {
+                      el.muted = false;
+                      el.volume = 0.2;
+                    }
                   }}
                   src={VIDEO_SRC}
                   controls
                   autoPlay
+                  muted={false}
                   className="w-full h-full object-contain"
                 />
               </div>
@@ -313,11 +317,15 @@ export default function TeamSection() {
                 </button>
                 <video
                   ref={(el) => {
-                    if (el) el.volume = 0.2;
+                    if (el) {
+                      el.muted = false;
+                      el.volume = 0.2;
+                    }
                   }}
                   src={VIDEO_SRC}
                   controls
                   autoPlay
+                  muted={false}
                   className="w-full h-full object-contain"
                 />
               </div>

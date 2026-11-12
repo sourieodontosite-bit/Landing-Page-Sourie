@@ -1,4 +1,25 @@
 import { useRef } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import type { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import {
+  faBaby,
+  faBone,
+  faBullseye,
+  faClock,
+  faDroplet,
+  faFaceSmile,
+  faGem,
+  faHandSparkles,
+  faHeartPulse,
+  faMagnifyingGlass,
+  faScissors,
+  faShield,
+  faSun,
+  faSyringe,
+  faTeeth,
+  faTooth,
+  faXRay
+} from '@fortawesome/free-solid-svg-icons';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -18,28 +39,22 @@ import {
   Activity,
   Clock,
   CheckCircle2,
-  AlignCenter,
   ScanLine,
   Smile,
   Zap,
   Layers,
   HeartPulse,
-  Syringe,
   Scissors,
-  BrainCircuit,
-  Gem,
   Sparkle,
   Bone,
   Baby,
   Shield,
-  BarChart2,
   Stethoscope,
   Star
 } from 'lucide-react';
 import { buildWhatsAppLink, WA_PROCEDURE_MESSAGES } from '../utils/constants';
 import { OutlineToothIcon, GoogleIcon, GoogleWatermarkIcon } from '../components/shared/Icons';
 import ScrollReveal from '../components/shared/ScrollReveal';
-import SpecialtyIllustration from '../components/shared/SpecialtyIllustrations';
 
 // Map slugs to representative icons for the procedure page hero header
 const PROCEDURE_ICONS: Record<string, React.ElementType> = {
@@ -56,6 +71,7 @@ const PROCEDURE_ICONS: Record<string, React.ElementType> = {
 // Import Procedure Images & Local Assets
 import ortodontiaImg from '../assets/images/procedimentos/ortodontia.webp';
 import clinicaGeralImg from '../assets/images/procedimentos/clinica-geral.webp';
+import profilaxiaAntesDepoisImg from '../assets/images/procedimentos/profilaxia-antes-e-depois.webp';
 import esteticaImg from '../assets/images/procedimentos/estetica.webp';
 import canalImg from '../assets/images/procedimentos/canal.webp';
 import cirurgiasImg from '../assets/images/procedimentos/cirurgias.webp';
@@ -67,6 +83,7 @@ import clinicaExternaImg from '../assets/images/clinica/fachada-clinica.webp';
 import clinicaInterna1Img from '../assets/images/clinica/consultorio-principal.webp';
 import clinicaInterna2Img from '../assets/images/clinica/consultorio-atendimento.webp';
 import clinicaInterna3Img from '../assets/images/clinica/equipamentos-clinica.webp';
+import recepcaoInternaImg from '../assets/images/clinica/recepcao-interna.webp';
 import fotoClinicaImg from '../assets/images/clinica/fachada-clinica.webp';
 import equipeTecnologiaImg from '../assets/images/clinica/equipe-tecnologia.webp';
 import odontopediatriaHeaderImg from '../assets/images/procedimentos/hero-odontopediatria.webp';
@@ -98,7 +115,7 @@ export interface ServiceItem {
   name: string;
   desc: string;
   benefit: string;
-  icon: React.ElementType;
+  icon: IconDefinition;
   tag: string;
   image: string;
 }
@@ -178,8 +195,8 @@ const PAGES_CONTENT: Record<string, PageContent> = {
     ],
     threeSteps: [
       { number: '01', title: 'Escaneamento 3D', desc: 'Mapeamos sua boca digitalmente sem o desconforto de massinhas tradicionais.' },
-      { number: '02', title: 'Simulação 3D', desc: 'Visualizamos em tela o resultado do sorriso antes mesmo de iniciar o uso.' },
-      { number: '03', title: 'Uso dos Alinhadores', desc: 'Você troca as placas transparentes no conforto de casa periodicamente.' }
+      { number: '02', title: 'Escolha do aparelho', desc: 'Definimos juntos a melhor opção de aparelho para você, de acordo com suas necessidades e preferências.' },
+      { number: '03', title: 'Acompanhamento periódico', desc: 'Acompanhamos sua evolução em consultas periódicas e fazemos os ajustes necessários ao longo do tratamento.' }
     ],
     responsibility: 'Acompanhamos cada etapa de perto para garantir que você alcance o resultado desejado com total tranquilidade.',
     heroCta: 'Simular Meu Sorriso',
@@ -203,7 +220,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
       },
       {
         image: aparelhoOrtopedicoEstefaniaImg,
-        tag: 'Ortopedia Guiada',
+        tag: 'Ortopedia personalizada',
         title: 'Aparelhos 100% Personalizados do Seu Jeito',
         subtitle: 'Aparelhos guiados para jovens e adultos',
         description: 'Totalmente personalizados para o jeito que quiser, com as cores, temas e detalhes favoritos que as crianças e jovens adoram escolher. Unem diversão e precisão ortopédica para guiar o crescimento correto dos dentes e das bases ósseas com conforto e motivação.'
@@ -219,7 +236,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         name: 'Alinhadores Transparentes',
         desc: 'Placas transparentes sob medida para você alinhar seus dentes suavemente.',
         benefit: 'Removíveis para comer e escovar os dentes, sem fios de metal.',
-        icon: AlignCenter,
+        icon: faTeeth,
         tag: 'Prático e Discreto',
         image: ortodontiaImg
       },
@@ -227,7 +244,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         name: 'Escaneamento 3D',
         desc: 'Cópia digital precisa da sua boca em minutos, sem massinhas incômodas.',
         benefit: 'Veja na tela a simulação exata de como seu sorriso vai ficar.',
-        icon: ScanLine,
+        icon: faMagnifyingGlass,
         tag: 'Sem Massinha',
         image: clinicaInterna3Img
       },
@@ -235,7 +252,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         name: 'Aparelho Infantil e Guiado',
         desc: 'Aparelhos 100% personalizados com as cores e desenhos que as crianças amam escolher.',
         benefit: 'As crianças usam com alegria e orgulho, prevenindo problemas mastigatórios no futuro.',
-        icon: BrainCircuit,
+        icon: faTeeth,
         tag: 'Personalizado',
         image: clinicaInterna1Img
       },
@@ -243,7 +260,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         name: 'Aparelhos Discretos de Safira',
         desc: 'Peças fixas transparentes na cor exata dos dentes que quase não aparecem.',
         benefit: 'Super discretos, duráveis e resistentes a manchas de alimentos.',
-        icon: Gem,
+        icon: faGem,
         tag: 'Estético e Fixo',
         image: victorTratamentoImg
       }
@@ -288,7 +305,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         description: 'Escaneamento 3D detalhado exibido no painel da clínica, identificando desgastes, microfraturas e cáries iniciais antes que causem dor ou tratamentos complexos.'
       },
       {
-        image: equipeTecnologiaImg,
+        image: profilaxiaAntesDepoisImg,
         tag: 'Prevenção',
         title: 'Profilaxia e Limpeza Suave',
         subtitle: 'Remoção de tártaro e manchas sem agredir o esmalte',
@@ -312,7 +329,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         name: 'Check-up com Scanner 3D',
         desc: 'Escaneamento digital em 3D exibido no painel para acompanhar a saúde dos dentes.',
         benefit: 'Detecta pequenos problemas no início, evitando tratamentos caros.',
-        icon: ScanLine,
+        icon: faMagnifyingGlass,
         tag: 'Diagnóstico Fácil',
         image: clinicaGeralImg
       },
@@ -320,7 +337,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         name: 'Limpeza Profunda e Delicada',
         desc: 'Remoção de tártaro e manchas com tecnologia suave e confortável.',
         benefit: 'Gengivas limpas, sem sangramentos e sensação imediata de frescor.',
-        icon: Sparkle,
+        icon: faHandSparkles,
         tag: 'Limpeza Suave',
         image: equipeTecnologiaImg
       },
@@ -328,7 +345,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         name: 'Restaurações na Cor do Dente',
         desc: 'Troca de restaurações antigas por resinas modernas com tom idêntico.',
         benefit: 'Aparência 100% natural, resistente e sem marcas imperfeitas.',
-        icon: Layers,
+        icon: faTooth,
         tag: 'Natural e Bonito',
         image: fotoClinicaImg
       },
@@ -336,7 +353,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         name: 'Cuidado das Gengivas',
         desc: 'Tratamentos especializados contra inflamações e sangramento gengival.',
         benefit: 'Elimina bactérias nocivas e preserva dentes bem firmes.',
-        icon: HeartPulse,
+        icon: faHeartPulse,
         tag: 'Gengiva Saudável',
         image: clinicaInterna2Img
       }
@@ -408,7 +425,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         name: 'Lentes e Facetas (Resina)',
         desc: 'Modelagem estética em resina de alta performance para corrigir manchas, formatos e espaços.',
         benefit: 'Transformação harmônica, natural e com excelente acabamento estético.',
-        icon: Gem,
+        icon: faGem,
         tag: 'Estética em Resina',
         image: esteticaImg
       },
@@ -416,7 +433,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         name: 'Clareamento Dental',
         desc: 'Tratamento seguro que remove o amarelado com proteção contra sensibilidade.',
         benefit: 'Dentes visivelmente mais brancos em poucas sessões.',
-        icon: Zap,
+        icon: faSun,
         tag: 'Dentes Brancos',
         image: clinicaInterna3Img
       },
@@ -424,7 +441,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         name: 'Harmonização e Suavização',
         desc: 'Procedimentos suaves para equilibrar o sorriso e o contorno gengival.',
         benefit: 'Um sorriso mais equilibrado e proporcional ao seu rosto.',
-        icon: Sparkle,
+        icon: faFaceSmile,
         tag: 'Harmonia Facial',
         image: victorTratamentoImg
       },
@@ -432,7 +449,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         name: 'Toxina Botulínica',
         desc: 'Procedimento injetável usado para suavizar rugas e linhas de expressão.',
         benefit: 'Resultados naturais que rejuvenescem a aparência sem alterar a expressão.',
-        icon: Syringe,
+        icon: faSyringe,
         tag: 'Rugas e Linhas',
         image: esteticaImg
       },
@@ -440,7 +457,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         name: 'Preenchimento Facial',
         desc: 'Técnica que utiliza substâncias, como o ácido hialurônico, para restaurar volume e contorno ao rosto.',
         benefit: 'Restaura o volume perdido e define contornos de forma suave e natural.',
-        icon: Sparkles,
+        icon: faFaceSmile,
         tag: 'Volume e Contorno',
         image: victorTratamentoImg
       },
@@ -448,7 +465,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         name: 'Tratamentos de Pele',
         desc: 'O tratamento de pele inclui limpeza de pele, peelings químicos e microagulhamento para rejuvenescimento e tratamento de manchas.',
         benefit: 'Pele mais limpa, uniforme e com aspecto jovem e saudável.',
-        icon: HeartPulse,
+        icon: faHandSparkles,
         tag: 'Rejuvenescimento',
         image: clinicaInterna3Img
       },
@@ -456,7 +473,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         name: 'Preenchimento Estratégico',
         desc: 'Pontos estratégicos de preenchimento com ácido hialurônico.',
         benefit: 'Realça traços naturais e devolve harmonia ao rosto.',
-        icon: Activity,
+        icon: faBullseye,
         tag: 'Harmonia Facial',
         image: fotoClinicaImg
       }
@@ -520,8 +537,8 @@ const PAGES_CONTENT: Record<string, PageContent> = {
       },
       {
         image: raioXEndodontiaImg,
-        tag: 'Raio-X',
-        title: 'Raiz Fechada e Dente Forte de Novo',
+        tag: 'Radiografia odontológica',
+        title: 'Dente restaurado e protegido após o canal',
         subtitle: 'Dente protegido para não quebrar',
         description: 'Depois de tratar o canal, fechamos bem a raiz por dentro e restauramos o dente para ele ficar firme. Você volta a mastigar com segurança e evita perder o seu dente.'
       }
@@ -536,7 +553,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         name: 'Tratamento de Canal para Manter seu Dente',
         desc: 'Ajuda a tratar infecções e lesões no interior do dente, preservando os dentes naturais.',
         benefit: 'Alivia dores e preserva o seu dente natural na arcada.',
-        icon: Activity,
+        icon: faTooth,
         tag: 'Preservação Dental',
         image: canalImg
       },
@@ -544,7 +561,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         name: 'Retratamento',
         desc: 'Intervenção em canais já tratados para limpeza e desinfecção dos canais radiculares.',
         benefit: 'Auxilia na manutenção e preservação do dente na arcada.',
-        icon: ShieldCheck,
+        icon: faShield,
         tag: 'Endodontia',
         image: equipeTecnologiaImg
       },
@@ -552,7 +569,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         name: 'Planejamento e Diagnóstico',
         desc: 'Avaliação da estrutura do dente por meio de exames clínicos e radiográficos.',
         benefit: 'Identifica a necessidade do tratamento e define a melhor abordagem.',
-        icon: ScanLine,
+        icon: faXRay,
         tag: 'Diagnóstico',
         image: tecnologiaImg
       },
@@ -560,7 +577,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         name: 'Restauração do Dente',
         desc: 'Reconstrução da estrutura dentária após o tratamento de canal.',
         benefit: 'Devolve ao dente sua função e resistência, preservando-o na arcada.',
-        icon: Layers,
+        icon: faTooth,
         tag: 'Reconstrução',
         image: clinicaInterna1Img
       }
@@ -617,7 +634,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         description: 'Remoção planejada de terceiros molares com anestesia eficiente e instrumentos específicos para evitar traumas e dores pós-operatórias.'
       },
       {
-        image: clinicaInterna3Img,
+        image: recepcaoInternaImg,
         tag: 'Biossegurança',
         title: 'Esterilização & Instrumentais Cirúrgicos',
         subtitle: 'Ambiente estéril com padrão hospitalar',
@@ -641,7 +658,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         name: 'Exodontia de Sisos',
         desc: 'Precisão técnica e atendimento humanizado para uma remoção de siso mais tranquila.',
         benefit: 'Remoção de terceiros molares com técnica cuidadosa e segura.',
-        icon: Scissors,
+        icon: faScissors,
         tag: 'Sisos',
         image: cirurgiasImg
       },
@@ -649,7 +666,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         name: 'Retirada de Siso Segura',
         desc: 'Extração planejada com exames digitais detalhados para máxima precisão.',
         benefit: 'Procedimento seguro, com menor inchaço e recuperação tranquila.',
-        icon: ShieldCheck,
+        icon: faShield,
         tag: 'Planejamento',
         image: clinicaExternaImg
       },
@@ -657,7 +674,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         name: 'Cuidados com a Gengiva',
         desc: 'Intervenções para tratar inflamações profundas e fortalecer os dentes.',
         benefit: 'Elimina focos de infecção e devolve o conforto ao mastigar.',
-        icon: HeartPulse,
+        icon: faHeartPulse,
         tag: 'Saúde Bucal',
         image: clinicaInterna1Img
       },
@@ -665,7 +682,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         name: 'Suporte Pós-Procedimento',
         desc: 'Acompanhamento direto via WhatsApp para orientações pós-operatórias.',
         benefit: 'Suporte prioritário para uma recuperação tranquila e acompanhada.',
-        icon: Clock,
+        icon: faClock,
         tag: 'Pós-Operatório',
         image: equipeTecnologiaImg
       }
@@ -717,21 +734,21 @@ const PAGES_CONTENT: Record<string, PageContent> = {
       {
         image: coroasAntesDepoisBeatriz,
         tag: 'Antes & Depois',
-        title: 'Reabilitação Estética com Coroas Cerâmicas',
+        title: 'Reabilitação do sorriso com naturalidade e excelência',
         subtitle: 'Devolução de função mastigatória e sorriso harmônico',
         description: 'Substituição de dentes desgastados por coroas protéticas em cerâmica pura com tom, brilho e anatomia que imitam a perfeição natural.'
       },
       {
         image: coroaBeatrizImg,
         tag: 'Prótese Cerâmica',
-        title: 'Coroas de Cerâmica Pura e Zircônia',
+        title: 'Coroas dentárias com estética natural e qualidade',
         subtitle: 'Sem bordas escuras e com alta durabilidade',
         description: 'Materiais biocompatíveis que preservam a gengiva rosada e saudável, sem a linha acinzentada comum das próteses antigas com metal.'
       },
       {
         image: casoProteseRemovivelBreno,
         tag: 'Antes & Depois',
-        title: 'Prótese Removível Feita para Você',
+        title: 'Prótese removível sob medida, com conforto e naturalidade',
         subtitle: 'Prótese pensada em você',
         description: 'Feita sob medida para combinar com o formato do seu rosto, trazendo dentes bonitos e firmeza para mastigar. Conforto e naturalidade para você sorrir à vontade.'
       }
@@ -746,7 +763,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         name: 'Próteses Fixas',
         desc: 'Coroas e pontes com estética natural e alta durabilidade.',
         benefit: 'Devolve a capacidade mastigatória e a harmonia estética do sorriso.',
-        icon: Layers,
+        icon: faTeeth,
         tag: 'Prótese Fixa',
         image: proteseImg
       },
@@ -754,7 +771,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         name: 'Próteses Removíveis',
         desc: 'Soluções confortáveis e adaptadas ao seu dia a dia.',
         benefit: 'Reabilitação funcional planejada com conforto e atenção aos detalhes.',
-        icon: Smile,
+        icon: faFaceSmile,
         tag: 'Prótese Removível',
         image: victorTratamentoImg
       },
@@ -762,15 +779,15 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         name: 'Prótese sobre Implantes',
         desc: 'Reabilitação segura com suporte de implantes integrados.',
         benefit: 'Firmeza e estabilidade para mastigar e sorrir com confiança.',
-        icon: Shield,
+        icon: faShield,
         tag: 'Sobre Implantes',
         image: tecnologiaImg
       },
       {
-        name: 'Coroas de Zircônia',
+        name: 'Coroas duradouras e naturais',
         desc: 'Dentes estéticos resistentes e sem marcas escuras na linha da gengiva.',
         benefit: 'Aparência natural e resistente ao tempo.',
-        icon: Gem,
+        icon: faGem,
         tag: 'Resistente e Bonito',
         image: fotoClinicaImg
       }
@@ -851,7 +868,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         name: 'Implantes Dentários',
         desc: 'Pinos de titânio seguros que substituem a raiz do dente perdido com firmeza.',
         benefit: 'Firmeza total para mastigar, exatamente como um dente natural.',
-        icon: Bone,
+        icon: faBone,
         tag: 'Firme e Seguro',
         image: proteseImg
       },
@@ -859,7 +876,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         name: 'Dentes Fixos (Prótese Protocolo)',
         desc: 'Dentição completa e fixa sobre implantes que não sai do lugar nem machuca.',
         benefit: 'Devolve a força na mastigação e a liberdade total de sorrir.',
-        icon: Shield,
+        icon: faTeeth,
         tag: 'Dentes Fixos',
         image: victorTratamentoImg
       },
@@ -867,7 +884,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         name: 'Coroas sobre Implantes',
         desc: 'Coroas estéticas e resistentes instaladas sobre os implantes dentários.',
         benefit: 'Aparência natural e devolução integral da mastigação.',
-        icon: Gem,
+        icon: faGem,
         tag: 'Resistente e Natural',
         image: tecnologiaImg
       },
@@ -875,7 +892,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         name: 'Planejamento 3D de Implantes',
         desc: 'Análise detalhada da estrutura óssea para o posicionamento preciso do implante.',
         benefit: 'Previsibilidade e segurança em todas as etapas da reabilitação.',
-        icon: ScanLine,
+        icon: faMagnifyingGlass,
         tag: 'Planejamento',
         image: fotoClinicaImg
       }
@@ -945,7 +962,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         name: 'Consulta Lúdica e Sem Traumas',
         desc: 'Atendimento infantil guiado por histórias e ambiente acolhedor.',
         benefit: 'Evita medos e cria hábitos saudáveis desde a infância.',
-        icon: Baby,
+        icon: faBaby,
         tag: 'Divertido e Calmo',
         image: odontopediatriaImg
       },
@@ -953,7 +970,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         name: 'Proteção Contra Cáries (Selantes)',
         desc: 'Resina fina sobre as ranhuras dos dentes para evitar acúmulo de alimentos.',
         benefit: 'Protege os dentes e previne cáries em até 80%.',
-        icon: Shield,
+        icon: faShield,
         tag: 'Proteção Preventiva',
         image: clinicaInterna2Img
       },
@@ -961,7 +978,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         name: 'Acompanhamento Ortodôntico',
         desc: 'Aparelhos infantis que ajudam os dentes a crescerem na posição certa.',
         benefit: 'Corrige mordidas tortas antes que a criança cresça.',
-        icon: BrainCircuit,
+        icon: faTeeth,
         tag: 'Crescimento Correto',
         image: clinicaInterna3Img
       },
@@ -969,7 +986,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         name: 'Aplicação de Flúor e Limpeza',
         desc: 'Limpeza delicada com flúor saboroso para fortificar o esmalte dental.',
         benefit: 'Dentes fortes, limpos e protegidos contra cáries.',
-        icon: BarChart2,
+        icon: faDroplet,
         tag: 'Dentes Fortes',
         image: clinicaExternaImg
       }
@@ -1321,7 +1338,7 @@ export default function InternalPage() {
                   </div>
 
                   {/* Body Content */}
-                  <div className="p-6 sm:p-7 flex flex-col flex-1 justify-between gap-4">
+                  <div className="p-6 sm:p-7 flex flex-col flex-1 justify-between gap-5">
                     <div className="space-y-2.5">
                       <span className="text-[11px] font-semibold uppercase tracking-wider text-teal-primary font-sans block">
                         {item.subtitle}
@@ -1333,6 +1350,16 @@ export default function InternalPage() {
                         {item.description}
                       </p>
                     </div>
+                    <Link
+                      to={buildWhatsAppLink(`Olá! Gostaria de saber mais sobre ${item.title} na Souriê.`)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Falar com a equipe sobre ${item.title}`}
+                      className="inline-flex w-fit items-center gap-2 rounded-full bg-teal-primary px-4 py-2.5 text-xs font-bold text-white shadow-sm transition-colors hover:bg-teal-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-primary"
+                    >
+                      <span>Quero saber mais</span>
+                      <ArrowRight size={14} />
+                    </Link>
                   </div>
                 </div>
               </ScrollReveal>
@@ -1357,46 +1384,43 @@ export default function InternalPage() {
 
           {/* Elevated Testimonial Card */}
           <ScrollReveal>
-            <div className="relative w-full rounded-2xl md:rounded-3xl overflow-hidden bg-white border border-black/[0.06] p-7 sm:p-10 lg:p-12 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_8px_24px_rgba(0,0,0,0.04)]">
+            <div className="relative w-full rounded-2xl md:rounded-3xl overflow-hidden bg-white border border-black/[0.06] p-6 sm:p-8 lg:p-10 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_8px_24px_rgba(0,0,0,0.04)]">
               {/* Subtle background Google watermark in bottom right corner */}
               <div className="absolute -bottom-6 -right-6 text-teal-primary/[0.03] select-none pointer-events-none leading-none">
                 <GoogleWatermarkIcon size={240} />
               </div>
 
-              <div className="relative z-10 space-y-6 max-w-4xl">
-                {/* Top Google Lockup + Rating + Verification */}
-                <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-black/[0.05]">
+              <div className="relative z-10 space-y-6">
+                {/* Source and rating */}
+                <div className="flex flex-wrap items-center justify-between gap-4 pb-5 border-b border-black/[0.05]">
                   <div className="flex items-center gap-3">
                     <div className="w-9 h-9 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center justify-center shadow-xs">
                       <GoogleIcon size={18} />
                     </div>
-                    <div>
-                      <div className="flex items-center gap-1.5">
-                        <span className="text-xs font-bold text-slate-800">Avaliação no Google</span>
-                        <span className="text-slate-300">·</span>
-                        <div className="flex items-center gap-0.5">
+                    <div className="space-y-1">
+                      <span className="block text-xs font-bold text-slate-800">Avaliação no Google</span>
+                      <div className="flex items-center gap-1">
+                        <div className="flex items-center gap-0.5" aria-label="5 de 5 estrelas">
                           {[...Array(5)].map((_, i) => (
                             <Star key={i} size={13} className="text-amber-400 fill-amber-400" />
                           ))}
                         </div>
-                        <span className="text-xs font-bold text-slate-900 ml-1">5,0</span>
+                        <span className="text-xs font-bold text-slate-900">5,0</span>
                       </div>
-                      <p className="text-[11px] text-slate-500 font-normal">
-                        Experiência real compartilhada por paciente da clínica
-                      </p>
                     </div>
                   </div>
 
-                  <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-teal-primary bg-teal-primary/5 border border-teal-primary/10 px-3.5 py-1.5 rounded-full shadow-xs">
+                  <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-teal-primary bg-teal-primary/5 border border-teal-primary/10 px-3 py-1.5 rounded-full">
                     <CheckCircle2 size={14} className="text-teal-primary" />
                     <span>Paciente Verificado</span>
                   </div>
                 </div>
 
-                {/* Quote text */}
-                <p className="text-teal-dark text-lg sm:text-2xl lg:text-[23px] leading-relaxed font-light font-serif italic">
-                  "{page.testimonial.text}"
-                </p>
+                <blockquote className="max-w-3xl border-l-2 border-teal-primary/35 pl-5 sm:pl-7 py-1">
+                  <p className="text-teal-dark text-base sm:text-lg lg:text-xl leading-relaxed font-medium font-sans tracking-tight">
+                    "{page.testimonial.text}"
+                  </p>
+                </blockquote>
 
                 {/* Author Block */}
                 <div className="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-black/[0.05]">
@@ -1445,7 +1469,7 @@ export default function InternalPage() {
                   "{page.responsibility}"
                 </p>
                 <p className="text-xs text-text-primary/60 font-light">
-                  Acompanhamento próximo antes, durante e após o procedimento.
+                  Nossa equipe está ao seu lado em todas as etapas do tratamento.
                 </p>
               </div>
 
@@ -1508,8 +1532,6 @@ export default function InternalPage() {
                 {/* Right Side: Clean Image Cards Grid */}
                 <div className="lg:col-span-8 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4">
                   {page.services.map((service, idx) => {
-                    const Icon = service.icon;
-
                     return (
                       <Link
                         key={idx}
@@ -1523,16 +1545,11 @@ export default function InternalPage() {
                         {/* Ambient card background glow */}
                         <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-teal-primary/20 blur-2xl pointer-events-none group-hover:bg-cyan-light/30 transition-colors duration-500" />
 
-                        {/* Top: Icon only */}
-                        <div className="relative z-10">
-                          <div className="w-8 h-8 rounded-full bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center text-cyan-light shadow-sm shrink-0">
-                            <Icon size={15} strokeWidth={1.5} />
+                        {/* Center: ready-made icon for the service */}
+                        <div className="relative z-10 my-2 flex flex-1 items-center justify-center transition-transform duration-500 ease-out group-hover:scale-105">
+                          <div className="flex h-20 w-20 items-center justify-center rounded-3xl border border-cyan-light/25 bg-cyan-light/10 text-cyan-light shadow-inner transition-colors duration-300 group-hover:border-cyan-light/50 group-hover:bg-cyan-light/15">
+                            <FontAwesomeIcon icon={service.icon} className="text-[2.4rem]" aria-hidden="true" />
                           </div>
-                        </div>
-
-                        {/* Center Cartoon SVG Illustration */}
-                        <div className="relative z-10 my-2 flex items-center justify-center transition-transform duration-500 ease-out group-hover:scale-110">
-                          <SpecialtyIllustration name={service.name} size={110} />
                         </div>
 
                         {/* Bottom: Tag + Title */}
