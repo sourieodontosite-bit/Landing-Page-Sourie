@@ -82,6 +82,7 @@ import coroasAntesDepoisBeatriz from '../assets/images/dentistas/beatriz/caso-co
 import coroaBeatrizImg from '../assets/images/dentistas/beatriz/caso-coroa.webp';
 import resultadosBigodeChines from '../assets/images/dentistas/junia/caso-bigode-chines.webp';
 import casoRestauracaoVictor from '../assets/images/dentistas/victor/caso-restauracao-antes-depois.webp';
+import victorBento4Img from '../assets/images/dentistas/victor/bento-4.webp';
 import casoRestauracaoInfantilTayna from '../assets/images/dentistas/tayna/caso-restauracao-infantil-antes-depois.webp';
 import escovasKidImg from '../assets/images/dentistas/tayna/caso-escovas-kids.webp';
 import brenoAtendimentoEndoImg from '../assets/images/dentistas/breno/atendimento-dr-breno.webp';
@@ -623,10 +624,10 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         description: 'Todos os materiais passam por rigoroso ciclo de esterilização e selagem térmica, eliminando qualquer risco de infecção cruzada.'
       },
       {
-        image: equipeTecnologiaImg,
+        image: victorBento4Img,
         tag: 'Pós-Operatório',
-        title: 'Suporte Clínico Contínuo no WhatsApp',
-        subtitle: 'Você nunca fica desassistido após o procedimento',
+        title: 'Suporte Clínico Contínuo',
+        subtitle: 'Nossa equipe acompanha você durante toda a recuperação',
         description: 'Nossa equipe orienta repouso, medicação e alimentação, monitorando a evolução da cicatrização para garantir recuperação tranquila.'
       }
     ],
