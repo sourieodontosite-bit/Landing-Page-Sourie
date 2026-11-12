@@ -25,7 +25,7 @@ import coroaBeatrizImg from '../assets/images/dentistas/beatriz/caso-coroa.webp'
 import taynaFotoImg from '../assets/images/equipe/dra-tayna.webp';
 import taynaImg from '../assets/images/dentistas/tayna/bento-atendimento.webp';
 import escovasKidImg from '../assets/images/dentistas/tayna/caso-escovas-kids.webp';
-import odontopediatriaImg from '../assets/images/dentistas/tayna/caso-odontopediatria.webp';
+import odontopediatriaAntesDepoisImg from '../assets/images/dentistas/tayna/odontopediatria-antes-depois.webp';
 import juniaImg from '../assets/images/equipe/dra-junia.webp';
 import resultadosBigodeChines from '../assets/images/dentistas/junia/caso-bigode-chines.webp';
 import juniaAtendendo from '../assets/images/dentistas/junia/bento-atendimento.webp';
@@ -93,9 +93,9 @@ const bentoImagesMap: Record<string, { src: string; pos: string }[]> = {
     { src: coroaBeatrizImg, pos: 'object-center' },
   ],
   'dra-tayna': [
-    { src: taynaImg, pos: 'object-[center_20%]' },
+    { src: odontopediatriaAntesDepoisImg, pos: 'object-center' },
     { src: escovasKidImg, pos: 'object-center' },
-    { src: odontopediatriaImg, pos: 'object-center' },
+    { src: taynaImg, pos: 'object-center' },
     { src: clinicaInterna, pos: 'object-center' },
   ],
   'dra-junia': [
@@ -181,7 +181,7 @@ const DENTIST_EXTENSIONS: Record<string, DentistDesignExtensions> = {
     instagramHandle: '@estefaniaalvesm',
     highlightStat: { value: 'Desde 2017', label: 'Devolvendo sorrisos' },
     bentoItems: [
-      { category: 'Atendimento Familiar', title: 'Espaço acolhedor desenhado para o bem-estar e saúde de todas as idades' },
+      { category: 'Atendimento Familiar', title: 'Atenção próxima, acolhimento humanizado e dedicação ao sorriso de toda a família' },
       { category: 'Alinhadores Invisíveis', title: 'Tecnologia ortodôntica invisível para alinhar seu sorriso com discrição' },
       { category: 'Ortodontia Fixa', title: 'Tratamentos corretivos precisos e planejados digitalmente' },
       { category: 'Sorrisos Juvenis', title: 'Ortopedia preventiva para garantir o desenvolvimento saudável' }
@@ -223,9 +223,9 @@ const DENTIST_EXTENSIONS: Record<string, DentistDesignExtensions> = {
     instagramHandle: '@dra.taynadelfim',
     highlightStat: { value: 'Atendimento Lúdico', label: 'Para os Pequenos' },
     bentoItems: [
-      { category: 'Bebês e Crianças', title: 'Acompanhamento desde o nascimento do primeiro dente' },
+      { category: 'Antes & Depois', title: 'Reconstrução Estética Infantil — cuidado delicado que devolve o sorriso à criança' },
       { category: 'Prevenção Infantil', title: 'Hábitos de higiene ensinados de forma divertida e educativa' },
-      { category: 'Manejo Comportamental', title: 'Abordagem lúdica, gentil e acolhedora em cada consulta' },
+      { category: 'Atendimento Lúdico', title: 'Consultas no ritmo da criança com carinho, paciência e leveza' },
       { category: 'Ambiente Acolhedor', title: 'Espaço pensado para fazer a criança se sentir em casa' }
     ],
     ctaHeadline: 'Agende a primeira consulta odontológica do seu filho(a)',

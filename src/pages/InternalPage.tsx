@@ -82,11 +82,13 @@ import coroasAntesDepoisBeatriz from '../assets/images/dentistas/beatriz/caso-co
 import coroaBeatrizImg from '../assets/images/dentistas/beatriz/caso-coroa.webp';
 import resultadosBigodeChines from '../assets/images/dentistas/junia/caso-bigode-chines.webp';
 import casoRestauracaoVictor from '../assets/images/dentistas/victor/caso-restauracao-antes-depois.webp';
-import taynaImg from '../assets/images/dentistas/tayna/bento-atendimento.webp';
+import casoRestauracaoInfantilTayna from '../assets/images/dentistas/tayna/caso-restauracao-infantil-antes-depois.webp';
 import escovasKidImg from '../assets/images/dentistas/tayna/caso-escovas-kids.webp';
 import brenoAtendimentoEndoImg from '../assets/images/dentistas/breno/atendimento-dr-breno.webp';
 import raioXEndodontiaImg from '../assets/images/dentistas/breno/caso-raio-x-endodontia.webp';
 import casoProteseRemovivelBreno from '../assets/images/dentistas/breno/caso-protese-removivel-antes-depois.webp';
+import casoImplantesAntesDepois from '../assets/images/procedimentos/caso-implantes-antes-depois.webp';
+import scannerItero3dImg from '../assets/images/procedimentos/scanner-itero-3d.webp';
 
 // Verified Patient Testimonial Avatar
 import testimonialJennifer from '../assets/images/depoimentos/paciente-jennifer.webp';
@@ -824,18 +826,18 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         description: 'Substituição de próteses móveis instáveis por coroas fixas em titânio e zircônia integradas ao osso, devolvendo força mastigatória de 100%.'
       },
       {
-        image: coroasAntesDepoisBeatriz,
-        tag: 'Reabilitação',
+        image: casoImplantesAntesDepois,
+        tag: 'Antes & Depois',
         title: 'Harmonia Estética e Mastigatória',
         subtitle: 'Naturalidade idêntica à dentição original',
-        description: 'Reabilitação completa onde cada coroa é desenhada para harmonizar com a linha do sorriso e devolver a segurança de sorrir em público.'
+        description: 'Reabilitação com implantes e coroas cerâmicas sob medida, devolvendo estética impecável e 100% da firmeza mastigatória.'
       },
       {
-        image: tecnologiaImg,
-        tag: 'Cirurgia Guiada',
+        image: scannerItero3dImg,
+        tag: 'Scanner 3D & Tomografia',
         title: 'Planejamento Ósseo Digital',
-        subtitle: 'Instalação milimétrica do implante',
-        description: 'Tomografia e escaneamento digital combinados para planejar a posição exata de cada implante antes da cirurgia, acelerando a cicatrização.'
+        subtitle: 'Tomografia combinada ao escaneamento 3D',
+        description: 'Usamos os dois: você faz a tomografia por fora e, aqui na clínica, combinamos esses dados com o planejamento no scanner 3D. Essa integração digital define a posição milimétrica de cada implante no osso antes da cirurgia, trazendo mais segurança e cicatrização rápida.'
       }
     ],
     testimonial: {
@@ -925,11 +927,11 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         description: 'Aplicação indolor de resina fluida nos sulcos dos molares para impedir a proliferação bacteriana, somada à escovação guiada divertida.'
       },
       {
-        image: taynaImg,
-        tag: 'Atendimento Lúdico',
-        title: 'Cuidado Humanizado da Dra. Tayná',
-        subtitle: 'Amor, paciência e reforço positivo',
-        description: 'Consultas no ritmo da criança com entrega de certificado de coragem, criando uma memória positiva e amizade duradoura com a saúde bucal.'
+        image: casoRestauracaoInfantilTayna,
+        tag: 'Antes & Depois',
+        title: 'Reconstrução Estética Infantil',
+        subtitle: 'Cuidado delicado que devolve o sorriso à criança',
+        description: 'Reconstrução em resina composta para dentes de leite com desgastes, fraturas ou alterações de esmalte. Um procedimento tranquilo e indolor com a Dra. Tayná que recupera a anatomia, a mastigação e a autoconfiança dos pequenos.'
       }
     ],
     testimonial: {
