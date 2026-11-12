@@ -373,8 +373,8 @@ const PAGES_CONTENT: Record<string, PageContent> = {
     clinicalCases: [
       {
         image: victorResultado,
-        tag: 'Facetas em Resina',
-        title: 'Facetas e Resina Estratificada',
+        tag: 'Lentes & Facetas',
+        title: 'Facetas em Resina',
         subtitle: 'Brilho, textura e formato em harmonia natural',
         description: 'Reconstrução estética em resina de alta performance para corrigir desníveis, espaçamentos e tonalidades com acabamento suave e natural.'
       },
@@ -730,8 +730,7 @@ const PAGES_CONTENT: Record<string, PageContent> = {
         tag: 'Antes & Depois',
         title: 'Prótese Removível Feita para Você',
         subtitle: 'Prótese pensada em você',
-        description: 'Feita sob medida para combinar com o formato do seu rosto, trazendo dentes bonitos e firmeza para mastigar. Conforto e naturalidade para você sorrir à vontade.',
-        imageClassName: 'object-contain'
+        description: 'Feita sob medida para combinar com o formato do seu rosto, trazendo dentes bonitos e firmeza para mastigar. Conforto e naturalidade para você sorrir à vontade.'
       }
     ],
     testimonial: {
@@ -1279,13 +1278,13 @@ export default function InternalPage() {
           <ScrollReveal>
             <div className="max-w-3xl space-y-4 text-left">
               <span className="text-teal-primary font-bold text-xs tracking-[0.25em] uppercase block">
-                Casos Clínicos & Evidências Reais
+                Diferenciais Souriê
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-teal-dark font-sans leading-tight -tracking-[0.02em]">
-                Resultados reais e precisão em cada detalhe.
+                O que você encontra somente na Souriê.
               </h2>
               <p className="text-text-primary/75 text-sm sm:text-base font-light leading-relaxed">
-                Conheça de perto casos clínicos reais, equipamentos odontológicos de alta tecnologia e o ambiente seguro onde o seu tratamento acontece na Souriê.
+                Tecnologia de ponta pensada no seu conforto, casos clínicos reais e um atendimento próximo, humano e transparente em cada detalhe do seu tratamento.
               </p>
             </div>
           </ScrollReveal>
